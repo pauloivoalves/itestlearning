@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+		<property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/itest</property>
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.connection.password">postgres</property>
+		
+		<mapping class="br.ufc.si.itest.model.Artefato"/>
+		<mapping class="br.ufc.si.itest.model.ArtefatoProjeto"/>
+		<mapping class="br.ufc.si.itest.model.CriterioAceitacao"/>
+		<mapping class="br.ufc.si.itest.model.Ferramenta"/>
+		<mapping class="br.ufc.si.itest.model.FerramentaProjeto"/>
+		<mapping class="br.ufc.si.itest.model.ItemTeste"/>
+		<mapping class="br.ufc.si.itest.model.Jogo"/>
+		<mapping class="br.ufc.si.itest.model.NivelDificuldade"/>
+		<mapping class="br.ufc.si.itest.model.NivelTeste"/>
+		<mapping class="br.ufc.si.itest.model.NivelTesteProjeto"/>
+		<mapping class="br.ufc.si.itest.model.Projeto"/>
+		<mapping class="br.ufc.si.itest.model.TipoTeste"/>
+		<mapping class="br.ufc.si.itest.model.TipoTesteProjeto"/>
+		<mapping class="br.ufc.si.itest.model.Usuario"/>
+		
+	</session-factory>
+</hibernate-configuration>

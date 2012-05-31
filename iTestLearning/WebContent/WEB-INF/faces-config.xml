@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+    
+    <!-- Managed Beans -->
+    <managed-bean>
+		<managed-bean-name>artefatoBean</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.ArtefatoBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>criterioAceitacaoBean</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.CriterioAceitacaoBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>ferramentaBean</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.FerramentaBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>itemTesteBean</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.ItemTesteBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>jogoBean</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.JogoBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>nivelTesteBean</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.NivelTesteBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>projetoBean</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.ProjetoBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>tipoTesteBean</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.TipoTesteBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>nivelDificuldadeBean</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.NivelDificuldadeBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>userWizard</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.UserWizard</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+    
+    <!-- Navigation Rules -->
+    <navigation-rule>
+		<navigation-case>
+			<from-outcome>inicio</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>descricaoProjeto</from-outcome>
+			<to-view-id>/descricao_projeto.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>artefatos</from-outcome>
+			<to-view-id>/artefatos.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>criterioAceitacao</from-outcome>
+			<to-view-id>/criterios_aceitacao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>escolhaProjeto</from-outcome>
+			<to-view-id>/escolha_projeto.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>ferramentas</from-outcome>
+			<to-view-id>/ferramentas.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>itensTeste</from-outcome>
+			<to-view-id>/itens_teste.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>niveisTeste</from-outcome>
+			<to-view-id>/niveis_teste.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>tiposTeste</from-outcome>
+			<to-view-id>/tipos_teste.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+
+</faces-config>
