@@ -61,11 +61,11 @@
 							</h3>
 						</div>
 						<div id="desafio">
-							<h:selectManyCheckbox id="alternativas" layout="pageDirection" styleClass="alternativas" value="#{jogoBean.ferramentaBean.ferramentasSelecionadas}">
+							<p:selectManyCheckbox id="alternativas" layout="pageDirection" styleClass="alternativas" value="#{jogoBean.ferramentaBean.ferramentasSelecionadas}">
             					<f:selectItems value="#{jogoBean.ferramentaBean.ferramentas}"/>
-            				</h:selectManyCheckbox>
+            				</p:selectManyCheckbox>
 						</div>
-						<p:commandLink title="Voltar" style="float: left;" >
+						<p:commandLink title="Voltar" style="float: left;" action="criterioAceitacao">
 							<p:graphicImage value="images/btnvoltar.png"/>
 						</p:commandLink>
 						
@@ -82,12 +82,12 @@
 								<br/>
 								<h4>Respostas Corretas</h4>
 								<p:dataList value="#{jogoBean.ferramentaBean.respostasCorretas}" var="fer" itemType="circle">
-									<span style="font-weight: bold;">#{fer.pk.ferramenta.nome}</span>: #{fer.pk.ferramenta.mensagem}
+									<span style="font-weight: bold;">#{fer.pk.ferramenta.nome}</span>: #{fer.mensagem}
 								</p:dataList>
 								<br/>
 								<h4 style="color:red;">Respostas Erradas</h4>
 								<p:dataList value="#{jogoBean.ferramentaBean.respostasErradas}" var="fer" itemType="circle">
-									<span style="font-weight: bold;">#{fer.pk.ferramenta.nome}</span>: #{fer.pk.ferramenta.mensagem}
+									<span style="font-weight: bold;">#{fer.pk.ferramenta.nome}</span>: #{fer.mensagem}
 								</p:dataList>
 							</h:panelGrid>							
 						</p:dialog>

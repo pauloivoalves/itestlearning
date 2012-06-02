@@ -58,11 +58,11 @@
 							</h3>
 						</div>
 						<div id="desafio">
-							<h:selectManyCheckbox id="alternativas" layout="pageDirection" styleClass="alternativas" value="#{jogoBean.itemTesteBean.itensTesteSelecionados}">
+							<p:selectManyCheckbox id="alternativas" layout="pageDirection" styleClass="alternativas" value="#{jogoBean.itemTesteBean.itensTesteSelecionados}">
             					<f:selectItems var="item" value="#{jogoBean.itemTesteBean.itensTeste}"/>
-            				</h:selectManyCheckbox>
+            				</p:selectManyCheckbox>
 						</div>
-						<p:commandLink title="Voltar" style="float: left;" >
+						<p:commandLink title="Voltar" style="float: left;" action="descricaoProjeto">
 							<p:graphicImage value="images/btnvoltar.png"/>
 						</p:commandLink>
 						
