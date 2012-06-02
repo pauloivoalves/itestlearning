@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>iTest Learning :: O Jogo</title>
+	<title>iTest Learning :: Ranking</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 </h:head>
 <body>
@@ -34,20 +34,28 @@
 									class="ui_icon contactus"></span></a></li>
 						</ul>
 					</div>
-					
+
 					<div id="content">
-						<h2>
-							O Jogo
-						</h2>
-						<div id="fase">
-							<h3>
-								Este jogo foi um trabalho realizado como requisito para obtenção 
-								do grau de Bacharel do Curso de Sistemas da Universidade Federal do Ceará.
-							</h3>
+						<h2>Ranking</h2>
+						<br />
+						<br />
+						<div id="fase" align="center">
+							<h3>Projeto: </h3>
+							<p:selectOneMenu id="projeto" value="#{jogoBean.projetoRanking}">
+								<f:selectItem itemLabel="Selecione..." itemValue=""/>
+								<f:selectItems value="#{jogoBean.projetos}" />
+								<p:ajax update="ranking" listener="#{jogoBean.carregaRanking}" />
+							</p:selectOneMenu><br /><br />
+							<p:dataTable id="ranking" var="item" value="#{jogoBean.jogos}">
+								<f:facet name="header">
+									Ranking
+								</f:facet>
+								<p:column>
+									<h:outputText value="#{item.pk.usuario.nome} - #{item.pontuacao}" />
+								</p:column>
+							</p:dataTable>
+							<br /> <br /> <br />
 						</div>
-						<p:commandLink title="Avançar" style="float: right;" action="objetivo" ajax="false">
-							<p:graphicImage value="images/btnavancar.png"/>
-						</p:commandLink>
 					</div>
 					<div id="footer">
 						<a href="index.jsf">Home</a> | <a href="index.jsf">About Us</a> |

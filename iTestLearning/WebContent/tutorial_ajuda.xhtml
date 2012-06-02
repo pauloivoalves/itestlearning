@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>iTest Learning :: O Jogo</title>
+	<title>iTest Learning :: Tutorial - Ajuda</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 </h:head>
 <body>
@@ -34,19 +34,39 @@
 									class="ui_icon contactus"></span></a></li>
 						</ul>
 					</div>
-					
+
 					<div id="content">
-						<h2>
-							O Jogo
-						</h2>
+						<div id="buttonsMenu">
+							<p:graphicImage value="images/note.png" width="70" height="70" title="Escopo do Projeto"/>
+							<p:graphicImage value="images/ajuda.png" width="70" height="70" title="Ajuda"/>
+							<p:graphicImage value="images/check.png" width="70" height="70" title="Verificar Respostas"/>
+						</div>
+						<h2>Tutorial - Ajuda:</h2>
 						<div id="fase">
 							<h3>
-								Este jogo foi um trabalho realizado como requisito para obtenção 
-								do grau de Bacharel do Curso de Sistemas da Universidade Federal do Ceará.
+								Durante jogo você terá uma opção de ajuda que poderá fornecer
+								definições de termos de teste de software que poderão ser
+								utilizados. Você poderá solicitar ajuda clicando na
+								imagem
+								<p:graphicImage value="images/ajuda.png" width="30" height="30"/>
+								, que ficará na parte superior esquerda da tela do jogo. <br />
+								<br /><br /> Outra opção que você terá é a visualização do escopo
+								(descrição) do projeto. Essa opção também estará disponível na
+								parte superior esquerda da tela do jogo, através da imagem
+								<p:graphicImage value="images/note.png" width="30" height="30" /><br />
+								<br />
+								Em cada fase, também será possível verificar suas respostas, clicando na imagem
+								<p:graphicImage value="images/check.png" width="30" height="30" />.
+								Atenção! Você só poderá utilizar essa opção após completar a fase, pois não será mais possível jogar a fase após verificar as respostas.
 							</h3>
 						</div>
-						<p:commandLink title="Avançar" style="float: right;" action="objetivo" ajax="false">
-							<p:graphicImage value="images/btnavancar.png"/>
+						<p:commandLink title="Voltar" style="float: left;"
+							action="pontuacao" ajax="false">
+							<p:graphicImage value="images/btnvoltar.png" />
+						</p:commandLink>
+						<p:commandLink title="Avançar" style="float: right;"
+							action="escolhaProjeto" ajax="false">
+							<p:graphicImage value="images/btnavancar.png" />
 						</p:commandLink>
 					</div>
 					<div id="footer">

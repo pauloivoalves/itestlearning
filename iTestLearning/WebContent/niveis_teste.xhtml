@@ -42,7 +42,7 @@
 							<p:commandLink title="Ajuda" oncomplete="dialogAjuda.show()" update="displayAjuda">
 								<p:graphicImage value="images/ajuda.png" width="70" height="70"/>
 							</p:commandLink>
-							<p:commandLink title="Verificar Resposta" actionListener="#{jogoBean.validarNiveisTeste}" oncomplete="dialog.show()" update="display, pontos">
+							<p:commandLink title="Verificar Resposta" actionListener="#{jogoBean.validarNiveisTeste}" oncomplete="dialog.show()" update="display, pontos, alternativas">
 								<p:graphicImage value="images/check.png" width="70" height="70" styleClass="imageCheck"/>
 							</p:commandLink>
 							
@@ -61,11 +61,11 @@
 							</h3>
 						</div>
 						<div id="desafio">
-							<p:selectManyCheckbox id="alternativas" layout="pageDirection" styleClass="alternativas" value="#{jogoBean.nivelTesteBean.niveisTesteSelecionados}">
+							<p:selectManyCheckbox id="alternativas" layout="pageDirection" styleClass="alternativas" value="#{jogoBean.nivelTesteBean.niveisTesteSelecionados}" disabled="#{jogoBean.nivelTesteBean.respondido}">
             					<f:selectItems value="#{jogoBean.nivelTesteBean.niveisTeste}"/>
             				</p:selectManyCheckbox>
 						</div>
-						<p:commandLink title="Voltar" style="float: left;" action="tiposTeste">
+						<p:commandLink title="Voltar" style="float: left;" action="tiposTeste" ajax="false">
 							<p:graphicImage value="images/btnvoltar.png"/>
 						</p:commandLink>
 						

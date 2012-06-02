@@ -52,16 +52,11 @@
 		<managed-bean-class>br.ufc.si.itest.bean.NivelDificuldadeBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-	<managed-bean>
-		<managed-bean-name>userWizard</managed-bean-name>
-		<managed-bean-class>br.ufc.si.itest.bean.UserWizard</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
-	</managed-bean>
     
     <!-- Navigation Rules -->
     <navigation-rule>
 		<navigation-case>
-			<from-outcome>inicio</from-outcome>
+			<from-outcome>index</from-outcome>
 			<to-view-id>/index.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
@@ -111,6 +106,36 @@
 		<navigation-case>
 			<from-outcome>tiposTeste</from-outcome>
 			<to-view-id>/tipos_teste.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>objetivo</from-outcome>
+			<to-view-id>/objetivo.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>pontuacao</from-outcome>
+			<to-view-id>/tutorial_pontuacao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>fases</from-outcome>
+			<to-view-id>/tutorial_fases.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>ajuda</from-outcome>
+			<to-view-id>/tutorial_ajuda.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>resultado</from-outcome>
+			<to-view-id>/resultado.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
