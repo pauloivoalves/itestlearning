@@ -56,8 +56,8 @@
 							<h:outputText value="#{jogoBean.projetoBean.projeto.descricao}" />
 						</div>
 						
-						<h:commandButton image="images/btnvoltar.png" title="Voltar" style="float: left;"></h:commandButton>
-						<h:commandButton image="images/btnavancar.png" title="Avançar" style="float: right;"></h:commandButton>
+						<h:commandButton image="images/btnvoltar.png" title="Voltar" style="float: left;" action="escolhaProjeto"/>
+						<h:commandButton image="images/btnavancar.png" title="Avançar" style="float: right;" action="itensTeste"/>
 						
 						<p:dialog header="Escopo do Projeto" id="dialogEscopo" widgetVar="dialogEscopo">
 							<h:panelGrid id="displayEscopo">

@@ -61,11 +61,11 @@
 							</h3>
 						</div>
 						<div id="desafio">
-							<h:selectManyCheckbox id="alternativas" layout="pageDirection" styleClass="alternativas" value="#{jogoBean.tipoTesteBean.tiposTesteSelecionados}">
+							<p:selectManyCheckbox id="alternativas" layout="pageDirection" styleClass="alternativas" value="#{jogoBean.tipoTesteBean.tiposTesteSelecionados}">
             					<f:selectItems value="#{jogoBean.tipoTesteBean.tiposTeste}"/>
-            				</h:selectManyCheckbox>
+            				</p:selectManyCheckbox>
 						</div>
-						<p:commandLink title="Voltar" style="float: left;" >
+						<p:commandLink title="Voltar" style="float: left;" action="itensTeste">
 							<p:graphicImage value="images/btnvoltar.png"/>
 						</p:commandLink>
 						
@@ -82,12 +82,12 @@
 								<br/>
 								<h4>Respostas Corretas</h4>
 								<p:dataList value="#{jogoBean.tipoTesteBean.respostasCorretas}" var="tipo" itemType="circle">
-									<span style="font-weight: bold;">#{tipo.pk.tipoTeste.nome}</span>: #{tipo.pk.tipoTeste.mensagem}
+									<span style="font-weight: bold;">#{tipo.pk.tipoTeste.nome}</span>: #{tipo.mensagem}
 								</p:dataList>
 								<br/>
 								<h4 style="color:red;">Respostas Erradas</h4>
 								<p:dataList value="#{jogoBean.tipoTesteBean.respostasErradas}" var="tipo" itemType="circle">
-									<span style="font-weight: bold;">#{tipo.pk.tipoTeste.nome}</span>: #{tipo.pk.tipoTeste.mensagem}
+									<span style="font-weight: bold;">#{tipo.pk.tipoTeste.nome}</span>: #{tipo.mensagem}
 								</p:dataList>
 							</h:panelGrid>							
 						</p:dialog>

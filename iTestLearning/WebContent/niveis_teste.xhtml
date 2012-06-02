@@ -61,11 +61,11 @@
 							</h3>
 						</div>
 						<div id="desafio">
-							<h:selectManyCheckbox id="alternativas" layout="pageDirection" styleClass="alternativas" value="#{jogoBean.nivelTesteBean.niveisTesteSelecionados}">
+							<p:selectManyCheckbox id="alternativas" layout="pageDirection" styleClass="alternativas" value="#{jogoBean.nivelTesteBean.niveisTesteSelecionados}">
             					<f:selectItems value="#{jogoBean.nivelTesteBean.niveisTeste}"/>
-            				</h:selectManyCheckbox>
+            				</p:selectManyCheckbox>
 						</div>
-						<p:commandLink title="Voltar" style="float: left;" >
+						<p:commandLink title="Voltar" style="float: left;" action="tiposTeste">
 							<p:graphicImage value="images/btnvoltar.png"/>
 						</p:commandLink>
 						
@@ -82,12 +82,12 @@
 								<br/>
 								<h4>Respostas Corretas</h4>
 								<p:dataList value="#{jogoBean.nivelTesteBean.respostasCorretas}" var="nivel" itemType="circle">
-									<span style="font-weight: bold;">#{nivel.pk.nivelTeste.nome}</span>: #{nivel.pk.nivelTeste.mensagem}
+									<span style="font-weight: bold;">#{nivel.pk.nivelTeste.nome}</span>: #{nivel.mensagem}
 								</p:dataList>
 								<br/>
 								<h4 style="color:red;">Respostas Erradas</h4>
 								<p:dataList value="#{jogoBean.nivelTesteBean.respostasErradas}" var="nivel" itemType="circle">
-									<span style="font-weight: bold;">#{nivel.pk.nivelTeste.nome}</span>: #{nivel.pk.nivelTeste.mensagem}
+									<span style="font-weight: bold;">#{nivel.pk.nivelTeste.nome}</span>: #{nivel.mensagem}
 								</p:dataList>
 							</h:panelGrid>							
 						</p:dialog>
