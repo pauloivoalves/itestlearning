@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>iTest Learning :: O Jogo</title>
+	<title>iTest Learning :: Tutorial - Fases</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 </h:head>
 <body>
@@ -37,15 +37,23 @@
 					
 					<div id="content">
 						<h2>
-							O Jogo
+							Tutorial - Fases:
 						</h2>
 						<div id="fase">
 							<h3>
-								Este jogo foi um trabalho realizado como requisito para obtenção 
-								do grau de Bacharel do Curso de Sistemas da Universidade Federal do Ceará.
+								<span style="font-weight: bold;">O jogo possui 6 fases:</span><br /><br />
+								<span style="color: green; font-weight: bold;">Fase 1 - Itens a testar: </span>nessa fase você deverá escolher os itens do projeto que serão testados.<br /><br />
+								<span style="color: green; font-weight: bold;">Fase 2 - Tipos de teste: </span>aqui serão definidos os tipos de teste a serem executados.<br /><br />
+								<span style="color: green; font-weight: bold;">Fase 3 - Níveis de teste: </span>esta fase permite dizer quais níveis de teste farão parte do projeto.<br /><br />
+								<span style="color: green; font-weight: bold;">Fase 4 - Critérios de aceitação: </span>define os critérios que farão com que o software seja aceito.<br /><br />
+								<span style="color: green; font-weight: bold;">Fase 5 - Ferramentas: </span>nessa fase é possível definir quais ferramentas serão utilizadas durante o processo de testes.<br /><br />
+								<span style="color: green; font-weight: bold;">Fase 6 - Artefatos: </span>finalmente, você escolhe os artefatos que farão parte do processo de testes.<br /><br />
 							</h3>
 						</div>
-						<p:commandLink title="Avançar" style="float: right;" action="objetivo" ajax="false">
+						<p:commandLink title="Voltar" style="float: left;" action="objetivo" ajax="false">
+							<p:graphicImage value="images/btnvoltar.png"/>
+						</p:commandLink>
+						<p:commandLink title="Avançar" style="float: right;" action="pontuacao" ajax="false">
 							<p:graphicImage value="images/btnavancar.png"/>
 						</p:commandLink>
 					</div>

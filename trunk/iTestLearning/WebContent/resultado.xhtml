@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>iTest Learning :: Resultado</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+</h:head>
+<body>
+	<f:view>
+		<h:form>
+			<div id="slider">
+				<div id="templatemo_wrapper">
+					<div id="header">
+						<h1>
+							<a href="index.jsf">iTest Learning</a>
+						</h1>
+					</div>
+
+					<div id="menu">
+						<ul class="navigation">
+							<li><a href="#home" class="selected">Home<span
+									class="ui_icon home"></span></a></li>
+							<li><a href="#aboutus">About Us<span
+									class="ui_icon aboutus"></span></a></li>
+							<li><a href="#services">Services<span
+									class="ui_icon services"></span></a></li>
+							<li><a href="#gallery">Gallery<span
+									class="ui_icon gallery"></span></a></li>
+							<li><a href="#contactus">Contact Us<span
+									class="ui_icon contactus"></span></a></li>
+						</ul>
+					</div>
+
+					<div id="content">
+						<div id="buttonsMenu">
+							<p:commandLink title="Escopo do Projeto"
+								oncomplete="dialogEscopo.show()" update="displayEscopo">
+								<p:graphicImage value="images/note.png" width="70" height="70" />
+							</p:commandLink>
+							<p:commandLink title="Ir para o Ranking"
+								oncomplete="ranking.show()" update="ranking">
+								<p:graphicImage value="images/ranking.png" width="70"
+									height="70" />
+							</p:commandLink>
+						</div>
+						<h2>Resultado</h2>
+						<br /> <br />
+						<div id="fase" align="center">
+							<h2>
+								Pontuação:
+								<h:outputText value="#{jogoBean.jogo.pontuacao}" />
+							</h2>
+							<h3>Seu Planejamento</h3>
+							<p:dataTable var="item"
+								value="#{jogoBean.itemTesteBean.respostas}">
+								<p:column>
+									<f:facet name="header">
+										Itens de Teste
+									</f:facet>
+									<h:outputText value="#{item.descricao}" />
+								</p:column>
+							</p:dataTable>
+							<p:dataTable var="item"
+								value="#{jogoBean.tipoTesteBean.respostas}">
+								<p:column>
+									<f:facet name="header">
+										Tipos de Teste
+									</f:facet>
+									<h:outputText value="#{item.pk.tipoTeste.nome}" />
+								</p:column>
+							</p:dataTable>
+							<p:dataTable var="item"
+								value="#{jogoBean.nivelTesteBean.respostas}">
+								<p:column>
+									<f:facet name="header">
+										Níveis de Teste
+									</f:facet>
+									<h:outputText value="#{item.pk.nivelTeste.nome}" />
+								</p:column>
+							</p:dataTable>
+							<p:dataTable var="item"
+								value="#{jogoBean.criterioAceitacaoBean.respostas}">
+								<p:column>
+									<f:facet name="header">
+										Critérios de Aceitação
+									</f:facet>
+									<h:outputText value="#{item.descricao}" />
+								</p:column>
+							</p:dataTable>
+							<p:dataTable var="item"
+								value="#{jogoBean.ferramentaBean.respostas}">
+								<p:column>
+									<f:facet name="header">
+										Ferramentas
+									</f:facet>
+									<h:outputText value="#{item.pk.ferramenta.nome}" />
+								</p:column>
+							</p:dataTable>
+							<p:dataTable var="item"
+								value="#{jogoBean.artefatoBean.respostas}">
+								<p:column>
+									<f:facet name="header">
+										Artefatos
+									</f:facet>
+									<h:outputText value="#{item.pk.artefato.nome}" />
+								</p:column>
+							</p:dataTable>
+
+							<br /> <br /> <br />
+
+							<h3>Planejamento Sugerido</h3>
+							<p:dataTable var="item"
+								value="#{jogoBean.itemTesteBean.respostasCorretas}">
+								<p:column>
+									<f:facet name="header">
+										Itens de Teste
+									</f:facet>
+									<h:outputText value="#{item.descricao}" />
+								</p:column>
+							</p:dataTable>
+							<p:dataTable var="item"
+								value="#{jogoBean.tipoTesteBean.respostasCorretas}">
+								<p:column>
+									<f:facet name="header">
+										Tipos de Teste
+									</f:facet>
+									<h:outputText value="#{item.pk.tipoTeste.nome}" />
+								</p:column>
+							</p:dataTable>
+							<p:dataTable var="item"
+								value="#{jogoBean.nivelTesteBean.respostasCorretas}">
+								<p:column>
+									<f:facet name="header">
+										Níveis de Teste
+									</f:facet>
+									<h:outputText value="#{item.pk.nivelTeste.nome}" />
+								</p:column>
+							</p:dataTable>
+							<p:dataTable var="item"
+								value="#{jogoBean.criterioAceitacaoBean.respostasCorretas}">
+								<p:column>
+									<f:facet name="header">
+										Critérios de Aceitação
+									</f:facet>
+									<h:outputText value="#{item.descricao}" />
+								</p:column>
+							</p:dataTable>
+							<p:dataTable var="item"
+								value="#{jogoBean.ferramentaBean.respostasCorretas}">
+								<p:column>
+									<f:facet name="header">
+										Ferramentas
+									</f:facet>
+									<h:outputText value="#{item.pk.ferramenta.nome}" />
+								</p:column>
+							</p:dataTable>
+							<p:dataTable var="item"
+								value="#{jogoBean.artefatoBean.respostasCorretas}">
+								<p:column>
+									<f:facet name="header">
+										Artefatos
+									</f:facet>
+									<h:outputText value="#{item.pk.artefato.nome}" />
+								</p:column>
+							</p:dataTable>
+
+							<br /> <br />
+							<div align="center">
+								<h3>Ir para o Ranking</h3>
+
+							</div>
+							<br /> <br />
+						</div>
+
+						<p:commandLink title="Voltar" style="float: left;"
+							action="artefatos" ajax="false">
+							<p:graphicImage value="images/btnvoltar.png" />
+						</p:commandLink>
+
+						<p:dialog header="Ir para o Ranking" id="ranking"
+							widgetVar="ranking">
+								<h:outputLabel value="Nome: " />
+								<h:inputText value="#{jogoBean.usuario.nome}" />
+								<h:commandButton type="submit" value="OK"
+									action="#{jogoBean.adicionarRanking}" />
+						</p:dialog>
+						<p:dialog header="Escopo do Projeto" id="dialogEscopo"
+							widgetVar="dialogEscopo">
+							<h:panelGrid id="displayEscopo">
+								<h4>#{jogoBean.projetoBean.projeto.nome}</h4>
+								<h:outputText value="#{jogoBean.projetoBean.projeto.descricao}" />
+							</h:panelGrid>
+						</p:dialog>
+					</div>
+					<div id="footer">
+						<a href="index.jsf">Home</a> | <a href="index.jsf">About Us</a> |
+						<a href="index.jsf">Services</a> | <a href="index.jsf">Gallery</a>
+						| <a href="index.jsf">Contact Us</a> <br /> <br />
+						<h:outputLabel>© 2012 Virginia Farias. Todos os direitos reservados.</h:outputLabel>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</f:view>
+</body>
+</html>

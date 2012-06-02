@@ -8,13 +8,18 @@ import java.util.List;
 
 import javax.faces.model.SelectItem;
 
-import org.primefaces.event.FlowEvent;
-
+import br.ufc.si.itest.dao.JogoDao;
+import br.ufc.si.itest.dao.ProjetoDao;
+import br.ufc.si.itest.dao.UsuarioDao;
+import br.ufc.si.itest.dao.impl.JogoDaoImpl;
+import br.ufc.si.itest.dao.impl.ProjetoDaoImpl;
+import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
 import br.ufc.si.itest.model.ArtefatoProjeto;
 import br.ufc.si.itest.model.CriterioAceitacao;
 import br.ufc.si.itest.model.FerramentaProjeto;
 import br.ufc.si.itest.model.ItemTeste;
 import br.ufc.si.itest.model.Jogo;
+import br.ufc.si.itest.model.Jogo.JogoPk;
 import br.ufc.si.itest.model.NivelDificuldade;
 import br.ufc.si.itest.model.NivelTesteProjeto;
 import br.ufc.si.itest.model.Projeto;
@@ -30,6 +35,11 @@ public class JogoBean {
 	private Jogo jogo;
 	private Usuario usuario;
 	
+	/* DAOs */
+	private JogoDao jogoDao;
+	private UsuarioDao usuarioDao;
+	private ProjetoDao projetoDao;
+	
 	/* Beans dependentes */
 	private ProjetoBean projetoBean;
 	private NivelDificuldadeBean nivelDificuldadeBean;
@@ -43,6 +53,10 @@ public class JogoBean {
 	/* Propriedades auxiliares */
 	private Integer nivelDificuldadeEscolhido;
 	private Integer projetoEscolhido;
+	private Integer projetoRanking;
+	private Boolean ranking;
+	private List<Jogo> jogos;
+	private List<SelectItem> projetos;
 
 	/* Construtor */
 	public JogoBean() {
@@ -58,6 +72,14 @@ public class JogoBean {
 		criterioAceitacaoBean = new CriterioAceitacaoBean();
 		artefatoBean = new ArtefatoBean();
 		ferramentaBean = new FerramentaBean();
+		
+		ranking = false;
+		jogoDao = new JogoDaoImpl();
+		usuarioDao = new UsuarioDaoImpl();
+		projetoDao = new ProjetoDaoImpl();
+		
+		projetos = new ArrayList<SelectItem>();
+		carregaTodosProjeto();
 	}
 
 	public void carregaProjetos() {
@@ -68,6 +90,17 @@ public class JogoBean {
 		for (Projeto p : projs) {
 			projetoBean.getProjetos().add(new SelectItem(p.getId(), p.getNome()));
 		}
+	}
+	
+	public void carregaTodosProjeto() {
+		List<Projeto> projs = projetoDao.list();
+		for(Projeto p : projs) {
+			projetos.add(new SelectItem(p.getId(), p.getNome()));
+		}
+	}
+	
+	public void carregaRanking() {
+		jogos = jogoDao.getJogoByProjeto(projetoRanking);
 	}
 	
 	public String iniciarJogo() {
@@ -83,10 +116,6 @@ public class JogoBean {
 		
 		return "descricaoProjeto";
 	}
-	
-	public String onFlowProcess(FlowEvent event) {  
-        return event.getNewStep();  
-    } 
 	
 	public void carregarItensTeste() {
 		itemTesteBean.setItensTesteProjeto(itemTesteBean.getItemTesteDao().getItensTesteByProjeto(projetoBean.getProjeto().getId()));
@@ -175,7 +204,20 @@ public class JogoBean {
 		if(!artefatoBean.getRespondido()) {
 			jogo.setPontuacao(jogo.getPontuacao() + artefatoBean.validaResposta());
 		}
-		return "final";
+		return "resultado";
+	}
+	
+	public String adicionarRanking() {
+		this.ranking = true;
+		usuario.setLogin("login");
+		usuario.setSenha("senha");
+		usuarioDao.save(usuario);
+		jogo.setPk(new JogoPk());
+		jogo.getPk().setProjeto(projetoBean.getProjeto());
+		jogo.getPk().setUsuario(usuario);
+		jogoDao.save(jogo);
+		jogos = jogoDao.getJogoByProjeto(projetoRanking);
+		return "ranking";
 	}
 	
 	/* Getters e Setters */
@@ -274,6 +316,38 @@ public class JogoBean {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public Boolean getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(Boolean ranking) {
+		this.ranking = ranking;
+	}
+
+	public List<Jogo> getJogos() {
+		return jogos;
+	}
+
+	public void setJogos(List<Jogo> jogos) {
+		this.jogos = jogos;
+	}
+
+	public Integer getProjetoRanking() {
+		return projetoRanking;
+	}
+
+	public void setProjetoRanking(Integer projetoRanking) {
+		this.projetoRanking = projetoRanking;
+	}
+
+	public List<SelectItem> getProjetos() {
+		return projetos;
+	}
+
+	public void setProjetos(List<SelectItem> projetos) {
+		this.projetos = projetos;
 	}
 
 }

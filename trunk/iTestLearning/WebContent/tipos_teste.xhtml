@@ -42,7 +42,7 @@
 							<p:commandLink title="Ajuda" oncomplete="dialogAjuda.show()" update="displayAjuda">
 								<p:graphicImage value="images/ajuda.png" width="70" height="70"/>
 							</p:commandLink>
-							<p:commandLink title="Verificar Resposta" actionListener="#{jogoBean.validarTipoTeste}" oncomplete="dialog.show()" update="display, pontos">
+							<p:commandLink title="Verificar Resposta" actionListener="#{jogoBean.validarTipoTeste}" oncomplete="dialog.show()" update="display, pontos, alternativas">
 								<p:graphicImage value="images/check.png" width="70" height="70" styleClass="imageCheck"/>
 							</p:commandLink>
 							
@@ -61,11 +61,11 @@
 							</h3>
 						</div>
 						<div id="desafio">
-							<p:selectManyCheckbox id="alternativas" layout="pageDirection" styleClass="alternativas" value="#{jogoBean.tipoTesteBean.tiposTesteSelecionados}">
+							<p:selectManyCheckbox id="alternativas" layout="pageDirection" styleClass="alternativas" value="#{jogoBean.tipoTesteBean.tiposTesteSelecionados}" disabled="#{jogoBean.tipoTesteBean.respondido}">
             					<f:selectItems value="#{jogoBean.tipoTesteBean.tiposTeste}"/>
             				</p:selectManyCheckbox>
 						</div>
-						<p:commandLink title="Voltar" style="float: left;" action="itensTeste">
+						<p:commandLink title="Voltar" style="float: left;" action="itensTeste" ajax="false">
 							<p:graphicImage value="images/btnvoltar.png"/>
 						</p:commandLink>
 						
@@ -77,7 +77,7 @@
 							<h:panelGrid id="display" columns="1" cellpadding="5">
 								<h4 style="color:blue;">Suas Respostas</h4>
 								<p:dataList value="#{jogoBean.tipoTesteBean.respostas}" var="tipo" itemType="circle">
-									#{tipo.nome}
+									#{tipo.pk.tipoTeste.nome}
 								</p:dataList>
 								<br/>
 								<h4>Respostas Corretas</h4>

@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>iTest Learning :: O Jogo</title>
+	<title>iTest Learning :: Objetivo</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 </h:head>
 <body>
@@ -37,15 +37,22 @@
 					
 					<div id="content">
 						<h2>
-							O Jogo
+							Objetivo:
 						</h2>
 						<div id="fase">
 							<h3>
-								Este jogo foi um trabalho realizado como requisito para obtenção 
-								do grau de Bacharel do Curso de Sistemas da Universidade Federal do Ceará.
+								Através deste jogo, você irá aprender como realizar um planejamento de teste de software.
+								A atividade de planejamento permite definir previamente as ações a serem realizadas na execução de uma determinada tarefa.
+								O planejamento dos testes deve fazer parte do planejamento global do software e deve resultar em um plano de teste para avaliar o software.
+								<br /><br /><br />
+								Neste jogo, você deverá escolher um nível de dificuldade e um projeto para o qual realizará o planejamento de testes.
+								Pronto pra jogar? Let's Go!!!
 							</h3>
 						</div>
-						<p:commandLink title="Avançar" style="float: right;" action="objetivo" ajax="false">
+						<p:commandLink title="Avançar" style="float: left;" action="index" ajax="false">
+							<p:graphicImage value="images/btnvoltar.png"/>
+						</p:commandLink>
+						<p:commandLink title="Avançar" style="float: right;" action="fases" ajax="false">
 							<p:graphicImage value="images/btnavancar.png"/>
 						</p:commandLink>
 					</div>

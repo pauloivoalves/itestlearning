@@ -58,4 +58,19 @@ public class JogoDaoImpl implements JogoDao {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Jogo> getJogoByProjeto(Integer projeto) {
+		Session session = HibernateUtil.getSession();
+		String query = "from Jogo where  pk.projeto = :projeto order by pontuacao desc";
+		try {
+			return session.createQuery(query).setInteger("projeto", projeto).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	}
+
 }

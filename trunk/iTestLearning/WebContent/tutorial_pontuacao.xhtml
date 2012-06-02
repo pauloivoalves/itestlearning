@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>iTest Learning :: O Jogo</title>
+	<title>iTest Learning :: Tutorial - Pontuação</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 </h:head>
 <body>
@@ -34,19 +34,28 @@
 									class="ui_icon contactus"></span></a></li>
 						</ul>
 					</div>
-					
+
 					<div id="content">
-						<h2>
-							O Jogo
-						</h2>
-						<div id="fase">
-							<h3>
-								Este jogo foi um trabalho realizado como requisito para obtenção 
-								do grau de Bacharel do Curso de Sistemas da Universidade Federal do Ceará.
-							</h3>
+						<div id="buttonsMenu">
+							<h:outputText id="pontos" value="0"
+								style="float:right; font-size:50px; color:green;" />
+							<h:outputText value="Pontuação:  "
+								style="float:right; font-size:20px; color:green;" />
 						</div>
-						<p:commandLink title="Avançar" style="float: right;" action="objetivo" ajax="false">
-							<p:graphicImage value="images/btnavancar.png"/>
+						<h2>Tutorial - Pontuação:</h2>
+						<div id="fase">
+							<h3>Sua pontuação no jogo ficará na parte superior direita.
+								No decorrer do jogo você poderá ganhar ou perder pontos. Para
+								cada resposta correta você ganhará 10 pontos. Porém, perderá 5
+								pontos caso cometa algum erro.</h3>
+						</div>
+						<p:commandLink title="Voltar" style="float: left;"
+							action="fases" ajax="false">
+							<p:graphicImage value="images/btnvoltar.png" />
+						</p:commandLink>
+						<p:commandLink title="Avançar" style="float: right;"
+							action="ajuda" ajax="false">
+							<p:graphicImage value="images/btnavancar.png" />
 						</p:commandLink>
 					</div>
 					<div id="footer">
