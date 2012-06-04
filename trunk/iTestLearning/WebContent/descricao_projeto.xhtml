@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>iTest Learning :: Descrição Projeto</title>
+	<title>iTest Learning :: Escopo do Projeto</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 </h:head>
 <body>
@@ -24,7 +24,7 @@
 						<ul class="navigation">
 							<li><a href="index.jsf">Home<span
 									class="ui_icon home"></span></a></li>
-							<li><a href="objetivo.jsf" class="selected">O Jogo<span
+							<li><a href="escolha_projeto.jsf" class="selected">O Jogo<span
 									class="ui_icon aboutus"></span></a></li>
 							<li><a href="ranking.jsf">Ranking<span
 									class="ui_icon services"></span></a></li>
@@ -37,7 +37,7 @@
 							</p:commandLink>
 						</div>
 						<h2>
-							Descrição do Projeto -
+							Escopo do Projeto -
 							<h:outputText value="#{jogoBean.projetoBean.projeto.nome}" />
 						</h2>
 						<div id="fase">
@@ -49,7 +49,7 @@
 							</h3>
 						</div>
 						<div id="desafio">
-							<h:outputText value="#{jogoBean.projetoBean.projeto.descricao}" />
+							<h:outputText value="#{jogoBean.projetoBean.projeto.descricao}" style="font-size:15px;"/>
 						</div>
 						
 						<h:commandButton image="images/btnvoltar.png" title="Voltar" style="float: left;" action="escolhaProjeto"/>
@@ -64,7 +64,7 @@
 							
 					</div>
 					<div id="footer">
-						<a href="index.jsf">Home</a> | <a href="objetivo.jsf">O Jogo</a> |
+						<a href="index.jsf">Home</a> | <a href="escolha_projeto.jsf">O Jogo</a> |
 						<a href="ranking.jsf">Ranking</a><br /> <br />
 						<h:outputLabel>© 2012 Virginia Farias. Todos os direitos reservados.</h:outputLabel>
 					</div>
