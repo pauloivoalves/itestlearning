@@ -20,5 +20,10 @@ public interface ArtefatoProjetoDao {
 	public void update(ArtefatoProjeto artefatoProjeto);
 	
 	public List<ArtefatoProjeto> list();
+	
+	public List<ArtefatoProjeto> getArtefatProjetoByIdProjeto(int id_projeto);
+	
+	
+	public ArtefatoProjeto getArtefatProjetoByIdProjetoIdArtefato(int id_projeto,int id_artefato);
 
-}
+}//fim da interface

@@ -20,5 +20,7 @@ public interface NivelDificuldadeDao {
 	public void update(NivelDificuldade nivelDificuldade);
 	
 	public List<NivelDificuldade> list();
+	
+	public NivelDificuldade getNivelDificuldadeByName(String nome_nivel_dificuldade);
 
 }

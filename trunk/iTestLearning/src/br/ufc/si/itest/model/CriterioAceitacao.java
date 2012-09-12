@@ -21,30 +21,30 @@ import org.hibernate.annotations.FetchMode;
 
 /**
  * @author Virginia
- *
+ * 
  */
 @Entity
-@Table(name="itest.criterio_aceitacao")
+@Table(name = "itest.criterio_aceitacao")
 public class CriterioAceitacao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id", nullable = false)
+	@Column(name = "id", nullable = false)
 	private Integer id;
-	
-	@Column(name="descricao")
+
+	@Column(name = "descricao")
 	private String descricao;
-	
-	@Column(name="resposta")
+
+	@Column(name = "resposta")
 	private Boolean resposta;
-	
-	@Column(name="mensagem")
+
+	@Column(name = "mensagem")
 	private String mensagem;
-	
+
 	@ManyToOne
-	@JoinColumn(name="id_projeto")
+	@JoinColumn(name = "id_projeto")
 	@Fetch(FetchMode.JOIN)
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private Projeto projeto;
@@ -88,19 +88,27 @@ public class CriterioAceitacao implements Serializable {
 	public void setProjeto(Projeto projeto) {
 		this.projeto = projeto;
 	}
-	
+
 	@Override
 	public boolean equals(Object other) {
-		if(other instanceof CriterioAceitacao)
-			if(((CriterioAceitacao)other).getId().equals(this.id))
+		if (other instanceof CriterioAceitacao)
+			if (((CriterioAceitacao) other).getId().equals(this.id))
 				return true;
 		return false;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hash = 3;
 		hash = 89 * hash + this.id;
 		return hash;
+	}
+
+	public String toString() {
+		return "id: " + this.getId() + "\n Descrição:" + this.getDescricao()
+				+ "\n Mensagem: " + this.getMensagem() + "\n Resposta: "
+				+ this.getResposta() + "\n id do Projeto: "
+				+ this.getProjeto().getId() + "\n nome Projeto: "
+				+ this.getProjeto().getNome();
 	}
 }

@@ -25,5 +25,7 @@ public interface ProjetoDao {
 	public List<Projeto> getProjetoByNivelDificuldade(NivelDificuldade nivelDificuldade);
 	
 	public Projeto getProjetoById(Integer id);
+	
+	public Projeto getProjetoByName(String nome) ;
 
 }

@@ -23,5 +23,7 @@ public interface NivelTesteDao {
 	public List<NivelTeste> list();
 	
 	public List<NivelTesteProjeto> getItensTesteByProjeto(Integer idProjeto);
+	
+	public NivelTeste getNivelTesteByName(String nome_nivel_teste);
 
 }

@@ -14,23 +14,23 @@ import javax.persistence.Table;
 
 /**
  * @author Virginia
- *
+ * 
  */
 @Entity
-@Table(name="itest.artefato_projeto")
+@Table(name = "itest.artefato_projeto")
 public class ArtefatoProjeto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@EmbeddedId
 	private ArtefatoProjetoPk pk;
-	
-	@Column(name="resposta")
+
+	@Column(name = "resposta")
 	private Boolean resposta;
-	
-	@Column(name="mensagem")
+
+	@Column(name = "mensagem")
 	private String mensagem;
-	
+
 	public ArtefatoProjetoPk getPk() {
 		return pk;
 	}
@@ -58,11 +58,11 @@ public class ArtefatoProjeto implements Serializable {
 	public static class ArtefatoProjetoPk implements Serializable {
 
 		private static final long serialVersionUID = 1L;
-		
+
 		@ManyToOne
 		@JoinColumn(name = "id_artefato", nullable = false)
 		private Artefato artefato;
-		
+
 		@ManyToOne
 		@JoinColumn(name = "id_projeto", nullable = false)
 		private Projeto projeto;
@@ -83,4 +83,11 @@ public class ArtefatoProjeto implements Serializable {
 			this.projeto = projeto;
 		}
 	}
+
+	public String toString() {
+		return "\n id artefato:" + this.getPk().getArtefato().getId()
+				+ "\n id projeto:" + this.getPk().getProjeto().getId()
+				+ "\n mensagem: " + this.getMensagem() + "\n resposta: "
+				+ this.getResposta();
+	}// fim do método
 }
