@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>iTest Learning :: Ferramentas</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+</h:head>
+<body>
+	<f:view>
+		<h:form>
+			<div id="slider">
+				<div id="templatemo_wrapper">
+					<div id="header">
+						<h1>
+							<a href="index.jsf">iTest Learning</a>
+						</h1>
+					</div>
+
+					<div id="menu">
+						<ul class="navigation">
+							<li><a href="index.jsf">Home<span
+									class="ui_icon home"></span></a></li>
+							<li><a href="escolha_projeto.jsf" class="selected">O Jogo<span
+									class="ui_icon aboutus"></span></a></li>
+							<li><a href="ranking.jsf">Ranking<span
+									class="ui_icon services"></span></a></li>
+						</ul>
+					</div>
+					<div id="content">
+						<div id="buttonsMenu">
+							<p:commandLink title="Escopo do Projeto" oncomplete="dialogEscopo.show()" update="displayEscopo">
+								<p:graphicImage value="images/note.png" width="70" height="70"/>
+							</p:commandLink>
+							<p:commandLink title="Ajuda" oncomplete="dialogAjuda.show()" update="displayAjuda">
+								<p:graphicImage value="images/ajuda.png" width="70" height="70"/>
+							</p:commandLink>
+							<p:commandLink title="Verificar Resposta" actionListener="#{jogoBean.validarFerramentas}" oncomplete="dialog.show()" update="display, pontos, alternativas">
+								<p:graphicImage value="images/check.png" width="70" height="70" styleClass="imageCheck"/>
+							</p:commandLink>
+							
+							<h:outputText id="pontos" value="#{jogoBean.jogo.pontuacao}" style="float:right; font-size:50px; color:green;"/>
+							<h:outputText value="Pontuação:  " style="float:right; font-size:20px; color:green;"/>
+						</div>
+						<h2>
+							Fase 5: Ferramentas de Teste - <h:outputText value="#{jogoBean.projetoBean.projeto.nome}" />
+						</h2>
+						<div id="fase">
+							<h3>
+								<span
+									style="color: #000000; font-weight: bold; text-decoration: underline;">Missão:</span>
+								Selecionar as ferramentas que serão utilizadas no projeto. Você deve selecionar somente as que se adequam ao 
+								projeto.
+							</h3>
+						</div>
+						<div id="desafio">
+							<p:selectManyCheckbox id="alternativas" layout="pageDirection" styleClass="alternativas" value="#{jogoBean.ferramentaBean.ferramentasSelecionadas}" disabled="#{jogoBean.ferramentaBean.respondido}">
+            					<f:selectItems value="#{jogoBean.ferramentaBean.ferramentas}"/>
+            				</p:selectManyCheckbox>
+						</div>
+						<p:commandLink title="Voltar" style="float: left;" action="criterioAceitacao" ajax="false">
+							<p:graphicImage value="images/btnvoltar.png"/>
+						</p:commandLink>
+						
+						<p:commandLink title="Avançar" style="float: right;" action="#{jogoBean.validarFerramentas}" ajax="false">
+							<p:graphicImage value="images/btnavancar.png"/>
+						</p:commandLink>
+						
+						<p:dialog header="Ferramentas" id="dialog" widgetVar="dialog">
+							<h:panelGrid id="display" columns="1" cellpadding="5">
+								<h4 style="color:blue;">Suas Respostas</h4>
+								<p:dataList value="#{jogoBean.ferramentaBean.respostas}" var="fer" itemType="circle">
+									#{fer.pk.ferramenta.nome}
+								</p:dataList>
+								<br/>
+								<h4>Respostas Corretas</h4>
+								<p:dataList value="#{jogoBean.ferramentaBean.respostasCorretas}" var="fer" itemType="circle">
+									<span style="font-weight: bold;">#{fer.pk.ferramenta.nome}</span>: #{fer.mensagem}
+								</p:dataList>
+								<br/>
+								<h4 style="color:red;">Respostas Erradas</h4>
+								<p:dataList value="#{jogoBean.ferramentaBean.respostasErradas}" var="fer" itemType="circle">
+									<span style="font-weight: bold;">#{fer.pk.ferramenta.nome}</span>: #{fer.mensagem}
+								</p:dataList>
+							</h:panelGrid>							
+						</p:dialog>
+						
+						<p:dialog header="Escopo do Projeto" id="dialogEscopo" widgetVar="dialogEscopo">
+							<h:panelGrid id="displayEscopo">
+								<h4>#{jogoBean.projetoBean.projeto.nome}</h4>
+								<h:outputText value="#{jogoBean.projetoBean.projeto.descricao}"/>
+							</h:panelGrid>
+						</p:dialog>
+						
+						<p:dialog header="Ajuda" id="dialogAjuda" widgetVar="dialogAjuda">
+							<h:panelGrid id="displayAjuda">
+								<p:dataList value="#{jogoBean.ferramentaBean.ferramentasProjeto}" var="fer">
+									<h4>#{fer.pk.ferramenta.nome}</h4>
+									#{fer.pk.ferramenta.descricao}
+								</p:dataList>
+							</h:panelGrid>
+						</p:dialog>
+							
+					</div>
+					<div id="footer">
+						<a href="index.jsf">Home</a> | <a href="escolha_projeto.jsf">O Jogo</a> |
+						<a href="ranking.jsf">Ranking</a><br /> <br />
+						<h:outputLabel>© 2012 Virginia Farias. Todos os direitos reservados.</h:outputLabel>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</f:view>
+</body>
+</html>

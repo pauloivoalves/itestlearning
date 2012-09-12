@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>iTest Learning :: Tutorial - Pontuação</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+</h:head>
+<body>
+	<f:view>
+		<h:form>
+			<div id="slider">
+				<div id="templatemo_wrapper">
+					<div id="header">
+						<h1>
+							<a href="index.jsf">iTest Learning</a>
+						</h1>
+					</div>
+
+					<div id="menu">
+						<ul class="navigation">
+							<li><a href="index.jsf" class="selected">Home<span
+									class="ui_icon home"></span></a></li>
+							<li><a href="escolha_projeto.jsf">O Jogo<span
+									class="ui_icon aboutus"></span></a></li>
+							<li><a href="ranking.jsf">Ranking<span
+									class="ui_icon services"></span></a></li>
+						</ul>
+					</div>
+
+					<div id="content">
+						<div id="buttonsMenu">
+							<h:outputText id="pontos" value="0"
+								style="float:right; font-size:50px; color:green;" />
+							<h:outputText value="Pontuação:  "
+								style="float:right; font-size:20px; color:green;" />
+						</div>
+						<h2>Tutorial - Pontuação:</h2>
+						<div id="fase">
+							<h3>Sua pontuação no jogo ficará na parte superior direita.
+								No decorrer do jogo você poderá ganhar ou perder pontos. Para
+								cada resposta correta você ganhará 10 pontos. Porém, perderá 5
+								pontos caso cometa algum erro.</h3>
+						</div>
+						<p:commandLink title="Voltar" style="float: left;"
+							action="fases" ajax="false">
+							<p:graphicImage value="images/btnvoltar.png" />
+						</p:commandLink>
+						<p:commandLink title="Avançar" style="float: right;"
+							action="ajuda" ajax="false">
+							<p:graphicImage value="images/btnavancar.png" />
+						</p:commandLink>
+					</div>
+					<div id="footer">
+						<a href="index.jsf">Home</a> | <a href="escolha_projeto.jsf">O Jogo</a> |
+						<a href="ranking.jsf">Ranking</a><br /> <br />
+						<h:outputLabel>© 2012 Virginia Farias. Todos os direitos reservados.</h:outputLabel>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</f:view>
+</body>
+</html>

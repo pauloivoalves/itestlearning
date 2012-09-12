@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>iTest Learning :: Escolha Projeto</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css"/>
+</h:head>
+<body>
+	<f:view>
+		<h:form>
+			<div id="slider">
+				<div id="templatemo_wrapper">
+					<div id="header">
+						<h1><a href="index.jsf">iTest Learning</a></h1>
+					</div>
+					
+					<div id="menu">
+						<ul class="navigation">
+							<li><a href="index.jsf">Home<span
+									class="ui_icon home"></span></a></li>
+							<li><a href="escolha_projeto.jsf" class="selected">O Jogo<span
+									class="ui_icon aboutus"></span></a></li>
+							<li><a href="ranking.jsf">Ranking<span
+									class="ui_icon services"></span></a></li>
+						</ul>
+					</div>
+            		
+            		<div id="content">
+            		<p:fieldset legend="Escolha do Projeto" styleClass="indexProjeto"> 
+            			<br />           			
+            			<h:outputLabel value="Nível de Dificuldade: " />
+            			<p:selectOneMenu id="nivel_dificuldade" value="#{jogoBean.nivelDificuldadeEscolhido}">
+            				<f:selectItem itemLabel="Selecione..." itemValue=""/>
+            				<f:selectItems value="#{jogoBean.nivelDificuldadeBean.niveisDificuldade}"/>
+            				<p:ajax update="projeto" listener="#{jogoBean.carregaProjetos}"/>
+            			</p:selectOneMenu>
+            			<br /><br /><br />
+            			<h:outputLabel value="Projeto: " />
+            			<p:selectOneMenu id="projeto" value="#{jogoBean.projetoEscolhido}">
+            				<f:selectItems value="#{jogoBean.projetoBean.projetos}"/>
+            			</p:selectOneMenu>
+            			<br /><br /><br />
+            			<p:commandButton value="Iniciar Jogo" action="#{jogoBean.iniciarJogo}" styleClass="buttons" ajax="false"/>
+            		</p:fieldset>
+            		</div>
+            		<div id="footer">
+						<a href="index.jsf">Home</a> | <a href="escolha_projeto.jsf">O Jogo</a> |
+						<a href="ranking.jsf">Ranking</a><br /> <br />
+						<h:outputLabel>© 2012 Virginia Farias. Todos os direitos reservados.</h:outputLabel>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</f:view>
+</body>
+</html>
