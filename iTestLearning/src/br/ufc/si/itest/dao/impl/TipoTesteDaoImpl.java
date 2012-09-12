@@ -5,8 +5,10 @@ package br.ufc.si.itest.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import br.ufc.si.itest.dao.TipoTesteDao;
 import br.ufc.si.itest.model.TipoTeste;
@@ -74,5 +76,22 @@ public class TipoTesteDaoImpl implements TipoTesteDao {
 		}
 		return null;
 	}
+	
+	public TipoTeste getTipoTesteByNome(String nome){
+		Session session = HibernateUtil.getSession();
+		
+		try{
+			Criteria c = session.createCriteria(TipoTeste.class);
+			c.add(Restrictions.eq("nome", nome));
+			return (TipoTeste) c.uniqueResult();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return null;
+	}//fim do método
 
-}
+}//fim da classe

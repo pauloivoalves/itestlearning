@@ -22,5 +22,7 @@ public interface CriterioAceitacaoDao {
 	public List<CriterioAceitacao> list();
 	
 	public List<CriterioAceitacao> getCriterioAceitacaoByProjeto(Integer idProjeto);
+	
+	public CriterioAceitacao getCriterioAceitacaoById(int id);
 
-}
+}//fim da interface
