@@ -89,5 +89,6 @@ public class ArtefatoDaoImpl implements ArtefatoDao {
 		
 		return null;
 	}//fim do método buscar artefato por nome
+	
 
 }//fim da classe

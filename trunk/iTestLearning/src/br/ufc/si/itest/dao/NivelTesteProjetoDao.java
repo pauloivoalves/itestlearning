@@ -26,5 +26,4 @@ public interface NivelTesteProjetoDao {
 	public NivelTesteProjeto getNivelTesteProjetoByIdProjetoIdNivelTeste(int id_projeto,int id_nivel_teste);
 	
 	
-
-}
+}//fim da interface

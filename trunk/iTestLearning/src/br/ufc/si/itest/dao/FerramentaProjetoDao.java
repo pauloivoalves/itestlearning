@@ -25,4 +25,4 @@ public interface FerramentaProjetoDao {
 	
 	public FerramentaProjeto getFerramentaProjetoByIdProjetoIdFerramenta(int id_projeto,int id_ferramenta);
 
-}
+}//fim da interface

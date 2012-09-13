@@ -88,4 +88,4 @@ public class TipoTeste implements Serializable {
 		return hash;
 	}
 
-}
+}//fim da classe

@@ -74,4 +74,4 @@ public class Jogo implements Serializable {
 		
 	}
 
-}
+}//fim da classe

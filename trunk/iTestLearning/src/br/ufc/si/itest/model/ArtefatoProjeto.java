@@ -90,4 +90,4 @@ public class ArtefatoProjeto implements Serializable {
 				+ "\n mensagem: " + this.getMensagem() + "\n resposta: "
 				+ this.getResposta();
 	}// fim do método
-}
+}//fim da classe

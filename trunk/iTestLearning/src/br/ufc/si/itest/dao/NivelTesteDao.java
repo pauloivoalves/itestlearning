@@ -26,4 +26,4 @@ public interface NivelTesteDao {
 	
 	public NivelTeste getNivelTesteByName(String nome_nivel_teste);
 
-}
+}//fim da interface

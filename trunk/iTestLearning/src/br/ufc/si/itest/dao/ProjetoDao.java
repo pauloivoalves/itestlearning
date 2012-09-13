@@ -28,4 +28,4 @@ public interface ProjetoDao {
 	
 	public Projeto getProjetoByName(String nome) ;
 
-}
+}//fim da interface

@@ -23,4 +23,4 @@ public interface NivelDificuldadeDao {
 	
 	public NivelDificuldade getNivelDificuldadeByName(String nome_nivel_dificuldade);
 
-}
+}//fim da interface

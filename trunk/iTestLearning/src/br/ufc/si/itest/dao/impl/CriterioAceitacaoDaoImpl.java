@@ -85,4 +85,5 @@ public class CriterioAceitacaoDaoImpl implements CriterioAceitacaoDao {
 		return null;
 	}//fim do método critério aceitação por id
 
+	
 }//fim da classe
