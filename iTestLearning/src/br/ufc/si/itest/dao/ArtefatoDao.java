@@ -26,4 +26,5 @@ public interface ArtefatoDao {
 	
 	public Artefato getArtefatoByName(String nome_artefato);
 
-}
+	
+}//fim da interface

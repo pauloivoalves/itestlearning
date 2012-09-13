@@ -82,4 +82,5 @@ public class Usuario implements Serializable {
 		hash = 89 * hash + this.id;
 		return hash;
 	}
-}
+	
+}//fim da classe

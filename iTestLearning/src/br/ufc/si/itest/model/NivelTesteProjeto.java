@@ -90,4 +90,5 @@ public class NivelTesteProjeto implements Serializable {
 				+ " \n id_ferramenta: " + this.getPk().getNivelTeste().getId()
 				+ "\n resposta:" + this.getResposta() + "\n mensagem: " + this.getMensagem();
 	}// fim do método
+	
 }//fim da classe

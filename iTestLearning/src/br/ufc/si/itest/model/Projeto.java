@@ -153,4 +153,4 @@ public class Projeto implements Serializable {
 		return hash;
 	}
 
-}
+}//fim da classe

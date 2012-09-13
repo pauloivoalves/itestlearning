@@ -89,4 +89,5 @@ public class TipoTesteProjeto implements Serializable {
 				+ " \n id_ferramenta: " + this.getPk().getTipoTeste().getId()
 				+ "\n resposta:" + this.getResposta() + "\n mensagem: " + this.getMensagem();
 	}// fim do método
+	
 }//fim da classe

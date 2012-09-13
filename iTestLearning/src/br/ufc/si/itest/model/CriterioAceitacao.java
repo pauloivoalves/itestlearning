@@ -111,4 +111,6 @@ public class CriterioAceitacao implements Serializable {
 				+ this.getProjeto().getId() + "\n nome Projeto: "
 				+ this.getProjeto().getNome();
 	}
-}
+
+}//fim da classe
+

@@ -74,5 +74,6 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		}
 		return null;
 	}//fim do método
+	
 
 }//fim da classe

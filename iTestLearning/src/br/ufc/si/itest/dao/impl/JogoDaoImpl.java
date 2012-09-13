@@ -16,6 +16,7 @@ import br.ufc.si.itest.utils.HibernateUtil;
  * @author Virginia
  *
  */
+
 public class JogoDaoImpl implements JogoDao {
 
 	public void save(Jogo jogo) {

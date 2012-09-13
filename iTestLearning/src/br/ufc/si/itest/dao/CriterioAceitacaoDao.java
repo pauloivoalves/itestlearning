@@ -11,6 +11,7 @@ import br.ufc.si.itest.model.CriterioAceitacao;
  * @author Virginia
  *
  */
+
 public interface CriterioAceitacaoDao {
 	
 	public void save(CriterioAceitacao criterioAceitacao);

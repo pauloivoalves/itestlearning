@@ -24,4 +24,4 @@ public interface ItemTesteDao {
 	public List<ItemTeste> getItensTesteByProjeto(Integer idProjeto);
 
 	public ItemTeste getItemtesteById(int id);
-}
+}//fim da interface

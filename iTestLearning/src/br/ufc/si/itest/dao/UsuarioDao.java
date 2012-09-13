@@ -24,4 +24,4 @@ public interface UsuarioDao {
 	public Usuario getUsuarioByNome(String nome);
 	
 
-}
+}//fim da interface

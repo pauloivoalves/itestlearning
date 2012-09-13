@@ -25,6 +25,4 @@ public interface TipoTesteProjetoDao {
 	
 	public TipoTesteProjeto getTipoTesteProjetoByIdProjetoIdTipoTeste(int id_projeto,int id_tipo_teste);
 	
-	
-
 }//fim da interface

@@ -26,4 +26,4 @@ public interface FerramentaDao {
 	
 	public Ferramenta getFerramentaByNome(String nome);
 
-}
+}//fim da interface

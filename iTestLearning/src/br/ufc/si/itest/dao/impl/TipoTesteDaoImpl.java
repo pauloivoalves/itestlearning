@@ -19,6 +19,7 @@ import br.ufc.si.itest.utils.HibernateUtil;
  * @author Virginia
  *
  */
+
 public class TipoTesteDaoImpl implements TipoTesteDao {
 
 	public void save(TipoTeste tipoTeste) {
