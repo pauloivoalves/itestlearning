@@ -5,8 +5,10 @@ package br.ufc.si.itest.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import br.ufc.si.itest.dao.NivelTesteDao;
 import br.ufc.si.itest.model.NivelTeste;
@@ -73,6 +75,23 @@ public class NivelTesteDaoImpl implements NivelTesteDao {
 			session.close();
 		}
 		return null;
-	}
+	}//fim do método
+	
+	
+	public NivelTeste getNivelTesteByName(String nome_nivel_teste){
+		Session session = HibernateUtil.getSession();
+		
+		try{
+			Criteria criteria = session.createCriteria(NivelTeste.class);
+			criteria.add(Restrictions.eq("nome", nome_nivel_teste));
+			return (NivelTeste) criteria.uniqueResult();
+		}catch (Exception e) {
+			// TODO: handle exception
+		}finally{
+			session.close();
+		}
+		
+		return null;
+	}//fim do método nivel teste
 
-}
+}//fim da classe

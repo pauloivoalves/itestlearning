@@ -23,4 +23,4 @@ public interface JogoDao {
 
 	public List<Jogo> getJogoByProjeto(Integer projeto);
 
-}
+}//fim da interface

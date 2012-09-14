@@ -87,5 +87,23 @@ public class ProjetoDaoImpl implements ProjetoDao {
 		}
 		return null;
 	}
+	
+	
+	@Override
+	public Projeto getProjetoByName(String nome) {
+		Session session = HibernateUtil.getSession();
+		String query = "from Projeto where nome = :nome";
+		try {
+			return (Projeto) session.createQuery(query).setString("nome", nome)
+					.uniqueResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	}//fim do método
+	
+	
 
-}
+}//fim da classe

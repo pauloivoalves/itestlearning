@@ -5,8 +5,10 @@ package br.ufc.si.itest.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import br.ufc.si.itest.dao.ArtefatoDao;
 import br.ufc.si.itest.model.Artefato;
@@ -70,6 +72,23 @@ public class ArtefatoDaoImpl implements ArtefatoDao {
 			session.close();
 		}
 		return null;
-	}
+	}//fim do método
+	
+	public Artefato getArtefatoByName(String nome_artefato){
+		Session session = HibernateUtil.getSession();
+		
+		try{
+			Criteria criteria = session.createCriteria(Artefato.class);
+			criteria.add(Restrictions.eq("nome", nome_artefato));
+			return (Artefato) criteria.uniqueResult();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return null;
+	}//fim do método buscar artefato por nome
+	
 
-}
+}//fim da classe

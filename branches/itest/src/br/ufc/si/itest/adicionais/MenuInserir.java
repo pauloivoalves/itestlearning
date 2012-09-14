@@ -2,6 +2,8 @@ package br.ufc.si.itest.adicionais;
 
 import java.util.Scanner;
 
+//@author Felipe Freitas
+
 public class MenuInserir {
 
 	public static void main(String[] args) {

@@ -23,5 +23,7 @@ public interface TipoTesteDao {
 	public List<TipoTeste> list();
 	
 	public List<TipoTesteProjeto> getItensTesteByProjeto(Integer idProjeto);
+	
+	public TipoTeste getTipoTesteByNome(String nome);
 
-}
+}//fim da interface

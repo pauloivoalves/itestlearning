@@ -5,8 +5,10 @@ package br.ufc.si.itest.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import br.ufc.si.itest.dao.NivelDificuldadeDao;
 import br.ufc.si.itest.model.NivelDificuldade;
@@ -57,5 +59,24 @@ public class NivelDificuldadeDaoImpl implements NivelDificuldadeDao {
 		}
 		return null;
 	}
+	
+	
+	public NivelDificuldade getNivelDificuldadeByName(String nome_nivel_dificuldade){
+		Session session = HibernateUtil.getSession();
+		
+		try{
+			Criteria criteria = session.createCriteria(NivelDificuldade.class);
+			criteria.add(Restrictions.eq("nome", nome_nivel_dificuldade));
+			return (NivelDificuldade) criteria.uniqueResult();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return null;
+		
+	}//fim do método buscar dificuldade pelo nome
+
 
 }
