@@ -5,8 +5,10 @@ package br.ufc.si.itest.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import br.ufc.si.itest.dao.FerramentaDao;
 import br.ufc.si.itest.model.Ferramenta;
@@ -74,5 +76,22 @@ public class FerramentaDaoImpl implements FerramentaDao {
 		}
 		return null;
 	}
+	
+	
+	public Ferramenta getFerramentaByNome(String nome){
+		Session sessao = HibernateUtil.getSession();
+		try{
+			Criteria criteria = sessao.createCriteria(Ferramenta.class);
+			criteria.add(Restrictions.eq("nome", nome));
+			return (Ferramenta) criteria.uniqueResult();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			sessao.close();
+		}
+		
+		return null;
+	}//fim do método
 
-}
+	
+}//fim da classe

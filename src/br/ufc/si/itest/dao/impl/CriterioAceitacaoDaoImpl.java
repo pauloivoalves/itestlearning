@@ -69,6 +69,21 @@ public class CriterioAceitacaoDaoImpl implements CriterioAceitacaoDao {
 			session.close();
 		}
 		return null;
-	}
+	}//fim do método
+	
+	
+	public CriterioAceitacao getCriterioAceitacaoById(int id){
+		Session session = HibernateUtil.getSession();
+		
+		try{
+			return (CriterioAceitacao) session.get(CriterioAceitacao.class, id);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return null;
+	}//fim do método critério aceitação por id
 
-}
+	
+}//fim da classe

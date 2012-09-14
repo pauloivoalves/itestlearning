@@ -20,5 +20,8 @@ public interface UsuarioDao {
 	public void update(Usuario usuario);
 	
 	public List<Usuario> list();
+	
+	public Usuario getUsuarioByNome(String nome);
+	
 
-}
+}//fim da interface

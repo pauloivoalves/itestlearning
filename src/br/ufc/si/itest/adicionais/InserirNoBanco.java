@@ -34,6 +34,8 @@ import br.ufc.si.itest.model.TipoTesteProjeto;
 import br.ufc.si.itest.model.TipoTesteProjeto.TipoTesteProjetoPk;
 import br.ufc.si.itest.model.Usuario;
 
+// @author Felipe Freitas
+
 public class InserirNoBanco {
 
 	public void inserirProjeto() {

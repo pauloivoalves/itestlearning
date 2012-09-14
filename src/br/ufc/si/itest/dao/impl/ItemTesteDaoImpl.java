@@ -36,6 +36,7 @@ public class ItemTesteDaoImpl implements ItemTesteDao {
 		
 	}
 
+	
 	public void update(ItemTeste itemTeste) {
 		Session session = HibernateUtil.getSession();
 		Transaction t = session.beginTransaction();
@@ -72,6 +73,20 @@ public class ItemTesteDaoImpl implements ItemTesteDao {
 			session.close();
 		}
 		return null;
-	}
+	}//fim do método
+	
+	public ItemTeste getItemtesteById(int id){
+		Session session = HibernateUtil.getSession();
+		
+		try{
+			return (ItemTeste) session.get(ItemTeste.class, id);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return null;
+	}//fim do método
 
-}
+}//fim da classe

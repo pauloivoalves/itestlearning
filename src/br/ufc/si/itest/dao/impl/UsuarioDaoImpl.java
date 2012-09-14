@@ -5,8 +5,10 @@ package br.ufc.si.itest.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import br.ufc.si.itest.dao.UsuarioDao;
 import br.ufc.si.itest.model.Usuario;
@@ -57,5 +59,21 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		}
 		return null;
 	}
+	
+	public Usuario getUsuarioByNome(String nome){
+		Session session = HibernateUtil.getSession();
+		
+		try{
+			Criteria c = session.createCriteria(Usuario.class);
+			c.add(Restrictions.eq("nome", nome));
+			return (Usuario) c.uniqueResult();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return null;
+	}//fim do método
+	
 
-}
+}//fim da classe

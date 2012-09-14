@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.ufc.si.itest.dao;
+package br.ufc.si.itest.dao.impl;
 
 import java.util.List;
 
