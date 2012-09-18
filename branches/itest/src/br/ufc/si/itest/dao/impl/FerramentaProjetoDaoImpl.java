@@ -57,7 +57,7 @@ public class FerramentaProjetoDaoImpl implements FerramentaProjetoDao {
 			session.close();
 		}
 		return null;
-	}// fim do método
+	}// fim do mï¿½todo
 
 	public List<FerramentaProjeto> getFerramentaProjetoByIdProjeto(
 			int id_projeto) {
@@ -72,7 +72,7 @@ public class FerramentaProjetoDaoImpl implements FerramentaProjetoDao {
 			session.close();
 		}
 		return null;
-	}// fim do método ferrameta projeto por id
+	}// fim do mï¿½todo ferrameta projeto por id
 
 	public FerramentaProjeto getFerramentaProjetoByIdProjetoIdFerramenta(
 			int id_projeto, int id_ferramenta) {
@@ -90,6 +90,25 @@ public class FerramentaProjetoDaoImpl implements FerramentaProjetoDao {
 			session.close();
 		}
 		return null;
-	}// fim do método
+	}// fim do mï¿½todo
 
+	
+	@Override	
+	public FerramentaProjeto getFerramentaProjByIdProjetoIdFerramenta(Integer pk, Integer idFerramenta){
+		Session session = HibernateUtil.getSession();
+		String query = "from FerramentaProjeto where id_projeto = :pk and id_ferramenta = :idFerramenta";
+		try {
+			return (FerramentaProjeto) 
+			session.createQuery(query).setInteger("pk", pk).setInteger("idFerramenta", idFerramenta) .uniqueResult();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	}
+	
+	
+	
 }// fim da classe

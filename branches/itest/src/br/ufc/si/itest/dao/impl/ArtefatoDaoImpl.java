@@ -72,7 +72,7 @@ public class ArtefatoDaoImpl implements ArtefatoDao {
 			session.close();
 		}
 		return null;
-	}//fim do método
+	}//fim do mï¿½todo
 	
 	public Artefato getArtefatoByName(String nome_artefato){
 		Session session = HibernateUtil.getSession();
@@ -88,7 +88,7 @@ public class ArtefatoDaoImpl implements ArtefatoDao {
 		}
 		
 		return null;
-	}//fim do método buscar artefato por nome
+	}//fim do mï¿½todo buscar artefato por nome
 	
-
+	
 }//fim da classe

@@ -52,9 +52,9 @@ import br.ufc.si.itest.model.Usuario;
  * atualizar ferramenta ok
  * atualizar tipo teste ok
  * atualizar nivel dificuldade ok
- * atualizar Usuário ok
+ * atualizar Usuï¿½rio ok
  * atualizar item teste ok
- * atualizar critério aceitação ok
+ * atualizar critï¿½rio aceitaï¿½ï¿½o ok
  * atualizar Artefato projeto ok
  * atualizar ferramenta projeto ok
  * atualizar nivelTeste projeto ok
@@ -77,7 +77,7 @@ public class Atualizar {
 		//atualizarFerramentaProjeto();
 		//atualizarNivelTesteProjeto();
 		atualizarTipoTesteProjeto();
-	}// fim do método main
+	}// fim do mï¿½todo main
 
 	public static void atualizarProjeto() {
 		Scanner input = new Scanner(System.in);
@@ -95,18 +95,18 @@ public class Atualizar {
 
 			System.out.println("digite o novo nome do projeto");
 			projeto.setNome(input.next());
-			System.out.println("digite a nova descrição do projeto");
+			System.out.println("digite a nova descriï¿½ï¿½o do projeto");
 			projeto.setDescricao(input.next());
-			System.out.println("digite o nível de dificuldade do projeto");
+			System.out.println("digite o nï¿½vel de dificuldade do projeto");
 			projeto.getNivelDificuldade().setId(input.nextInt());
 
 			// atualiza o projeto
 			pd.update(projeto);
 		} else {
-			System.out.println("nivel teste não encontrado");
+			System.out.println("nivel teste nï¿½o encontrado");
 		}
 
-	}// fim do método atualizar
+	}// fim do mï¿½todo atualizar
 
 	public static void atualizarArtefato() {
 
@@ -126,17 +126,17 @@ public class Atualizar {
 
 			System.out.println("digite o novo nome do artefato");
 			atf.setNome(input.nextLine());
-			System.out.println("digite a descrição do artefato");
+			System.out.println("digite a descriï¿½ï¿½o do artefato");
 			atf.setDescricao(input.nextLine());
 
 			// atualiza o artefato
 			atd.update(atf);
 
 		} else {
-			System.out.println("artefato não encontrado");
+			System.out.println("artefato nï¿½o encontrado");
 		}
 
-	}// fim do método atualizar artefato
+	}// fim do mï¿½todo atualizar artefato
 
 	public static void atualizarNivelTeste() {
 		Scanner input = new Scanner(System.in);
@@ -155,15 +155,15 @@ public class Atualizar {
 
 			System.out.println("digite o novo nome do artefato");
 			nt.setNome(input.nextLine());
-			System.out.println("digite a descrição do artefato");
+			System.out.println("digite a descriï¿½ï¿½o do artefato");
 			nt.setDescricao(input.nextLine());
 
 			// atualiza o nivel de teste
 			ntd.update(nt);
 		} else {
-			System.out.println("nivel teste não encontrado");
+			System.out.println("nivel teste nï¿½o encontrado");
 		}
-	}// fim do método atualizar nivel teste
+	}// fim do mï¿½todo atualizar nivel teste
 
 	public static void atualizarFerramenta() {
 		Scanner input = new Scanner(System.in);
@@ -178,17 +178,17 @@ public class Atualizar {
 		if (ferramenta != null) {
 			System.out.println("digite o novo nome da ferramenta");
 			ferramenta.setNome(input.next());
-			System.out.println("digite a descrição da ferramenta");
+			System.out.println("digite a descriï¿½ï¿½o da ferramenta");
 			ferramenta.setDescricao(input.nextLine());
 
 			// atualiza a ferramenta
 			ferdao.update(ferramenta);
 
 		} else {
-			System.out.println("ferramenta não encontrada");
+			System.out.println("ferramenta nï¿½o encontrada");
 		}
 
-	}// fim do método atualizar ferramenta
+	}// fim do mï¿½todo atualizar ferramenta
 
 	public static void atualizarTipoTeste() {
 		Scanner input = new Scanner(System.in);
@@ -203,17 +203,17 @@ public class Atualizar {
 		if (tipo != null) {
 			System.out.println("digite o novo nome do tipo teste");
 			tipo.setNome(input.nextLine());
-			System.out.println("digite a descrição do tipo teste");
+			System.out.println("digite a descriï¿½ï¿½o do tipo teste");
 			tipo.setDescricao(input.nextLine());
 
 			// atualiza tipo teste
 			tipodao.update(tipo);
 
 		} else {
-			System.out.println("ferramenta não encontrada");
+			System.out.println("ferramenta nï¿½o encontrada");
 		}
 
-	}// fim do método atualizar tipo teste
+	}// fim do mï¿½todo atualizar tipo teste
 
 	public static void atualizarNivelDificuldade() {
 		Scanner input = new Scanner(System.in);
@@ -228,23 +228,23 @@ public class Atualizar {
 		if (nidif != null) {
 			System.out.println("digite o novo nome do nivel dificuldade");
 			nidif.setNome(input.nextLine());
-			System.out.println("digite a descrição do nivel dificuldade");
+			System.out.println("digite a descriï¿½ï¿½o do nivel dificuldade");
 			nidif.setDescricao(input.nextLine());
 
 			// atualiza tipo teste
 			nidifdao.update(nidif);
 
 		} else {
-			System.out.println("ferramenta não encontrada");
+			System.out.println("ferramenta nï¿½o encontrada");
 		}
-	}// fim do método atualizar nivelDificuldade
+	}// fim do mï¿½todo atualizar nivelDificuldade
 
 	public static void atualizarUsuario() {
 		Scanner input = new Scanner(System.in);
 
 		Usuario user = null;
 
-		// busca usuário pelo nome
+		// busca usuï¿½rio pelo nome
 		System.out.println("digite o nome do usuario");
 		UsuarioDao userdao = new UsuarioDaoImpl();
 		user = userdao.getUsuarioByNome(input.nextLine());
@@ -262,9 +262,9 @@ public class Atualizar {
 			// atualiza o usuario
 			userdao.update(user);
 		} else {
-			System.out.println("Usuário não encontrado");
+			System.out.println("Usuï¿½rio nï¿½o encontrado");
 		}
-	}// fim do método atualizar Usuário
+	}// fim do mï¿½todo atualizar Usuï¿½rio
 
 	public static void atualizarItemTeste() {
 		Scanner input = new Scanner(System.in);
@@ -285,7 +285,7 @@ public class Atualizar {
 		item = itemdao.getItemtesteById(input.nextInt());
 
 		if (item != null) {
-			System.out.println("digite a descrição do item teste");
+			System.out.println("digite a descriï¿½ï¿½o do item teste");
 			item.setDescricao(input.nextLine());
 
 			System.out.println("digite a mensagem do item teste");
@@ -298,9 +298,9 @@ public class Atualizar {
 			itemdao.update(item);
 
 		} else {
-			System.out.println("item teste não encontrado");
+			System.out.println("item teste nï¿½o encontrado");
 		}
-	}// fim do método atualizar item teste
+	}// fim do mï¿½todo atualizar item teste
 
 	public static void atualizarCriterioAceitacao() {
 		Scanner input = new Scanner(System.in);
@@ -321,15 +321,15 @@ public class Atualizar {
 
 			List<CriterioAceitacao> listacriterio = new ArrayList<CriterioAceitacao>();
 
-			// busca todos os critérios de aceitação pelo id do projeto
+			// busca todos os critï¿½rios de aceitaï¿½ï¿½o pelo id do projeto
 			listacriterio = cad.getCriterioAceitacaoByProjeto(projeto.getId());
 
 			for (CriterioAceitacao ca : listacriterio) {
 				System.out.println(ca.getId());
 			}
 
-			// busca o critério aceitação pelo id
-			System.out.println("digite o id do critério de aceitação");
+			// busca o critï¿½rio aceitaï¿½ï¿½o pelo id
+			System.out.println("digite o id do critï¿½rio de aceitaï¿½ï¿½o");
 			criterio = cad.getCriterioAceitacaoById(input.nextInt());
 
 			// verifica se existe
@@ -338,34 +338,34 @@ public class Atualizar {
 				
 				System.out.println(criterio.toString());
 				
-				// modifica o critério de aceitação
+				// modifica o critï¿½rio de aceitaï¿½ï¿½o
 
 				System.out
-						.println("digite a descrição do critério de aceitação");
+						.println("digite a descriï¿½ï¿½o do critï¿½rio de aceitaï¿½ï¿½o");
 				criterio.setDescricao(input.nextLine());
 
 				System.out
-						.println("digite a resposta do critério de aceitação");
+						.println("digite a resposta do critï¿½rio de aceitaï¿½ï¿½o");
 				criterio.setResposta(input.nextBoolean());
 
 				System.out
-						.println("digite a mensagem do critério de aceitação");
+						.println("digite a mensagem do critï¿½rio de aceitaï¿½ï¿½o");
 				criterio.setMensagem(input.nextLine());
 
 				
 
-				// atualiza o critério de aceitação
+				// atualiza o critï¿½rio de aceitaï¿½ï¿½o
 				cad.update(criterio);
 
 			} else {
-				System.out.println("criterio de aceitação não encontrado");
+				System.out.println("criterio de aceitaï¿½ï¿½o nï¿½o encontrado");
 			}
 
 		} else {
-			System.out.println("projeto não encontrado");
+			System.out.println("projeto nï¿½o encontrado");
 		}
 
-	}// fim do método atualizar critério aceitação
+	}// fim do mï¿½todo atualizar critï¿½rio aceitaï¿½ï¿½o
 
 	public static void atualizarArtefatProjeto() {
 		Scanner input = new Scanner(System.in);
@@ -424,7 +424,7 @@ public class Atualizar {
 					// atualiza o artefatoProjeto
 					atfpd.update(ap);
 				} else {
-					System.out.println("artefatoProjeto não encontrado");
+					System.out.println("artefatoProjeto nï¿½o encontrado");
 				}
 
 			} else {
@@ -433,10 +433,10 @@ public class Atualizar {
 			}
 
 		} else {
-			System.out.println("projeto não encontrado");
+			System.out.println("projeto nï¿½o encontrado");
 		}
 
-	}// fim do método atualizarArtefatoProjeto
+	}// fim do mï¿½todo atualizarArtefatoProjeto
 
 	public static void atualizarFerramentaProjeto() {
 		Scanner input = new Scanner(System.in);
@@ -499,7 +499,7 @@ public class Atualizar {
 					fdp.update(fp);
 
 				} else {
-					System.out.println("ferramentaProjeto não encontrado");
+					System.out.println("ferramentaProjeto nï¿½o encontrado");
 				}
 
 			} else {
@@ -508,9 +508,9 @@ public class Atualizar {
 			}
 
 		} else {
-			System.out.println("projeto não encontrado");
+			System.out.println("projeto nï¿½o encontrado");
 		}
-	}// fim do método atualizar ferramenta projeto
+	}// fim do mï¿½todo atualizar ferramenta projeto
 	
 	public static void atualizarNivelTesteProjeto(){
 		Scanner input = new Scanner(System.in);
@@ -570,7 +570,7 @@ public class Atualizar {
 					ntpd.update(ntp);
 
 				} else {
-					System.out.println("niveltesteProjeto não encontrado");
+					System.out.println("niveltesteProjeto nï¿½o encontrado");
 				}
 
 			} else {
@@ -579,9 +579,9 @@ public class Atualizar {
 			}
 
 		} else {
-			System.out.println("projeto não encontrado");
+			System.out.println("projeto nï¿½o encontrado");
 		}
-	}//fim do método atualizarNIvelTesteProjeto
+	}//fim do mï¿½todo atualizarNIvelTesteProjeto
 	
 	
 	public static void atualizarTipoTesteProjeto(){
@@ -642,7 +642,7 @@ public class Atualizar {
 					ttpd.update(ttp);
 
 				} else {
-					System.out.println("tipotesteProjeto não encontrado");
+					System.out.println("tipotesteProjeto nï¿½o encontrado");
 				}
 
 			} else {
@@ -651,8 +651,8 @@ public class Atualizar {
 			}
 
 		} else {
-			System.out.println("projeto não encontrado");
+			System.out.println("projeto nï¿½o encontrado");
 		}
-	}//fim do método atualizar tipo teste
+	}//fim do mï¿½todo atualizar tipo teste
 
 }// fim da classe atualizar

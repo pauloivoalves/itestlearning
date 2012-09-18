@@ -27,4 +27,7 @@ public interface NivelTesteProjetoDao {
 	public NivelTesteProjeto getNivelTesteProjetoByIdProjetoIdNivelTeste(
 			int id_projeto, int id_nivel_teste);
 
+	public List<NivelTesteProjeto> getNivelTesteProjetoById(Integer id,
+			Integer idNivelTeste);
+
 }// fim da interface

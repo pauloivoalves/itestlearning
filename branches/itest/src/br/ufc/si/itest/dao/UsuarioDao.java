@@ -22,6 +22,8 @@ public interface UsuarioDao {
 	public List<Usuario> list();
 	
 	public Usuario getUsuarioByNome(String nome);
+
+	public Usuario getUsuarioByName(String nome);
 	
 
 }//fim da interface

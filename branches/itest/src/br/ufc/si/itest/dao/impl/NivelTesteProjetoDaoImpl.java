@@ -10,7 +10,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import br.ufc.si.itest.dao.NivelTesteProjetoDao;
-import br.ufc.si.itest.model.FerramentaProjeto;
 import br.ufc.si.itest.model.NivelTesteProjeto;
 import br.ufc.si.itest.utils.HibernateUtil;
 
@@ -58,7 +57,7 @@ public class NivelTesteProjetoDaoImpl implements NivelTesteProjetoDao {
 			session.close();
 		}
 		return null;
-	}//fim do método
+	}//fim do mï¿½todo
 
 	
 	public List<NivelTesteProjeto> getNivelTesteProjetoByIdProjeto(int id_projeto){
@@ -73,7 +72,7 @@ public class NivelTesteProjetoDaoImpl implements NivelTesteProjetoDao {
 			session.close();
 		}
 		return null;
-	}//fim do método niveltesteprojeto por id
+	}//fim do mï¿½todo niveltesteprojeto por id
 	
 	public NivelTesteProjeto getNivelTesteProjetoByIdProjetoIdNivelTeste(int id_projeto,int id_nivel_teste){
 		Session session = HibernateUtil.getSession();
@@ -90,7 +89,23 @@ public class NivelTesteProjetoDaoImpl implements NivelTesteProjetoDao {
 			session.close();
 		}
 		return null;
-	}//fim do método
+	}//fim do mï¿½todo
+	
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<NivelTesteProjeto> getNivelTesteProjetoById(Integer id, Integer idNivelTeste) {
+		Session session = HibernateUtil.getSession();
+		String query = "from NivelTesteProjeto where id_projeto = :id and id_nivel_teste = :idNivelTeste";
+		try {
+			return session.createQuery(query).setInteger("id", id).setInteger("idNivelTeste", idNivelTeste).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	}
 	
 	
 }//fim da classe

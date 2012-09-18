@@ -91,7 +91,22 @@ public class FerramentaDaoImpl implements FerramentaDao {
 		}
 		
 		return null;
-	}//fim do método
+	}//fim do mï¿½todo
+
+	@Override
+	public Ferramenta getFerramentaByName(String nome) {
+		Session session = HibernateUtil.getSession();
+		String query = "from Ferramenta where nome = :nome";
+		try {
+			return (Ferramenta) session.createQuery(query).setString("nome", nome)
+					.uniqueResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	}
 
 	
 }//fim da classe
