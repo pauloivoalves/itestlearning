@@ -27,4 +27,6 @@ public interface FerramentaProjetoDao {
 	public FerramentaProjeto getFerramentaProjetoByIdProjetoIdFerramenta(
 			int id_projeto, int id_ferramenta);
 
+	public FerramentaProjeto getFerramentaProjByIdProjetoIdFerramenta(Integer pk, Integer idFerramenta);
+	
 }// fim da interface

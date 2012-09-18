@@ -73,7 +73,21 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			session.close();
 		}
 		return null;
-	}//fim do método
+	}//fim do mï¿½todo
 	
+	@Override
+	public Usuario getUsuarioByName(String nome) {
+		Session session = HibernateUtil.getSession();
+		String query = "from Usuario where nome = :nome";
+		try {
+			return (Usuario) session.createQuery(query).setString("nome", nome)
+					.uniqueResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	}
 
 }//fim da classe

@@ -54,7 +54,7 @@ public class ArtefatoProjetoDaoImpl implements ArtefatoProjetoDao {
 			session.close();
 		}
 		return null;
-	}// fim do método
+	}// fim do mï¿½todo
 
 	public List<ArtefatoProjeto> getArtefatProjetoByIdProjeto(int id_projeto) {
 		Session session = HibernateUtil.getSession();
@@ -68,7 +68,7 @@ public class ArtefatoProjetoDaoImpl implements ArtefatoProjetoDao {
 			session.close();
 		}
 		return null;
-	}// fim do método
+	}// fim do mï¿½todo
 
 	public ArtefatoProjeto getArtefatProjetoByIdProjetoIdArtefato(
 			int id_projeto, int id_artefato) {
@@ -86,6 +86,21 @@ public class ArtefatoProjetoDaoImpl implements ArtefatoProjetoDao {
 			session.close();
 		}
 		return null;
-	}// fim do método
+	}// fim do mï¿½todo
+
+
+	public ArtefatoProjeto getArtefatoProjetoById(Integer pk) {
+		Session session = HibernateUtil.getSession();
+		String query = "from ArtefatoProjeto where id_projeto = :pk";
+		try {
+			return (ArtefatoProjeto) session.createQuery(query).setInteger("pk", pk)
+					.uniqueResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	}
 
 }// fim da classe

@@ -24,6 +24,11 @@ public interface FerramentaDao {
 	
 	public List<FerramentaProjeto> getItensTesteByProjeto(Integer idProjeto);
 	
+	public Ferramenta getFerramentaByName(String nome);
+	
 	public Ferramenta getFerramentaByNome(String nome);
+	
+
+	
 
 }//fim da interface

@@ -26,4 +26,6 @@ public interface TipoTesteDao {
 	
 	public TipoTeste getTipoTesteByNome(String nome);
 
+	public TipoTeste getTipoTesteByName(String nome);
+
 }//fim da interface

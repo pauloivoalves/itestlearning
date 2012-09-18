@@ -93,6 +93,23 @@ public class TipoTesteDaoImpl implements TipoTesteDao {
 		}
 		
 		return null;
-	}//fim do método
+	}//fim do mï¿½todo
 
+	@Override
+	public TipoTeste getTipoTesteByName(String nome) {
+		Session session = HibernateUtil.getSession();
+		String query = "from TipoTeste where nome = :nome";
+		try {
+			return (TipoTeste) session.createQuery(query).setString("nome", nome)
+					.uniqueResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	}
+
+	
+	
 }//fim da classe
