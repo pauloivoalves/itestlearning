@@ -31,19 +31,28 @@
             		
             		<div id="content">
             		<p:fieldset legend="Escolha do Projeto" styleClass="indexProjeto"> 
-            			<br />           			
-            			<h:outputLabel value="Nível de Dificuldade: " />
-            			<p:selectOneMenu id="nivel_dificuldade" value="#{jogoBean.nivelDificuldadeEscolhido}">
+            			<br /><br/>  			
+            			<h:panelGrid columns="2">
+            			<h:outputLabel value="Nível de Dificuldade: " style="margin-left:30px;"/>
+            			<p:selectOneMenu id="nivel_dificuldade" value="#{jogoBean.nivelDificuldadeEscolhido}" style="width:180px;">
             				<f:selectItem itemLabel="Selecione..." itemValue=""/>
             				<f:selectItems value="#{jogoBean.nivelDificuldadeBean.niveisDificuldade}"/>
             				<p:ajax update="projeto" listener="#{jogoBean.carregaProjetos}"/>
             			</p:selectOneMenu>
-            			<br /><br /><br />
-            			<h:outputLabel value="Projeto: " />
-            			<p:selectOneMenu id="projeto" value="#{jogoBean.projetoEscolhido}">
+            			</h:panelGrid>
+            			
+            			<br/><br/>
+            			<h:panelGrid columns="2">
+            			<h:outputLabel value="Projeto: " style="margin-left:175px;"/>
+            			<p:selectOneMenu id="projeto" value="#{jogoBean.projetoEscolhido}" style="width:180px;">
             				<f:selectItems value="#{jogoBean.projetoBean.projetos}"/>
             			</p:selectOneMenu>
+            			
+            			</h:panelGrid>
+            			
+            			
             			<br /><br /><br />
+            			
             			<p:commandButton value="Iniciar Jogo" action="#{jogoBean.iniciarJogo}" styleClass="buttons" ajax="false"/>
             		</p:fieldset>
             		</div>
