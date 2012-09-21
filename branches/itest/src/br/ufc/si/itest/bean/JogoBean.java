@@ -6,7 +6,9 @@ package br.ufc.si.itest.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpSession;
 
 import br.ufc.si.itest.dao.JogoDao;
 import br.ufc.si.itest.dao.ProjetoDao;
@@ -34,12 +36,12 @@ public class JogoBean {
 	/* Classes de modelo */
 	private Jogo jogo;
 	private Usuario usuario;
-	
+
 	/* DAOs */
 	private JogoDao jogoDao;
 	private UsuarioDao usuarioDao;
 	private ProjetoDao projetoDao;
-	
+
 	/* Beans dependentes */
 	private ProjetoBean projetoBean;
 	private NivelDificuldadeBean nivelDificuldadeBean;
@@ -63,7 +65,7 @@ public class JogoBean {
 		usuario = new Usuario();
 		jogo = new Jogo();
 		jogo.setPontuacao(0);
-		
+
 		projetoBean = new ProjetoBean();
 		nivelDificuldadeBean = new NivelDificuldadeBean();
 		itemTesteBean = new ItemTesteBean();
@@ -72,12 +74,12 @@ public class JogoBean {
 		criterioAceitacaoBean = new CriterioAceitacaoBean();
 		artefatoBean = new ArtefatoBean();
 		ferramentaBean = new FerramentaBean();
-		
+
 		ranking = false;
 		jogoDao = new JogoDaoImpl();
 		usuarioDao = new UsuarioDaoImpl();
 		projetoDao = new ProjetoDaoImpl();
-		
+
 		projetos = new ArrayList<SelectItem>();
 		carregaTodosProjeto();
 	}
@@ -85,27 +87,29 @@ public class JogoBean {
 	public void carregaProjetos() {
 		projetoBean.setProjetos(new ArrayList<SelectItem>());
 		List<Projeto> projs = projetoBean.getProjetoDao()
-				.getProjetoByNivelDificuldade(new NivelDificuldade(
-						nivelDificuldadeEscolhido));
+				.getProjetoByNivelDificuldade(
+						new NivelDificuldade(nivelDificuldadeEscolhido));
 		for (Projeto p : projs) {
-			projetoBean.getProjetos().add(new SelectItem(p.getId(), p.getNome()));
+			projetoBean.getProjetos().add(
+					new SelectItem(p.getId(), p.getNome()));
 		}
 	}
-	
+
 	public void carregaTodosProjeto() {
 		List<Projeto> projs = projetoDao.list();
-		for(Projeto p : projs) {
+		for (Projeto p : projs) {
 			projetos.add(new SelectItem(p.getId(), p.getNome()));
 		}
 	}
-	
+
 	public void carregaRanking() {
 		jogos = jogoDao.getJogoByProjeto(projetoRanking);
 	}
-	
+
 	public String iniciarJogo() {
-		projetoBean.setProjeto(projetoBean.getProjetoDao().getProjetoById(projetoEscolhido));
-		
+		projetoBean.setProjeto(projetoBean.getProjetoDao().getProjetoById(
+				projetoEscolhido));
+
 		// Carrega todo o conteúdo do projeto.
 		carregarItensTeste();
 		carregarTiposTeste();
@@ -113,100 +117,127 @@ public class JogoBean {
 		carregarCriteriosAceitacao();
 		carregarArtefatos();
 		carregarFerramentas();
-		
+
 		return "descricaoProjeto";
 	}
-	
+
 	public void carregarItensTeste() {
-		itemTesteBean.setItensTesteProjeto(itemTesteBean.getItemTesteDao().getItensTesteByProjeto(projetoBean.getProjeto().getId()));
+		itemTesteBean.setItensTesteProjeto(itemTesteBean.getItemTesteDao()
+				.getItensTesteByProjeto(projetoBean.getProjeto().getId()));
 		itemTesteBean.setItensTeste(new ArrayList<SelectItem>());
-		for(ItemTeste it : itemTesteBean.getItensTesteProjeto()) {
-			itemTesteBean.getItensTeste().add(new SelectItem(it.getId(), it.getDescricao()));
+		for (ItemTeste it : itemTesteBean.getItensTesteProjeto()) {
+			itemTesteBean.getItensTeste().add(
+					new SelectItem(it.getId(), it.getDescricao()));
 		}
 	}
-	
+
 	public void carregarTiposTeste() {
-		tipoTesteBean.setTiposTesteProjeto(tipoTesteBean.getTipoTesteDao().getItensTesteByProjeto(projetoBean.getProjeto().getId()));
+		tipoTesteBean.setTiposTesteProjeto(tipoTesteBean.getTipoTesteDao()
+				.getItensTesteByProjeto(projetoBean.getProjeto().getId()));
 		tipoTesteBean.setTiposTeste(new ArrayList<SelectItem>());
-		for(TipoTesteProjeto tt : tipoTesteBean.getTiposTesteProjeto()) {
-			tipoTesteBean.getTiposTeste().add(new SelectItem(tt.getPk().getTipoTeste().getId(), tt.getPk().getTipoTeste().getNome()));
+		for (TipoTesteProjeto tt : tipoTesteBean.getTiposTesteProjeto()) {
+			tipoTesteBean.getTiposTeste().add(
+					new SelectItem(tt.getPk().getTipoTeste().getId(), tt
+							.getPk().getTipoTeste().getNome()));
 		}
 	}
-	
+
 	public void carregarNiveisTeste() {
-		nivelTesteBean.setNiveisTesteProjeto(nivelTesteBean.getNivelTesteDao().getItensTesteByProjeto(projetoBean.getProjeto().getId()));
+		nivelTesteBean.setNiveisTesteProjeto(nivelTesteBean.getNivelTesteDao()
+				.getItensTesteByProjeto(projetoBean.getProjeto().getId()));
 		nivelTesteBean.setNiveisTeste(new ArrayList<SelectItem>());
-		for(NivelTesteProjeto nt : nivelTesteBean.getNiveisTesteProjeto()) {
-			nivelTesteBean.getNiveisTeste().add(new SelectItem(nt.getPk().getNivelTeste().getId(), nt.getPk().getNivelTeste().getNome()));
+		for (NivelTesteProjeto nt : nivelTesteBean.getNiveisTesteProjeto()) {
+			nivelTesteBean.getNiveisTeste().add(
+					new SelectItem(nt.getPk().getNivelTeste().getId(), nt
+							.getPk().getNivelTeste().getNome()));
 		}
 	}
-	
+
 	public void carregarCriteriosAceitacao() {
-		criterioAceitacaoBean.setCriteriosAceitacaoProjeto(criterioAceitacaoBean.getCriterioAceitacaoDao().getCriterioAceitacaoByProjeto(projetoBean.getProjeto().getId()));
-		criterioAceitacaoBean.setCriteriosAceitacao(new ArrayList<SelectItem>());
-		for(CriterioAceitacao ca : criterioAceitacaoBean.getCriteriosAceitacaoProjeto()) {
-			criterioAceitacaoBean.getCriteriosAceitacao().add(new SelectItem(ca.getId(), ca.getDescricao()));
+		criterioAceitacaoBean
+				.setCriteriosAceitacaoProjeto(criterioAceitacaoBean
+						.getCriterioAceitacaoDao()
+						.getCriterioAceitacaoByProjeto(
+								projetoBean.getProjeto().getId()));
+		criterioAceitacaoBean
+				.setCriteriosAceitacao(new ArrayList<SelectItem>());
+		for (CriterioAceitacao ca : criterioAceitacaoBean
+				.getCriteriosAceitacaoProjeto()) {
+			criterioAceitacaoBean.getCriteriosAceitacao().add(
+					new SelectItem(ca.getId(), ca.getDescricao()));
 		}
 	}
-	
+
 	public void carregarArtefatos() {
-		artefatoBean.setArtefatosProjeto(artefatoBean.getArtefatoDao().getArtefatosByProjeto(projetoBean.getProjeto().getId()));
+		artefatoBean.setArtefatosProjeto(artefatoBean.getArtefatoDao()
+				.getArtefatosByProjeto(projetoBean.getProjeto().getId()));
 		artefatoBean.setArtefatos(new ArrayList<SelectItem>());
-		for(ArtefatoProjeto ap : artefatoBean.getArtefatosProjeto()) {
-			artefatoBean.getArtefatos().add(new SelectItem(ap.getPk().getArtefato().getId(), ap.getPk().getArtefato().getNome()));
+		for (ArtefatoProjeto ap : artefatoBean.getArtefatosProjeto()) {
+			artefatoBean.getArtefatos().add(
+					new SelectItem(ap.getPk().getArtefato().getId(), ap.getPk()
+							.getArtefato().getNome()));
 		}
 	}
-	
+
 	public void carregarFerramentas() {
-		ferramentaBean.setFerramentasProjeto(ferramentaBean.getFerramentaDao().getItensTesteByProjeto(projetoBean.getProjeto().getId()));
+		ferramentaBean.setFerramentasProjeto(ferramentaBean.getFerramentaDao()
+				.getItensTesteByProjeto(projetoBean.getProjeto().getId()));
 		ferramentaBean.setFerramentas(new ArrayList<SelectItem>());
-		for(FerramentaProjeto fp : ferramentaBean.getFerramentasProjeto()) {
-			ferramentaBean.getFerramentas().add(new SelectItem(fp.getPk().getFerramenta().getId(), fp.getPk().getFerramenta().getNome()));
+		for (FerramentaProjeto fp : ferramentaBean.getFerramentasProjeto()) {
+			ferramentaBean.getFerramentas().add(
+					new SelectItem(fp.getPk().getFerramenta().getId(), fp
+							.getPk().getFerramenta().getNome()));
 		}
 	}
-	
+
 	public String validarItensTeste() {
-		if(!itemTesteBean.getRespondido()) {
-			jogo.setPontuacao(jogo.getPontuacao() + itemTesteBean.validaResposta());
+		if (!itemTesteBean.getRespondido()) {
+			jogo.setPontuacao(jogo.getPontuacao()
+					+ itemTesteBean.validaResposta());
 		}
 		return "tiposTeste";
 	}
-	
+
 	public String validarTipoTeste() {
-		if(!tipoTesteBean.getRespondido()) {
-			jogo.setPontuacao(jogo.getPontuacao() + tipoTesteBean.validaResposta());
+		if (!tipoTesteBean.getRespondido()) {
+			jogo.setPontuacao(jogo.getPontuacao()
+					+ tipoTesteBean.validaResposta());
 		}
 		return "niveisTeste";
 	}
-	
+
 	public String validarNiveisTeste() {
-		if(!nivelTesteBean.getRespondido()) {
-			jogo.setPontuacao(jogo.getPontuacao() + nivelTesteBean.validaResposta());
+		if (!nivelTesteBean.getRespondido()) {
+			jogo.setPontuacao(jogo.getPontuacao()
+					+ nivelTesteBean.validaResposta());
 		}
 		return "criterioAceitacao";
 	}
-	
+
 	public String validarCriteriosAceitacao() {
-		if(!criterioAceitacaoBean.getRespondido()) {
-			jogo.setPontuacao(jogo.getPontuacao() + criterioAceitacaoBean.validaResposta());
+		if (!criterioAceitacaoBean.getRespondido()) {
+			jogo.setPontuacao(jogo.getPontuacao()
+					+ criterioAceitacaoBean.validaResposta());
 		}
 		return "ferramentas";
 	}
-	
+
 	public String validarFerramentas() {
-		if(!ferramentaBean.getRespondido()) {
-			jogo.setPontuacao(jogo.getPontuacao() + ferramentaBean.validaResposta());
+		if (!ferramentaBean.getRespondido()) {
+			jogo.setPontuacao(jogo.getPontuacao()
+					+ ferramentaBean.validaResposta());
 		}
 		return "artefatos";
 	}
-	
+
 	public String validarArtefatos() {
-		if(!artefatoBean.getRespondido()) {
-			jogo.setPontuacao(jogo.getPontuacao() + artefatoBean.validaResposta());
+		if (!artefatoBean.getRespondido()) {
+			jogo.setPontuacao(jogo.getPontuacao()
+					+ artefatoBean.validaResposta());
 		}
 		return "resultado";
 	}
-	
+
 	public String adicionarRanking() {
 		this.ranking = true;
 		usuario.setLogin("login");
@@ -217,9 +248,24 @@ public class JogoBean {
 		jogo.getPk().setUsuario(usuario);
 		jogoDao.save(jogo);
 		jogos = jogoDao.getJogoByProjeto(projetoRanking);
+		// encerra sessão aberta
+		FacesContext faces = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) faces.getExternalContext()
+				.getSession(false);
+		session.invalidate();
 		return "ranking";
 	}
-	
+
+	public String terminarJogo() {
+		// encerra sessão aberta
+		FacesContext faces = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) faces.getExternalContext()
+				.getSession(false);
+		session.invalidate();
+
+		return "escolhaProjeto";
+	}
+
 	/* Getters e Setters */
 	public ProjetoBean getProjetoBean() {
 		return projetoBean;
@@ -282,7 +328,8 @@ public class JogoBean {
 		return criterioAceitacaoBean;
 	}
 
-	public void setCriterioAceitacaoBean(CriterioAceitacaoBean criterioAceitacaoBean) {
+	public void setCriterioAceitacaoBean(
+			CriterioAceitacaoBean criterioAceitacaoBean) {
 		this.criterioAceitacaoBean = criterioAceitacaoBean;
 	}
 
