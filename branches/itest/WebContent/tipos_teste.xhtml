@@ -36,11 +36,15 @@
 								<p:graphicImage value="images/note.png" width="70" height="70"/>
 							</p:commandLink>
 							<p:commandLink title="Ajuda" oncomplete="dialogAjuda.show()" update="displayAjuda">
-								<p:graphicImage value="images/ajuda.png" width="70" height="70"/>
+								<p:graphicImage value="images/help.png" width="70" height="70"/>
 							</p:commandLink>
 							<p:commandLink title="Verificar Resposta" actionListener="#{jogoBean.validarTipoTeste}" oncomplete="dialog.show()" update="display, pontos, alternativas">
 								<p:graphicImage value="images/check.png" width="70" height="70" styleClass="imageCheck"/>
 							</p:commandLink>
+							<p:commandLink title="Reiniciar Jogo" actionListener="#{jogoBean.validarItensTeste}" oncomplete="dialog.show()" update="display, pontos, alternativas">
+								<p:graphicImage value="images/reload.png" width="70" height="70" />
+							</p:commandLink>
+							
 							
 							<h:outputText id="pontos" value="#{jogoBean.jogo.pontuacao}" style="float:right; font-size:50px; color:green;"/>
 							<h:outputText value="Pontuação:  " style="float:right; font-size:20px; color:green;"/>
@@ -51,7 +55,7 @@
 						<div id="fase">
 							<h3>
 								<span
-									style="color: #000000; font-weight: bold; text-decoration: underline;">Missão:</span>
+									style="color: green; font-weight: bold; text-decoration: underline;">Missão:</span>
 								Selecionar os tipos de teste que serão realizados. Você deve selecionar somente os que se adequam ao 
 								projeto. Os tipos de teste referem-se às características do software que podem ser testadas
 							</h3>
@@ -62,11 +66,11 @@
             				</p:selectManyCheckbox>
 						</div>
 						<p:commandLink title="Voltar" style="float: left;" action="itensTeste" ajax="false">
-							<p:graphicImage value="images/btnvoltar.png"/>
+							<p:graphicImage value="images/return.png" styleClass="image_left"/>
 						</p:commandLink>
 						
 						<p:commandLink title="Avançar" style="float: right;" action="#{jogoBean.validarTipoTeste}" ajax="false">
-							<p:graphicImage value="images/btnavancar.png"/>
+							<p:graphicImage value="images/go.png" styleClass="image_right"/>
 						</p:commandLink>
 						
 						<p:dialog header="Tipos de Teste" id="dialog" widgetVar="dialog">

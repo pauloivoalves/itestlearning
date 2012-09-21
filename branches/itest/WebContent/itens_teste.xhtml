@@ -38,6 +38,9 @@
 							<p:commandLink title="Verificar Resposta" actionListener="#{jogoBean.validarItensTeste}" oncomplete="dialog.show()" update="display, pontos, alternativas">
 								<p:graphicImage value="images/check.png" width="70" height="70" styleClass="imageCheck"/>
 							</p:commandLink>
+							<p:commandLink title="Reiniciar Jogo" actionListener="#{jogoBean.validarItensTeste}" oncomplete="dialog.show()" update="display, pontos, alternativas">
+								<p:graphicImage value="images/reload.png" width="70" height="70" />
+							</p:commandLink>
 							
 							<h:outputText id="pontos" value="#{jogoBean.jogo.pontuacao}" style="float:right; font-size:50px; color:green;"/>
 							<h:outputText value="Pontuação:  " style="float:right; font-size:20px; color:green;"/>
@@ -48,7 +51,7 @@
 						<div id="fase">
 							<h3>
 								<span
-									style="color: #000000; font-weight: bold; text-decoration: underline;">Missão:</span>
+									style="color:green; font-weight: bold; text-decoration: underline;">Missão:</span>
 								Selecionar os itens a serem testados. Você deve selecionar somente os mais importantes para o 
 								projeto.
 							</h3>
@@ -59,11 +62,11 @@
             				</p:selectManyCheckbox>
 						</div>
 						<p:commandLink title="Voltar" style="float: left;" action="descricaoProjeto" ajax="false">
-							<p:graphicImage value="images/btnvoltar.png"/>
+							<p:graphicImage value="images/return.png" styleClass="image_left"/>
 						</p:commandLink>
 						
 						<p:commandLink title="Avançar" style="float: right;" action="#{jogoBean.validarItensTeste}" ajax="false">
-							<p:graphicImage value="images/btnavancar.png"/>
+							<p:graphicImage value="images/go.png" styleClass="image_right"/>
 						</p:commandLink>
 						
 						<p:dialog header="Itens a Testar" id="dialog" widgetVar="dialog">

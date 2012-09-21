@@ -43,7 +43,7 @@
 						<div id="fase">
 							<h3>
 								<span
-									style="color: #000000; font-weight: bold; text-decoration: underline;">Missão:</span>
+									style="color: green; font-weight: bold; text-decoration: underline;">Missão:</span>
 								Realizar o planejamento de teste de software para o projeto
 								escolhido.
 							</h3>
@@ -52,8 +52,15 @@
 							<h:outputText value="#{jogoBean.projetoBean.projeto.descricao}" style="font-size:19px;"/>
 						</div>
 						
-						<h:commandButton image="images/btnvoltar.png" title="Voltar" style="float: left;" action="escolhaProjeto"/>
-						<h:commandButton image="images/btnavancar.png" title="Avançar" style="float: right;" action="itensTeste"/>
+						<p:commandLink title="Voltar" style="float: left;" action="escolhaProjeto" ajax="false">
+							<p:graphicImage value="images/return.png" styleClass="image_left"/>
+						</p:commandLink>
+						
+						
+						
+						<p:commandLink title="Avançar" style="float: right;" action="itensTeste" ajax="false">
+							<p:graphicImage value="images/go.png" styleClass="image_right"/>
+						</p:commandLink>
 						
 						<p:dialog header="Escopo do Projeto" id="dialogEscopo" widgetVar="dialogEscopo">
 							<h:panelGrid id="displayEscopo">

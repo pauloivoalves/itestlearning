@@ -2,25 +2,45 @@ body {
 	margin: 0px;
 	padding: 0px;
 	color: #a29e99;
-	font-family: "Times New Roman", Times, serif;
+	font-family: Calibri, sans serif;
 	font-size: 12px;
 	line-height: 1.5em; 
-	background-color: #000000;
-	background-image: url(../images/templatemo_body.jpg);
+	background-color: #fff;
 	background-repeat: no-repeat;
 	background-position: top center;	
 }
 
-a, a:link, a:visited { color: #ef8412; text-decoration: underline; }
+
+
+a, a:link, a:visited { color: #9acd32; text-decoration: underline; }
 a:hover { text-decoration: none; }
 
 p { margin: 0 0 15px 0; padding: 0; }
 img { border: none; }
 
-h1, h2, h3, h4, h5, h6 { color: #b9e401;}
+.image_right{
+	border: 1px;
+	width: 40pt;
+}
+
+.image_left{
+	border: 1px;
+	width: 40pt;
+	margin-left: 700px;
+}
+
+
+.campeao{
+	border: 1px;
+	-webkit-border-radius: 10px;
+	box-shadow: 0px 0px 5px #000;
+	-moz-border-radius: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 { color: #228b22;}
 h1 { font-size: 38px; font-weight: normal; margin: 0 0 20px 0; padding: 5px 0; line-height: 30px; }
 h2 { font-size: 30px; font-weight: normal; line-height: 0px; text-decoration: underline;}
-h3 { font-size: 20px; margin: 0 0 15px 0; padding: 0; padding: 0; font-weight: normal;  color: #ffffff;}
+h3 { font-size: 20px; margin: 0 0 15px 0; padding: 0; padding: 0; font-weight: normal;  color: #9acd32;}
 h4 { font-size: 18px; margin: 0 0 5px 0; padding: 0; }
 h5 { font-size: 16px; margin: 0 0 5px 0; padding: 0; }
 h6 { font-size: 14px; margin: 0 0 5px 0; padding: 0; font-weight: bold }
@@ -57,7 +77,11 @@ h6 { font-size: 14px; margin: 0 0 5px 0; padding: 0; font-weight: bold }
 	width: 780px;
 	height: 40px;
 	padding: 0 90px;
-	background: url(../images/templatemo_menu.png) no-repeat
+	background: #9acd32;
+	-webkit-border-radius: 10px;
+	box-shadow: 0px 0px 5px #000;
+	-moz-border-radius: 10px;
+	margin-bottom: 10px;
 }
 
 ul.navigation {
@@ -91,7 +115,10 @@ ul.navigation a {
 ul.navigation a:hover, ul.navigation a.selected {
 	color: #000;
 	text-shadow: 1px 1px 1px #fed8ae;
-	background: url(../images/templatemo_menu_hover.png) repeat-x;
+	background: #adff2f;
+	-webkit-border-radius: 10px;
+	box-shadow: 0px 0px 10px #000;
+	-moz-border-radius: 10px;
 }
 
 ul.navigation a:focus {
@@ -100,27 +127,35 @@ ul.navigation a:focus {
 
 #content {
 	padding: 30px 60px 30px 60px;
-	background: #1C1C1C;
+	background:  #8DB6CD;
 	width: 840px;
-	-webkit-border-radius: 10px;
+	-webkit-border-radius: 15px;
 	float: left;
 	margin-bottom: 20px;
+	box-shadow: 0px 0px 10px #000;
+	-moz-border-radius: 15px;
 }
 
 #fase {
-	background-color: orange;
+	background-color: ##9acd32;
+	background:#fff;
 	padding: 12px 20px 10px 20px;
 	-webkit-border-radius: 10px;
+	box-shadow: 0px 0px 3px #000;
+	-moz-border-radius: 15px;
+	margin-bottom: 25px;
 }
 
 #desafio {
-	color: white;
+	color: #9acd32;
 	font-size: 15px;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	background-color: orange;
+	background-color: white;
 	-webkit-border-radius: 10px;
 	padding: 12px 10px 12px 10px;
+	-moz-border-radius: 10px;
+	
 }
 
 #buttonsMenu a {
@@ -135,11 +170,13 @@ ul.navigation a:focus {
 	margin: -18px 0 0 100px;
 	height: 400px;
 	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	
 }
 .alternativas {
-	font-family: "Times New Roman";
+	font-family: "Calibri";
 	font-size: 20px;
-	color: #000000;
+	color: #9acd32;
 	font-weight: bolder;
 }
 
@@ -151,13 +188,15 @@ ul.navigation a:focus {
 }
 
 .indexProjeto {
-	background: none;
+	background: white;
 	font-size: 25px;
 	text-align: center;
 	width: 500px;
 	height: 300px;
 	margin-left: 125px;
 	-webkit-border-radius: 13px;
-	color: orange;
+	color: #228b22;
+	-moz-border-radius: 13px;
+	
 }
 
