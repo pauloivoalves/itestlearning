@@ -1,6 +1,7 @@
 package br.ufc.si.itest.bean;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.faces.model.SelectItem;
@@ -19,7 +20,7 @@ public class NivelDificuldadeBean {
 	/* Construtor */
 	public NivelDificuldadeBean() {
 		nivelDificuldadeDao = new NivelDificuldadeDaoImpl();
-		
+
 		niveisDificuldade = new ArrayList<SelectItem>();
 
 		carregaNiveisDificuldade();
@@ -27,9 +28,13 @@ public class NivelDificuldadeBean {
 
 	/* ----Métodos auxiliares---- */
 
-	/* Método para carregar os níveis de dificuldade existentes quando a página é carregada */
+	/*
+	 * Método para carregar os níveis de dificuldade existentes quando a página
+	 * é carregada
+	 */
 	public void carregaNiveisDificuldade() {
 		List<NivelDificuldade> listNiveis = nivelDificuldadeDao.list();
+		Collections.reverse(listNiveis);
 		for (NivelDificuldade nd : listNiveis) {
 			niveisDificuldade.add(new SelectItem(nd.getId(), nd.getNome()));
 		}
