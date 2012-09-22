@@ -40,7 +40,7 @@ img { border: none; }
 h1, h2, h3, h4, h5, h6 { color: #228b22;}
 h1 { font-size: 38px; font-weight: normal; margin: 0 0 20px 0; padding: 5px 0; line-height: 30px; }
 h2 { font-size: 30px; font-weight: normal; line-height: 0px; text-decoration: underline;}
-h3 { font-size: 20px; margin: 0 0 15px 0; padding: 0; padding: 0; font-weight: normal;  color: #9acd32;}
+h3 { font-size: 20px; margin: 0 0 15px 0; padding: 0; padding: 0; font-weight: normal;  color: #006400;}
 h4 { font-size: 18px; margin: 0 0 5px 0; padding: 0; }
 h5 { font-size: 16px; margin: 0 0 5px 0; padding: 0; }
 h6 { font-size: 14px; margin: 0 0 5px 0; padding: 0; font-weight: bold }
@@ -137,7 +137,7 @@ ul.navigation a:focus {
 }
 
 #fase {
-	background-color: ##9acd32;
+	background-color: #006400;
 	background:#fff;
 	padding: 12px 20px 10px 20px;
 	-webkit-border-radius: 10px;
@@ -147,7 +147,7 @@ ul.navigation a:focus {
 }
 
 #desafio {
-	color: #9acd32;
+	color: #006400;
 	font-size: 15px;
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -176,7 +176,7 @@ ul.navigation a:focus {
 .alternativas {
 	font-family: "Calibri";
 	font-size: 20px;
-	color: #9acd32;
+	color: #006400;
 	font-weight: bolder;
 }
 
