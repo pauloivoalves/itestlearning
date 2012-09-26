@@ -27,6 +27,7 @@ public class MenuInserir {
 			System.out.println("10-inserir tipo teste projeto");
 			System.out.println("11-inserir ferramenta projeto");
 			System.out.println("12-inserir artefato projeto");
+			System.out.println("13-inserir fase projeto");
 
 			int escolha = sc.nextInt();
 			switch (escolha) {
@@ -66,6 +67,9 @@ public class MenuInserir {
 				break;
 			case 12:
 				inserir.inserirArtefatoProjeto();
+				break;
+			case 13:
+				inserir.inserirFaseProjeto();
 				break;
 			default:
 				break;

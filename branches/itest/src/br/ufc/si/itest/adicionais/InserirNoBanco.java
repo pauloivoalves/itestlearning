@@ -6,6 +6,7 @@ import java.util.Scanner;
 import br.ufc.si.itest.dao.impl.ArtefatoDaoImpl;
 import br.ufc.si.itest.dao.impl.ArtefatoProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.CriterioAceitacaoDaoImpl;
+import br.ufc.si.itest.dao.impl.FaseProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.FerramentaDaoImpl;
 import br.ufc.si.itest.dao.impl.FerramentaProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.ItemTesteDaoImpl;
@@ -20,6 +21,8 @@ import br.ufc.si.itest.model.Artefato;
 import br.ufc.si.itest.model.ArtefatoProjeto;
 import br.ufc.si.itest.model.ArtefatoProjeto.ArtefatoProjetoPk;
 import br.ufc.si.itest.model.CriterioAceitacao;
+import br.ufc.si.itest.model.FaseProjeto;
+import br.ufc.si.itest.model.FaseProjeto.FaseProjetoPK;
 import br.ufc.si.itest.model.Ferramenta;
 import br.ufc.si.itest.model.FerramentaProjeto;
 import br.ufc.si.itest.model.FerramentaProjeto.FerramentaProjetoPk;
@@ -37,6 +40,46 @@ import br.ufc.si.itest.model.Usuario;
 // @author Felipe Freitas
 
 public class InserirNoBanco {
+
+	public void inserirFaseProjeto() {
+
+		Scanner sc = new Scanner(System.in);
+
+		FaseProjeto faseProjeto = new FaseProjeto();
+		FaseProjetoPK faseProjetoPk = new FaseProjetoPK();
+		FaseProjetoDaoImpl fpdi = new FaseProjetoDaoImpl();
+		Projeto projeto = new Projeto();
+		ProjetoDaoImpl pdi = new ProjetoDaoImpl();
+
+		System.out.println("digite a descrição do fluxo principal se houver: ");
+		String fp = sc.nextLine();
+		System.out
+				.println("digite a descrição do fluxo secundário se houver: ");
+		String fs = sc.nextLine();
+		System.out
+				.println("digite a descrição do fluxo de exceção se houver:  ");
+		String fe = sc.nextLine();
+		System.out.println("digite a descrição de requisito se houver:  ");
+		String req = sc.nextLine();
+		System.out
+				.println("digite a descrição a nivel de requisito se houver:  ");
+		String nreq = sc.nextLine();
+		System.out.println("digite o nome do Projeto Correspondente:  ");
+		String nome = sc.nextLine();
+
+		projeto = pdi.getProjetoByName(nome);
+		faseProjetoPk.setProjeto(projeto);
+
+		faseProjeto.setDesc_fluxo_excecao(fe);
+		faseProjeto.setDesc_fluxo_principal(fp);
+		faseProjeto.setDesc_fluxo_secundario(fs);
+		faseProjeto.setDesc_requisito(req);
+		faseProjeto.setDesc_nivel_requisito(nreq);
+		faseProjeto.setPk(faseProjetoPk);
+
+		fpdi.save(faseProjeto);
+
+	}
 
 	public void inserirProjeto() {
 		Scanner sc = new Scanner(System.in);
