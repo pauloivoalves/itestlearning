@@ -18,29 +18,29 @@ import javax.persistence.Table;
 
 /**
  * @author Virginia
- *
+ * 
  */
 @Entity
-@Table(name="itest.artefato")
+@Table(name = "itest.artefato")
 public class Artefato implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id", nullable = false)
+	@Column(name = "id", nullable = false)
 	private Integer id;
-	
-	@Column(name="nome")
+
+	@Column(name = "nome")
 	private String nome;
-	
-	@Column(name="descricao")
+
+	@Column(name = "descricao")
 	private String descricao;
-	
+
 	@ManyToMany
-	@JoinTable(name="itest.artefato_projeto", joinColumns={@JoinColumn(name="id_artefato")}, inverseJoinColumns={@JoinColumn(name="id_projeto")})
+	@JoinTable(name = "itest.artefato_projeto", joinColumns = { @JoinColumn(name = "id_artefato") }, inverseJoinColumns = { @JoinColumn(name = "id_projeto") })
 	private List<Projeto> produtos;
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -72,15 +72,15 @@ public class Artefato implements Serializable {
 	public void setProdutos(List<Projeto> produtos) {
 		this.produtos = produtos;
 	}
-	
+
 	@Override
 	public boolean equals(Object other) {
-		if(other instanceof Artefato)
-			if(((Artefato)other).getId().equals(this.id))
+		if (other instanceof Artefato)
+			if (((Artefato) other).getId().equals(this.id))
 				return true;
 		return false;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hash = 3;
