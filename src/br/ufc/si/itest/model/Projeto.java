@@ -22,55 +22,54 @@ import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-
 /**
  * @author Virginia
- *
+ * 
  */
 @Entity
-@Table(name="itest.projeto")
+@Table(name = "itest.projeto")
 public class Projeto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id", nullable = false)
+	@Column(name = "id", nullable = false)
 	private Integer id;
-	
-	@Column(name="nome")
+
+	@Column(name = "nome")
 	private String nome;
-	
-	@Column(name="descricao")
+
+	@Column(name = "descricao")
 	private String descricao;
-	
+
 	@ManyToOne
-	@JoinColumn(name="id_nivel_dificuldade", nullable = false)
+	@JoinColumn(name = "id_nivel_dificuldade", nullable = false)
 	@Fetch(FetchMode.JOIN)
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private NivelDificuldade nivelDificuldade;
-	
+
 	@ManyToMany
-	@JoinTable(name="itest.nivel_teste_projeto", joinColumns=@JoinColumn(name="id_projeto"), inverseJoinColumns=@JoinColumn(name="id_nivel_teste"))
+	@JoinTable(name = "itest.nivel_teste_projeto", joinColumns = @JoinColumn(name = "id_projeto"), inverseJoinColumns = @JoinColumn(name = "id_nivel_teste"))
 	private List<NivelTeste> niveisTeste;
-	
+
 	@ManyToMany
-	@JoinTable(name="itest.tipo_teste_projeto", joinColumns=@JoinColumn(name="id_projeto"), inverseJoinColumns=@JoinColumn(name="id_tipo_teste"))
+	@JoinTable(name = "itest.tipo_teste_projeto", joinColumns = @JoinColumn(name = "id_projeto"), inverseJoinColumns = @JoinColumn(name = "id_tipo_teste"))
 	private List<TipoTeste> tiposTeste;
-	
+
 	@ManyToMany
-	@JoinTable(name="itest.ferramenta_projeto", joinColumns=@JoinColumn(name="id_projeto"), inverseJoinColumns=@JoinColumn(name="id_ferramenta"))
+	@JoinTable(name = "itest.ferramenta_projeto", joinColumns = @JoinColumn(name = "id_projeto"), inverseJoinColumns = @JoinColumn(name = "id_ferramenta"))
 	private List<Ferramenta> ferramentas;
-	
+
 	@ManyToMany
-	@JoinTable(name="itest.artefato_projeto", joinColumns=@JoinColumn(name="id_projeto"), inverseJoinColumns=@JoinColumn(name="id_artefato"))
+	@JoinTable(name = "itest.artefato_projeto", joinColumns = @JoinColumn(name = "id_projeto"), inverseJoinColumns = @JoinColumn(name = "id_artefato"))
 	private List<Artefato> artefatos;
-	
+
 	public Projeto() {
-		
+
 	}
-	
-	public Projeto(Integer id){
+
+	public Projeto(Integer id) {
 		this.id = id;
 	}
 
@@ -137,15 +136,15 @@ public class Projeto implements Serializable {
 	public void setArtefatos(List<Artefato> artefatos) {
 		this.artefatos = artefatos;
 	}
-	
+
 	@Override
 	public boolean equals(Object other) {
-		if(other instanceof Projeto)
-			if(((Projeto)other).getId().equals(this.id))
+		if (other instanceof Projeto)
+			if (((Projeto) other).getId().equals(this.id))
 				return true;
 		return false;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		int hash = 3;
