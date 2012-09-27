@@ -3,30 +3,37 @@ package br.ufc.si.itest.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+//@author Felipe Freitas
+
 @Entity
-@Table(name = "itest.fase_projeto_descricao")
+@Table(name = "itest.fase_projeto")
 public class FaseProjeto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	// aqui esta o problema
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false)
 	private Integer id;
-	//
 
-	@EmbeddedId
-	private FaseProjetoPK pk;
+	@ManyToOne
+	@JoinColumn(name = "id_projeto_fk")
+	@Fetch(FetchMode.JOIN)
+	@Cascade(CascadeType.SAVE_UPDATE)
+	private Projeto projeto;
 
 	@Column(name = "desc_fluxo_principal")
 	private String desc_fluxo_principal;
@@ -49,14 +56,6 @@ public class FaseProjeto implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public FaseProjetoPK getPk() {
-		return pk;
-	}
-
-	public void setPk(FaseProjetoPK pk) {
-		this.pk = pk;
 	}
 
 	public String getDesc_fluxo_principal() {
@@ -114,22 +113,12 @@ public class FaseProjeto implements Serializable {
 		return hash;
 	}
 
-	public static class FaseProjetoPK implements Serializable {
+	public Projeto getProjeto() {
+		return projeto;
+	}
 
-		private static final long serialVersionUID = 1L;
-
-		@OneToOne
-		@JoinColumn(name = "id_projeto_fk", nullable = false)
-		private Projeto projeto;
-
-		public Projeto getProjeto() {
-			return projeto;
-		}
-
-		public void setProjeto(Projeto projeto) {
-			this.projeto = projeto;
-		}
-
+	public void setProjeto(Projeto projeto) {
+		this.projeto = projeto;
 	}
 
 }

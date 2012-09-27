@@ -22,7 +22,6 @@ import br.ufc.si.itest.model.ArtefatoProjeto;
 import br.ufc.si.itest.model.ArtefatoProjeto.ArtefatoProjetoPk;
 import br.ufc.si.itest.model.CriterioAceitacao;
 import br.ufc.si.itest.model.FaseProjeto;
-import br.ufc.si.itest.model.FaseProjeto.FaseProjetoPK;
 import br.ufc.si.itest.model.Ferramenta;
 import br.ufc.si.itest.model.FerramentaProjeto;
 import br.ufc.si.itest.model.FerramentaProjeto.FerramentaProjetoPk;
@@ -46,7 +45,6 @@ public class InserirNoBanco {
 		Scanner sc = new Scanner(System.in);
 
 		FaseProjeto faseProjeto = new FaseProjeto();
-		FaseProjetoPK faseProjetoPk = new FaseProjetoPK();
 		FaseProjetoDaoImpl fpdi = new FaseProjetoDaoImpl();
 		Projeto projeto = new Projeto();
 		ProjetoDaoImpl pdi = new ProjetoDaoImpl();
@@ -68,14 +66,13 @@ public class InserirNoBanco {
 		String nome = sc.nextLine();
 
 		projeto = pdi.getProjetoByName(nome);
-		faseProjetoPk.setProjeto(projeto);
 
 		faseProjeto.setDesc_fluxo_excecao(fe);
 		faseProjeto.setDesc_fluxo_principal(fp);
 		faseProjeto.setDesc_fluxo_secundario(fs);
 		faseProjeto.setDesc_requisito(req);
 		faseProjeto.setDesc_nivel_requisito(nreq);
-		faseProjeto.setPk(faseProjetoPk);
+		faseProjeto.setProjeto(projeto);
 
 		fpdi.save(faseProjeto);
 
