@@ -64,6 +64,12 @@ public class InserirNoBanco {
 		String nreq = sc.nextLine();
 		System.out.println("digite o nome do Projeto Correspondente:  ");
 		String nome = sc.nextLine();
+		System.out.println("digite a descrição da alternativa se houver:  ");
+		String desc = sc.nextLine();
+		System.out.println("digite a resposta se houver:  ");
+		boolean resposta = sc.nextBoolean();
+		System.out.println("digite a mensagem se houver:  ");
+		String mensagem = sc.nextLine();
 
 		projeto = pdi.getProjetoByName(nome);
 
@@ -73,6 +79,9 @@ public class InserirNoBanco {
 		faseProjeto.setDesc_requisito(req);
 		faseProjeto.setDesc_nivel_requisito(nreq);
 		faseProjeto.setProjeto(projeto);
+		faseProjeto.setDescricao(desc);
+		faseProjeto.setResposta(resposta);
+		faseProjeto.setMensagem(mensagem);
 
 		fpdi.save(faseProjeto);
 
