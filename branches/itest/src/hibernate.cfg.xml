@@ -8,6 +8,9 @@
 		<property name="hibernate.connection.username">postgres</property>
 		<property name="hibernate.connection.password">postgres</property>
 		
+		<!--<property name="show_sql">true</property>
+		<property name="hbm2ddl.auto">update</property>
+		-->
 		<mapping class="br.ufc.si.itest.model.Artefato"/>
 		<mapping class="br.ufc.si.itest.model.ArtefatoProjeto"/>
 		<mapping class="br.ufc.si.itest.model.CriterioAceitacao"/>
@@ -23,6 +26,7 @@
 		<mapping class="br.ufc.si.itest.model.TipoTesteProjeto"/>
 		<mapping class="br.ufc.si.itest.model.Usuario"/>
 		<mapping class="br.ufc.si.itest.model.FaseProjeto"/>
+		
 				
 	</session-factory>
 </hibernate-configuration>

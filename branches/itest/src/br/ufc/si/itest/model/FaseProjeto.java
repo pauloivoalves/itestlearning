@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
@@ -29,7 +29,7 @@ public class FaseProjeto implements Serializable {
 	@Column(name = "id", nullable = false)
 	private Integer id;
 
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "id_projeto_fk")
 	@Fetch(FetchMode.JOIN)
 	@Cascade(CascadeType.SAVE_UPDATE)
@@ -49,6 +49,39 @@ public class FaseProjeto implements Serializable {
 
 	@Column(name = "desc_nivel_requisito")
 	private String desc_nivel_requisito;
+
+	@Column(name = "descricao_alternativa", columnDefinition = "TEXT")
+	private String descricao;
+
+	@Column(name = "resposta")
+	private boolean resposta;
+
+	@Column(name = "mensagem")
+	private String mensagem;
+
+	public String getMensagem() {
+		return mensagem;
+	}
+
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public boolean isResposta() {
+		return resposta;
+	}
+
+	public void setResposta(boolean resposta) {
+		this.resposta = resposta;
+	}
 
 	public Integer getId() {
 		return id;
