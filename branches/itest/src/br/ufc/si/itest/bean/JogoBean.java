@@ -18,6 +18,7 @@ import br.ufc.si.itest.dao.impl.ProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
 import br.ufc.si.itest.model.ArtefatoProjeto;
 import br.ufc.si.itest.model.CriterioAceitacao;
+import br.ufc.si.itest.model.FaseProjeto;
 import br.ufc.si.itest.model.FerramentaProjeto;
 import br.ufc.si.itest.model.ItemTeste;
 import br.ufc.si.itest.model.Jogo;
@@ -43,6 +44,7 @@ public class JogoBean {
 	private ProjetoDao projetoDao;
 
 	/* Beans dependentes */
+	private FaseProjetoBean faseProjetoBean;
 	private ProjetoBean projetoBean;
 	private NivelDificuldadeBean nivelDificuldadeBean;
 	private ItemTesteBean itemTesteBean;
@@ -66,6 +68,7 @@ public class JogoBean {
 		jogo = new Jogo();
 		jogo.setPontuacao(0);
 
+		faseProjetoBean = new FaseProjetoBean();
 		projetoBean = new ProjetoBean();
 		nivelDificuldadeBean = new NivelDificuldadeBean();
 		itemTesteBean = new ItemTesteBean();
@@ -117,8 +120,21 @@ public class JogoBean {
 		carregarCriteriosAceitacao();
 		carregarArtefatos();
 		carregarFerramentas();
+		carregarFaseProjeto();
 
 		return "descricaoProjeto";
+	}
+
+	public void carregarFaseProjeto() {
+		faseProjetoBean.setFaseProjeto(faseProjetoBean.getFaseProjetoDao()
+				.getFaseProjetoByIdProjeto(projetoBean.getProjeto().getId()));
+		faseProjetoBean.setFaseProjetosProjeto(faseProjetoBean
+				.getFaseProjetoDao().getFaseProjetoAlternativasByIdProjeto(
+						projetoBean.getProjeto().getId()));
+		for (FaseProjeto fp : faseProjetoBean.getFaseProjetosProjeto()) {
+			faseProjetoBean.getFasesProjeto().add(
+					new SelectItem(fp.getId(), fp.getDescricao()));
+		}
 	}
 
 	public void carregarItensTeste() {
@@ -188,6 +204,14 @@ public class JogoBean {
 					new SelectItem(fp.getPk().getFerramenta().getId(), fp
 							.getPk().getFerramenta().getNome()));
 		}
+	}
+
+	public String validarFaseProjeto() {
+		if (!faseProjetoBean.getRespondido()) {
+			jogo.setPontuacao(jogo.getPontuacao()
+					+ faseProjetoBean.validaResposta());
+		}
+		return "tiposTeste";
 	}
 
 	public String validarItensTeste() {
@@ -267,8 +291,17 @@ public class JogoBean {
 	}
 
 	/* Getters e Setters */
+
 	public ProjetoBean getProjetoBean() {
 		return projetoBean;
+	}
+
+	public FaseProjetoBean getFaseProjetoBean() {
+		return faseProjetoBean;
+	}
+
+	public void setFaseProjetoBean(FaseProjetoBean faseProjetoBean) {
+		this.faseProjetoBean = faseProjetoBean;
 	}
 
 	public void setProjetoBean(ProjetoBean projetoBean) {

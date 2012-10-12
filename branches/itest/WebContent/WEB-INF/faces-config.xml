@@ -52,6 +52,11 @@
 		<managed-bean-class>br.ufc.si.itest.bean.NivelDificuldadeBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>faseProjetoBean</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.FaseProjetoBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
     
     <!-- Navigation Rules -->
     <navigation-rule>
