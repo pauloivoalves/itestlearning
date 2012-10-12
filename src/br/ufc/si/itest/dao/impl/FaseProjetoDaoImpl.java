@@ -63,4 +63,36 @@ public class FaseProjetoDaoImpl implements FaseProjetoDao {
 
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<FaseProjeto> getFaseProjetoAlternativasByIdProjeto(
+			Integer idProjeto) {
+		Session session = HibernateUtil.getSession();
+		String query = "from FaseProjeto where projeto = :idProjeto";
+		try {
+			return session.createQuery(query)
+					.setInteger("idProjeto", idProjeto).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	}
+
+	@Override
+	public FaseProjeto getFaseProjetoByIdProjeto(Integer idProjeto) {
+		Session session = HibernateUtil.getSession();
+		String query = "from FaseProjeto where projeto = :idProjeto";
+		try {
+			return (FaseProjeto) session.createQuery(query)
+					.setInteger("idProjeto", idProjeto).uniqueResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	}
+
 }

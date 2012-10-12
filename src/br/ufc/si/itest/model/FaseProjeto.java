@@ -35,28 +35,28 @@ public class FaseProjeto implements Serializable {
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private Projeto projeto;
 
-	@Column(name = "desc_fluxo_principal")
+	@Column(name = "desc_fluxo_principal", columnDefinition = "TEXT")
 	private String desc_fluxo_principal;
 
-	@Column(name = "desc_fluxo_secundario")
+	@Column(name = "desc_fluxo_secundario", columnDefinition = "TEXT")
 	private String desc_fluxo_secundario;
 
-	@Column(name = "desc_fluxo_excecao")
+	@Column(name = "desc_fluxo_excecao", columnDefinition = "TEXT")
 	private String desc_fluxo_excecao;
 
-	@Column(name = "desc_requisito")
+	@Column(name = "desc_requisito", columnDefinition = "TEXT")
 	private String desc_requisito;
 
-	@Column(name = "desc_nivel_requisito")
+	@Column(name = "desc_nivel_requisito", columnDefinition = "TEXT")
 	private String desc_nivel_requisito;
 
 	@Column(name = "descricao_alternativa", columnDefinition = "TEXT")
 	private String descricao;
 
 	@Column(name = "resposta")
-	private boolean resposta;
+	private Boolean resposta;
 
-	@Column(name = "mensagem")
+	@Column(name = "mensagem", columnDefinition = "TEXT")
 	private String mensagem;
 
 	public String getMensagem() {
@@ -75,11 +75,11 @@ public class FaseProjeto implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public boolean isResposta() {
+	public boolean getResposta() {
 		return resposta;
 	}
 
-	public void setResposta(boolean resposta) {
+	public void setResposta(Boolean resposta) {
 		this.resposta = resposta;
 	}
 
