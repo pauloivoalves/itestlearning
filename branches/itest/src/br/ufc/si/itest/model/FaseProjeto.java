@@ -92,6 +92,7 @@ public class FaseProjeto implements Serializable {
 	}
 
 	public String getDesc_fluxo_principal() {
+		
 		return desc_fluxo_principal;
 	}
 

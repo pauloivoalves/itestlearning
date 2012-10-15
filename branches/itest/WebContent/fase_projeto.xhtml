@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>iTest Learning :: Fase do Projeto</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+</h:head>
+<body>
+	<f:view>
+		<h:form>
+			<div id="slider">
+				<div id="templatemo_wrapper">
+					<div id="header">
+						<h1>
+							<a href="index.jsf">iTest Learning</a>
+						</h1>
+					</div>
+
+
+
+					<div id="content">
+						<div id="buttonsMenu">
+							<p:commandLink title="Escopo do Projeto"
+								oncomplete="dialogEscopo.show()" update="displayEscopo">
+								<p:graphicImage value="images/note.png" width="70" height="70" />
+							</p:commandLink>
+						</div>
+						<h2>
+							Fase de Projeto do Projeto -
+							<h:outputText value="#{jogoBean.projetoBean.projeto.nome}" />
+						</h2>
+						<div id="fase">
+							<h3>
+								<span
+									style="color: green; font-weight: bold; text-decoration: underline;">Fluxo
+									Principal: </span> <br />
+								<h:outputText
+									value="#{jogoBean.faseProjetoBean.faseProjeto.desc_fluxo_principal}"></h:outputText>
+							</h3>
+
+							<h3>
+								<span
+									style="color: green; font-weight: bold; text-decoration: underline;">Fluxo
+									Alternativo: </span>
+								<h:outputText
+									value="#{jogoBean.faseProjetoBean.faseProjeto.desc_fluxo_secundario}"></h:outputText>
+							</h3>
+
+							<h3>
+								<span
+									style="color: green; font-weight: bold; text-decoration: underline;">Fluxo
+									Alternativo: </span>
+								<h:outputText
+									value="#{jogoBean.faseProjetoBean.faseProjeto.desc_fluxo_excecao}"></h:outputText>
+							</h3>
+						</div>
+						<div id="desafio">
+							
+							<p:selectManyCheckbox id="alternativas" layout="pageDirection"
+								styleClass="alternativas"
+								value="#{jogoBean.faseProjetoBean.alternativasSelecionadas}"
+								disabled="#{jogoBean.faseProjetoBean.respondido}">
+								<f:selectItems var="fase"
+									value="#{jogoBean.faseProjetoBean.fasesProjeto}" />
+							</p:selectManyCheckbox>
+						</div>
+
+						<p:commandLink title="Voltar" style="float: left;"
+							action="escolhaProjeto" ajax="false">
+							<p:graphicImage value="images/return.png" styleClass="image_left" />
+						</p:commandLink>
+
+
+
+						<p:commandLink title="Avançar" style="float: right;"
+							action="itensTeste" ajax="false">
+							<p:graphicImage value="images/go.png" styleClass="image_right" />
+						</p:commandLink>
+
+						<p:dialog header="Escopo do Projeto" id="dialogEscopo"
+							widgetVar="dialogEscopo">
+							<h:panelGrid id="displayEscopo">
+								<h4>#{jogoBean.projetoBean.projeto.nome}</h4>
+								<h:outputText value="#{jogoBean.projetoBean.projeto.descricao}" />
+							</h:panelGrid>
+						</p:dialog>
+
+					</div>
+					<div id="footer">
+
+						<h:outputLabel>© 2012 Virginia Farias. Todos os direitos reservados.</h:outputLabel>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</f:view>
+</body>
+</html>

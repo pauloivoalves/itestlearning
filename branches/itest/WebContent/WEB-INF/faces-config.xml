@@ -142,6 +142,16 @@
 			<from-outcome>resultado</from-outcome>
 			<to-view-id>/resultado.xhtml</to-view-id>
 		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>objetivoFaseProjeto</from-outcome>
+			<to-view-id>/objetivo_fase_projeto.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>faseProjeto</from-outcome>
+			<to-view-id>/fase_projeto.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 
