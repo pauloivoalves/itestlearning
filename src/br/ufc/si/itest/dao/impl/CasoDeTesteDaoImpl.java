@@ -5,69 +5,66 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import br.ufc.si.itest.dao.FaseProjetoDao;
-import br.ufc.si.itest.model.FaseProjeto;
+import br.ufc.si.itest.dao.CasoDeTesteDao;
+import br.ufc.si.itest.model.CasoDeTeste;
 import br.ufc.si.itest.utils.HibernateUtil;
 
-public class FaseProjetoDaoImpl implements FaseProjetoDao {
+public class CasoDeTesteDaoImpl implements CasoDeTesteDao {
 
 	@Override
-	public void save(FaseProjeto faseProjeto) {
-		// TODO Auto-generated method stub
+	public void save(CasoDeTeste casoDeTeste) {
 
 		Session session = HibernateUtil.getSession();
 		Transaction t = session.beginTransaction();
-		session.save(faseProjeto);
+		session.save(casoDeTeste);
 		t.commit();
 		session.close();
+
+		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void update(FaseProjeto faseProjeto) {
-		// TODO Auto-generated method stub
+	public void remove(CasoDeTeste casoDeTeste) {
 
 		Session session = HibernateUtil.getSession();
 		Transaction t = session.beginTransaction();
-		session.update(faseProjeto);
+		session.delete(casoDeTeste);
 		t.commit();
 		session.close();
-
 	}
 
 	@Override
-	public void remove(FaseProjeto faseProjeto) {
-		// TODO Auto-generated method stub
+	public void update(CasoDeTeste casoDeTeste) {
 
 		Session session = HibernateUtil.getSession();
 		Transaction t = session.beginTransaction();
-		session.delete(faseProjeto);
+		session.update(casoDeTeste);
 		t.commit();
 		session.close();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<FaseProjeto> list() {
-		// TODO Auto-generated method stub
+	public List<CasoDeTeste> list() {
 
 		Session session = HibernateUtil.getSession();
 		try {
-			return session.createCriteria(FaseProjeto.class).list();
+			return session.createCriteria(CasoDeTeste.class).list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return null;
 
+		return null;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<FaseProjeto> getFaseProjetoByIdProjeto(Integer idProjeto) {
+	public List<CasoDeTeste> getCasoDeTesteByIdProjeto(Integer idProjeto) {
 		Session session = HibernateUtil.getSession();
-		String query = "from FaseProjeto where projeto = :idProjeto";
+		String query = "from CasoDeTeste where projeto = :idProjeto";
 		try {
 			return session.createQuery(query)
 					.setInteger("idProjeto", idProjeto).list();
@@ -78,5 +75,4 @@ public class FaseProjetoDaoImpl implements FaseProjetoDao {
 		}
 		return null;
 	}
-
 }

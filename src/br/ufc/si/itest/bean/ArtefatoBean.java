@@ -7,7 +7,7 @@ import javax.faces.model.SelectItem;
 
 import br.ufc.si.itest.dao.ArtefatoDao;
 import br.ufc.si.itest.dao.impl.ArtefatoDaoImpl;
-import br.ufc.si.itest.model.ArtefatoProjeto;
+import br.ufc.si.itest.model.caso;
 import br.ufc.si.itest.utils.Utils;
 
 public class ArtefatoBean {
@@ -16,29 +16,29 @@ public class ArtefatoBean {
 	
 	/* Propriedades auxiliares */
 	private List<SelectItem> artefatos;
-	private List<ArtefatoProjeto> artefatosProjeto;
+	private List<caso> artefatosProjeto;
 	private List<String> artefatosSelecionados;
-	private List<ArtefatoProjeto> respostas;
-	private List<ArtefatoProjeto> respostasCorretas;
-	private List<ArtefatoProjeto> respostasErradas;
+	private List<caso> respostas;
+	private List<caso> respostasCorretas;
+	private List<caso> respostasErradas;
 	private Boolean respondido;
 	
 	/* Construtor */
 	public ArtefatoBean() {
 		artefatoDao = new ArtefatoDaoImpl();
 		artefatos = new ArrayList<SelectItem>();
-		artefatosProjeto = new ArrayList<ArtefatoProjeto>();
+		artefatosProjeto = new ArrayList<caso>();
 		artefatosSelecionados = new ArrayList<String>();
-		respostas = new ArrayList<ArtefatoProjeto>();
-		respostasCorretas = new ArrayList<ArtefatoProjeto>();
-		respostasErradas = new ArrayList<ArtefatoProjeto>();
+		respostas = new ArrayList<caso>();
+		respostasCorretas = new ArrayList<caso>();
+		respostasErradas = new ArrayList<caso>();
 		respondido = false;
 	}
 	
 	/* Métodos Auxiliares */
 	public Integer validaResposta() {
 		Integer pontuacao = 0;
-		for (ArtefatoProjeto ap : artefatosProjeto) {
+		for (caso ap : artefatosProjeto) {
 			if (ap.getResposta()) {
 				respostasCorretas.add(ap);
 			}
@@ -47,7 +47,7 @@ public class ArtefatoBean {
 			}
 		}
 		for (String i : artefatosSelecionados) {
-			ArtefatoProjeto ap = getArtefatoById(new Integer(i));
+			caso ap = getArtefatoById(new Integer(i));
 			respostas.add(ap);
 			if(respostasCorretas.contains(ap)) {
 				pontuacao = pontuacao + Utils.PONTO_POSITIVO;
@@ -56,7 +56,7 @@ public class ArtefatoBean {
 				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
 			}
 		}
-		for(ArtefatoProjeto ap : respostasCorretas) {
+		for(caso ap : respostasCorretas) {
 			if(!respostas.contains(ap)) {
 				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
 			}
@@ -66,8 +66,8 @@ public class ArtefatoBean {
 		return pontuacao;
 	}
 
-	public ArtefatoProjeto getArtefatoById(Integer id) {
-		for (ArtefatoProjeto ap : artefatosProjeto) {
+	public caso getArtefatoById(Integer id) {
+		for (caso ap : artefatosProjeto) {
 			if (ap.getPk().getArtefato().getId().equals(id)) {
 				return ap;
 			}
@@ -92,11 +92,11 @@ public class ArtefatoBean {
 		this.artefatos = artefatos;
 	}
 
-	public List<ArtefatoProjeto> getArtefatosProjeto() {
+	public List<caso> getArtefatosProjeto() {
 		return artefatosProjeto;
 	}
 
-	public void setArtefatosProjeto(List<ArtefatoProjeto> artefatosProjeto) {
+	public void setArtefatosProjeto(List<caso> artefatosProjeto) {
 		this.artefatosProjeto = artefatosProjeto;
 	}
 
@@ -108,19 +108,19 @@ public class ArtefatoBean {
 		this.artefatosSelecionados = artefatosSelecionados;
 	}
 
-	public List<ArtefatoProjeto> getRespostas() {
+	public List<caso> getRespostas() {
 		return respostas;
 	}
 
-	public void setRespostas(List<ArtefatoProjeto> respostas) {
+	public void setRespostas(List<caso> respostas) {
 		this.respostas = respostas;
 	}
 
-	public List<ArtefatoProjeto> getRespostasCorretas() {
+	public List<caso> getRespostasCorretas() {
 		return respostasCorretas;
 	}
 
-	public void setRespostasCorretas(List<ArtefatoProjeto> respostasCorretas) {
+	public void setRespostasCorretas(List<caso> respostasCorretas) {
 		this.respostasCorretas = respostasCorretas;
 	}
 
@@ -132,11 +132,11 @@ public class ArtefatoBean {
 		this.respondido = respondido;
 	}
 
-	public List<ArtefatoProjeto> getRespostasErradas() {
+	public List<caso> getRespostasErradas() {
 		return respostasErradas;
 	}
 
-	public void setRespostasErradas(List<ArtefatoProjeto> respostasErradas) {
+	public void setRespostasErradas(List<caso> respostasErradas) {
 		this.respostasErradas = respostasErradas;
 	}
 

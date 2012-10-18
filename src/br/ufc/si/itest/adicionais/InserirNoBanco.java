@@ -18,8 +18,6 @@ import br.ufc.si.itest.dao.impl.TipoTesteDaoImpl;
 import br.ufc.si.itest.dao.impl.TipoTesteProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
 import br.ufc.si.itest.model.Artefato;
-import br.ufc.si.itest.model.ArtefatoProjeto;
-import br.ufc.si.itest.model.ArtefatoProjeto.ArtefatoProjetoPk;
 import br.ufc.si.itest.model.CriterioAceitacao;
 import br.ufc.si.itest.model.FaseProjeto;
 import br.ufc.si.itest.model.Ferramenta;
@@ -35,6 +33,8 @@ import br.ufc.si.itest.model.TipoTeste;
 import br.ufc.si.itest.model.TipoTesteProjeto;
 import br.ufc.si.itest.model.TipoTesteProjeto.TipoTesteProjetoPk;
 import br.ufc.si.itest.model.Usuario;
+import br.ufc.si.itest.model.caso;
+import br.ufc.si.itest.model.caso.ArtefatoProjetoPk;
 
 // @author Felipe Freitas
 
@@ -79,9 +79,9 @@ public class InserirNoBanco {
 		faseProjeto.setDesc_requisito(req);
 		faseProjeto.setDesc_nivel_requisito(nreq);
 		faseProjeto.setProjeto(projeto);
-		faseProjeto.setDescricao(desc);
-		faseProjeto.setResposta(resposta);
-		faseProjeto.setMensagem(mensagem);
+		// faseProjeto.setDescricao(desc);
+		// faseProjeto.setResposta(resposta);
+		// faseProjeto.setMensagem(mensagem);
 
 		fpdi.save(faseProjeto);
 
@@ -249,7 +249,7 @@ public class InserirNoBanco {
 
 	public void inserirArtefatoProjeto() {
 		Scanner sc = new Scanner(System.in);
-		ArtefatoProjeto artefatoProjeto = new ArtefatoProjeto();
+		caso artefatoProjeto = new caso();
 		ArtefatoProjetoPk artefatoProjetoPK = new ArtefatoProjetoPk();
 		Projeto proj = new Projeto();
 		ProjetoDaoImpl pdi = new ProjetoDaoImpl();

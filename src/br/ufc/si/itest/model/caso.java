@@ -18,7 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="itest.artefato_projeto")
-public class ArtefatoProjeto implements Serializable {
+public class caso implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
