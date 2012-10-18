@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -35,6 +36,15 @@ public class FaseProjeto implements Serializable {
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private Projeto projeto;
 
+	@ManyToOne
+	@JoinColumn(name = "id_caso_de_uso_fk")
+	@Fetch(FetchMode.JOIN)
+	@Cascade(CascadeType.SAVE_UPDATE)
+	private CasoDeTeste idCasoDeUso;
+
+	@Column(name = "caso_de_uso")
+	private String casoDeUso;
+
 	@Column(name = "desc_fluxo_principal", columnDefinition = "TEXT")
 	private String desc_fluxo_principal;
 
@@ -50,37 +60,20 @@ public class FaseProjeto implements Serializable {
 	@Column(name = "desc_nivel_requisito", columnDefinition = "TEXT")
 	private String desc_nivel_requisito;
 
-	@Column(name = "descricao_alternativa", columnDefinition = "TEXT")
-	private String descricao;
-
-	@Column(name = "resposta")
-	private Boolean resposta;
-
-	@Column(name = "mensagem", columnDefinition = "TEXT")
-	private String mensagem;
-
-	public String getMensagem() {
-		return mensagem;
+	public CasoDeTeste getIdCasoDeUso() {
+		return idCasoDeUso;
 	}
 
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
+	public void setIdCasoDeUso(CasoDeTeste idCasoDeUso) {
+		this.idCasoDeUso = idCasoDeUso;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getCasoDeUso() {
+		return casoDeUso;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public boolean getResposta() {
-		return resposta;
-	}
-
-	public void setResposta(Boolean resposta) {
-		this.resposta = resposta;
+	public void setCasoDeUso(String casoDeUso) {
+		this.casoDeUso = casoDeUso;
 	}
 
 	public Integer getId() {

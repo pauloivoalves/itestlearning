@@ -16,9 +16,8 @@ import br.ufc.si.itest.dao.UsuarioDao;
 import br.ufc.si.itest.dao.impl.JogoDaoImpl;
 import br.ufc.si.itest.dao.impl.ProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
-import br.ufc.si.itest.model.ArtefatoProjeto;
+import br.ufc.si.itest.model.CasoDeTeste;
 import br.ufc.si.itest.model.CriterioAceitacao;
-import br.ufc.si.itest.model.FaseProjeto;
 import br.ufc.si.itest.model.FerramentaProjeto;
 import br.ufc.si.itest.model.ItemTeste;
 import br.ufc.si.itest.model.Jogo;
@@ -28,6 +27,7 @@ import br.ufc.si.itest.model.NivelTesteProjeto;
 import br.ufc.si.itest.model.Projeto;
 import br.ufc.si.itest.model.TipoTesteProjeto;
 import br.ufc.si.itest.model.Usuario;
+import br.ufc.si.itest.model.caso;
 
 /**
  * @author Virginia
@@ -44,6 +44,7 @@ public class JogoBean {
 	private ProjetoDao projetoDao;
 
 	/* Beans dependentes */
+	private CasoDeTesteBean casodeTesteBean;
 	private FaseProjetoBean faseProjetoBean;
 	private ProjetoBean projetoBean;
 	private NivelDificuldadeBean nivelDificuldadeBean;
@@ -68,6 +69,7 @@ public class JogoBean {
 		jogo = new Jogo();
 		jogo.setPontuacao(0);
 
+		casodeTesteBean = new CasoDeTesteBean();
 		faseProjetoBean = new FaseProjetoBean();
 		projetoBean = new ProjetoBean();
 		nivelDificuldadeBean = new NivelDificuldadeBean();
@@ -121,20 +123,27 @@ public class JogoBean {
 		carregarArtefatos();
 		carregarFerramentas();
 		carregarFaseProjeto();
+		carregarCasoDeTeste();
 
 		return "descricaoProjeto";
 	}
 
-	public void carregarFaseProjeto() {
-		faseProjetoBean.setFaseProjeto(faseProjetoBean.getFaseProjetoDao()
-				.getFaseProjetoByIdProjeto(projetoBean.getProjeto().getId()));
-		faseProjetoBean.setFaseProjetosProjeto(faseProjetoBean
-				.getFaseProjetoDao().getFaseProjetoAlternativasByIdProjeto(
+	public void carregarCasoDeTeste() {
+		casodeTesteBean.setCasosDeTesteProjeto(casodeTesteBean
+				.getCasoDeTesteDao().getCasoDeTesteByIdProjeto(
 						projetoBean.getProjeto().getId()));
-		for (FaseProjeto fp : faseProjetoBean.getFaseProjetosProjeto()) {
-			faseProjetoBean.getFasesProjeto().add(
-					new SelectItem(fp.getId(), fp.getDescricao()));
+		casodeTesteBean.setCasosDeTeste(new ArrayList<SelectItem>());
+		for (CasoDeTeste cdt : casodeTesteBean.getCasosDeTesteProjeto()) {
+			casodeTesteBean.getCasosDeTeste().add(
+					new SelectItem(cdt.getId(), cdt.getDescricao()));
 		}
+
+	}
+
+	public void carregarFaseProjeto() {
+		faseProjetoBean.setFaseProjetosProjeto(faseProjetoBean
+				.getFaseProjetoDao().getFaseProjetoByIdProjeto(
+						projetoBean.getProjeto().getId()));
 	}
 
 	public void carregarItensTeste() {
@@ -188,7 +197,7 @@ public class JogoBean {
 		artefatoBean.setArtefatosProjeto(artefatoBean.getArtefatoDao()
 				.getArtefatosByProjeto(projetoBean.getProjeto().getId()));
 		artefatoBean.setArtefatos(new ArrayList<SelectItem>());
-		for (ArtefatoProjeto ap : artefatoBean.getArtefatosProjeto()) {
+		for (caso ap : artefatoBean.getArtefatosProjeto()) {
 			artefatoBean.getArtefatos().add(
 					new SelectItem(ap.getPk().getArtefato().getId(), ap.getPk()
 							.getArtefato().getNome()));
@@ -206,12 +215,12 @@ public class JogoBean {
 		}
 	}
 
-	public String validarFaseProjeto() {
-		if (!faseProjetoBean.getRespondido()) {
+	public String validarCasodeTeste() {
+		if (!casodeTesteBean.getRespondido()) {
 			jogo.setPontuacao(jogo.getPontuacao()
-					+ faseProjetoBean.validaResposta());
+					+ casodeTesteBean.validaResposta());
 		}
-		return "tiposTeste";
+		return "tiposTeste"; // defina para qual pagina vai
 	}
 
 	public String validarItensTeste() {

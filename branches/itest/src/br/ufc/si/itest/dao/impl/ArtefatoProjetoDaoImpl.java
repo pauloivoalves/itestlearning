@@ -10,7 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import br.ufc.si.itest.dao.ArtefatoProjetoDao;
-import br.ufc.si.itest.model.ArtefatoProjeto;
+import br.ufc.si.itest.model.caso;
 import br.ufc.si.itest.utils.HibernateUtil;
 
 /**
@@ -19,7 +19,7 @@ import br.ufc.si.itest.utils.HibernateUtil;
  */
 public class ArtefatoProjetoDaoImpl implements ArtefatoProjetoDao {
 
-	public void save(ArtefatoProjeto artefatoProjeto) {
+	public void save(caso artefatoProjeto) {
 		Session session = HibernateUtil.getSession();
 		Transaction t = session.beginTransaction();
 		session.save(artefatoProjeto);
@@ -27,7 +27,7 @@ public class ArtefatoProjetoDaoImpl implements ArtefatoProjetoDao {
 		session.close();
 	}
 
-	public void remove(ArtefatoProjeto artefatoProjeto) {
+	public void remove(caso artefatoProjeto) {
 		Session session = HibernateUtil.getSession();
 		Transaction t = session.beginTransaction();
 		session.delete(artefatoProjeto);
@@ -35,7 +35,7 @@ public class ArtefatoProjetoDaoImpl implements ArtefatoProjetoDao {
 		session.close();
 	}
 
-	public void update(ArtefatoProjeto artefatoProjeto) {
+	public void update(caso artefatoProjeto) {
 		Session session = HibernateUtil.getSession();
 		Transaction t = session.beginTransaction();
 		session.update(artefatoProjeto);
@@ -44,10 +44,10 @@ public class ArtefatoProjetoDaoImpl implements ArtefatoProjetoDao {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<ArtefatoProjeto> list() {
+	public List<caso> list() {
 		Session session = HibernateUtil.getSession();
 		try {
-			return session.createCriteria(ArtefatoProjeto.class).list();
+			return session.createCriteria(caso.class).list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -56,7 +56,7 @@ public class ArtefatoProjetoDaoImpl implements ArtefatoProjetoDao {
 		return null;
 	}// fim do m�todo
 
-	public List<ArtefatoProjeto> getArtefatProjetoByIdProjeto(int id_projeto) {
+	public List<caso> getArtefatProjetoByIdProjeto(int id_projeto) {
 		Session session = HibernateUtil.getSession();
 		String query = "from ArtefatoProjeto where pk.projeto = :idProjeto";
 		try {
@@ -70,8 +70,8 @@ public class ArtefatoProjetoDaoImpl implements ArtefatoProjetoDao {
 		return null;
 	}// fim do m�todo
 
-	public ArtefatoProjeto getArtefatProjetoByIdProjetoIdArtefato(
-			int id_projeto, int id_artefato) {
+	public caso getArtefatProjetoByIdProjetoIdArtefato(int id_projeto,
+			int id_artefato) {
 		Session session = HibernateUtil.getSession();
 		String query = "from ArtefatoProjeto where pk.projeto = :idProjeto and pk.artefato = :idArtefato";
 
@@ -79,7 +79,7 @@ public class ArtefatoProjetoDaoImpl implements ArtefatoProjetoDao {
 			Query consulta = session.createQuery(query);
 			consulta.setInteger("idProjeto", id_projeto);
 			consulta.setInteger("idArtefato", id_artefato);
-			return (ArtefatoProjeto) consulta.uniqueResult();
+			return (caso) consulta.uniqueResult();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -88,12 +88,11 @@ public class ArtefatoProjetoDaoImpl implements ArtefatoProjetoDao {
 		return null;
 	}// fim do m�todo
 
-
-	public ArtefatoProjeto getArtefatoProjetoById(Integer pk) {
+	public caso getArtefatoProjetoById(Integer pk) {
 		Session session = HibernateUtil.getSession();
 		String query = "from ArtefatoProjeto where id_projeto = :pk";
 		try {
-			return (ArtefatoProjeto) session.createQuery(query).setInteger("pk", pk)
+			return (caso) session.createQuery(query).setInteger("pk", pk)
 					.uniqueResult();
 		} catch (Exception e) {
 			e.printStackTrace();

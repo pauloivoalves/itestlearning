@@ -12,7 +12,7 @@ import org.hibernate.criterion.Restrictions;
 
 import br.ufc.si.itest.dao.ArtefatoDao;
 import br.ufc.si.itest.model.Artefato;
-import br.ufc.si.itest.model.ArtefatoProjeto;
+import br.ufc.si.itest.model.caso;
 import br.ufc.si.itest.utils.HibernateUtil;
 
 /**
@@ -60,7 +60,7 @@ public class ArtefatoDaoImpl implements ArtefatoDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<ArtefatoProjeto> getArtefatosByProjeto(Integer idProjeto) {
+	public List<caso> getArtefatosByProjeto(Integer idProjeto) {
 		Session session = HibernateUtil.getSession();
 		String query = "from ArtefatoProjeto where pk.projeto = :idProjeto";
 		try {

@@ -14,9 +14,6 @@ public interface FaseProjetoDao {
 
 	public List<FaseProjeto> list();
 
-	public FaseProjeto getFaseProjetoByIdProjeto(Integer idProjeto);
-
-	public List<FaseProjeto> getFaseProjetoAlternativasByIdProjeto(
-			Integer idProjeto);
+	public List<FaseProjeto> getFaseProjetoByIdProjeto(Integer idProjeto);
 
 }// fim da interface

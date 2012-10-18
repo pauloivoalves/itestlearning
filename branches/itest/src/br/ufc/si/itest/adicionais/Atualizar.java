@@ -31,7 +31,7 @@ import br.ufc.si.itest.dao.impl.TipoTesteDaoImpl;
 import br.ufc.si.itest.dao.impl.TipoTesteProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
 import br.ufc.si.itest.model.Artefato;
-import br.ufc.si.itest.model.ArtefatoProjeto;
+import br.ufc.si.itest.model.caso;
 import br.ufc.si.itest.model.CriterioAceitacao;
 import br.ufc.si.itest.model.Ferramenta;
 import br.ufc.si.itest.model.FerramentaProjeto;
@@ -385,11 +385,11 @@ public class Atualizar {
 
 			// buscar todos os artefatos pertecentes aquele projeto
 			ArtefatoProjetoDao atfpd = new ArtefatoProjetoDaoImpl();
-			List<ArtefatoProjeto> lista = atfpd
+			List<caso> lista = atfpd
 					.getArtefatProjetoByIdProjeto(projeto.getId());
 
 			if (lista != null) {
-				for (ArtefatoProjeto elem : lista) {
+				for (caso elem : lista) {
 					System.out.println("id_artefato: "
 							+ elem.getPk().getArtefato().getId()
 							+ "id_projeto: "
@@ -403,7 +403,7 @@ public class Atualizar {
 				System.out.println("digite o id do projeto");
 				int proj = input.nextInt();
 
-				ArtefatoProjeto ap = atfpd
+				caso ap = atfpd
 						.getArtefatProjetoByIdProjetoIdArtefato(proj, artf);
 
 				// verifica se ele existe
