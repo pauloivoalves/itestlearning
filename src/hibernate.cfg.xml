@@ -25,7 +25,7 @@
 		<mapping class="br.ufc.si.itest.model.TipoTeste"/>
 		<mapping class="br.ufc.si.itest.model.TipoTesteProjeto"/>
 		<mapping class="br.ufc.si.itest.model.Usuario"/>
-		<mapping class="br.ufc.si.itest.model.FaseProjeto"/>
+		<mapping class="br.ufc.si.itest.model.CasoDeUso"/>
 		<mapping class="br.ufc.si.itest.model.CasoDeTeste"/>
 				
 	</session-factory>

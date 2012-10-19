@@ -62,12 +62,12 @@ public class CasoDeTesteDaoImpl implements CasoDeTesteDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<CasoDeTeste> getCasoDeTesteByIdProjeto(Integer idProjeto) {
+	public List<CasoDeTeste> getCasoDeTesteByIdCasoDeUso(Integer idCasoDeUso) {
 		Session session = HibernateUtil.getSession();
-		String query = "from CasoDeTeste where projeto = :idProjeto";
+		String query = "from CasoDeTeste where casoDeUso = :idCasoDeUso";
 		try {
 			return session.createQuery(query)
-					.setInteger("idProjeto", idProjeto).list();
+					.setInteger("idCasoDeUso", idCasoDeUso).list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

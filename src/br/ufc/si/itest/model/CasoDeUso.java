@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
@@ -20,8 +19,8 @@ import org.hibernate.annotations.FetchMode;
 //@author Felipe Freitas
 
 @Entity
-@Table(name = "itest.fase_projeto")
-public class FaseProjeto implements Serializable {
+@Table(name = "itest.caso_de_uso")
+public class CasoDeUso implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -30,20 +29,14 @@ public class FaseProjeto implements Serializable {
 	@Column(name = "id", nullable = false)
 	private Integer id;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "id_projeto_fk")
 	@Fetch(FetchMode.JOIN)
 	@Cascade(CascadeType.SAVE_UPDATE)
 	private Projeto projeto;
 
-	@ManyToOne
-	@JoinColumn(name = "id_caso_de_uso_fk")
-	@Fetch(FetchMode.JOIN)
-	@Cascade(CascadeType.SAVE_UPDATE)
-	private CasoDeTeste idCasoDeUso;
-
-	@Column(name = "caso_de_uso")
-	private String casoDeUso;
+	@Column(name = "nome_caso_de_uso")
+	private String nomeCasoDeUso;
 
 	@Column(name = "desc_fluxo_principal", columnDefinition = "TEXT")
 	private String desc_fluxo_principal;
@@ -51,29 +44,18 @@ public class FaseProjeto implements Serializable {
 	@Column(name = "desc_fluxo_secundario", columnDefinition = "TEXT")
 	private String desc_fluxo_secundario;
 
-	@Column(name = "desc_fluxo_excecao", columnDefinition = "TEXT")
-	private String desc_fluxo_excecao;
-
 	@Column(name = "desc_requisito", columnDefinition = "TEXT")
 	private String desc_requisito;
 
 	@Column(name = "desc_nivel_requisito", columnDefinition = "TEXT")
 	private String desc_nivel_requisito;
 
-	public CasoDeTeste getIdCasoDeUso() {
-		return idCasoDeUso;
+	public String getNomeCasoDeUso() {
+		return nomeCasoDeUso;
 	}
 
-	public void setIdCasoDeUso(CasoDeTeste idCasoDeUso) {
-		this.idCasoDeUso = idCasoDeUso;
-	}
-
-	public String getCasoDeUso() {
-		return casoDeUso;
-	}
-
-	public void setCasoDeUso(String casoDeUso) {
-		this.casoDeUso = casoDeUso;
+	public void setNomeCasoDeUso(String nomeCasoDeUso) {
+		this.nomeCasoDeUso = nomeCasoDeUso;
 	}
 
 	public Integer getId() {
@@ -85,7 +67,7 @@ public class FaseProjeto implements Serializable {
 	}
 
 	public String getDesc_fluxo_principal() {
-		
+
 		return desc_fluxo_principal;
 	}
 
@@ -99,14 +81,6 @@ public class FaseProjeto implements Serializable {
 
 	public void setDesc_fluxo_secundario(String desc_fluxo_secundario) {
 		this.desc_fluxo_secundario = desc_fluxo_secundario;
-	}
-
-	public String getDesc_fluxo_excecao() {
-		return desc_fluxo_excecao;
-	}
-
-	public void setDesc_fluxo_excecao(String desc_fluxo_excecao) {
-		this.desc_fluxo_excecao = desc_fluxo_excecao;
 	}
 
 	public String getDesc_requisito() {
@@ -127,8 +101,8 @@ public class FaseProjeto implements Serializable {
 
 	@Override
 	public boolean equals(Object other) {
-		if (other instanceof FaseProjeto)
-			if (((FaseProjeto) other).getId().equals(this.id))
+		if (other instanceof CasoDeUso)
+			if (((CasoDeUso) other).getId().equals(this.id))
 				return true;
 		return false;
 	}
