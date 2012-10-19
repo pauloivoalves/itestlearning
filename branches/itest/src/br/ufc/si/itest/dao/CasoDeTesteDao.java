@@ -14,7 +14,7 @@ public interface CasoDeTesteDao {
 
 	public List<CasoDeTeste> list();
 
-	public List<CasoDeTeste> getCasoDeTesteByIdProjeto(Integer idProjeto);
+	public List<CasoDeTeste> getCasoDeTesteByIdCasoDeUso(Integer idCasoDeUso);
 
 }// fim da interface
 

@@ -6,7 +6,6 @@ import java.util.Scanner;
 import br.ufc.si.itest.dao.impl.ArtefatoDaoImpl;
 import br.ufc.si.itest.dao.impl.ArtefatoProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.CriterioAceitacaoDaoImpl;
-import br.ufc.si.itest.dao.impl.FaseProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.FerramentaDaoImpl;
 import br.ufc.si.itest.dao.impl.FerramentaProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.ItemTesteDaoImpl;
@@ -19,7 +18,6 @@ import br.ufc.si.itest.dao.impl.TipoTesteProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
 import br.ufc.si.itest.model.Artefato;
 import br.ufc.si.itest.model.CriterioAceitacao;
-import br.ufc.si.itest.model.FaseProjeto;
 import br.ufc.si.itest.model.Ferramenta;
 import br.ufc.si.itest.model.FerramentaProjeto;
 import br.ufc.si.itest.model.FerramentaProjeto.FerramentaProjetoPk;
@@ -42,49 +40,44 @@ public class InserirNoBanco {
 
 	public void inserirFaseProjeto() {
 
-		Scanner sc = new Scanner(System.in);
-
-		FaseProjeto faseProjeto = new FaseProjeto();
-		FaseProjetoDaoImpl fpdi = new FaseProjetoDaoImpl();
-		Projeto projeto = new Projeto();
-		ProjetoDaoImpl pdi = new ProjetoDaoImpl();
-
-		System.out.println("digite a descrição do fluxo principal se houver: ");
-		String fp = sc.nextLine();
-		System.out
-				.println("digite a descrição do fluxo secundário se houver: ");
-		String fs = sc.nextLine();
-		System.out
-				.println("digite a descrição do fluxo de exceção se houver:  ");
-		String fe = sc.nextLine();
-		System.out.println("digite a descrição de requisito se houver:  ");
-		String req = sc.nextLine();
-		System.out
-				.println("digite a descrição a nivel de requisito se houver:  ");
-		String nreq = sc.nextLine();
-		System.out.println("digite o nome do Projeto Correspondente:  ");
-		String nome = sc.nextLine();
-		System.out.println("digite a descrição da alternativa se houver:  ");
-		String desc = sc.nextLine();
-		System.out.println("digite a resposta se houver:  ");
-		boolean resposta = sc.nextBoolean();
-		System.out.println("digite a mensagem se houver:  ");
-		String mensagem = sc.nextLine();
-
-		projeto = pdi.getProjetoByName(nome);
-
-		faseProjeto.setDesc_fluxo_excecao(fe);
-		faseProjeto.setDesc_fluxo_principal(fp);
-		faseProjeto.setDesc_fluxo_secundario(fs);
-		faseProjeto.setDesc_requisito(req);
-		faseProjeto.setDesc_nivel_requisito(nreq);
-		faseProjeto.setProjeto(projeto);
-		// faseProjeto.setDescricao(desc);
-		// faseProjeto.setResposta(resposta);
-		// faseProjeto.setMensagem(mensagem);
-
-		fpdi.save(faseProjeto);
-
+		/*
+		 * Scanner sc = new Scanner(System.in);
+		 * 
+		 * CasoDeUso faseProjeto = new CasoDeUso(); CasoDeUsoDaoImpl fpdi = new
+		 * CasoDeUsoDaoImpl(); Projeto projeto = new Projeto(); ProjetoDaoImpl
+		 * pdi = new ProjetoDaoImpl();
+		 * 
+		 * System.out.println("digite a descrição do fluxo principal se houver: "
+		 * ); String fp = sc.nextLine(); System.out
+		 * .println("digite a descrição do fluxo secundário se houver: ");
+		 * String fs = sc.nextLine(); System.out
+		 * .println("digite a descrição do fluxo de exceção se houver:  ");
+		 * String fe = sc.nextLine();
+		 * System.out.println("digite a descrição de requisito se houver:  ");
+		 * String req = sc.nextLine(); System.out
+		 * .println("digite a descrição a nivel de requisito se houver:  ");
+		 * String nreq = sc.nextLine();
+		 * System.out.println("digite o nome do Projeto Correspondente:  ");
+		 * String nome = sc.nextLine();
+		 * System.out.println("digite a descrição da alternativa se houver:  ");
+		 * String desc = sc.nextLine();
+		 * System.out.println("digite a resposta se houver:  "); boolean
+		 * resposta = sc.nextBoolean();
+		 * System.out.println("digite a mensagem se houver:  "); String mensagem
+		 * = sc.nextLine();
+		 * 
+		 * projeto = pdi.getProjetoByName(nome);
+		 * 
+		 * faseProjeto.setDesc_fluxo_excecao(fe);
+		 * faseProjeto.setDesc_fluxo_principal(fp);
+		 * faseProjeto.setDesc_fluxo_secundario(fs);
+		 * faseProjeto.setDesc_requisito(req);
+		 * faseProjeto.setDesc_nivel_requisito(nreq);
+		 * faseProjeto.setProjeto(projeto); faseProjeto.setDescricao(desc);
+		 * faseProjeto.setResposta(resposta); faseProjeto.setMensagem(mensagem);
+		 * 
+		 * fpdi.save(faseProjeto);
+		 */
 	}
 
 	public void inserirProjeto() {

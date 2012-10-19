@@ -5,14 +5,14 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import br.ufc.si.itest.dao.FaseProjetoDao;
-import br.ufc.si.itest.model.FaseProjeto;
+import br.ufc.si.itest.dao.CasoDeUsoDao;
+import br.ufc.si.itest.model.CasoDeUso;
 import br.ufc.si.itest.utils.HibernateUtil;
 
-public class FaseProjetoDaoImpl implements FaseProjetoDao {
+public class CasoDeUsoDaoImpl implements CasoDeUsoDao {
 
 	@Override
-	public void save(FaseProjeto faseProjeto) {
+	public void save(CasoDeUso faseProjeto) {
 		// TODO Auto-generated method stub
 
 		Session session = HibernateUtil.getSession();
@@ -24,7 +24,7 @@ public class FaseProjetoDaoImpl implements FaseProjetoDao {
 	}
 
 	@Override
-	public void update(FaseProjeto faseProjeto) {
+	public void update(CasoDeUso faseProjeto) {
 		// TODO Auto-generated method stub
 
 		Session session = HibernateUtil.getSession();
@@ -36,7 +36,7 @@ public class FaseProjetoDaoImpl implements FaseProjetoDao {
 	}
 
 	@Override
-	public void remove(FaseProjeto faseProjeto) {
+	public void remove(CasoDeUso faseProjeto) {
 		// TODO Auto-generated method stub
 
 		Session session = HibernateUtil.getSession();
@@ -48,12 +48,12 @@ public class FaseProjetoDaoImpl implements FaseProjetoDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<FaseProjeto> list() {
+	public List<CasoDeUso> list() {
 		// TODO Auto-generated method stub
 
 		Session session = HibernateUtil.getSession();
 		try {
-			return session.createCriteria(FaseProjeto.class).list();
+			return session.createCriteria(CasoDeUso.class).list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -65,7 +65,7 @@ public class FaseProjetoDaoImpl implements FaseProjetoDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<FaseProjeto> getFaseProjetoByIdProjeto(Integer idProjeto) {
+	public List<CasoDeUso> getCasoDeUsoByIdProjeto(Integer idProjeto) {
 		Session session = HibernateUtil.getSession();
 		String query = "from FaseProjeto where projeto = :idProjeto";
 		try {

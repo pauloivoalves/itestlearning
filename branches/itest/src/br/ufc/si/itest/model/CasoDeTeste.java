@@ -26,10 +26,10 @@ public class CasoDeTeste {
 	private Integer id;
 
 	@ManyToOne
-	@JoinColumn(name = "id_projeto_fk")
+	@JoinColumn(name = "id_caso_de_uso_fk")
 	@Fetch(FetchMode.JOIN)
 	@Cascade(CascadeType.SAVE_UPDATE)
-	private Projeto projeto;
+	private CasoDeUso casoDeUso;
 
 	@Column(name = "descricao", columnDefinition = "TEXT")
 	private String descricao;
@@ -40,12 +40,12 @@ public class CasoDeTeste {
 	@Column(name = "resposta")
 	private Boolean resposta;
 
-	public Projeto getProjeto() {
-		return projeto;
+	public CasoDeUso getCasoDeUso() {
+		return casoDeUso;
 	}
 
-	public void setProjeto(Projeto projeto) {
-		this.projeto = projeto;
+	public void setCasoDeUso(CasoDeUso casoDeUso) {
+		this.casoDeUso = casoDeUso;
 	}
 
 	public Integer getId() {

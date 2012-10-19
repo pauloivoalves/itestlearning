@@ -16,7 +16,6 @@ import br.ufc.si.itest.dao.UsuarioDao;
 import br.ufc.si.itest.dao.impl.JogoDaoImpl;
 import br.ufc.si.itest.dao.impl.ProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
-import br.ufc.si.itest.model.CasoDeTeste;
 import br.ufc.si.itest.model.CriterioAceitacao;
 import br.ufc.si.itest.model.FerramentaProjeto;
 import br.ufc.si.itest.model.ItemTeste;
@@ -45,7 +44,7 @@ public class JogoBean {
 
 	/* Beans dependentes */
 	private CasoDeTesteBean casodeTesteBean;
-	private FaseProjetoBean faseProjetoBean;
+	private CasoDeUsoBean casoDeUsoBean;
 	private ProjetoBean projetoBean;
 	private NivelDificuldadeBean nivelDificuldadeBean;
 	private ItemTesteBean itemTesteBean;
@@ -70,7 +69,7 @@ public class JogoBean {
 		jogo.setPontuacao(0);
 
 		casodeTesteBean = new CasoDeTesteBean();
-		faseProjetoBean = new FaseProjetoBean();
+		casoDeUsoBean = new CasoDeUsoBean();
 		projetoBean = new ProjetoBean();
 		nivelDificuldadeBean = new NivelDificuldadeBean();
 		itemTesteBean = new ItemTesteBean();
@@ -122,28 +121,18 @@ public class JogoBean {
 		carregarCriteriosAceitacao();
 		carregarArtefatos();
 		carregarFerramentas();
-		carregarFaseProjeto();
-		carregarCasoDeTeste();
+		carregarCasoDeUso();
 
 		return "descricaoProjeto";
 	}
 
 	public void carregarCasoDeTeste() {
-		casodeTesteBean.setCasosDeTesteProjeto(casodeTesteBean
-				.getCasoDeTesteDao().getCasoDeTesteByIdProjeto(
-						projetoBean.getProjeto().getId()));
-		casodeTesteBean.setCasosDeTeste(new ArrayList<SelectItem>());
-		for (CasoDeTeste cdt : casodeTesteBean.getCasosDeTesteProjeto()) {
-			casodeTesteBean.getCasosDeTeste().add(
-					new SelectItem(cdt.getId(), cdt.getDescricao()));
-		}
 
 	}
 
-	public void carregarFaseProjeto() {
-		faseProjetoBean.setFaseProjetosProjeto(faseProjetoBean
-				.getFaseProjetoDao().getFaseProjetoByIdProjeto(
-						projetoBean.getProjeto().getId()));
+	public void carregarCasoDeUso() {
+		casoDeUsoBean.setCasoDeUsoProjeto(casoDeUsoBean.getCasoDeUsoDao()
+				.getCasoDeUsoByIdProjeto(projetoBean.getProjeto().getId()));
 	}
 
 	public void carregarItensTeste() {
@@ -305,12 +294,12 @@ public class JogoBean {
 		return projetoBean;
 	}
 
-	public FaseProjetoBean getFaseProjetoBean() {
-		return faseProjetoBean;
+	public CasoDeUsoBean getFaseProjetoBean() {
+		return casoDeUsoBean;
 	}
 
-	public void setFaseProjetoBean(FaseProjetoBean faseProjetoBean) {
-		this.faseProjetoBean = faseProjetoBean;
+	public void setFaseProjetoBean(CasoDeUsoBean faseProjetoBean) {
+		this.casoDeUsoBean = faseProjetoBean;
 	}
 
 	public void setProjetoBean(ProjetoBean projetoBean) {
