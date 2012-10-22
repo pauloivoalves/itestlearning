@@ -30,7 +30,7 @@
 							</p:commandLink>
 						</div>
 						<h2>
-							Fase de Projeto do Projeto -
+							<h:outputText value="#{jogoBean.casoDeUsoBean.casoDeUso.nomeCasoDeUso}" /> - 
 							<h:outputText value="#{jogoBean.projetoBean.projeto.nome}" />
 						</h2>
 						<div id="fase">
@@ -38,35 +38,24 @@
 								<span
 									style="color: green; font-weight: bold; text-decoration: underline;">Fluxo
 									Principal: </span> <br />
-								<h:outputText
-									value="#{jogoBean.faseProjetoBean.faseProjeto.desc_fluxo_principal}"></h:outputText>
-							</h3>
 
-							<h3>
-								<span
+									<h:graphicImage value="#{jogoBean.casoDeUsoBean.casoDeUso.desc_fluxo_principal}"></h:graphicImage>
+							<br/>
+							<span
 									style="color: green; font-weight: bold; text-decoration: underline;">Fluxo
-									Alternativo: </span>
-								<h:outputText
-									value="#{jogoBean.faseProjetoBean.faseProjeto.desc_fluxo_secundario}"></h:outputText>
-							</h3>
-
-							<h3>
-								<span
-									style="color: green; font-weight: bold; text-decoration: underline;">Fluxo
-									Alternativo: </span>
-								<h:outputText
-									value="#{jogoBean.faseProjetoBean.faseProjeto.desc_fluxo_excecao}"></h:outputText>
+									Alternativo: </span> 
+									<br />
+									
+									<h:graphicImage value="#{jogoBean.casoDeUsoBean.casoDeUso.desc_fluxo_secundario}"></h:graphicImage>
+							<br />
+							
+							
+							
+							
 							</h3>
 						</div>
 						<div id="desafio">
 							
-							<p:selectManyCheckbox id="alternativas" layout="pageDirection"
-								styleClass="alternativas"
-								value="#{jogoBean.faseProjetoBean.alternativasSelecionadas}"
-								disabled="#{jogoBean.faseProjetoBean.respondido}">
-								<f:selectItems var="fase"
-									value="#{jogoBean.faseProjetoBean.fasesProjeto}" />
-							</p:selectManyCheckbox>
 						</div>
 
 						<p:commandLink title="Voltar" style="float: left;"
@@ -77,7 +66,7 @@
 
 
 						<p:commandLink title="Avançar" style="float: right;"
-							action="itensTeste" ajax="false">
+							action="#{jogoBean.carregarProximoCasoUso}" ajax="false">
 							<p:graphicImage value="images/go.png" styleClass="image_right" />
 						</p:commandLink>
 

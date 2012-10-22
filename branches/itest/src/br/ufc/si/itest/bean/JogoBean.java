@@ -26,16 +26,21 @@ import br.ufc.si.itest.model.NivelTesteProjeto;
 import br.ufc.si.itest.model.Projeto;
 import br.ufc.si.itest.model.TipoTesteProjeto;
 import br.ufc.si.itest.model.Usuario;
-import br.ufc.si.itest.model.caso;
+import br.ufc.si.itest.model.ArtefatoProjeto;
+import br.ufc.si.itest.utils.Utils;
+
 
 /**
  * @author Virginia
  * 
  */
 public class JogoBean {
+	
+	int indice = 0;
 	/* Classes de modelo */
 	private Jogo jogo;
 	private Usuario usuario;
+	
 
 	/* DAOs */
 	private JogoDao jogoDao;
@@ -44,6 +49,46 @@ public class JogoBean {
 
 	/* Beans dependentes */
 	private CasoDeTesteBean casodeTesteBean;
+	public JogoDao getJogoDao() {
+		return jogoDao;
+	}
+
+	public void setJogoDao(JogoDao jogoDao) {
+		this.jogoDao = jogoDao;
+	}
+
+	public UsuarioDao getUsuarioDao() {
+		return usuarioDao;
+	}
+
+	public void setUsuarioDao(UsuarioDao usuarioDao) {
+		this.usuarioDao = usuarioDao;
+	}
+
+	public ProjetoDao getProjetoDao() {
+		return projetoDao;
+	}
+
+	public void setProjetoDao(ProjetoDao projetoDao) {
+		this.projetoDao = projetoDao;
+	}
+
+	public CasoDeTesteBean getCasodeTesteBean() {
+		return casodeTesteBean;
+	}
+
+	public void setCasodeTesteBean(CasoDeTesteBean casodeTesteBean) {
+		this.casodeTesteBean = casodeTesteBean;
+	}
+
+	public CasoDeUsoBean getCasoDeUsoBean() {
+		return casoDeUsoBean;
+	}
+
+	public void setCasoDeUsoBean(CasoDeUsoBean casoDeUsoBean) {
+		this.casoDeUsoBean = casoDeUsoBean;
+	}
+
 	private CasoDeUsoBean casoDeUsoBean;
 	private ProjetoBean projetoBean;
 	private NivelDificuldadeBean nivelDificuldadeBean;
@@ -126,6 +171,16 @@ public class JogoBean {
 		return "descricaoProjeto";
 	}
 
+	
+	public String carregarProximoCasoUso(){
+		if(indice <= casoDeUsoBean.getCasoDeUsoProjeto().size()){
+		casoDeUsoBean.setCasoDeUso(casoDeUsoBean.getCasoDeUsoProjeto().get(indice));
+		return "next";
+		}else{
+			return null;//aqui redirecione pra página final
+		}
+	}
+	
 	public void carregarCasoDeTeste() {
 
 	}
@@ -133,6 +188,7 @@ public class JogoBean {
 	public void carregarCasoDeUso() {
 		casoDeUsoBean.setCasoDeUsoProjeto(casoDeUsoBean.getCasoDeUsoDao()
 				.getCasoDeUsoByIdProjeto(projetoBean.getProjeto().getId()));
+		casoDeUsoBean.setCasoDeUso(casoDeUsoBean.getCasoDeUsoProjeto().get(indice++));
 	}
 
 	public void carregarItensTeste() {
@@ -186,7 +242,7 @@ public class JogoBean {
 		artefatoBean.setArtefatosProjeto(artefatoBean.getArtefatoDao()
 				.getArtefatosByProjeto(projetoBean.getProjeto().getId()));
 		artefatoBean.setArtefatos(new ArrayList<SelectItem>());
-		for (caso ap : artefatoBean.getArtefatosProjeto()) {
+		for (ArtefatoProjeto ap : artefatoBean.getArtefatosProjeto()) {
 			artefatoBean.getArtefatos().add(
 					new SelectItem(ap.getPk().getArtefato().getId(), ap.getPk()
 							.getArtefato().getNome()));

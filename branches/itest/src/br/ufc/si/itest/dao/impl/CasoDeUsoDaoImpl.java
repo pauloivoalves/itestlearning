@@ -67,7 +67,7 @@ public class CasoDeUsoDaoImpl implements CasoDeUsoDao {
 	@Override
 	public List<CasoDeUso> getCasoDeUsoByIdProjeto(Integer idProjeto) {
 		Session session = HibernateUtil.getSession();
-		String query = "from FaseProjeto where projeto = :idProjeto";
+		String query = "from CasoDeUso where projeto = :idProjeto";
 		try {
 			return session.createQuery(query)
 					.setInteger("idProjeto", idProjeto).list();

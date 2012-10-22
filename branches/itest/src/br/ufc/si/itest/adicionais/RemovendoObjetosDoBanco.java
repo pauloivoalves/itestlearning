@@ -18,7 +18,7 @@ import br.ufc.si.itest.dao.impl.TipoTesteDaoImpl;
 import br.ufc.si.itest.dao.impl.TipoTesteProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
 import br.ufc.si.itest.model.Artefato;
-import br.ufc.si.itest.model.caso;
+import br.ufc.si.itest.model.ArtefatoProjeto;
 import br.ufc.si.itest.model.CriterioAceitacao;
 import br.ufc.si.itest.model.Ferramenta;
 import br.ufc.si.itest.model.FerramentaProjeto;
@@ -198,7 +198,7 @@ public class RemovendoObjetosDoBanco {
 		int idprojeto = input.nextInt();
 		
 		ArtefatoProjetoDaoImpl Dao = new ArtefatoProjetoDaoImpl();
-		caso atp = new caso();
+		ArtefatoProjeto atp = new ArtefatoProjeto();
 
 		try {
 			atp = Dao.getArtefatoProjetoById(idprojeto);

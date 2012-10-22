@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 
-import br.ufc.si.itest.model.caso;
+import br.ufc.si.itest.model.ArtefatoProjeto;
 import br.ufc.si.itest.utils.HibernateUtil;
 
 /**
@@ -16,20 +16,20 @@ import br.ufc.si.itest.utils.HibernateUtil;
  */
 public interface ArtefatoProjetoDao {
 
-	public void save(caso artefatoProjeto);
+	public void save(ArtefatoProjeto artefatoProjeto);
 
-	public void remove(caso artefatoProjeto);
+	public void remove(ArtefatoProjeto artefatoProjeto);
 
-	public void update(caso artefatoProjeto);
+	public void update(ArtefatoProjeto artefatoProjeto);
 
-	public List<caso> list();
+	public List<ArtefatoProjeto> list();
 
-	public List<caso> getArtefatProjetoByIdProjeto(int id_projeto);
+	public List<ArtefatoProjeto> getArtefatProjetoByIdProjeto(int id_projeto);
 
-	public caso getArtefatProjetoByIdProjetoIdArtefato(
+	public ArtefatoProjeto getArtefatProjetoByIdProjetoIdArtefato(
 			int id_projeto, int id_artefato);
 
-	public caso getArtefatoProjetoById(Integer pk);
+	public ArtefatoProjeto getArtefatoProjetoById(Integer pk);
 
 	
 }// fim da interface

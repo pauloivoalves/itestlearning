@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import br.ufc.si.itest.dao.impl.ArtefatoDaoImpl;
 import br.ufc.si.itest.dao.impl.ArtefatoProjetoDaoImpl;
+import br.ufc.si.itest.dao.impl.CasoDeUsoDaoImpl;
 import br.ufc.si.itest.dao.impl.CriterioAceitacaoDaoImpl;
 import br.ufc.si.itest.dao.impl.FerramentaDaoImpl;
 import br.ufc.si.itest.dao.impl.FerramentaProjetoDaoImpl;
@@ -17,6 +18,8 @@ import br.ufc.si.itest.dao.impl.TipoTesteDaoImpl;
 import br.ufc.si.itest.dao.impl.TipoTesteProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
 import br.ufc.si.itest.model.Artefato;
+import br.ufc.si.itest.model.ArtefatoProjeto;
+import br.ufc.si.itest.model.CasoDeUso;
 import br.ufc.si.itest.model.CriterioAceitacao;
 import br.ufc.si.itest.model.Ferramenta;
 import br.ufc.si.itest.model.FerramentaProjeto;
@@ -31,14 +34,57 @@ import br.ufc.si.itest.model.TipoTeste;
 import br.ufc.si.itest.model.TipoTesteProjeto;
 import br.ufc.si.itest.model.TipoTesteProjeto.TipoTesteProjetoPk;
 import br.ufc.si.itest.model.Usuario;
-import br.ufc.si.itest.model.caso;
-import br.ufc.si.itest.model.caso.ArtefatoProjetoPk;
+import br.ufc.si.itest.model.ArtefatoProjeto;
+import br.ufc.si.itest.model.ArtefatoProjeto.ArtefatoProjetoPk;
 
 // @author Felipe Freitas
 
 public class InserirNoBanco {
 
 	public void inserirFaseProjeto() {
+
+		Scanner sc = new Scanner(System.in);
+
+		CasoDeUso caso_de_uso = new CasoDeUso();
+		CasoDeUsoDaoImpl fpdi = new CasoDeUsoDaoImpl();
+		Projeto projeto = new Projeto();
+		ProjetoDaoImpl pdi = new ProjetoDaoImpl();
+
+		System.out.println("digite a descrição do fluxo principal se houver: ");
+		String fp = sc.nextLine();
+		System.out
+				.println("digite a descrição do fluxo secundário se houver: ");
+		String fs = sc.nextLine();
+		System.out
+				.println("digite a descrição do fluxo de exceção se houver:  ");
+		String fe = sc.nextLine();
+		System.out.println("digite a descrição de requisito se houver:  ");
+		String req = sc.nextLine();
+		System.out
+				.println("digite a descrição a nivel de requisito se houver:  ");
+		String nreq = sc.nextLine();
+		System.out.println("digite o nome do Projeto Correspondente:  ");
+		String nome = sc.nextLine();
+		System.out.println("digite a descrição da alternativa se houver:  ");
+		String desc = sc.nextLine();
+		System.out.println("digite a resposta se houver:  ");
+		boolean resposta = sc.nextBoolean();
+		System.out.println("digite a mensagem se houver:  ");
+		String mensagem = sc.nextLine();
+
+		projeto = pdi.getProjetoByName(nome);
+
+		
+		caso_de_uso.setDesc_fluxo_principal(fp);
+		caso_de_uso.setDesc_fluxo_secundario(fs);
+		caso_de_uso.setDesc_requisito(req);
+		caso_de_uso.setDesc_nivel_requisito(nreq);
+		caso_de_uso.setProjeto(projeto);
+		//faseProjeto.setDescricao(desc);
+		//faseProjeto.setResposta(resposta);
+		//faseProjeto.setMensagem(mensagem);
+
+		fpdi.save(caso_de_uso);
 
 		/*
 		 * Scanner sc = new Scanner(System.in);
@@ -242,7 +288,7 @@ public class InserirNoBanco {
 
 	public void inserirArtefatoProjeto() {
 		Scanner sc = new Scanner(System.in);
-		caso artefatoProjeto = new caso();
+		ArtefatoProjeto artefatoProjeto = new ArtefatoProjeto();
 		ArtefatoProjetoPk artefatoProjetoPK = new ArtefatoProjetoPk();
 		Projeto proj = new Projeto();
 		ProjetoDaoImpl pdi = new ProjetoDaoImpl();
