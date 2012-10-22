@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>iTest Learning :: Objetivo  da Fase do Projeto</title>
+	<title>iTest Learning :: Objetivo da Fase do Projeto</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 </h:head>
 <body>
@@ -20,12 +20,13 @@
 						</h1>
 					</div>
 
-					
-					
+
+
 					<div id="content">
 						<div id="buttonsMenu">
-							<p:commandLink title="Escopo do Projeto" oncomplete="dialogEscopo.show()" update="displayEscopo">
-								<p:graphicImage value="images/note.png" width="70" height="70"/>
+							<p:commandLink title="Escopo do Projeto"
+								oncomplete="dialogEscopo.show()" update="displayEscopo">
+								<p:graphicImage value="images/note.png" width="70" height="70" />
 							</p:commandLink>
 						</div>
 						<h2>
@@ -36,33 +37,50 @@
 							<h3>
 								<span
 									style="color: green; font-weight: bold; text-decoration: underline;">Missão:</span>
-								Missão da fase projeto!
+								A fase de projeto de teste é uma das fases mais criticas no
+								desenvolvimento de sistemas computacionais, ela tem como
+								objetico identificar os casos de testes mais adequados para cada
+								funcionalidade do software, afim de identificar o maior numero
+								de falhas possiveis.
 							</h3>
 						</div>
 						<div id="desafio">
-							<h:outputText value="Na fase de projeto você tem que avaliar os casos de uso" style="font-size:19px;"/>
+
+
+							<h3>
+								<span
+									style="color: green; font-weight: bold; text-decoration: underline;">Objetivo:</span>
+								Capacitar o aluno de maneira que o mesmo seja capaz de
+								identificar quais casos de testes são mais adequados para caso
+								de uso exercitando seu pensamento crítico acerca do
+								desenvolvimento de sistemas computacionais.
+							</h3>
+
 						</div>
-						
-						<p:commandLink title="Voltar" style="float: left;" action="resultado" ajax="false">
-							<p:graphicImage value="images/return.png" styleClass="image_left"/>
+
+						<p:commandLink title="Voltar" style="float: left;"
+							action="resultado" ajax="false">
+							<p:graphicImage value="images/return.png" styleClass="image_left" />
 						</p:commandLink>
-						
-						
-						
-						<p:commandLink title="Avançar" style="float: right;" action="faseProjeto" ajax="false">
-							<p:graphicImage value="images/go.png" styleClass="image_right"/>
+
+
+
+						<p:commandLink title="Avançar" style="float: right;"
+							action="faseProjeto" ajax="false">
+							<p:graphicImage value="images/go.png" styleClass="image_right" />
 						</p:commandLink>
-						
-						<p:dialog header="Escopo do Projeto" id="dialogEscopo" widgetVar="dialogEscopo">
+
+						<p:dialog header="Escopo do Projeto" id="dialogEscopo"
+							widgetVar="dialogEscopo">
 							<h:panelGrid id="displayEscopo">
 								<h4>#{jogoBean.projetoBean.projeto.nome}</h4>
-								<h:outputText value="#{jogoBean.projetoBean.projeto.descricao}"/>
+								<h:outputText value="#{jogoBean.projetoBean.projeto.descricao}" />
 							</h:panelGrid>
-						</p:dialog>	
-							
+						</p:dialog>
+
 					</div>
 					<div id="footer">
-						
+
 						<h:outputLabel>© 2012 Virginia Farias. Todos os direitos reservados.</h:outputLabel>
 					</div>
 				</div>

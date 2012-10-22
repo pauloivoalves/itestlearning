@@ -1,46 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13370410273520" configfile="/iTestLearning/WebContent/WEB-INF/faces-config.xml">
-<<<<<<< .mine
-  <nodes xsi:type="pageflow:PFPage" name="*" id="pf13370466705971" outlinks="pf13370466705972 pf13370908654982 pf13373880446661 pf13373880446663 pf13373880765127 pf13373881310219 pf133738816845812 pf133738818083114 pf133738821576316 pf13386476624490 pf13386477428723 pf13386477428724 pf13386477428725 pf133865365795710 pf13503022561461 pf13503043889534" path="*"/>
-=======
-  <nodes xsi:type="pageflow:PFPage" name="*" id="pf13370466705971" outlinks="pf13370466705972 pf13373880446661 pf13373880446663 pf13373880765127 pf13373881310219 pf133738816845812 pf133738818083114 pf133738821576316 pf13386476624490 pf13386477428723 pf13386477428724 pf13386477428725 pf133865365795710 pf13500765596400" path="*"/>
->>>>>>> .r28
-  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" id="pf13370466705973" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf13370466705972" path="/index.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="escolha_projeto.xhtml" id="pf13370908719225" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" inlinks="pf13373880446661" path="/escolha_projeto.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="artefatos.xhtml" id="pf13373880446664" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf13373880446663" path="/artefatos.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="criterios_aceitacao.xhtml" id="pf13373880765138" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf13373880765127" path="/criterios_aceitacao.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="ferramentas.xhtml" id="pf133738813102110" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf13373881310219" path="/ferramentas.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="itens_teste.xhtml" id="pf133738816845813" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" inlinks="pf133738816845812" path="/itens_teste.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="niveis_teste.xhtml" id="pf133738818083115" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" inlinks="pf133738818083114" path="/niveis_teste.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="tipos_teste.xhtml" id="pf133738821576417" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" inlinks="pf133738821576316" path="/tipos_teste.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="objetivo.xhtml" id="pf13386476624501" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" inlinks="pf13386476624490" path="/objetivo.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="tutorial_pontuacao.xhtml" id="pf13386477428736" referenceLink="//@navigationRule.10/@navigationCase.0/@toViewId|" inlinks="pf13386477428723" path="/tutorial_pontuacao.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="tutorial_fases.xhtml" id="pf13386477428737" referenceLink="//@navigationRule.11/@navigationCase.0/@toViewId|" inlinks="pf13386477428724" path="/tutorial_fases.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="tutorial_ajuda.xhtml" id="pf13386477428748" referenceLink="//@navigationRule.12/@navigationCase.0/@toViewId|" inlinks="pf13386477428725" path="/tutorial_ajuda.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="resultado.xhtml" id="pf133865365795811" referenceLink="//@navigationRule.13/@navigationCase.0/@toViewId|" inlinks="pf133865365795710" path="/resultado.xhtml"/>
-<<<<<<< .mine
-  <nodes xsi:type="pageflow:PFPage" name="fase_projeto.xhtml" id="pf13503022561473" referenceLink="//@navigationRule.13/@navigationCase.2/@toViewId|" inlinks="pf13503022561461" path="/fase_projeto.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="objetivo_fase_projeto.xhtml" id="pf13503043889545" referenceLink="//@navigationRule.13/@navigationCase.1/@toViewId|" inlinks="pf13503043889534" path="/objetivo_fase_projeto.xhtml"/>
-=======
-  <nodes xsi:type="pageflow:PFPage" name="descricao_projeto.xhtml" id="pf13500765596401" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf13500765596400" path="/descricao_projeto.xhtml"/>
->>>>>>> .r28
-  <links id="pf13370466705972" target="pf13370466705973" source="pf13370466705971" outcome="index"/>
-  <links id="pf13373880446661" target="pf13370908719225" source="pf13370466705971" outcome="escolhaProjeto"/>
-  <links id="pf13373880446663" target="pf13373880446664" source="pf13370466705971" outcome="artefatos"/>
-  <links id="pf13373880765127" target="pf13373880765138" source="pf13370466705971" outcome="criterioAceitacao"/>
-  <links id="pf13373881310219" target="pf133738813102110" source="pf13370466705971" outcome="ferramentas"/>
-  <links id="pf133738816845812" target="pf133738816845813" source="pf13370466705971" outcome="itensTeste"/>
-  <links id="pf133738818083114" target="pf133738818083115" source="pf13370466705971" outcome="niveisTeste"/>
-  <links id="pf133738821576316" target="pf133738821576417" source="pf13370466705971" outcome="tiposTeste"/>
-  <links id="pf13386476624490" target="pf13386476624501" source="pf13370466705971" outcome="objetivo"/>
-  <links id="pf13386477428723" target="pf13386477428736" source="pf13370466705971" outcome="pontuacao"/>
-  <links id="pf13386477428724" target="pf13386477428737" source="pf13370466705971" outcome="fases"/>
-  <links id="pf13386477428725" target="pf13386477428748" source="pf13370466705971" outcome="ajuda"/>
-  <links id="pf133865365795710" target="pf133865365795811" source="pf13370466705971" outcome="resultado"/>
-<<<<<<< .mine
-  <links id="pf13503022561461" target="pf13503022561473" source="pf13370466705971" outcome="faseProjeto"/>
-  <links id="pf13503043889534" target="pf13503043889545" source="pf13370466705971" outcome="objetivoFaseProjeto"/>
-=======
-  <links id="pf13500765596400" target="pf13500765596401" source="pf13370466705971" outcome="descricaoProjeto"/>
->>>>>>> .r28
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13509218551600" configfile="/iTestLearning/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="3058" id="pf13509219155191" outlinks="pf13509219155192 pf13509219155193 pf13509219155194 pf13509219155195 pf13509219155196 pf13509219155197 pf13509219155198 pf13509219155199 pf135092191551910 pf135092191551911 pf135092191551912 pf135092191551913 pf135092191551914 pf135092191551915 pf135092191551916 pf135092191551917 pf135093060066134" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="338" y="178" id="pf135092191551918" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf13509219155192" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="descricao_projeto.xhtml" x="338" y="562" id="pf135092191552019" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf13509219155193" path="/descricao_projeto.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="artefatos.xhtml" x="338" y="946" id="pf135092191552020" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf13509219155194" path="/artefatos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="criterios_aceitacao.xhtml" x="338" y="1330" id="pf135092191552021" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf13509219155195" path="/criterios_aceitacao.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="escolha_projeto.xhtml" x="338" y="1714" id="pf135092191552022" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" inlinks="pf13509219155196" path="/escolha_projeto.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ferramentas.xhtml" x="338" y="2098" id="pf135092191552023" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf13509219155197" path="/ferramentas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="itens_teste.xhtml" x="338" y="2482" id="pf135092191552024" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" inlinks="pf13509219155198" path="/itens_teste.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="niveis_teste.xhtml" x="338" y="2866" id="pf135092191552025" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" inlinks="pf13509219155199" path="/niveis_teste.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="tipos_teste.xhtml" x="338" y="3250" id="pf135092191552026" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" inlinks="pf135092191551910" path="/tipos_teste.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="objetivo.xhtml" x="338" y="3634" id="pf135092191552027" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" inlinks="pf135092191551911" path="/objetivo.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="tutorial_pontuacao.xhtml" x="338" y="4018" id="pf135092191552028" referenceLink="//@navigationRule.10/@navigationCase.0/@toViewId|" inlinks="pf135092191551912" path="/tutorial_pontuacao.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="tutorial_fases.xhtml" x="338" y="4402" id="pf135092191552029" referenceLink="//@navigationRule.11/@navigationCase.0/@toViewId|" inlinks="pf135092191551913" path="/tutorial_fases.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="tutorial_ajuda.xhtml" x="338" y="4786" id="pf135092191552030" referenceLink="//@navigationRule.12/@navigationCase.0/@toViewId|" inlinks="pf135092191551914" path="/tutorial_ajuda.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="resultado.xhtml" x="338" y="5170" id="pf135092191552131" referenceLink="//@navigationRule.13/@navigationCase.0/@toViewId|" inlinks="pf135092191551915" path="/resultado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="objetivo_fase_projeto.xhtml" x="338" y="5554" id="pf135092191552132" referenceLink="//@navigationRule.13/@navigationCase.1/@toViewId|" inlinks="pf135092191551916" path="/objetivo_fase_projeto.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="fase_projeto.xhtml" x="338" y="5938" id="pf135092191552133" referenceLink="//@navigationRule.13/@navigationCase.3/@toViewId|" inlinks="pf135092191551917 pf135093060066134" path="/fase_projeto.xhtml"/>
+  <links id="pf13509219155192" target="pf135092191551918" source="pf13509219155191" outcome="index"/>
+  <links id="pf13509219155193" target="pf135092191552019" source="pf13509219155191" outcome="descricaoProjeto"/>
+  <links id="pf13509219155194" target="pf135092191552020" source="pf13509219155191" outcome="artefatos"/>
+  <links id="pf13509219155195" target="pf135092191552021" source="pf13509219155191" outcome="criterioAceitacao"/>
+  <links id="pf13509219155196" target="pf135092191552022" source="pf13509219155191" outcome="escolhaProjeto"/>
+  <links id="pf13509219155197" target="pf135092191552023" source="pf13509219155191" outcome="ferramentas"/>
+  <links id="pf13509219155198" target="pf135092191552024" source="pf13509219155191" outcome="itensTeste"/>
+  <links id="pf13509219155199" target="pf135092191552025" source="pf13509219155191" outcome="niveisTeste"/>
+  <links id="pf135092191551910" target="pf135092191552026" source="pf13509219155191" outcome="tiposTeste"/>
+  <links id="pf135092191551911" target="pf135092191552027" source="pf13509219155191" outcome="objetivo"/>
+  <links id="pf135092191551912" target="pf135092191552028" source="pf13509219155191" outcome="pontuacao"/>
+  <links id="pf135092191551913" target="pf135092191552029" source="pf13509219155191" outcome="fases"/>
+  <links id="pf135092191551914" target="pf135092191552030" source="pf13509219155191" outcome="ajuda"/>
+  <links id="pf135092191551915" target="pf135092191552131" source="pf13509219155191" outcome="resultado"/>
+  <links id="pf135092191551916" target="pf135092191552132" source="pf13509219155191" outcome="objetivoFaseProjeto"/>
+  <links id="pf135092191551917" target="pf135092191552133" source="pf13509219155191" outcome="faseProjeto"/>
+  <links id="pf135093060066134" target="pf135092191552133" source="pf13509219155191" outcome="next"/>
 </pageflow:Pageflow>
