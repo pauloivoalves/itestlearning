@@ -27,6 +27,10 @@
 							<p:commandLink title="Escopo do Projeto"
 								oncomplete="dialogEscopo.show()" update="displayEscopo">
 								<p:graphicImage value="images/note.png" width="70" height="70" />
+								
+								<h:outputText id="pontos" value="#{jogoBean.jogo.pontuacao}" style="float:right; font-size:50px; color:green;"/>
+								<h:outputText value="Pontuação:  " style="float:right; font-size:20px; color:green;"/>
+						
 							</p:commandLink>
 						</div>
 						<h2>
@@ -55,7 +59,9 @@
 							</h3>
 						</div>
 						<div id="desafio">
-							
+							<p:selectManyCheckbox id="alternativas" layout="pageDirection" styleClass="alternativas" value="#{jogoBean.casodeTesteBean.casoDeTesteSelecionados}" disabled="#{jogoBean.casodeTesteBean.respondido}">
+            					<f:selectItems var="item" value="#{jogoBean.casodeTesteBean.casosDeTeste}"/>
+            				</p:selectManyCheckbox>		
 						</div>
 
 						<p:commandLink title="Voltar" style="float: left;"
@@ -66,7 +72,7 @@
 
 
 						<p:commandLink title="Avançar" style="float: right;"
-							action="#{jogoBean.carregarProximoCasoUso}" ajax="false">
+							action="#{jogoBean.validarCasoDeTeste}" ajax="false">
 							<p:graphicImage value="images/go.png" styleClass="image_right" />
 						</p:commandLink>
 
