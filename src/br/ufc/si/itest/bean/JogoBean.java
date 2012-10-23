@@ -16,6 +16,8 @@ import br.ufc.si.itest.dao.UsuarioDao;
 import br.ufc.si.itest.dao.impl.JogoDaoImpl;
 import br.ufc.si.itest.dao.impl.ProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
+import br.ufc.si.itest.model.ArtefatoProjeto;
+import br.ufc.si.itest.model.CasoDeTeste;
 import br.ufc.si.itest.model.CriterioAceitacao;
 import br.ufc.si.itest.model.FerramentaProjeto;
 import br.ufc.si.itest.model.ItemTeste;
@@ -26,21 +28,17 @@ import br.ufc.si.itest.model.NivelTesteProjeto;
 import br.ufc.si.itest.model.Projeto;
 import br.ufc.si.itest.model.TipoTesteProjeto;
 import br.ufc.si.itest.model.Usuario;
-import br.ufc.si.itest.model.ArtefatoProjeto;
-import br.ufc.si.itest.utils.Utils;
-
 
 /**
  * @author Virginia
  * 
  */
 public class JogoBean {
-	
+
 	int indice = 0;
 	/* Classes de modelo */
 	private Jogo jogo;
 	private Usuario usuario;
-	
 
 	/* DAOs */
 	private JogoDao jogoDao;
@@ -49,6 +47,7 @@ public class JogoBean {
 
 	/* Beans dependentes */
 	private CasoDeTesteBean casodeTesteBean;
+
 	public JogoDao getJogoDao() {
 		return jogoDao;
 	}
@@ -171,24 +170,33 @@ public class JogoBean {
 		return "descricaoProjeto";
 	}
 
-	
-	public String carregarProximoCasoUso(){
-		if(indice <= casoDeUsoBean.getCasoDeUsoProjeto().size()){
-		casoDeUsoBean.setCasoDeUso(casoDeUsoBean.getCasoDeUsoProjeto().get(indice));
-		return "next";
-		}else{
-			return null;//aqui redirecione pra página final
+	public String carregarProximoCasoUso() {
+		if (indice <= casoDeUsoBean.getCasoDeUsoProjeto().size()) {
+			casoDeUsoBean.setCasoDeUso(casoDeUsoBean.getCasoDeUsoProjeto().get(
+					indice));
+			casodeTesteBean = new CasoDeTesteBean();
+			carregarCasoDeTeste();
+			return "next";
+		} else {
+			return null;// aqui redirecione pra página final
 		}
-	}
-	
-	public void carregarCasoDeTeste() {
-
 	}
 
 	public void carregarCasoDeUso() {
 		casoDeUsoBean.setCasoDeUsoProjeto(casoDeUsoBean.getCasoDeUsoDao()
 				.getCasoDeUsoByIdProjeto(projetoBean.getProjeto().getId()));
-		casoDeUsoBean.setCasoDeUso(casoDeUsoBean.getCasoDeUsoProjeto().get(indice++));
+		casoDeUsoBean.setCasoDeUso(casoDeUsoBean.getCasoDeUsoProjeto().get(
+				indice++));
+		carregarCasoDeTeste();
+	}
+
+	public void carregarCasoDeTeste() {
+		casodeTesteBean.setCasosDeTesteProjeto(casodeTesteBean
+				.getCasoDeTesteDao().getCasoDeTesteByIdCasoDeUso(
+						casoDeUsoBean.getCasoDeUso().getId()));
+		for (CasoDeTeste cdt : casodeTesteBean.getCasosDeTesteProjeto())
+			casodeTesteBean.getCasosDeTeste().add(
+					new SelectItem(cdt.getId(), cdt.getDescricao()));
 	}
 
 	public void carregarItensTeste() {
@@ -260,12 +268,12 @@ public class JogoBean {
 		}
 	}
 
-	public String validarCasodeTeste() {
+	public void validarCasoDeTeste() {
 		if (!casodeTesteBean.getRespondido()) {
 			jogo.setPontuacao(jogo.getPontuacao()
 					+ casodeTesteBean.validaResposta());
 		}
-		return "tiposTeste"; // defina para qual pagina vai
+		carregarProximoCasoUso();
 	}
 
 	public String validarItensTeste() {
