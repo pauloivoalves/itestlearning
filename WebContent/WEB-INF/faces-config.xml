@@ -162,6 +162,11 @@
 			<from-outcome>next</from-outcome>
 			<to-view-id>/fase_projeto.xhtml</to-view-id>
 		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>resultado_fase_projeto</from-outcome>
+			<to-view-id>/resultado.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 
