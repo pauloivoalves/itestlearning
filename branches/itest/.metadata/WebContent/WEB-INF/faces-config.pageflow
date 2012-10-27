@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13509218551600" configfile="/iTestLearning/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="3058" id="pf13509219155191" outlinks="pf13509219155192 pf13509219155193 pf13509219155194 pf13509219155195 pf13509219155196 pf13509219155197 pf13509219155198 pf13509219155199 pf135092191551910 pf135092191551911 pf135092191551912 pf135092191551913 pf135092191551914 pf135092191551915 pf135092191551916 pf135092191551917 pf135093060066134" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="3058" id="pf13509219155191" outlinks="pf13509219155192 pf13509219155193 pf13509219155194 pf13509219155195 pf13509219155196 pf13509219155197 pf13509219155198 pf13509219155199 pf135092191551910 pf135092191551911 pf135092191551912 pf135092191551913 pf135092191551914 pf135092191551915 pf135092191551916 pf135092191551917 pf135093060066134 pf13513677245572" path="*"/>
   <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="338" y="178" id="pf135092191551918" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf13509219155192" path="/index.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="descricao_projeto.xhtml" x="338" y="562" id="pf135092191552019" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf13509219155193" path="/descricao_projeto.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="artefatos.xhtml" x="338" y="946" id="pf135092191552020" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf13509219155194" path="/artefatos.xhtml"/>
@@ -14,9 +14,9 @@
   <nodes xsi:type="pageflow:PFPage" name="tutorial_pontuacao.xhtml" x="338" y="4018" id="pf135092191552028" referenceLink="//@navigationRule.10/@navigationCase.0/@toViewId|" inlinks="pf135092191551912" path="/tutorial_pontuacao.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="tutorial_fases.xhtml" x="338" y="4402" id="pf135092191552029" referenceLink="//@navigationRule.11/@navigationCase.0/@toViewId|" inlinks="pf135092191551913" path="/tutorial_fases.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="tutorial_ajuda.xhtml" x="338" y="4786" id="pf135092191552030" referenceLink="//@navigationRule.12/@navigationCase.0/@toViewId|" inlinks="pf135092191551914" path="/tutorial_ajuda.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="resultado.xhtml" x="338" y="5170" id="pf135092191552131" referenceLink="//@navigationRule.13/@navigationCase.0/@toViewId|" inlinks="pf135092191551915" path="/resultado.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="resultado.xhtml" x="338" y="5170" id="pf135092191552131" referenceLink="//@navigationRule.13/@navigationCase.4/@toViewId|" inlinks="pf135092191551915 pf13513677245572" path="/resultado.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="objetivo_fase_projeto.xhtml" x="338" y="5554" id="pf135092191552132" referenceLink="//@navigationRule.13/@navigationCase.1/@toViewId|" inlinks="pf135092191551916" path="/objetivo_fase_projeto.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="fase_projeto.xhtml" x="338" y="5938" id="pf135092191552133" referenceLink="//@navigationRule.13/@navigationCase.3/@toViewId|" inlinks="pf135092191551917 pf135093060066134" path="/fase_projeto.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="fase_projeto.xhtml" x="338" y="5938" id="pf135092191552133" referenceLink="//@navigationRule.13/@navigationCase.4/@toViewId|" inlinks="pf135092191551917 pf135093060066134" path="/fase_projeto.xhtml"/>
   <links id="pf13509219155192" target="pf135092191551918" source="pf13509219155191" outcome="index"/>
   <links id="pf13509219155193" target="pf135092191552019" source="pf13509219155191" outcome="descricaoProjeto"/>
   <links id="pf13509219155194" target="pf135092191552020" source="pf13509219155191" outcome="artefatos"/>
@@ -34,4 +34,5 @@
   <links id="pf135092191551916" target="pf135092191552132" source="pf13509219155191" outcome="objetivoFaseProjeto"/>
   <links id="pf135092191551917" target="pf135092191552133" source="pf13509219155191" outcome="faseProjeto"/>
   <links id="pf135093060066134" target="pf135092191552133" source="pf13509219155191" outcome="next"/>
+  <links id="pf13513677245572" target="pf135092191552131" source="pf13509219155191" outcome="resultado_fase_projeto"/>
 </pageflow:Pageflow>
