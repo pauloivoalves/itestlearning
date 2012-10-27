@@ -28,6 +28,11 @@
 								oncomplete="dialogEscopo.show()" update="displayEscopo">
 								<p:graphicImage value="images/note.png" width="70" height="70" />
 							</p:commandLink>
+
+							<p:commandLink title="Terminar Jogo"
+								action="#{jogoBean.terminarJogo}" ajax="false">
+								<p:graphicImage value="images/stop.png" width="70" height="70" />
+							</p:commandLink>
 						</div>
 						<h2>
 							Objetivo da Fase de Projeto do Projeto -
@@ -57,13 +62,13 @@
 							</h3>
 
 						</div>
-
+						<!-- 
 						<p:commandLink title="Voltar" style="float: left;"
 							action="resultado" ajax="false">
 							<p:graphicImage value="images/return.png" styleClass="image_left" />
 						</p:commandLink>
 
-
+ 						-->
 
 						<p:commandLink title="Avançar" style="float: right;"
 							action="faseProjeto" ajax="false">
