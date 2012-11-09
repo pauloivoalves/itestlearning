@@ -109,7 +109,7 @@ public class JogoBean {
 	/* Construtor */
 	public JogoBean() {
 		indice = 0;
-		
+
 		usuario = new Usuario();
 		jogo = new Jogo();
 		jogo.setPontuacao(0);
@@ -160,6 +160,11 @@ public class JogoBean {
 		projetoBean.setProjeto(projetoBean.getProjetoDao().getProjetoById(
 				projetoEscolhido));
 
+		// verifica se algum projeto foi escolhido
+		if (projetoBean.getProjeto() == null) {
+			return "escolhaprojeto";
+		}
+
 		// Carrega todo o conteúdo do projeto.
 		carregarItensTeste();
 		carregarTiposTeste();
@@ -167,7 +172,13 @@ public class JogoBean {
 		carregarCriteriosAceitacao();
 		carregarArtefatos();
 		carregarFerramentas();
-		carregarCasoDeUso();
+
+		// checa se aquele projeto tem caso de uso
+		if (!casodeTesteBean.getCasosDeTesteProjeto().isEmpty()) {
+
+			carregarCasoDeUso();
+
+		}
 
 		return "descricaoProjeto";
 	}
@@ -183,11 +194,11 @@ public class JogoBean {
 
 			System.out.println("estousempreaq");
 			return "next";
-			
-		} 
-			System.out.println("chegueiaq");
-			return "resultado_fase_projeto";// aqui redirecione pra página final
-		
+
+		}
+		System.out.println("chegueiaq");
+		return "resultado_fase_projeto";// aqui redirecione pra página final
+
 	}
 
 	public void carregarCasoDeUso() {
@@ -279,17 +290,17 @@ public class JogoBean {
 	public void validarCasoDeTeste() {
 		if (!casodeTesteBean.getRespondido()) {
 			jogo.setPontuacao(jogo.getPontuacao()
-					+ casodeTesteBean.validaResposta());
+					+ casodeTesteBean.validaResposta(projetoBean.getProjeto()
+							.getNivelDificuldade().getId()));
 		}
-		
-		
-		
+
 	}
 
 	public String validarItensTeste() {
 		if (!itemTesteBean.getRespondido()) {
 			jogo.setPontuacao(jogo.getPontuacao()
-					+ itemTesteBean.validaResposta());
+					+ itemTesteBean.validaResposta(projetoBean.getProjeto()
+							.getNivelDificuldade().getId()));
 		}
 		return "tiposTeste";
 	}
@@ -297,7 +308,8 @@ public class JogoBean {
 	public String validarTipoTeste() {
 		if (!tipoTesteBean.getRespondido()) {
 			jogo.setPontuacao(jogo.getPontuacao()
-					+ tipoTesteBean.validaResposta());
+					+ tipoTesteBean.validaResposta(projetoBean.getProjeto()
+							.getNivelDificuldade().getId()));
 		}
 		return "niveisTeste";
 	}
@@ -305,7 +317,8 @@ public class JogoBean {
 	public String validarNiveisTeste() {
 		if (!nivelTesteBean.getRespondido()) {
 			jogo.setPontuacao(jogo.getPontuacao()
-					+ nivelTesteBean.validaResposta());
+					+ nivelTesteBean.validaResposta(projetoBean.getProjeto()
+							.getNivelDificuldade().getId()));
 		}
 		return "criterioAceitacao";
 	}
@@ -313,7 +326,8 @@ public class JogoBean {
 	public String validarCriteriosAceitacao() {
 		if (!criterioAceitacaoBean.getRespondido()) {
 			jogo.setPontuacao(jogo.getPontuacao()
-					+ criterioAceitacaoBean.validaResposta());
+					+ criterioAceitacaoBean.validaResposta(projetoBean
+							.getProjeto().getNivelDificuldade().getId()));
 		}
 		return "ferramentas";
 	}
@@ -321,7 +335,8 @@ public class JogoBean {
 	public String validarFerramentas() {
 		if (!ferramentaBean.getRespondido()) {
 			jogo.setPontuacao(jogo.getPontuacao()
-					+ ferramentaBean.validaResposta());
+					+ ferramentaBean.validaResposta(projetoBean.getProjeto()
+							.getNivelDificuldade().getId()));
 		}
 		return "artefatos";
 	}
@@ -329,7 +344,8 @@ public class JogoBean {
 	public String validarArtefatos() {
 		if (!artefatoBean.getRespondido()) {
 			jogo.setPontuacao(jogo.getPontuacao()
-					+ artefatoBean.validaResposta());
+					+ artefatoBean.validaResposta(projetoBean.getProjeto()
+							.getNivelDificuldade().getId()));
 		}
 		return "resultado";
 	}
