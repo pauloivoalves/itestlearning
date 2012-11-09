@@ -13,7 +13,7 @@ import br.ufc.si.itest.utils.Utils;
 public class ArtefatoBean {
 	/* DAOs */
 	private ArtefatoDao artefatoDao;
-	
+
 	/* Propriedades auxiliares */
 	private List<SelectItem> artefatos;
 	private List<ArtefatoProjeto> artefatosProjeto;
@@ -22,7 +22,7 @@ public class ArtefatoBean {
 	private List<ArtefatoProjeto> respostasCorretas;
 	private List<ArtefatoProjeto> respostasErradas;
 	private Boolean respondido;
-	
+
 	/* Construtor */
 	public ArtefatoBean() {
 		artefatoDao = new ArtefatoDaoImpl();
@@ -34,34 +34,63 @@ public class ArtefatoBean {
 		respostasErradas = new ArrayList<ArtefatoProjeto>();
 		respondido = false;
 	}
-	
+
 	/* Métodos Auxiliares */
-	public Integer validaResposta() {
+	public Integer validaResposta(int nivelDificuldade) {
 		Integer pontuacao = 0;
 		for (ArtefatoProjeto ap : artefatosProjeto) {
 			if (ap.getResposta()) {
 				respostasCorretas.add(ap);
-			}
-			else {
+			} else {
 				respostasErradas.add(ap);
 			}
 		}
 		for (String i : artefatosSelecionados) {
 			ArtefatoProjeto ap = getArtefatoById(new Integer(i));
 			respostas.add(ap);
-			if(respostasCorretas.contains(ap)) {
-				pontuacao = pontuacao + Utils.PONTO_POSITIVO;
-			}
-			else {
-				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+			if (respostasCorretas.contains(ap)) {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO_DIFICIL;
+				}
+
+			} else {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+				}
 			}
 		}
-		for(ArtefatoProjeto ap : respostasCorretas) {
-			if(!respostas.contains(ap)) {
-				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+		for (ArtefatoProjeto ap : respostasCorretas) {
+			if (!respostas.contains(ap)) {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+				}
 			}
 		}
-		
+
 		respondido = true;
 		return pontuacao;
 	}
@@ -75,7 +104,7 @@ public class ArtefatoBean {
 		return null;
 	}
 
-	/* Getters e Setters*/
+	/* Getters e Setters */
 	public ArtefatoDao getArtefatoDao() {
 		return artefatoDao;
 	}

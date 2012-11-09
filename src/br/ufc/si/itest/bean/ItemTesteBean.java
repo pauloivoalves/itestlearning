@@ -11,10 +11,10 @@ import br.ufc.si.itest.model.ItemTeste;
 import br.ufc.si.itest.utils.Utils;
 
 public class ItemTesteBean {
-	
+
 	/* DAOs */
 	private ItemTesteDao itemTesteDao;
-	
+
 	/* Propriedades auxiliares */
 	private List<SelectItem> itensTeste;
 	private List<ItemTeste> itensTesteProjeto;
@@ -23,7 +23,7 @@ public class ItemTesteBean {
 	private List<ItemTeste> respostasCorretas;
 	private List<ItemTeste> respostasErradas;
 	private Boolean respondido;
-	
+
 	/* Construtor */
 	public ItemTesteBean() {
 		itemTesteDao = new ItemTesteDaoImpl();
@@ -35,34 +35,62 @@ public class ItemTesteBean {
 		respostasErradas = new ArrayList<ItemTeste>();
 		respondido = false;
 	}
-	
+
 	/* Métodos Auxiliares */
-	public Integer validaResposta() {
+	public Integer validaResposta(int nivelDificuldade) {
 		Integer pontuacao = 0;
 		for (ItemTeste it : itensTesteProjeto) {
 			if (it.getResposta()) {
 				respostasCorretas.add(it);
-			}
-			else {
+			} else {
 				respostasErradas.add(it);
 			}
 		}
 		for (String i : itensTesteSelecionados) {
 			ItemTeste it = getItemTesteById(new Integer(i));
 			respostas.add(it);
-			if(respostasCorretas.contains(it)) {
-				pontuacao = pontuacao + Utils.PONTO_POSITIVO;
-			}
-			else {
-				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+			if (respostasCorretas.contains(it)) {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO_DIFICIL;
+				}
+			} else {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+				}
 			}
 		}
-		for(ItemTeste it : respostasCorretas) {
-			if(!respostas.contains(it)) {
-				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+		for (ItemTeste it : respostasCorretas) {
+			if (!respostas.contains(it)) {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+				}
 			}
 		}
-		
+
 		respondido = true;
 		return pontuacao;
 	}
@@ -76,7 +104,7 @@ public class ItemTesteBean {
 		return null;
 	}
 
-	/* Getters e Setters*/
+	/* Getters e Setters */
 	public ItemTesteDao getItemTesteDao() {
 		return itemTesteDao;
 	}
@@ -140,5 +168,5 @@ public class ItemTesteBean {
 	public void setRespostasErradas(List<ItemTeste> respostasErradas) {
 		this.respostasErradas = respostasErradas;
 	}
-	
+
 }

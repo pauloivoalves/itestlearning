@@ -37,7 +37,7 @@ public class CasoDeTesteBean {
 	}
 
 	/* Métodos Auxiliares */
-	public Integer validaResposta() {
+	public Integer validaResposta(int nivelDificuldade) {
 		Integer pontuacao = 0;
 		for (CasoDeTeste cdt : casosDeTesteProjeto) {
 			if (cdt.getResposta()) {
@@ -50,14 +50,45 @@ public class CasoDeTesteBean {
 			CasoDeTeste cdt = getCasoDeTesteById(new Integer(i));
 			respostas.add(cdt);
 			if (respostasCorretas.contains(cdt)) {
-				pontuacao = pontuacao + Utils.PONTO_POSITIVO;
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO_MEDIO;
+				}
+
 			} else {
-				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+				}
 			}
 		}
 		for (CasoDeTeste cdt : respostasCorretas) {
 			if (!respostas.contains(cdt)) {
-				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+				}
 			}
 		}
 

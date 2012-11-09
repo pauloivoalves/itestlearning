@@ -13,7 +13,7 @@ import br.ufc.si.itest.utils.Utils;
 public class FerramentaBean {
 	/* DAOs */
 	private FerramentaDao ferramentaDao;
-	
+
 	/* Propriedades auxiliares */
 	private List<SelectItem> ferramentas;
 	private List<FerramentaProjeto> ferramentasProjeto;
@@ -22,8 +22,7 @@ public class FerramentaBean {
 	private List<FerramentaProjeto> respostasCorretas;
 	private List<FerramentaProjeto> respostasErradas;
 	private Boolean respondido;
-	
-	
+
 	/* Construtor */
 	public FerramentaBean() {
 		ferramentaDao = new FerramentaDaoImpl();
@@ -35,33 +34,64 @@ public class FerramentaBean {
 		respostasErradas = new ArrayList<FerramentaProjeto>();
 		respondido = false;
 	}
+
 	/* Métodos Auxiliares */
-	public Integer validaResposta() {
+	public Integer validaResposta(int nivelDificuldade) {
 		Integer pontuacao = 0;
 		for (FerramentaProjeto fp : ferramentasProjeto) {
 			if (fp.getResposta()) {
 				respostasCorretas.add(fp);
-			}
-			else {
+			} else {
 				respostasErradas.add(fp);
 			}
 		}
 		for (String i : ferramentasSelecionadas) {
 			FerramentaProjeto fp = getFerramentaById(new Integer(i));
 			respostas.add(fp);
-			if(respostasCorretas.contains(fp)) {
-				pontuacao = pontuacao + Utils.PONTO_POSITIVO;
-			}
-			else {
-				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+			if (respostasCorretas.contains(fp)) {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO_DIFICIL;
+				}
+			} else {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+				}
+
 			}
 		}
-		for(FerramentaProjeto fp : respostasCorretas) {
-			if(!respostas.contains(fp)) {
-				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+		for (FerramentaProjeto fp : respostasCorretas) {
+			if (!respostas.contains(fp)) {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+				}
+
 			}
 		}
-		
+
 		respondido = true;
 		return pontuacao;
 	}
@@ -74,9 +104,8 @@ public class FerramentaBean {
 		}
 		return null;
 	}
-	
 
-	/* Getters e Setters*/
+	/* Getters e Setters */
 	public FerramentaDao getFerramentaDao() {
 		return ferramentaDao;
 	}
@@ -132,9 +161,11 @@ public class FerramentaBean {
 	public void setRespondido(Boolean respondido) {
 		this.respondido = respondido;
 	}
+
 	public List<FerramentaProjeto> getRespostasErradas() {
 		return respostasErradas;
 	}
+
 	public void setRespostasErradas(List<FerramentaProjeto> respostasErradas) {
 		this.respostasErradas = respostasErradas;
 	}

@@ -36,32 +36,63 @@ public class CriterioAceitacaoBean {
 	}
 
 	/* Métodos Auxiliares */
-	public Integer validaResposta() {
+	public Integer validaResposta(int nivelDificuldade) {
 		Integer pontuacao = 0;
 		for (CriterioAceitacao ca : criteriosAceitacaoProjeto) {
 			if (ca.getResposta()) {
 				respostasCorretas.add(ca);
-			}
-			else {
+			} else {
 				respostasErradas.add(ca);
 			}
 		}
 		for (String i : criteriosAceitacaoSelecionados) {
 			CriterioAceitacao ca = getCriterioAceitacaoById(new Integer(i));
 			respostas.add(ca);
-			if(respostasCorretas.contains(ca)) {
-				pontuacao = pontuacao + Utils.PONTO_POSITIVO;
-			}
-			else {
-				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+			if (respostasCorretas.contains(ca)) {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO_DIFICIL;
+				}
+
+			} else {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+				}
+
 			}
 		}
-		for(CriterioAceitacao ca : respostasCorretas) {
-			if(!respostas.contains(ca)) {
-				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+		for (CriterioAceitacao ca : respostasCorretas) {
+			if (!respostas.contains(ca)) {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+				}
+
 			}
 		}
-		
+
 		respondido = true;
 		return pontuacao;
 	}

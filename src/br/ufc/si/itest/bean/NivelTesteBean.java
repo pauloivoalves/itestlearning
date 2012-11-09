@@ -13,7 +13,7 @@ import br.ufc.si.itest.utils.Utils;
 public class NivelTesteBean {
 	/* DAOs */
 	private NivelTesteDao nivelTesteDao;
-	
+
 	/* Propriedades auxiliares */
 	private List<SelectItem> niveisTeste;
 	private List<NivelTesteProjeto> niveisTesteProjeto;
@@ -22,7 +22,7 @@ public class NivelTesteBean {
 	private List<NivelTesteProjeto> respostasCorretas;
 	private List<NivelTesteProjeto> respostasErradas;
 	private Boolean respondido;
-	
+
 	/* Construtor */
 	public NivelTesteBean() {
 		nivelTesteDao = new NivelTesteDaoImpl();
@@ -34,34 +34,62 @@ public class NivelTesteBean {
 		respostasErradas = new ArrayList<NivelTesteProjeto>();
 		respondido = false;
 	}
-	
+
 	/* Métodos Auxiliares */
-	public Integer validaResposta() {
+	public Integer validaResposta(int nivelDificuldade) {
 		Integer pontuacao = 0;
 		for (NivelTesteProjeto nt : niveisTesteProjeto) {
 			if (nt.getResposta()) {
 				respostasCorretas.add(nt);
-			}
-			else {
+			} else {
 				respostasErradas.add(nt);
 			}
 		}
 		for (String i : niveisTesteSelecionados) {
 			NivelTesteProjeto nt = getNivelTesteById(new Integer(i));
 			respostas.add(nt);
-			if(respostasCorretas.contains(nt)) {
-				pontuacao = pontuacao + Utils.PONTO_POSITIVO;
-			}
-			else {
-				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+			if (respostasCorretas.contains(nt)) {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO_DIFICIL;
+				}
+			} else {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+				}
 			}
 		}
-		for(NivelTesteProjeto nt : respostasCorretas) {
-			if(!respostas.contains(nt)) {
-				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+		for (NivelTesteProjeto nt : respostasCorretas) {
+			if (!respostas.contains(nt)) {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+				}
 			}
 		}
-		
+
 		respondido = true;
 		return pontuacao;
 	}
@@ -74,8 +102,8 @@ public class NivelTesteBean {
 		}
 		return null;
 	}
-	
-	/* Getters e Setters*/
+
+	/* Getters e Setters */
 	public NivelTesteDao getNivelTesteDao() {
 		return nivelTesteDao;
 	}
