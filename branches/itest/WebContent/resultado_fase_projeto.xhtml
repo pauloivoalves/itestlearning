@@ -44,119 +44,31 @@
 								Pontuação:
 								<h:outputText value="#{jogoBean.jogo.pontuacao}" />
 							</h2>
-							<h3>Seu Planejamento</h3>
-							<p:dataTable var="item"
-								value="#{jogoBean.itemTesteBean.respostas}">
+							<h3>Seus casos de teste</h3>
+							<p:dataTable var="caso"
+								value="#{jogoBean.casodeTesteBean.respostas}">
 								<p:column>
 									<f:facet name="header">
-										Itens de Teste
+										Casos Marcados
 									</f:facet>
-									<h:outputText value="#{item.descricao}" />
+									<h:outputText value="#{caso.descricao}"/>
 								</p:column>
 							</p:dataTable>
-							<p:dataTable var="item"
-								value="#{jogoBean.tipoTesteBean.respostas}">
-								<p:column>
-									<f:facet name="header">
-										Tipos de Teste
-									</f:facet>
-									<h:outputText value="#{item.pk.tipoTeste.nome}" />
-								</p:column>
-							</p:dataTable>
-							<p:dataTable var="item"
-								value="#{jogoBean.nivelTesteBean.respostas}">
-								<p:column>
-									<f:facet name="header">
-										Níveis de Teste
-									</f:facet>
-									<h:outputText value="#{item.pk.nivelTeste.nome}" />
-								</p:column>
-							</p:dataTable>
-							<p:dataTable var="item"
-								value="#{jogoBean.criterioAceitacaoBean.respostas}">
-								<p:column>
-									<f:facet name="header">
-										Critérios de Aceitação
-									</f:facet>
-									<h:outputText value="#{item.descricao}" />
-								</p:column>
-							</p:dataTable>
-							<p:dataTable var="item"
-								value="#{jogoBean.ferramentaBean.respostas}">
-								<p:column>
-									<f:facet name="header">
-										Ferramentas
-									</f:facet>
-									<h:outputText value="#{item.pk.ferramenta.nome}" />
-								</p:column>
-							</p:dataTable>
-							<p:dataTable var="item"
-								value="#{jogoBean.artefatoBean.respostas}">
-								<p:column>
-									<f:facet name="header">
-										Artefatos
-									</f:facet>
-									<h:outputText value="#{item.pk.artefato.nome}" />
-								</p:column>
-							</p:dataTable>
+							
 
 							<br /> <br /> <br />
 
-							<h3>Planejamento Sugerido</h3>
-							<p:dataTable var="item"
-								value="#{jogoBean.itemTesteBean.respostasCorretas}">
+							<h3>Casos de Teste Válidos</h3>
+							<p:dataTable var="caso"
+								value="#{jogoBean.casodeTesteBean.respostasCorretas}">
 								<p:column>
 									<f:facet name="header">
-										Itens de Teste
+										Casos Corretos
 									</f:facet>
-									<h:outputText value="#{item.descricao}" />
+									<h:outputText value="#{caso.descricao}" />
 								</p:column>
 							</p:dataTable>
-							<p:dataTable var="item"
-								value="#{jogoBean.tipoTesteBean.respostasCorretas}">
-								<p:column>
-									<f:facet name="header">
-										Tipos de Teste
-									</f:facet>
-									<h:outputText value="#{item.pk.tipoTeste.nome}" />
-								</p:column>
-							</p:dataTable>
-							<p:dataTable var="item"
-								value="#{jogoBean.nivelTesteBean.respostasCorretas}">
-								<p:column>
-									<f:facet name="header">
-										Níveis de Teste
-									</f:facet>
-									<h:outputText value="#{item.pk.nivelTeste.nome}" />
-								</p:column>
-							</p:dataTable>
-							<p:dataTable var="item"
-								value="#{jogoBean.criterioAceitacaoBean.respostasCorretas}">
-								<p:column>
-									<f:facet name="header">
-										Critérios de Aceitação
-									</f:facet>
-									<h:outputText value="#{item.descricao}" />
-								</p:column>
-							</p:dataTable>
-							<p:dataTable var="item"
-								value="#{jogoBean.ferramentaBean.respostasCorretas}">
-								<p:column>
-									<f:facet name="header">
-										Ferramentas
-									</f:facet>
-									<h:outputText value="#{item.pk.ferramenta.nome}" />
-								</p:column>
-							</p:dataTable>
-							<p:dataTable var="item"
-								value="#{jogoBean.artefatoBean.respostasCorretas}">
-								<p:column>
-									<f:facet name="header">
-										Artefatos
-									</f:facet>
-									<h:outputText value="#{item.pk.artefato.nome}" />
-								</p:column>
-							</p:dataTable>
+							
 
 							<br /> <br />
 						</div>
