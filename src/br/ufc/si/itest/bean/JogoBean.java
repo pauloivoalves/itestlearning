@@ -174,11 +174,8 @@ public class JogoBean {
 		carregarFerramentas();
 
 		// checa se aquele projeto tem caso de uso
-		if (!casodeTesteBean.getCasosDeTesteProjeto().isEmpty()) {
 
-			carregarCasoDeUso();
-
-		}
+		carregarCasoDeUso();
 
 		return "descricaoProjeto";
 	}
@@ -189,14 +186,17 @@ public class JogoBean {
 		if (indice < casoDeUsoBean.getCasoDeUsoProjeto().size()) {
 			casoDeUsoBean.setCasoDeUso(casoDeUsoBean.getCasoDeUsoProjeto().get(
 					indice));
-			casodeTesteBean = new CasoDeTesteBean();
+			casodeTesteBean.setCasoDeTesteSelecionados(new ArrayList<String>());
+			casodeTesteBean
+					.setCasosDeTesteProjeto(new ArrayList<CasoDeTeste>());
+			casodeTesteBean.setCasosDeTeste(new ArrayList<SelectItem>());
 			carregarCasoDeTeste();
+			casodeTesteBean.setRespondido(false);
 
-			System.out.println("estousempreaq");
 			return "next";
 
 		}
-		System.out.println("chegueiaq");
+
 		return "resultado_fase_projeto";// aqui redirecione pra página final
 
 	}
@@ -288,6 +288,7 @@ public class JogoBean {
 	}
 
 	public void validarCasoDeTeste() {
+
 		if (!casodeTesteBean.getRespondido()) {
 			jogo.setPontuacao(jogo.getPontuacao()
 					+ casodeTesteBean.validaResposta(projetoBean.getProjeto()
