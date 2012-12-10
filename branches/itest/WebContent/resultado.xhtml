@@ -6,10 +6,80 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<title>iTest Learning :: Resultado</title>
+	<title>iTest Learning :: Informe</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+
+
+	<style type="text/css">
+#content_popup {
+    background:#dcdcdc;
+	width: 100%; height:100%; padding-top: 300px; background: black; background: rgba(0, 0, 0, 0.6);top: 0; left: 0; position: absolute; 
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+}
+
+#mensagem_popup{
+  font-family: Times New Roman, sans-serif;
+  margin:10px;
+  padding:25px 35px 20px 20px;
+  font-size: 16pt;
+  color: #0000cd; 
+}
+
+#fechar{
+ color:#0000cd;
+ font-size:14pt;
+ margin-top:290px;
+ margin-left: 130px;
+}	
+#popup {
+	background:#dcdcdc;
+	position: absolute;
+	left: 50%;
+	margin-left: -150px;
+	margin-top: -50px;
+	padding: 10px;
+	width: 650px;
+	height: 450px;
+	border: 1px solid black;
+	min-width: 350px;
+	min-height: 250px;
+	max-width: 350px;
+	max-height: 250px;
+	color: #006400;
+	font-size: 15px;
+	background-color: white;
+	-webkit-border-radius: 10px;
+	padding: 12px 10px 12px 10px;
+	-moz-border-radius: 10px;
+}
+</style>
+
+	<script type="text/javascript">
+		function verificar_pontos(){
+			p = #{jogoBean.jogo.pontuacao};
+			if (p>=70){ 
+				document.getElementById('mensagem_popup').innerHTML = "Parabéns, sua pontuação foi de " +p+ " pontos, portanto você pode passar para a próxima fase.";
+			}else{
+				document.getElementById('mensagem_popup').innerHTML = "Infelizmente sua pontuação foi de "+p+" pontos, com essa pontuação você não pode ir para a próxima fase";
+			}
+		}
+		function fechar() {
+			document.getElementById('content_popup').style.display = 'none';
+		}
+
+		function abrir() {
+			verificar_pontos();
+			document.getElementById('content_popup').style.display = '';
+			setTimeout("fechar()", 8000);
+		}
+	</script>
+
+
+
 </h:head>
-<body>
+<body onload="abrir();">
 	<f:view>
 		<h:form>
 			<div id="slider">
@@ -20,7 +90,7 @@
 						</h1>
 					</div>
 
-					
+
 
 					<div id="content">
 						<div id="buttonsMenu">
@@ -31,12 +101,30 @@
 							<p:commandLink title="Ir para o Ranking"
 								oncomplete="ranking.show()" update="ranking">
 								<p:graphicImage value="images/ranking.png" width="55"
-									height="67" styleClass="campeao"/>
+									height="67" styleClass="campeao" />
 							</p:commandLink>
-							<p:commandLink title="Terminar Jogo" action="#{jogoBean.terminarJogo}" ajax="false">
+							<p:commandLink title="Terminar Jogo"
+								action="#{jogoBean.terminarJogo}" ajax="false">
 								<p:graphicImage value="images/stop.png" width="70" height="70" />
 							</p:commandLink>
+
 						</div>
+
+
+						<div id="content_popup">
+							<div id="popup">
+								<p id="mensagem_popup">
+									Se sua pontuação for inferior a 70 pontos, infelizmente você 
+									não pode ir para a próxima fase.
+									Obrigado.
+									<br />
+								</p>
+								<small id="fechar"><a id="fechar" href="javascript: fechar();">Fechar </a></small>
+							</div>
+						</div>
+
+
+
 						<h2>Resultado</h2>
 						<br /> <br />
 						<div id="fase" align="center">
@@ -161,18 +249,17 @@
 							<br /> <br />
 						</div>
 
-						
-						<p:commandLink title="Voltar" style="float: left;"
-							action="objetivoFaseProjeto" ajax="false">
-							<p:graphicImage value="images/go.png" styleClass="image_res"  />
+
+						<p:commandLink title="avançar" style="float: left;" ajax="false" action="objetivoFaseProjeto">
+							<p:graphicImage value="images/go.png" styleClass="image_res" />
 						</p:commandLink>
 
 						<p:dialog header="Ir para o Ranking" id="ranking"
 							widgetVar="ranking">
-								<h:outputLabel value="Nome: " />
-								<h:inputText value="#{jogoBean.usuario.nome}" />
-								<h:commandButton type="submit" value="OK"
-									action="#{jogoBean.adicionarRanking}" />
+							<h:outputLabel value="Nome: " />
+							<h:inputText value="#{jogoBean.usuario.nome}" />
+							<h:commandButton type="submit" value="OK"
+								action="#{jogoBean.adicionarRanking}" />
 						</p:dialog>
 						<p:dialog header="Escopo do Projeto" id="dialogEscopo"
 							widgetVar="dialogEscopo">
@@ -183,7 +270,7 @@
 						</p:dialog>
 					</div>
 					<div id="footer">
-						
+
 						<h:outputLabel>© 2012 Virginia Farias. Todos os direitos reservados.</h:outputLabel>
 					</div>
 				</div>
