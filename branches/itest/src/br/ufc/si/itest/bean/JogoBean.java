@@ -174,8 +174,11 @@ public class JogoBean {
 		carregarFerramentas();
 
 		// checa se aquele projeto tem caso de uso
-
-		carregarCasoDeUso();
+		if (!casoDeUsoBean.getCasoDeUsoDao()
+				.getCasoDeUsoByIdProjeto(projetoBean.getProjeto().getId())
+				.isEmpty()) {
+			carregarCasoDeUso();
+		}
 
 		return "descricaoProjeto";
 	}
