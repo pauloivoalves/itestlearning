@@ -8,7 +8,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>iTest Learning :: Informe</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
-
+	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 
 
 	<style type="text/css">
@@ -54,15 +54,27 @@
 	padding: 12px 10px 12px 10px;
 	-moz-border-radius: 10px;
 }
+.gameover_popup{
+background-image: url('images/gameover7.png') !important;
+background-size: 100% 100% !important;
+}
+.congratulations_popup{
+background-image: url('images/ch1.png') !important;
+background-size: 100% 100% !important;
+}
 </style>
 
 	<script type="text/javascript">
 		function verificar_pontos(){
 			p = #{jogoBean.jogo.pontuacao};
 			if (p>=70){ 
-				document.getElementById('mensagem_popup').innerHTML = "Parabéns, sua pontuação foi de " +p+ " pontos, portanto você pode passar para a próxima fase.";
+				//$('#mensagem_popup').html('Parabéns, sua pontuação foi de ' +p+ ' pontos, portanto você pode passar para a próxima fase.');
+				$('#mensagem_popup').html('');
+				$('#popup').addClass('congratulations_popup');
 			}else{
-				document.getElementById('mensagem_popup').innerHTML = "Infelizmente sua pontuação foi de "+p+" pontos, com essa pontuação você não pode ir para a próxima fase";
+				//$('#mensagem_popup').html('Infelizmente sua pontuação foi de '+p+' pontos, com essa pontuação você não pode ir para a próxima fase. <img src="images/gameover.jpg" />');
+				$('#mensagem_popup').html('');
+				$('#popup').addClass('gameover_popup');
 			}
 		}
 		function fechar() {
@@ -72,7 +84,7 @@
 		function abrir() {
 			verificar_pontos();
 			document.getElementById('content_popup').style.display = '';
-			setTimeout("fechar()", 8000);
+			setTimeout('fechar()', 8000);
 		}
 	</script>
 
@@ -113,13 +125,17 @@
 
 						<div id="content_popup">
 							<div id="popup">
-								<p id="mensagem_popup">
+								<div id="mensagem_popup">
 									Se sua pontuação for inferior a 70 pontos, infelizmente você 
 									não pode ir para a próxima fase.
 									Obrigado.
 									<br />
-								</p>
-								<small id="fechar"><a id="fechar" href="javascript: fechar();">Fechar </a></small>
+								</div>
+								<small id="fechar">
+									<a href="javascript: fechar();">
+										<img style="position: absolute;top: 0;right: 0;margin-right: -15px;margin-top: -15px;}" src="images/button_grey_close.png" />
+									</a>
+								</small>
 							</div>
 						</div>
 
@@ -251,7 +267,7 @@
 
 
 						<p:commandLink title="avançar" style="float: left;" ajax="false" action="objetivoFaseProjeto">
-							<p:graphicImage value="images/go.png" styleClass="image_res" />
+							<p:graphicImage value="images/go.png" styleClass="image_res" rendered="#{jogoBean.jogo.pontuacao >= 70 }" />
 						</p:commandLink>
 
 						<p:dialog header="Ir para o Ranking" id="ranking"
