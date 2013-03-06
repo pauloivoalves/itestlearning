@@ -25,5 +25,8 @@ public interface UsuarioDao {
 
 	public Usuario getUsuarioByName(String nome);
 	
+	public Usuario buscarUsuarioPorEmaileSenha(String email, String senha);
+	
+	
 
 }//fim da interface
