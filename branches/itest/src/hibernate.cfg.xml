@@ -9,7 +9,7 @@
 		<property name="hibernate.connection.password">postgres</property>
 		
 		<property name="show_sql">true</property>
-		<!-- <property name="hbm2ddl.auto">update</property> -->
+		 <property name="hbm2ddl.auto">update</property>
 		 
 		 
 		<mapping class="br.ufc.si.itest.model.Artefato"/>
@@ -28,6 +28,10 @@
 		<mapping class="br.ufc.si.itest.model.Usuario"/>
 		<mapping class="br.ufc.si.itest.model.CasoDeUso"/>
 		<mapping class="br.ufc.si.itest.model.CasoDeTeste"/>
+		<mapping class="br.ufc.si.itest.model.Administrador"/>
+		<mapping class="br.ufc.si.itest.model.Aluno"/>
+		<mapping class="br.ufc.si.itest.model.Professor"/>
+		<mapping class="br.ufc.si.itest.model.Turma"/>
 				
 	</session-factory>
 </hibernate-configuration>
