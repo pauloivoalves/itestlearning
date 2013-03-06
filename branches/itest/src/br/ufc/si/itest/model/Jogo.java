@@ -4,13 +4,17 @@
 package br.ufc.si.itest.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.eclipse.jdt.internal.compiler.ast.FalseLiteral;
 
 /**
  * @author Virginia
@@ -28,6 +32,29 @@ public class Jogo implements Serializable {
 	@Column(name= "pontuacao", nullable = false)
 	private Integer pontuacao;
 	
+	@Column(name="data", nullable= false)
+	private Date data;
+	
+	@ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+	private Aluno aluno;
+	
+	
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
 	public JogoPk getPk() {
 		return pk;
 	}
