@@ -5,12 +5,18 @@ package br.ufc.si.itest.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 /**
  * @author Virginia
@@ -18,12 +24,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="itest.usuario")
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name="id", nullable = false)
 	private Integer id;
 	
@@ -35,6 +42,8 @@ public class Usuario implements Serializable {
 	
 	@Column(name="senha")
 	private String senha;
+
+	
 
 	public Integer getId() {
 		return id;
@@ -52,6 +61,7 @@ public class Usuario implements Serializable {
 		this.nome = nome;
 	}
 
+	
 	public String getLogin() {
 		return login;
 	}
