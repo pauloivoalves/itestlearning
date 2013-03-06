@@ -33,6 +33,12 @@
 						
 							</p:commandLink>
 							
+							<p:commandLink title="Ajuda" oncomplete="dialogAjuda.show()" update="displayAjuda">
+								<p:graphicImage value="images/help.png" width="70" height="70"/>
+							</p:commandLink>
+							<p:commandLink title="Verificar Resposta" actionListener="#{jogoBean.validarNiveisTeste}" oncomplete="dialog.show()" update="display, pontos, alternativas">
+								<p:graphicImage value="images/check.png" width="70" height="70" styleClass="imageCheck"/>
+							</p:commandLink>
 							<p:commandLink title="Terminar Jogo" action="#{jogoBean.terminarJogo}" ajax="false">
 								<p:graphicImage value="images/stop.png" width="70" height="70" />
 							</p:commandLink>
