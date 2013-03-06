@@ -90,4 +90,23 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		return null;
 	}
 
+	@Override
+	public Usuario buscarUsuarioPorEmaileSenha(String email, String senha) {
+		
+		Session session = HibernateUtil.getSession();
+		
+		try{
+			Criteria criteria = session.createCriteria(Usuario.class);
+			criteria.add(Restrictions.eq("login", email));
+			criteria.add(Restrictions.eq("senha", senha));
+			
+			return (Usuario) criteria.uniqueResult();
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 }//fim da classe
