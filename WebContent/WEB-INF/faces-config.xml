@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<faces-config
-    xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
-    version="2.0">
-    
-    <!-- Managed Beans -->
-    <managed-bean>
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+	version="2.0">
+
+	<!-- Managed Beans -->
+	<managed-bean>
 		<managed-bean-name>artefatoBean</managed-bean-name>
 		<managed-bean-class>br.ufc.si.itest.bean.ArtefatoBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
@@ -62,10 +61,14 @@
 		<managed-bean-class>br.ufc.si.itest.bean.CasoDeTesteBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-    
-    
-    <!-- Navigation Rules -->
-    <navigation-rule>
+	<managed-bean>
+		<managed-bean-name>UsuarioBean</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.UsuarioBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+
+	<!-- Navigation Rules -->
+	<navigation-rule>
 		<navigation-case>
 			<from-outcome>index</from-outcome>
 			<to-view-id>/index.xhtml</to-view-id>
@@ -148,27 +151,37 @@
 			<from-outcome>resultado</from-outcome>
 			<to-view-id>/resultado.xhtml</to-view-id>
 		</navigation-case>
-		
+
 		<navigation-case>
 			<from-outcome>objetivoFaseProjeto</from-outcome>
 			<to-view-id>/objetivo_fase_projeto.xhtml</to-view-id>
 		</navigation-case>
-		
+
 		<navigation-case>
 			<from-outcome>faseProjeto</from-outcome>
 			<to-view-id>/fase_projeto.xhtml</to-view-id>
 		</navigation-case>
-		
+
 		<navigation-case>
 			<from-outcome>next</from-outcome>
 			<to-view-id>/fase_projeto.xhtml</to-view-id>
 		</navigation-case>
-		
+
 		<navigation-case>
 			<from-outcome>resultado_fase_projeto</from-outcome>
 			<to-view-id>/resultado_fase_projeto.xhtml</to-view-id>
 		</navigation-case>
+
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>falhou</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
-	
+
 
 </faces-config>
