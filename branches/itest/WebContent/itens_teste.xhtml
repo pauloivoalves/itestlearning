@@ -20,75 +20,92 @@
 						</h1>
 					</div>
 
-					
+
 					<div id="content">
 						<div id="buttonsMenu">
-							<p:commandLink title="Escopo do Projeto" oncomplete="dialogEscopo.show()" update="displayEscopo">
-								<p:graphicImage value="images/note.png" width="70" height="70"/>
+							<p:commandLink title="Escopo do Projeto"
+								oncomplete="dialogEscopo.show()" update="displayEscopo">
+								<p:graphicImage value="images/note.png" width="70" height="70" />
 							</p:commandLink>
-							<p:commandLink title="Verificar Resposta" actionListener="#{jogoBean.validarItensTeste}" oncomplete="dialog.show()" update="display, pontos, alternativas">
-								<p:graphicImage value="images/check.png" width="70" height="70" styleClass="imageCheck"/>
+							<p:commandLink title="Verificar Resposta"
+								actionListener="#{jogoBean.validarItensTeste}"
+								oncomplete="dialog.show()"
+								update="display, pontos, alternativas">
+								<p:graphicImage value="images/check.png" width="70" height="70"
+									styleClass="imageCheck" />
 							</p:commandLink>
-							<p:commandLink title="Terminar Jogo" action="#{jogoBean.terminarJogo}" ajax="false">
+							<p:commandLink title="Terminar Jogo"
+								action="#{jogoBean.terminarJogo}" ajax="false">
 								<p:graphicImage value="images/stop.png" width="70" height="70" />
 							</p:commandLink>
-							
-							<h:outputText id="pontos" value="#{jogoBean.jogo.pontuacao}" style="float:right; font-size:50px; color:green;"/>
-							<h:outputText value="Pontuação:  " style="float:right; font-size:20px; color:green;"/>
+
+							<h:outputText id="pontos" value="#{jogoBean.jogo.pontuacao}"
+								style="float:right; font-size:50px; color:green;" />
+							<h:outputText value="Pontuação:  "
+								style="float:right; font-size:20px; color:green;" />
 						</div>
 						<h2>
-							Fase 1: Itens a Testar - <h:outputText value="#{jogoBean.projetoBean.projeto.nome}" />
+							Fase 1: Itens a Testar -
+							<h:outputText value="#{jogoBean.projetoBean.projeto.nome}" />
 						</h2>
 						<div id="fase">
 							<h3>
 								<span
-									style="color:green; font-weight: bold; text-decoration: underline;">Missão:</span>
-								Selecionar os itens a serem testados. Você deve selecionar somente os mais importantes para o 
-								projeto.
+									style="color: green; font-weight: bold; text-decoration: underline;">Missão:</span>
+								Selecionar os itens a serem testados. Você deve selecionar
+								somente os mais importantes para o projeto.
 							</h3>
 						</div>
 						<div id="desafio">
-							<p:selectManyCheckbox id="alternativas" layout="pageDirection" styleClass="alternativas" value="#{jogoBean.itemTesteBean.itensTesteSelecionados}" disabled="#{jogoBean.itemTesteBean.respondido}">
-            					<f:selectItems var="item" value="#{jogoBean.itemTesteBean.itensTeste}"/>
-            				</p:selectManyCheckbox>
+							<p:selectManyCheckbox id="alternativas" layout="pageDirection"
+								styleClass="alternativas"
+								value="#{jogoBean.itemTesteBean.itensTesteSelecionados}"
+								disabled="#{jogoBean.itemTesteBean.respondido}">
+								<f:selectItems var="item"
+									value="#{jogoBean.itemTesteBean.itensTeste}" />
+							</p:selectManyCheckbox>
 						</div>
-						<p:commandLink title="Voltar" style="float: left;" action="descricaoProjeto" ajax="false">
-							<p:graphicImage value="images/return.png" styleClass="image_left"/>
+						<p:commandLink title="Voltar" style="float: left;"
+							action="descricaoProjeto" ajax="false">
+							<p:graphicImage value="images/return.png" styleClass="image_left" />
 						</p:commandLink>
-						
-						<p:commandLink title="Avançar" style="float: right;" action="#{jogoBean.validarItensTeste}" ajax="false">
-							<p:graphicImage value="images/go.png" styleClass="image_right"/>
+
+						<p:commandLink title="Avançar" style="float: right;"
+							action="#{jogoBean.validarItensTeste}" ajax="false">
+							<p:graphicImage value="images/go.png" styleClass="image_right" />
 						</p:commandLink>
-						
+
 						<p:dialog header="Itens a Testar" id="dialog" widgetVar="dialog">
 							<h:panelGrid id="display" columns="1" cellpadding="5">
-								<h4 style="color:blue;">Suas Respostas</h4>
-								<p:dataList value="#{jogoBean.itemTesteBean.respostas}" var="item" itemType="circle">
+								<h4 style="color: blue;">Suas Respostas</h4>
+								<p:dataList value="#{jogoBean.itemTesteBean.respostas}"
+									var="item" itemType="circle">
 									#{item.descricao}
 								</p:dataList>
-								<br/>
+								<br />
 								<h4>Respostas Corretas</h4>
-								<p:dataList value="#{jogoBean.itemTesteBean.respostasCorretas}" var="item" itemType="circle">
+								<p:dataList value="#{jogoBean.itemTesteBean.respostasCorretas}"
+									var="item" itemType="circle">
 									<span style="font-weight: bold;">#{item.descricao}</span>: #{item.mensagem}
 								</p:dataList>
-								<br/>
-								<h4 style="color:red;">Respostas Erradas</h4>
-								<p:dataList value="#{jogoBean.itemTesteBean.respostasErradas}" var="item" itemType="circle">
+								<br />
+								<h4 style="color: red;">Respostas Erradas</h4>
+								<p:dataList value="#{jogoBean.itemTesteBean.respostasErradas}"
+									var="item" itemType="circle">
 									<span style="font-weight: bold;">#{item.descricao}</span>: #{item.mensagem}
 								</p:dataList>
-							</h:panelGrid>							
+							</h:panelGrid>
 						</p:dialog>
-						
-						<p:dialog header="Escopo do Projeto" id="dialogEscopo" widgetVar="dialogEscopo">
+
+						<p:dialog header="Escopo do Projeto" id="dialogEscopo"
+							widgetVar="dialogEscopo">
 							<h:panelGrid id="displayEscopo">
 								<h4>#{jogoBean.projetoBean.projeto.nome}</h4>
-								<h:outputText value="#{jogoBean.projetoBean.projeto.descricao}"/>
+								<h:outputText value="#{jogoBean.projetoBean.projeto.descricao}" />
 							</h:panelGrid>
-						</p:dialog>							
+						</p:dialog>
 					</div>
-					<div id="footer">
-						
-					</div>
+					<div id="footer"></div>
 				</div>
 			</div>
 		</h:form>
