@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xh	tml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -28,16 +28,16 @@
 								<legend>Cadastro Projeto</legend>
 								<h:panelGrid columns="2">
 									<h:outputLabel value="Nome" />
-									<h:inputText id="nome" size="45" styleClass="text" />
+									<h:inputText value="#{projetoBean.projeto.nome}" id="nome" size="45" styleClass="text" />
 
 
 									<h:outputLabel value="Descrição" />
-									<h:inputTextarea id="descricao" rows="5" cols="33" size="45"
+									<h:inputTextarea value="#{projetoBean.projeto.descricao}" id="descricao" rows="5" cols="33" size="45"
 										styleClass="text" />
 
 
 									<h:outputLabel value="Dificuldade" />
-									<h:selectOneMenu style="width:280px;" styleClass="text">
+									<h:selectOneMenu value="#{projetoBean.projeto.nivelDificuldade}" style="width:280px;" styleClass="text">
 										<f:selectItem itemValue="Fácil" />
 										<f:selectItem itemValue="Médio" />
 										<f:selectItem itemValue="Difícil" />

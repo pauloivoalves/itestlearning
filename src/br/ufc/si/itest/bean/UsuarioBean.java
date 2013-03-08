@@ -15,16 +15,18 @@ public class UsuarioBean {
 	public String verificaConta() {
 
 		Usuario user = new Usuario();
-		
+
 		usuarioDaoImpl = new UsuarioDaoImpl();
-		user = usuarioDaoImpl.buscarUsuarioPorEmaileSenha(usuario.getNome(),
+		user = usuarioDaoImpl.buscarUsuarioPorEmaileSenha(usuario.getLogin(),
 				usuario.getSenha());
-		
-		if(user == null)
-		return "falhou";
-		
-		else
-		return "sucesso";
+
+		if (user == null) {
+			return "falhou";
+		}
+
+		else {
+			return "sucesso";
+		}
 
 	}
 

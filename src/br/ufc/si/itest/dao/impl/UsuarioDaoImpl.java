@@ -16,7 +16,7 @@ import br.ufc.si.itest.utils.HibernateUtil;
 
 /**
  * @author Virginia
- *
+ * 
  */
 public class UsuarioDaoImpl implements UsuarioDao {
 
@@ -26,7 +26,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		session.save(usuario);
 		t.commit();
 		session.close();
-		
+
 	}
 
 	public void remove(Usuario usuario) {
@@ -35,7 +35,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		session.delete(usuario);
 		t.commit();
 		session.close();
-		
+
 	}
 
 	public void update(Usuario usuario) {
@@ -44,7 +44,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		session.update(usuario);
 		t.commit();
 		session.close();
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -59,22 +59,22 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		}
 		return null;
 	}
-	
-	public Usuario getUsuarioByNome(String nome){
+
+	public Usuario getUsuarioByNome(String nome) {
 		Session session = HibernateUtil.getSession();
-		
-		try{
+
+		try {
 			Criteria c = session.createCriteria(Usuario.class);
 			c.add(Restrictions.eq("nome", nome));
 			return (Usuario) c.uniqueResult();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			session.close();
 		}
 		return null;
-	}//fim do m�todo
-	
+	}// fim do m�todo
+
 	@Override
 	public Usuario getUsuarioByName(String nome) {
 		Session session = HibernateUtil.getSession();
@@ -92,21 +92,20 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 	@Override
 	public Usuario buscarUsuarioPorEmaileSenha(String email, String senha) {
-		
+
 		Session session = HibernateUtil.getSession();
-		
-		try{
+
+		try {
 			Criteria criteria = session.createCriteria(Usuario.class);
 			criteria.add(Restrictions.eq("login", email));
 			criteria.add(Restrictions.eq("senha", senha));
-			
+
 			return (Usuario) criteria.uniqueResult();
-		
-		}catch (Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println("ai");
 		return null;
 	}
-
-}//fim da classe
+}// fim da classe
