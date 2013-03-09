@@ -7,16 +7,24 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>iTest Learning :: O Jogo</title>
+<<<<<<< .mine
+	<link href="css/styleLogin.css" rel="stylesheet" type="text/css" />
+=======
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
+>>>>>>> .r52
 </h:head>
 <body>
 	<f:view>
 		<h:form>
 			<div id="slider">
+				<div id="conta">
+					<a href="cadastro.jsf">Criar uma Conta</a>
+				</div>
+
 				<div id="templatemo_wrapper">
 					<div id="header">
 						<h1>
-							<a href="index.jsf">iTest Learning</a>
+							<a href="Login.jsf">iTest Learning</a>
 						</h1>
 					</div>
 
@@ -24,31 +32,36 @@
 						<div id="fase">
 
 							<h:panelGrid columns="2">
-								<h:outputLabel value="email" />
+								<h:outputLabel value="#{msgn['tela.email']}" />
 								<br />
-								<h:inputText value="#{UsuarioBean.usuario.login}" id="email" size="45" />
-								<br />
-
-								<h:outputLabel value="senha" />
-								<br />
-								<h:inputSecret value="#{UsuarioBean.usuario.senha}" id="senha" size="45" />
+								<h:panelGroup>
+								<h:inputText id="email" value="#{UsuarioBean.user.login}" size="45" required="true" requiredMessage="#{msgn['requerido.email']}"/>
+								<h:message for="email" style="color:red;"></h:message>
+								</h:panelGroup>
 								<br />
 
-								<h:outputLabel value="Selecione uma conta" />
+								<h:outputLabel value="#{msgn['tela.senha']}" />
 								<br />
-								<h:selectOneMenu style="width:280px;">
+								<h:panelGroup>
+								<h:inputSecret id="senha" size="45" value="#{UsuarioBean.user.senha}" required="true" requiredMessage="#{msgn['requerido.senha']}"/>
+								<h:message for="senha" style="color:red;"></h:message>
+								</h:panelGroup>
+								<br />
+
+								<h:outputLabel value="#{msgn['tela.conta']}" />
+								<br />
+								<h:selectOneMenu style="width:280px;" value="#{UsuarioBean.papel}">
 									<f:selectItem itemValue="Aluno" />
 									<f:selectItem itemValue="Administrador" />
 									<f:selectItem itemValue="Professor" />
 								</h:selectOneMenu>
-								<br/>
-								<br/>
-								<br/>
+								<br />
+								<br />
+								<br />
 
 							</h:panelGrid>
-							<h:commandButton value="Entrar" action="#{UsuarioBean.verificaConta}"  style="margin-left:60px;"
-								styleClass="button" />
-								
+							<h:commandButton value="Entrar" style="margin-left:60px;"
+								styleClass="button" action="#{UsuarioBean.entraNoSistema}"/>
 							<h:commandButton value="Cancelar" style="margin-left:20px;"
 								styleClass="button" />
 						</div>
