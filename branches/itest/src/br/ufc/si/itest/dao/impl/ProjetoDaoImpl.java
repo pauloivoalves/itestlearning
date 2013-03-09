@@ -50,7 +50,7 @@ public class ProjetoDaoImpl implements ProjetoDao {
 	public List<Projeto> list() {
 		Session session = HibernateUtil.getSession();
 		try {
-			return session.createCriteria(Projeto.class).list();
+			return (List<Projeto>) session.createCriteria(Projeto.class).list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

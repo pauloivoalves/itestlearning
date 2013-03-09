@@ -13,10 +13,6 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name="id_prof")
 public class Professor extends Usuario{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	
 	@OneToMany(mappedBy="professor")
 	private List<Turma> minhasTurmas;
