@@ -9,7 +9,7 @@
 		<property name="hibernate.connection.password">postgres</property>
 		
 		<property name="show_sql">true</property>
-		 <property name="hbm2ddl.auto">update</property>
+		  <!--   <property name="hbm2ddl.auto">update</property>  --> 
 		 
 		 
 		<mapping class="br.ufc.si.itest.model.Artefato"/>
@@ -18,18 +18,18 @@
 		<mapping class="br.ufc.si.itest.model.Ferramenta"/>
 		<mapping class="br.ufc.si.itest.model.FerramentaProjeto"/>
 		<mapping class="br.ufc.si.itest.model.ItemTeste"/>
-		<mapping class="br.ufc.si.itest.model.Jogo"/>
 		<mapping class="br.ufc.si.itest.model.NivelDificuldade"/>
 		<mapping class="br.ufc.si.itest.model.NivelTeste"/>
 		<mapping class="br.ufc.si.itest.model.NivelTesteProjeto"/>
-		<mapping class="br.ufc.si.itest.model.Projeto"/>
 		<mapping class="br.ufc.si.itest.model.TipoTeste"/>
 		<mapping class="br.ufc.si.itest.model.TipoTesteProjeto"/>
 		<mapping class="br.ufc.si.itest.model.Usuario"/>
 		<mapping class="br.ufc.si.itest.model.CasoDeUso"/>
 		<mapping class="br.ufc.si.itest.model.CasoDeTeste"/>
 		<mapping class="br.ufc.si.itest.model.Administrador"/>
+		<mapping class="br.ufc.si.itest.model.Projeto"/>
 		<mapping class="br.ufc.si.itest.model.Aluno"/>
+		<mapping class="br.ufc.si.itest.model.Jogo"/>
 		<mapping class="br.ufc.si.itest.model.Professor"/>
 		<mapping class="br.ufc.si.itest.model.Turma"/>
 				
