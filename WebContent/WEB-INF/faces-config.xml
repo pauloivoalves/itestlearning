@@ -62,11 +62,22 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
+		<managed-bean-name>AlunoBean</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.AlunoBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
 		<managed-bean-name>UsuarioBean</managed-bean-name>
 		<managed-bean-class>br.ufc.si.itest.bean.UsuarioBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
-
+	<managed-bean>
+		<managed-bean-name>AdministradorBean</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.AdministradorBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	
+	
 	<!-- Navigation Rules -->
 	<navigation-rule>
 		<navigation-case>
@@ -182,6 +193,13 @@
 			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-
-
+	
+	<application>
+		<resource-bundle>
+			<base-name>br.ufc.si.itest.resources.mensagens</base-name>
+			<var>msgn</var>
+		</resource-bundle>
+	</application>
+	
+	
 </faces-config>

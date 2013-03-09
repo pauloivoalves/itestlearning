@@ -8,6 +8,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>iTest Learning :: O Jogo</title>
 	<link href="css/layout.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="js/Script.js"></script>
 </h:head>
 <body>
 	<f:view>
@@ -16,32 +17,49 @@
 				<div id="templatemo_wrapper">
 					<div id="header">
 						<h1>
-							<a href="index.jsf">iTest Learning</a>
+							<a href="cadastro.jsf">iTest Learning</a>
 						</h1>
 					</div>
-					
 
 
 
 					<div id="content">
 						<div id="fase">
 							<fieldset class="fieldset">
-								<legend>Cadastro Nível Teste</legend>
+								<legend>Cadastro Usuário</legend>
+								
 								<h:panelGrid columns="2">
 									<h:outputLabel value="Nome" />
-									<h:inputText id="nome" size="45" styleClass="text" />
+									<h:panelGroup>
+									<h:inputText value="#{AlunoBean.aluno.nome}" id="nome" size="45" styleClass="text" required="true" requiredMessage="#{msgn['requerido.nome']}"/>
+									<h:message for="nome" style="color:red;" ></h:message>
+									</h:panelGroup>
 
-
-									<h:outputLabel value="Descrição" />
-									<h:inputTextarea id="descricao" rows="5" cols="33" size="45"
-										styleClass="text" />
+									<h:outputLabel value="E-mail" />
+									<h:panelGroup>
+									<h:inputText value="#{AlunoBean.aluno.login}" id="email" size="45" styleClass="text" required="true" requiredMessage="#{msgn['requerido.email']}"/>
+									<h:message for="email" style="color:red;" ></h:message>
+									</h:panelGroup>
+										
+									<h:outputLabel value="senha" />
+									<h:panelGroup>
+									<h:inputSecret value="#{AlunoBean.aluno.senha}" id="senha" size="45" styleClass="text" required="true" requiredMessage="#{msgn['requerido.senha']}"/>
+									<h:message for="senha" style="color:red;" ></h:message>
+									</h:panelGroup>
+											
+									<h:outputLabel value="repita a senha" />
+									<h:panelGroup>
+									<h:inputSecret  id="rsenha" size="45" styleClass="text" required="true" requiredMessage="#{msgn['requerido.senha']}"/>
+									<h:message for="rsenha" style="color:red;" ></h:message>
+									</h:panelGroup>		
+									
 								</h:panelGrid>
 								<br /> <br />
-
+						
 								<div id="botoes">
-									<h:commandButton value="Cadastrar" styleClass="button" />
+									<h:commandButton type="submit" value="Cadastrar"  styleClass="button" action="#{AlunoBean.cadastrarAluno}"/>
 									<h:commandButton value="Cancelar" style="margin-left:20px;"
-										styleClass="button" />
+										styleClass="button" immediate="true" action="/login.xhtml"/>
 								</div>
 
 							</fieldset>
