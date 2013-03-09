@@ -31,7 +31,7 @@ import org.hibernate.annotations.FetchMode;
 @Table(name = "itest.projeto")
 public class Projeto implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,16 +67,16 @@ public class Projeto implements Serializable {
 	private List<Artefato> artefatos;
 	
 	@ManyToOne(cascade={javax.persistence.CascadeType.PERSIST, javax.persistence.CascadeType.MERGE})
-	private Administrador admin;
+	private Administrador administrador;
 	
 
 	
 	public Administrador getAdmin() {
-		return admin;
+		return administrador;
 	}
 
 	public void setAdmin(Administrador admin) {
-		this.admin = admin;
+		this.administrador = admin;
 	}
 
 	public Projeto() {

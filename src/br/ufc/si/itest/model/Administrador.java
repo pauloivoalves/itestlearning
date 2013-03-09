@@ -12,14 +12,8 @@ import javax.persistence.Table;
 @Table(name="itest.administrador")
 @PrimaryKeyJoinColumn(name="id_admin")
 public class Administrador extends Usuario{
-
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	@OneToMany(mappedBy="admin")
+	@OneToMany(mappedBy="administrador")
 	private List<Projeto> meusProjetos;
 
 	public List<Projeto> getMeusProjetos() {

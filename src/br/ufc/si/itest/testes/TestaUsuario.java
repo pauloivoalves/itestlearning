@@ -3,6 +3,7 @@ package br.ufc.si.itest.testes;
 import junit.framework.TestCase;
 import br.ufc.si.itest.dao.UsuarioDao;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
+import br.ufc.si.itest.model.Administrador;
 import br.ufc.si.itest.model.Aluno;
 import br.ufc.si.itest.model.Usuario;
 import br.ufc.si.itest.persistencia.CriarTabelas;
@@ -25,7 +26,7 @@ public class TestaUsuario{
 	}
 
 	private static void salvar(){
-		Aluno a = new Aluno();
+		Administrador a = new Administrador();
 		
 		a.setLogin("4");
 		a.setNome("asdf");
