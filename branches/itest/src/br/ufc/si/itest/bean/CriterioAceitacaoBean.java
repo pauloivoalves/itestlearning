@@ -11,6 +11,10 @@ import br.ufc.si.itest.model.CriterioAceitacao;
 import br.ufc.si.itest.utils.Utils;
 
 public class CriterioAceitacaoBean {
+
+	/* Model */
+	private CriterioAceitacao criterioAceitacao;
+
 	/* DAOs */
 	private CriterioAceitacaoDao criterioAceitacaoDao;
 
@@ -25,6 +29,7 @@ public class CriterioAceitacaoBean {
 
 	/* Construtor */
 	public CriterioAceitacaoBean() {
+		criterioAceitacao = new CriterioAceitacao();
 		criterioAceitacaoDao = new CriterioAceitacaoDaoImpl();
 		criteriosAceitacao = new ArrayList<SelectItem>();
 		criteriosAceitacaoProjeto = new ArrayList<CriterioAceitacao>();
@@ -172,6 +177,14 @@ public class CriterioAceitacaoBean {
 
 	public void setRespostasErradas(List<CriterioAceitacao> respostasErradas) {
 		this.respostasErradas = respostasErradas;
+	}
+
+	public CriterioAceitacao getCriterioAceitacao() {
+		return criterioAceitacao;
+	}
+
+	public void setCriterioAceitacao(CriterioAceitacao criterioAceitacao) {
+		this.criterioAceitacao = criterioAceitacao;
 	}
 
 }

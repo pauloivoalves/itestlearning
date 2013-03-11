@@ -27,20 +27,17 @@
 							<fieldset class="fieldset">
 								<legend>Cadastro Critério Aceitação</legend>
 								<h:panelGrid columns="2">
-									<h:outputLabel value="Nome" />
-									<h:inputText id="nome" size="45" styleClass="text" />
-
 
 									<h:outputLabel value="Descrição" />
-									<h:inputTextarea id="descricao" rows="5" cols="33" size="45"
+									<h:inputTextarea value="#{criterioAceitacaoBean.criterioAceitacao.descricao}" id="descricao" rows="5" cols="33" size="45"
 										styleClass="text" />
 
 									<h:outputLabel value="Resposta" />
-									<h:selectBooleanCheckbox id="resposta" size="45"
+									<h:selectBooleanCheckbox value="#{criterioAceitacaoBean.criterioAceitacao.resposta}" id="resposta" size="45"
 										styleClass="text" />
 
 									<h:outputLabel value="Mensagen" />
-									<h:inputTextarea id="mensagem" rows="5" cols="33" size="45"
+									<h:inputTextarea value="#{criterioAceitacaoBean.criterioAceitacao.mensagem}" id="mensagem" rows="5" cols="33" size="45"
 										styleClass="text" />
 
 									<h:outputLabel value="Projeto" />

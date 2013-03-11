@@ -27,20 +27,17 @@
 							<fieldset class="fieldset">
 								<legend>Cadastro Item Teste</legend>
 								<h:panelGrid columns="2">
-									<h:outputLabel value="Nome" />
-									<h:inputText id="nome" size="45" styleClass="text" />
-
-
+									
 									<h:outputLabel value="Descrição" />
-									<h:inputTextarea id="descricao" rows="5" cols="33" size="45"
+									<h:inputTextarea value="#{itemTesteBean.itemTeste.descricao}" id="descricao" rows="5" cols="33" size="45"
 										styleClass="text" />
 
 									<h:outputLabel value="Resposta" />
-									<h:selectBooleanCheckbox id="resposta" size="45"
+									<h:selectBooleanCheckbox value="#{itemTesteBean.itemTeste.resposta}" id="resposta" size="45"
 										styleClass="text" />
 
 									<h:outputLabel value="Mensagen" />
-									<h:inputTextarea id="mensagem" rows="5" cols="33" size="45"
+									<h:inputTextarea value="#{itemTesteBean.itemTeste.resposta}" id="mensagem" rows="5" cols="33" size="45"
 										styleClass="text" />
 
 									<h:outputLabel value="Projeto" />

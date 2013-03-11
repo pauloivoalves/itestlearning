@@ -12,6 +12,9 @@ import br.ufc.si.itest.utils.Utils;
 
 public class ItemTesteBean {
 
+	/* Model */
+	private ItemTeste itemTeste;
+
 	/* DAOs */
 	private ItemTesteDao itemTesteDao;
 
@@ -26,6 +29,7 @@ public class ItemTesteBean {
 
 	/* Construtor */
 	public ItemTesteBean() {
+		itemTeste = new ItemTeste();
 		itemTesteDao = new ItemTesteDaoImpl();
 		itensTeste = new ArrayList<SelectItem>();
 		itensTesteProjeto = new ArrayList<ItemTeste>();
@@ -167,6 +171,14 @@ public class ItemTesteBean {
 
 	public void setRespostasErradas(List<ItemTeste> respostasErradas) {
 		this.respostasErradas = respostasErradas;
+	}
+
+	public ItemTeste getItemTeste() {
+		return itemTeste;
+	}
+
+	public void setItemTeste(ItemTeste itemTeste) {
+		this.itemTeste = itemTeste;
 	}
 
 }
