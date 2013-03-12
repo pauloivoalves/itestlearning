@@ -11,7 +11,6 @@ import br.ufc.si.itest.model.ItemTeste;
 import br.ufc.si.itest.utils.Utils;
 
 public class ItemTesteBean {
-
 	/* Model */
 	private ItemTeste itemTeste;
 
@@ -38,6 +37,11 @@ public class ItemTesteBean {
 		respostasCorretas = new ArrayList<ItemTeste>();
 		respostasErradas = new ArrayList<ItemTeste>();
 		respondido = false;
+	}
+
+	public String criarItemTeste() {
+		itemTesteDao.save(itemTeste);
+		return "criado";
 	}
 
 	/* Métodos Auxiliares */
@@ -180,5 +184,7 @@ public class ItemTesteBean {
 	public void setItemTeste(ItemTeste itemTeste) {
 		this.itemTeste = itemTeste;
 	}
+	
+	
 
 }

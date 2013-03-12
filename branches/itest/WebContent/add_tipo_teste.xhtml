@@ -25,40 +25,26 @@
 					<div id="content">
 						<div id="fase">
 							<fieldset class="fieldset">
-								<legend>Cadastro Critério Aceitação</legend>
+								<legend>Cadastro Artefato</legend>
 								<h:panelGrid columns="2">
+									<h:outputLabel value="Nome" />
+									<h:inputText value="#{tipoTesteBean.tipoTeste.nome}"
+										id="nome" size="45" styleClass="text" />
+
 
 									<h:outputLabel value="Descrição" />
-									<h:inputTextarea
-										value="#{criterioAceitacaoBean.criterioAceitacao.descricao}"
+									<h:inputTextarea value="#{tipoTesteBean.tipoTeste.descricao}"
 										id="descricao" rows="5" cols="33" size="45" styleClass="text" />
-
-									<h:outputLabel value="Resposta" />
-									<h:selectBooleanCheckbox
-										value="#{criterioAceitacaoBean.criterioAceitacao.resposta}"
-										id="resposta" size="45" styleClass="text" />
-
-									<h:outputLabel value="Mensagen" />
-									<h:inputTextarea
-										value="#{criterioAceitacaoBean.criterioAceitacao.mensagem}"
-										id="mensagem" rows="5" cols="33" size="45" styleClass="text" />
-
-									<h:outputLabel value="Projeto" />
-									<h:selectOneMenu value="#{criterioAceitacaoBean.idProjeto}"
-										style="width:280px;" styleClass="text">
-										<f:selectItems Value="#{criterioAceitacaoBean.listProjetos}" />
-									</h:selectOneMenu>
-
 								</h:panelGrid>
-
 								<br /> <br />
+
 								<div id="botoes">
 									<h:commandButton value="Cadastrar"
-										action="#{criterioAceitacaoBean.criarCriterioAceitacao}"
-										styleClass="button" />
+										action="#{tipoTesteBean.criarTipoTeste}" styleClass="button" />
 									<h:commandButton value="Cancelar" style="margin-left:20px;"
 										styleClass="button" />
 								</div>
+
 							</fieldset>
 						</div>
 

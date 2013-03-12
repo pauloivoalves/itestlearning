@@ -7,6 +7,7 @@ public class UsuarioBean {
 
 	private Usuario usuario;
 	private UsuarioDaoImpl usuarioDaoImpl;
+	private String tipoConta;
 
 	public UsuarioBean() {
 		usuario = new Usuario();
@@ -36,6 +37,14 @@ public class UsuarioBean {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public String getTipoConta() {
+		return tipoConta;
+	}
+
+	public void setTipoConta(String tipoConta) {
+		this.tipoConta = tipoConta;
 	}
 
 }

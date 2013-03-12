@@ -7,10 +7,14 @@ import javax.faces.model.SelectItem;
 
 import br.ufc.si.itest.dao.ArtefatoDao;
 import br.ufc.si.itest.dao.impl.ArtefatoDaoImpl;
+import br.ufc.si.itest.model.Artefato;
 import br.ufc.si.itest.model.ArtefatoProjeto;
 import br.ufc.si.itest.utils.Utils;
 
 public class ArtefatoBean {
+	/* Model */
+	private Artefato artefato;
+	
 	/* DAOs */
 	private ArtefatoDao artefatoDao;
 
@@ -25,6 +29,7 @@ public class ArtefatoBean {
 
 	/* Construtor */
 	public ArtefatoBean() {
+		artefato = new Artefato();
 		artefatoDao = new ArtefatoDaoImpl();
 		artefatos = new ArrayList<SelectItem>();
 		artefatosProjeto = new ArrayList<ArtefatoProjeto>();
@@ -33,6 +38,11 @@ public class ArtefatoBean {
 		respostasCorretas = new ArrayList<ArtefatoProjeto>();
 		respostasErradas = new ArrayList<ArtefatoProjeto>();
 		respondido = false;
+	}
+	
+	public String criarArtefato(){
+		artefatoDao.save(artefato);
+		return "criado";	
 	}
 
 	/* Métodos Auxiliares */
@@ -168,5 +178,15 @@ public class ArtefatoBean {
 	public void setRespostasErradas(List<ArtefatoProjeto> respostasErradas) {
 		this.respostasErradas = respostasErradas;
 	}
+
+	public Artefato getArtefato() {
+		return artefato;
+	}
+
+	public void setArtefato(Artefato artefato) {
+		this.artefato = artefato;
+	}
+	
+	
 
 }

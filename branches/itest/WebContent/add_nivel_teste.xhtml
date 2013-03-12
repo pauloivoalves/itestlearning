@@ -25,26 +25,26 @@
 					<div id="content">
 						<div id="fase">
 							<fieldset class="fieldset">
-							<legend>Cadastro Artefato</legend>
+								<legend>Cadastro Artefato</legend>
 								<h:panelGrid columns="2">
 									<h:outputLabel value="Nome" />
-									<h:inputText id="nome" size="45" styleClass="text" />
+									<h:inputText value="#{nivelTesteBean.nivelTeste.nome}"
+										id="nome" size="45" styleClass="text" />
 
 
 									<h:outputLabel value="Descrição" />
-									<h:inputTextarea id="descricao" rows="5" cols="33" size="45"
-										styleClass="text" />
+									<h:inputTextarea value="#{nivelTesteBean.nivelTeste.descricao}"
+										id="descricao" rows="5" cols="33" size="45" styleClass="text" />
 								</h:panelGrid>
-								<br />
-								<br />
+								<br /> <br />
 
 								<div id="botoes">
 									<h:commandButton value="Cadastrar"
-										styleClass="button" />
+										action="#{nivelTesteBean.criarNivelTeste}" styleClass="button" />
 									<h:commandButton value="Cancelar" style="margin-left:20px;"
 										styleClass="button" />
 								</div>
-								
+
 							</fieldset>
 						</div>
 

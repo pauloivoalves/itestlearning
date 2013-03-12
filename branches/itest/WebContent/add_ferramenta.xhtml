@@ -28,11 +28,11 @@
 							<legend>Cadastro Ferramenta</legend>
 								<h:panelGrid columns="2">
 									<h:outputLabel value="Nome" />
-									<h:inputText id="nome" size="45" styleClass="text" />
+									<h:inputText value="#{ferramentaBean.ferramenta.nome}" id="nome" size="45" styleClass="text" />
 
 
 									<h:outputLabel value="Descrição" />
-									<h:inputTextarea id="descricao" rows="5" cols="33" size="45"
+									<h:inputTextarea value="#{ferramentaBean.ferramenta.descricao}" id="descricao" rows="5" cols="33" size="45"
 										styleClass="text" />
 								</h:panelGrid>
 								<br />
@@ -40,7 +40,7 @@
 
 								<div id="botoes">
 									<h:commandButton value="Cadastrar"
-										styleClass="button" />
+										action="#{ferramentaBean.criarFerramenta}" styleClass="button" />
 									<h:commandButton value="Cancelar" style="margin-left:20px;"
 										styleClass="button" />
 								</div>

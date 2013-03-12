@@ -7,10 +7,14 @@ import javax.faces.model.SelectItem;
 
 import br.ufc.si.itest.dao.NivelTesteDao;
 import br.ufc.si.itest.dao.impl.NivelTesteDaoImpl;
+import br.ufc.si.itest.model.NivelTeste;
 import br.ufc.si.itest.model.NivelTesteProjeto;
 import br.ufc.si.itest.utils.Utils;
 
 public class NivelTesteBean {
+	/* Model */
+	private NivelTeste nivelTeste = new NivelTeste();
+	
 	/* DAOs */
 	private NivelTesteDao nivelTesteDao;
 
@@ -25,6 +29,7 @@ public class NivelTesteBean {
 
 	/* Construtor */
 	public NivelTesteBean() {
+		nivelTeste = new NivelTeste();
 		nivelTesteDao = new NivelTesteDaoImpl();
 		niveisTeste = new ArrayList<SelectItem>();
 		niveisTesteProjeto = new ArrayList<NivelTesteProjeto>();
@@ -33,6 +38,11 @@ public class NivelTesteBean {
 		respostasCorretas = new ArrayList<NivelTesteProjeto>();
 		respostasErradas = new ArrayList<NivelTesteProjeto>();
 		respondido = false;
+	}
+	
+	public String criarNivelTeste(){
+		nivelTesteDao.save(nivelTeste);
+		return "criado";
 	}
 
 	/* Métodos Auxiliares */
@@ -167,5 +177,15 @@ public class NivelTesteBean {
 	public void setRespostasErradas(List<NivelTesteProjeto> respostasErradas) {
 		this.respostasErradas = respostasErradas;
 	}
+
+	public NivelTeste getNivelTeste() {
+		return nivelTeste;
+	}
+
+	public void setNivelTeste(NivelTeste nivelTeste) {
+		this.nivelTeste = nivelTeste;
+	}
+	
+	
 
 }
