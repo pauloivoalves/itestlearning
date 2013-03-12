@@ -7,10 +7,14 @@ import javax.faces.model.SelectItem;
 
 import br.ufc.si.itest.dao.TipoTesteDao;
 import br.ufc.si.itest.dao.impl.TipoTesteDaoImpl;
+import br.ufc.si.itest.model.TipoTeste;
 import br.ufc.si.itest.model.TipoTesteProjeto;
 import br.ufc.si.itest.utils.Utils;
 
 public class TipoTesteBean {
+	/* Model */
+	private TipoTeste tipoTeste = new TipoTeste();
+	
 	/* DAOs */
 	private TipoTesteDao tipoTesteDao;
 
@@ -25,6 +29,7 @@ public class TipoTesteBean {
 
 	/* Construtor */
 	public TipoTesteBean() {
+		tipoTeste = new TipoTeste();
 		tipoTesteDao = new TipoTesteDaoImpl();
 		tiposTeste = new ArrayList<SelectItem>();
 		tiposTesteProjeto = new ArrayList<TipoTesteProjeto>();
@@ -33,6 +38,11 @@ public class TipoTesteBean {
 		respostasCorretas = new ArrayList<TipoTesteProjeto>();
 		respostasErradas = new ArrayList<TipoTesteProjeto>();
 		respondido = false;
+	}
+	
+	public String criarTipoTeste(){
+		tipoTesteDao.save(tipoTeste);
+		return "criado";
 	}
 
 	/* Métodos Auxiliares */
@@ -168,4 +178,13 @@ public class TipoTesteBean {
 		this.respostasErradas = respostasErradas;
 	}
 
+	public TipoTeste getTipoTeste() {
+		return tipoTeste;
+	}
+
+	public void setTipoTeste(TipoTeste tipoTeste) {
+		this.tipoTeste = tipoTeste;
+	}
+
+	
 }

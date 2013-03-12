@@ -8,8 +8,11 @@ import java.util.List;
 
 import javax.faces.model.SelectItem;
 
+import br.ufc.si.itest.dao.NivelDificuldadeDao;
 import br.ufc.si.itest.dao.ProjetoDao;
+import br.ufc.si.itest.dao.impl.NivelDificuldadeDaoImpl;
 import br.ufc.si.itest.dao.impl.ProjetoDaoImpl;
+import br.ufc.si.itest.model.NivelDificuldade;
 import br.ufc.si.itest.model.Projeto;
 
 /**
@@ -17,6 +20,7 @@ import br.ufc.si.itest.model.Projeto;
  *
  */
 public class ProjetoBean {
+	
 	/* Classes de modelo */
 	private Projeto projeto;
 	
@@ -25,6 +29,7 @@ public class ProjetoBean {
 	
 	/* Propriedades auxiliares */
 	private List<SelectItem> projetos;
+	String nome_nivel_dificuldade;
 	
 	/* Construtor */
 	public ProjetoBean() {
@@ -33,6 +38,19 @@ public class ProjetoBean {
 		projetoDao = new ProjetoDaoImpl();
 		
 		projetos = new ArrayList<SelectItem>();
+	}
+	
+	public String criarProjeto(){
+		NivelDificuldadeDaoImpl nivelDao = new NivelDificuldadeDaoImpl();
+		NivelDificuldade nivelDificuldade = new NivelDificuldade();
+		
+		nivelDificuldade = nivelDao.getNivelDificuldadeByName(nome_nivel_dificuldade);
+		projeto.setNivelDificuldade(nivelDificuldade);
+		projetoDao.save(projeto);
+		
+		return "criado";
+			
+	
 	}
 
 	/* Getters e Setters*/
@@ -59,4 +77,14 @@ public class ProjetoBean {
 	public void setProjetoDao(ProjetoDao projetoDao) {
 		this.projetoDao = projetoDao;
 	}
+
+	public String getNome_nivel_dificuldade() {
+		return nome_nivel_dificuldade;
+	}
+
+	public void setNome_nivel_dificuldade(String nome_nivel_dificuldade) {
+		this.nome_nivel_dificuldade = nome_nivel_dificuldade;
+	}
+	
+	
 }

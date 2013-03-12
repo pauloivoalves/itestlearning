@@ -7,10 +7,14 @@ import javax.faces.model.SelectItem;
 
 import br.ufc.si.itest.dao.FerramentaDao;
 import br.ufc.si.itest.dao.impl.FerramentaDaoImpl;
+import br.ufc.si.itest.model.Ferramenta;
 import br.ufc.si.itest.model.FerramentaProjeto;
 import br.ufc.si.itest.utils.Utils;
 
 public class FerramentaBean {
+	/* Model */
+	private Ferramenta ferramenta = new Ferramenta();
+	
 	/* DAOs */
 	private FerramentaDao ferramentaDao;
 
@@ -25,6 +29,7 @@ public class FerramentaBean {
 
 	/* Construtor */
 	public FerramentaBean() {
+		ferramenta = new Ferramenta();
 		ferramentaDao = new FerramentaDaoImpl();
 		ferramentas = new ArrayList<SelectItem>();
 		ferramentasProjeto = new ArrayList<FerramentaProjeto>();
@@ -33,6 +38,13 @@ public class FerramentaBean {
 		respostasCorretas = new ArrayList<FerramentaProjeto>();
 		respostasErradas = new ArrayList<FerramentaProjeto>();
 		respondido = false;
+	}
+	
+	public String criarFerramenta(){
+		ferramentaDao.save(ferramenta);
+		
+		return "criado";
+		
 	}
 
 	/* Métodos Auxiliares */
@@ -169,5 +181,15 @@ public class FerramentaBean {
 	public void setRespostasErradas(List<FerramentaProjeto> respostasErradas) {
 		this.respostasErradas = respostasErradas;
 	}
+
+	public Ferramenta getFerramenta() {
+		return ferramenta;
+	}
+
+	public void setFerramenta(Ferramenta ferramenta) {
+		this.ferramenta = ferramenta;
+	}
+	
+	
 
 }
