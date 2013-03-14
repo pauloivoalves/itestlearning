@@ -6,19 +6,26 @@ import java.util.List;
 import javax.faces.model.SelectItem;
 
 import br.ufc.si.itest.dao.CriterioAceitacaoDao;
+import br.ufc.si.itest.dao.ProjetoDao;
 import br.ufc.si.itest.dao.impl.CriterioAceitacaoDaoImpl;
+import br.ufc.si.itest.dao.impl.ProjetoDaoImpl;
 import br.ufc.si.itest.model.CriterioAceitacao;
+import br.ufc.si.itest.model.Projeto;
 import br.ufc.si.itest.utils.Utils;
 
 public class CriterioAceitacaoBean {
-
 	/* Model */
 	private CriterioAceitacao criterioAceitacao;
+	private Projeto projeto;
 
 	/* DAOs */
 	private CriterioAceitacaoDao criterioAceitacaoDao;
 
 	/* Propriedades auxiliares */
+	private int idProjeto;
+	private List<SelectItem> listProjetos;
+	private List<Projeto> projetos;
+	private ProjetoDaoImpl projetoDao;
 	private List<SelectItem> criteriosAceitacao;
 	private List<CriterioAceitacao> criteriosAceitacaoProjeto;
 	private List<String> criteriosAceitacaoSelecionados;
@@ -29,6 +36,9 @@ public class CriterioAceitacaoBean {
 
 	/* Construtor */
 	public CriterioAceitacaoBean() {
+		projetoDao = new ProjetoDaoImpl();
+		listProjetos = new ArrayList<SelectItem>();
+		projetos = new ArrayList<Projeto>();
 		criterioAceitacao = new CriterioAceitacao();
 		criterioAceitacaoDao = new CriterioAceitacaoDaoImpl();
 		criteriosAceitacao = new ArrayList<SelectItem>();
@@ -38,6 +48,18 @@ public class CriterioAceitacaoBean {
 		respostasCorretas = new ArrayList<CriterioAceitacao>();
 		respostasErradas = new ArrayList<CriterioAceitacao>();
 		respondido = false;
+
+		projetos = projetoDao.list();
+		for (Projeto p : projetos) {
+			listProjetos.add(new SelectItem(p.getId(), p.getNome()));
+		}
+	}
+
+	public String criarCriterioAceitacao() {
+		projeto = projetoDao.getProjetoById(idProjeto);
+		criterioAceitacao.setProjeto(projeto);
+		criterioAceitacaoDao.save(criterioAceitacao);
+		return "criado";
 	}
 
 	/* Métodos Auxiliares */
@@ -185,6 +207,22 @@ public class CriterioAceitacaoBean {
 
 	public void setCriterioAceitacao(CriterioAceitacao criterioAceitacao) {
 		this.criterioAceitacao = criterioAceitacao;
+	}
+
+	public int getIdProjeto() {
+		return idProjeto;
+	}
+
+	public void setIdProjeto(int idProjeto) {
+		this.idProjeto = idProjeto;
+	}
+
+	public List<SelectItem> getListProjetos() {
+		return listProjetos;
+	}
+
+	public void setListProjetos(List<SelectItem> listProjetos) {
+		this.listProjetos = listProjetos;
 	}
 
 }
