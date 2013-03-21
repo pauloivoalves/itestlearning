@@ -73,5 +73,20 @@ public class JogoDaoImpl implements JogoDao {
 		}
 		return null;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Jogo> getJogoById(Integer id) {
+		Session session = HibernateUtil.getSession();
+		String query = "from Jogo where aluno_id_aluno = :id ";
+		try {
+			return session.createQuery(query).setInteger("id", id).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	}
 
 }

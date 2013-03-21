@@ -1,5 +1,8 @@
 package br.ufc.si.itest.bean;
 
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
 import br.ufc.si.itest.model.Usuario;
 
@@ -26,6 +29,10 @@ public class UsuarioBean {
 		}
 
 		else {
+			FacesContext fc = FacesContext.getCurrentInstance();
+			HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+			session.setAttribute("ID_USUARIO", user.getId());
+			session.setAttribute("NOME_USUARIO", user.getNome());
 			return "sucesso";
 		}
 
