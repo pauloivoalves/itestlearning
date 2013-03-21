@@ -37,6 +37,7 @@ public class AdministradorBean {
 		projetoDao = new ProjetoDaoImpl();
 		meus_projetos = new ArrayList<Projeto>();
 		inicializar();
+		
 	}
     
     private void inicializar(){
