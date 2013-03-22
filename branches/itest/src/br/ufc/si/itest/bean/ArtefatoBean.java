@@ -85,21 +85,6 @@ public class ArtefatoBean {
 				}
 			}
 		}
-		for (ArtefatoProjeto ap : respostasCorretas) {
-			if (!respostas.contains(ap)) {
-				if (nivelDificuldade == 1) {
-					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
-				}
-
-				if (nivelDificuldade == 2) {
-					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
-				}
-
-				if (nivelDificuldade == 3) {
-					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
-				}
-			}
-		}
 
 		respondido = true;
 		return pontuacao;

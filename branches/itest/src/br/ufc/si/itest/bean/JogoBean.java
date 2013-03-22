@@ -355,20 +355,27 @@ public class JogoBean {
 	}
 
 	public String adicionarRanking() {
-		this.ranking = true;
-		usuario.setLogin("login");
-		usuario.setSenha("senha");
-		usuarioDao.save(usuario);
-		jogo.setPk(new JogoPk());
-		jogo.getPk().setProjeto(projetoBean.getProjeto());
-		jogo.getPk().setUsuario(usuario);
-		jogoDao.save(jogo);
-		jogos = jogoDao.getJogoByProjeto(projetoRanking);
-		// encerra sessão aberta
-		FacesContext faces = FacesContext.getCurrentInstance();
-		HttpSession session = (HttpSession) faces.getExternalContext()
-				.getSession(false);
-		session.invalidate();
+		try {
+			this.ranking = true;
+			usuario.setLogin("login");
+			usuario.setSenha("senha");
+			usuarioDao.save(usuario);
+			jogo.setPk(new JogoPk());
+			jogo.getPk().setProjeto(projetoBean.getProjeto());
+			jogo.getPk().setUsuario(usuario);
+			jogoDao.save(jogo);
+			jogos = jogoDao.getJogoByProjeto(projetoRanking);
+			// encerra sessão aberta
+			FacesContext faces = FacesContext.getCurrentInstance();
+			HttpSession session = (HttpSession) faces.getExternalContext()
+					.getSession(false);
+			session.invalidate();
+		}
+
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return "ranking";
 	}
 
