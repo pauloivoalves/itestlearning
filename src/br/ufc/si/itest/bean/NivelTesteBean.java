@@ -84,21 +84,6 @@ public class NivelTesteBean {
 				}
 			}
 		}
-		for (NivelTesteProjeto nt : respostasCorretas) {
-			if (!respostas.contains(nt)) {
-				if (nivelDificuldade == 1) {
-					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
-				}
-
-				if (nivelDificuldade == 2) {
-					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
-				}
-
-				if (nivelDificuldade == 3) {
-					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
-				}
-			}
-		}
 
 		respondido = true;
 		return pontuacao;

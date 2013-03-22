@@ -14,7 +14,7 @@ import br.ufc.si.itest.utils.Utils;
 public class TipoTesteBean {
 	/* Model */
 	private TipoTeste tipoTeste = new TipoTeste();
-	
+
 	/* DAOs */
 	private TipoTesteDao tipoTesteDao;
 
@@ -39,8 +39,8 @@ public class TipoTesteBean {
 		respostasErradas = new ArrayList<TipoTesteProjeto>();
 		respondido = false;
 	}
-	
-	public String criarTipoTeste(){
+
+	public String criarTipoTeste() {
 		tipoTesteDao.save(tipoTeste);
 		return "criado";
 	}
@@ -64,42 +64,26 @@ public class TipoTesteBean {
 				}
 
 				if (nivelDificuldade == 2) {
-					if (nivelDificuldade == 1) {
-						pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
-					}
-
-					if (nivelDificuldade == 2) {
-						pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
-					}
-
-					if (nivelDificuldade == 3) {
-						pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
-					}
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO_MEDIO;
 				}
 
 				if (nivelDificuldade == 3) {
-					if (nivelDificuldade == 1) {
-						pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
-					}
-
-					if (nivelDificuldade == 2) {
-						pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
-					}
-
-					if (nivelDificuldade == 3) {
-						pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
-					}
+					pontuacao = pontuacao + Utils.PONTO_POSITIVO_DIFICIL;
 				}
 			} else {
-				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
-			}
-		}
-		for (TipoTesteProjeto ca : respostasCorretas) {
-			if (!respostas.contains(ca)) {
-				pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
-			}
-		}
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				}
 
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+				}
+			}
+		}
 		respondido = true;
 		return pontuacao;
 	}
@@ -186,5 +170,4 @@ public class TipoTesteBean {
 		this.tipoTeste = tipoTeste;
 	}
 
-	
 }
