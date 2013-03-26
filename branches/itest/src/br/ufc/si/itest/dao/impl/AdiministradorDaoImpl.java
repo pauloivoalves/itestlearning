@@ -23,7 +23,7 @@ public class AdiministradorDaoImpl implements AdministradorDao{
 		Session session = HibernateUtil.getSession();
 		try{
 			Criteria criteria = session.createCriteria(Administrador.class);
-			criteria.add(Restrictions.eq("id_admin", id));
+			criteria.add(Restrictions.eq("id", id));
 			return (Administrador) criteria.uniqueResult();
 		}catch (Exception e) {
 			// TODO: handle exception

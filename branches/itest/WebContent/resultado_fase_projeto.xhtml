@@ -20,7 +20,7 @@
 						</h1>
 					</div>
 
-					
+
 
 					<div id="content">
 						<div id="buttonsMenu">
@@ -31,9 +31,10 @@
 							<p:commandLink title="Ir para o Ranking"
 								oncomplete="ranking.show()" update="ranking">
 								<p:graphicImage value="images/ranking.png" width="55"
-									height="67" styleClass="campeao"/>
+									height="67" styleClass="campeao" />
 							</p:commandLink>
-							<p:commandLink title="Terminar Jogo" action="#{jogoBean.terminarJogo}" ajax="false">
+							<p:commandLink title="Terminar Jogo"
+								action="#{jogoBean.terminarJogo}" ajax="false">
 								<p:graphicImage value="images/stop.png" width="70" height="70" />
 							</p:commandLink>
 						</div>
@@ -51,10 +52,10 @@
 									<f:facet name="header">
 										Casos Marcados
 									</f:facet>
-									<h:outputText value="#{caso.descricao}"/>
+									<h:outputText value="#{caso.descricao}" />
 								</p:column>
 							</p:dataTable>
-							
+
 
 							<br /> <br /> <br />
 
@@ -68,23 +69,17 @@
 									<h:outputText value="#{caso.descricao}" />
 								</p:column>
 							</p:dataTable>
-							
+
 
 							<br /> <br />
 						</div>
 
-						
-						<p:commandLink title="Voltar" style="float: left;"
-							action="objetivoFaseProjeto" ajax="false">
-							<p:graphicImage value="images/go.png" styleClass="image_res"  />
-						</p:commandLink>
-
 						<p:dialog header="Ir para o Ranking" id="ranking"
 							widgetVar="ranking">
-								<h:outputLabel value="Nome: " />
-								<h:inputText value="#{jogoBean.usuario.nome}" />
-								<h:commandButton type="submit" value="OK"
-									action="#{jogoBean.adicionarRanking}" />
+							<h:outputLabel value="Nome: " />
+							<h:inputText value="#{jogoBean.usuario.nome}" />
+							<h:commandButton type="submit" value="OK"
+								action="#{jogoBean.adicionarRanking}" />
 						</p:dialog>
 						<p:dialog header="Escopo do Projeto" id="dialogEscopo"
 							widgetVar="dialogEscopo">
@@ -94,9 +89,7 @@
 							</h:panelGrid>
 						</p:dialog>
 					</div>
-					<div id="footer">
-						
-					</div>
+					<div id="footer"></div>
 				</div>
 			</div>
 		</h:form>
