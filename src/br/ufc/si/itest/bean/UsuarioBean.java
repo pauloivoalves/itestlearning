@@ -31,6 +31,7 @@ public class UsuarioBean {
 		}
 
 		else {
+			// grava sessão do usuario.
 			FacesContext fc = FacesContext.getCurrentInstance();
 			HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 			session.setAttribute("ID_USUARIO", user.getId());

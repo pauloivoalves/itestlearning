@@ -379,12 +379,31 @@ public class JogoBean {
 		return "ranking";
 	}
 
-	public String terminarJogo() {
+	public String logOut() {
 		// encerra sessão aberta
 		FacesContext faces = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) faces.getExternalContext()
 				.getSession(false);
 		session.invalidate();
+		return "login";
+	}
+
+	public String terminarJogo() {
+		jogo = new Jogo();
+		jogo.setPontuacao(0);
+
+		casodeTesteBean = new CasoDeTesteBean();
+		casoDeUsoBean = new CasoDeUsoBean();
+		projetoBean = new ProjetoBean();
+		nivelDificuldadeBean = new NivelDificuldadeBean();
+		itemTesteBean = new ItemTesteBean();
+		tipoTesteBean = new TipoTesteBean();
+		nivelTesteBean = new NivelTesteBean();
+		criterioAceitacaoBean = new CriterioAceitacaoBean();
+		artefatoBean = new ArtefatoBean();
+		ferramentaBean = new FerramentaBean();
+
+		ranking = false;
 
 		return "escolhaProjeto";
 	}
