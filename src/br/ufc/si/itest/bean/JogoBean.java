@@ -355,7 +355,7 @@ public class JogoBean {
 	}
 
 	public String adicionarRanking() {
-		try {
+		
 			this.ranking = true;
 			usuario.setLogin("login");
 			usuario.setSenha("senha");
@@ -370,11 +370,6 @@ public class JogoBean {
 			HttpSession session = (HttpSession) faces.getExternalContext()
 					.getSession(false);
 			session.invalidate();
-		}
-
-		catch (Exception e) {
-			e.printStackTrace();
-		}
 
 		return "ranking";
 	}
@@ -391,6 +386,7 @@ public class JogoBean {
 	public String terminarJogo() {
 		jogo = new Jogo();
 		jogo.setPontuacao(0);
+		indice = 0;
 
 		casodeTesteBean = new CasoDeTesteBean();
 		casoDeUsoBean = new CasoDeUsoBean();
