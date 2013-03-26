@@ -23,6 +23,7 @@ public class AlunoBean {
 
 	/* Auxiliares */
 	private String nome;
+	private String nomeProjeto;
 
 	/* Cosntrutor */
 
@@ -37,6 +38,7 @@ public class AlunoBean {
 		HttpSession session = (HttpSession) request.getSession();
 		int idUsuarioSession = (Integer) session.getAttribute("ID_USUARIO");
 		nome = (String) session.getAttribute("NOME_USUARIO");
+		
 		jogos = new ArrayList<Jogo>();
 		JogoDaoImpl jogoDaoImpl = new JogoDaoImpl();
 		jogos = jogoDaoImpl.getJogoById(idUsuarioSession);
