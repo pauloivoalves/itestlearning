@@ -38,7 +38,6 @@ public class UsuarioBean {
 			session.setAttribute("NOME_USUARIO", user.getNome());
 			
 			if(tipoConta.equalsIgnoreCase("Administrador")){
-				System.out.println("ow");
 				br.ufc.si.itest.dao.impl.AdiministradorDaoImpl dao = new AdiministradorDaoImpl();
 				Administrador admin = new Administrador();
 				admin = dao.verificaAdmin(user.getId());
