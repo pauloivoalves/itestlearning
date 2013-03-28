@@ -13,28 +13,38 @@
 
 	<style type="text/css">
 #content_popup {
-    background:#dcdcdc;
-	width: 100%; height:100%; padding-top: 300px; background: black; background: rgba(0, 0, 0, 0.6);top: 0; left: 0; position: absolute; 
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+	background: #dcdcdc;
+	width: 100%;
+	height: 100%;
+	padding-top: 300px;
+	background: black;
+	background: rgba(0, 0, 0, 0.6);
+	top: 0;
+	left: 0;
+	position: absolute;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,
+		endColorstr=#99000000 );
+	-ms-filter:
+		"progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
 }
 
-#mensagem_popup{
-  font-family: Times New Roman, sans-serif;
-  margin:10px;
-  padding:25px 35px 20px 20px;
-  font-size: 16pt;
-  color: #0000cd; 
+#mensagem_popup {
+	font-family: Times New Roman, sans-serif;
+	margin: 10px;
+	padding: 25px 35px 20px 20px;
+	font-size: 16pt;
+	color: #0000cd;
 }
 
-#fechar{
- color:#0000cd;
- font-size:14pt;
- margin-top:290px;
- margin-left: 130px;
-}	
+#fechar {
+	color: #0000cd;
+	font-size: 14pt;
+	margin-top: 290px;
+	margin-left: 130px;
+}
+
 #popup {
-	background:#dcdcdc;
+	background: #dcdcdc;
 	position: absolute;
 	left: 50%;
 	margin-left: -150px;
@@ -54,13 +64,15 @@
 	padding: 12px 10px 12px 10px;
 	-moz-border-radius: 10px;
 }
-.gameover_popup{
-background-image: url('images/gameover8.png') !important;
-background-size: 100% 100% !important;
+
+.gameover_popup {
+	background-image: url('images/gameover8.png') !important;
+	background-size: 100% 100% !important;
 }
-.congratulations_popup{
-background-image: url('images/pr.png') !important;
-background-size: 100% 100% !important;
+
+.congratulations_popup {
+	background-image: url('images/pr.png') !important;
+	background-size: 100% 100% !important;
 }
 </style>
 
@@ -126,15 +138,14 @@ background-size: 100% 100% !important;
 						<div id="content_popup">
 							<div id="popup">
 								<div id="mensagem_popup">
-									Se sua pontuação for inferior a 70 pontos, infelizmente você 
-									não pode ir para a próxima fase.
-									Obrigado.
-									<br />
+									Se sua pontuação for inferior a 70 pontos, infelizmente você
+									não pode ir para a próxima fase. Obrigado. <br />
 								</div>
-								<small id="fechar">
-									<a href="javascript: fechar();">
-										<img style="position: absolute;top: 0;right: 0;margin-right: -15px;margin-top: -15px;}" src="images/button_grey_close.png" />
-									</a>
+								<small id="fechar"> <a href="javascript: fechar();">
+										<img
+										style="position: absolute; top: 0; right: 0; margin-right: -15px; margin-top: -15px;"
+										src="images/button_grey_close.png" />
+								</a>
 								</small>
 							</div>
 						</div>
@@ -266,8 +277,10 @@ background-size: 100% 100% !important;
 						</div>
 
 
-						<p:commandLink title="avançar" style="float: left;" ajax="false" action="objetivoFaseProjeto">
-							<p:graphicImage value="images/go.png" styleClass="image_res" rendered="#{jogoBean.jogo.pontuacao >= 70 }" />
+						<p:commandLink title="avançar" style="float: left;" ajax="false"
+							action="objetivoFaseProjeto">
+							<p:graphicImage value="images/go.png" styleClass="image_res"
+								rendered="#{jogoBean.jogo.pontuacao >= 70 }" />
 						</p:commandLink>
 
 						<p:dialog header="Ir para o Ranking" id="ranking"
@@ -285,9 +298,7 @@ background-size: 100% 100% !important;
 							</h:panelGrid>
 						</p:dialog>
 					</div>
-					<div id="footer">
-
-					</div>
+					<div id="footer"></div>
 				</div>
 			</div>
 		</h:form>

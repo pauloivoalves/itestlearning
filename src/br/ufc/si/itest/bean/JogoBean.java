@@ -4,10 +4,13 @@
 package br.ufc.si.itest.bean;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import br.ufc.si.itest.dao.JogoDao;
@@ -16,6 +19,7 @@ import br.ufc.si.itest.dao.UsuarioDao;
 import br.ufc.si.itest.dao.impl.JogoDaoImpl;
 import br.ufc.si.itest.dao.impl.ProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
+import br.ufc.si.itest.model.Aluno;
 import br.ufc.si.itest.model.ArtefatoProjeto;
 import br.ufc.si.itest.model.CasoDeTeste;
 import br.ufc.si.itest.model.CriterioAceitacao;
@@ -35,10 +39,14 @@ import br.ufc.si.itest.model.Usuario;
  */
 public class JogoBean {
 
+	/* Auxiliares */
 	int indice;
+	int id;
+	
 	/* Classes de modelo */
 	private Jogo jogo;
 	private Usuario usuario;
+	private Aluno aluno;
 
 	/* DAOs */
 	private JogoDao jogoDao;
@@ -108,8 +116,17 @@ public class JogoBean {
 
 	/* Construtor */
 	public JogoBean() {
+		
+		ServletRequest req = (HttpServletRequest) FacesContext
+				.getCurrentInstance().getExternalContext().getRequest();
+		HttpServletRequest request = (HttpServletRequest) req;
+		HttpSession session = (HttpSession) request.getSession();
+		int id = (Integer) session.getAttribute("ID_USUARIO");
+		
 		indice = 0;
 
+		aluno = new Aluno();
+		aluno.setId(id);
 		usuario = new Usuario();
 		jogo = new Jogo();
 		jogo.setPontuacao(0);
@@ -363,13 +380,11 @@ public class JogoBean {
 			jogo.setPk(new JogoPk());
 			jogo.getPk().setProjeto(projetoBean.getProjeto());
 			jogo.getPk().setUsuario(usuario);
+			Date data = new Date();
+			jogo.setData(data);
+			jogo.setAluno(aluno);
 			jogoDao.save(jogo);
 			jogos = jogoDao.getJogoByProjeto(projetoRanking);
-			// encerra sessão aberta
-			FacesContext faces = FacesContext.getCurrentInstance();
-			HttpSession session = (HttpSession) faces.getExternalContext()
-					.getSession(false);
-			session.invalidate();
 
 		return "ranking";
 	}
