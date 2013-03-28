@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13509218551600" configfile="/iTestLearning/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="3077" id="pf13509219155191" outlinks="pf13509219155192 pf13509219155193 pf13509219155194 pf13509219155195 pf13509219155196 pf13509219155197 pf13509219155198 pf13509219155199 pf135092191551910 pf135092191551911 pf135092191551912 pf135092191551913 pf135092191551914 pf135092191551915 pf135092191551916 pf135092191551917 pf135093060066134 pf13530795644350 pf13627767671041 pf13638104098972 pf13639556897080 pf13643181541071" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="3077" id="pf13509219155191" outlinks="pf13509219155192 pf13509219155193 pf13509219155194 pf13509219155195 pf13509219155196 pf13509219155197 pf13509219155198 pf13509219155199 pf135092191551910 pf135092191551911 pf135092191551912 pf135092191551913 pf135092191551914 pf135092191551915 pf135092191551916 pf135092191551917 pf135093060066134 pf13530795644350 pf13627767671041 pf13638104098972 pf13639556897080 pf13643181541071 pf13644898389340" path="*"/>
   <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="338" y="178" id="pf135092191551918" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf13509219155192" path="/index.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="descricao_projeto.xhtml" x="338" y="562" id="pf135092191552019" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf13509219155193" path="/descricao_projeto.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="artefatos.xhtml" x="338" y="946" id="pf135092191552020" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf13509219155194" path="/artefatos.xhtml"/>
@@ -20,7 +20,8 @@
   <nodes xsi:type="pageflow:PFPage" name="resultado_fase_projeto.xhtml" x="338" y="6322" id="pf13530795644511" referenceLink="//@navigationRule.13/@navigationCase.4/@toViewId|" inlinks="pf13530795644350" path="/resultado_fase_projeto.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf13627767671092" referenceLink="//@navigationRule.13/@navigationCase.8/@toViewId|" inlinks="pf13627767671041 pf13643181541071" path="/login.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="aluno_index.xhtml" id="pf13638104098983" referenceLink="//@navigationRule.13/@navigationCase.5/@toViewId|" inlinks="pf13638104098972" path="/aluno_index.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="admin_index.xhtml" id="pf13639556897091" referenceLink="//@navigationRule.13/@navigationCase.8/@toViewId|" inlinks="pf13639556897080" path="/admin_index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="admin_index.xhtml" id="pf13639556897091" referenceLink="//@navigationRule.13/@navigationCase.7/@toViewId|" inlinks="pf13639556897080" path="/admin_index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ranking.xhtml" id="pf13644898389351" referenceLink="//@navigationRule.13/@navigationCase.9/@toViewId|" inlinks="pf13644898389340" path="/ranking.xhtml"/>
   <links id="pf13509219155192" target="pf135092191551918" source="pf13509219155191" outcome="index"/>
   <links id="pf13509219155193" target="pf135092191552019" source="pf13509219155191" outcome="descricaoProjeto"/>
   <links id="pf13509219155194" target="pf135092191552020" source="pf13509219155191" outcome="artefatos"/>
@@ -43,4 +44,5 @@
   <links id="pf13638104098972" target="pf13638104098983" source="pf13509219155191" outcome="sucesso"/>
   <links id="pf13639556897080" target="pf13639556897091" source="pf13509219155191" outcome="sucessoAdmin"/>
   <links id="pf13643181541071" target="pf13627767671092" source="pf13509219155191" outcome="login"/>
+  <links id="pf13644898389340" target="pf13644898389351" source="pf13509219155191" outcome="ranking"/>
 </pageflow:Pageflow>
