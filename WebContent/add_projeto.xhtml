@@ -13,6 +13,9 @@
 	<f:view>
 		<h:form>
 			<div id="slider">
+				<div id="conta">
+					<h:commandLink value="Fazer LogOut" action="#{jogoBean.logOut}" />
+				</div>
 				<div id="templatemo_wrapper">
 					<div id="header">
 						<h1>
@@ -20,7 +23,7 @@
 						</h1>
 					</div>
 
-	
+
 
 					<div id="content">
 						<div id="fase">
@@ -28,23 +31,26 @@
 								<legend>Cadastro Projeto</legend>
 								<h:panelGrid columns="2">
 									<h:outputLabel value="Nome" />
-									<h:inputText value="#{projetoBean.projeto.nome}" id="nome" size="45" styleClass="text" />
+									<h:inputText value="#{projetoBean.projeto.nome}" id="nome"
+										size="45" styleClass="text" />
 
 
 									<h:outputLabel value="Descrição" />
-									<h:inputTextarea value="#{projetoBean.projeto.descricao}" id="descricao" rows="5" cols="33" size="45"
-										styleClass="text" />
+									<h:inputTextarea value="#{projetoBean.projeto.descricao}"
+										id="descricao" rows="5" cols="33" size="45" styleClass="text" />
 
 
 									<h:outputLabel value="Dificuldade" />
-									<h:selectOneMenu value="#{projetoBean.projeto.nivelDificuldade}" style="width:280px;" styleClass="text">
+									<h:selectOneMenu
+										value="#{projetoBean.projeto.nivelDificuldade}"
+										style="width:280px;" styleClass="text">
 										<f:selectItem itemValue="Fácil" />
 										<f:selectItem itemValue="Médio" />
 										<f:selectItem itemValue="Difícil" />
 									</h:selectOneMenu>
 								</h:panelGrid>
 								<br /> <br />
-						
+
 								<div id="botoes">
 									<h:commandButton value="Cadastrar" styleClass="button" />
 									<h:commandButton value="Cancelar" style="margin-left:20px;"

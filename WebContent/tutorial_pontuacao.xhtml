@@ -13,6 +13,9 @@
 	<f:view>
 		<h:form>
 			<div id="slider">
+				<div id="conta">
+					<h:commandLink value="Fazer LogOut" action="#{jogoBean.logOut}" />
+				</div>
 				<div id="templatemo_wrapper">
 					<div id="header">
 						<h1>
@@ -47,19 +50,19 @@
 								cada resposta correta você ganhará 10 pontos. Porém, perderá 5
 								pontos caso cometa algum erro.</h3>
 						</div>
-						<p:commandLink title="Voltar" style="float: left;"
-							action="fases" ajax="false">
-							<p:graphicImage value="images/return.png" styleClass="image_left"/>
+						<p:commandLink title="Voltar" style="float: left;" action="fases"
+							ajax="false">
+							<p:graphicImage value="images/return.png" styleClass="image_left" />
 						</p:commandLink>
 						<p:commandLink title="Avançar" style="float: right;"
 							action="ajuda" ajax="false">
-							<p:graphicImage value="images/go.png" styleClass="image_right"/>
+							<p:graphicImage value="images/go.png" styleClass="image_right" />
 						</p:commandLink>
 					</div>
 					<div id="footer">
-						<a href="index.jsf">Home</a> | <a href="escolha_projeto.jsf">O Jogo</a> |
-						<a href="ranking.jsf">Ranking</a><br /> <br />
-					
+						<a href="index.jsf">Home</a> | <a href="escolha_projeto.jsf">O
+							Jogo</a> | <a href="ranking.jsf">Ranking</a><br /> <br />
+
 					</div>
 				</div>
 			</div>

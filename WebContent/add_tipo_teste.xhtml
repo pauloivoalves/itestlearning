@@ -13,6 +13,9 @@
 	<f:view>
 		<h:form>
 			<div id="slider">
+				<div id="conta">
+					<h:commandLink value="Fazer LogOut" action="#{jogoBean.logOut}" />
+				</div>
 				<div id="templatemo_wrapper">
 					<div id="header">
 						<h1>
@@ -28,8 +31,8 @@
 								<legend>Cadastro Tipo de Teste</legend>
 								<h:panelGrid columns="2">
 									<h:outputLabel value="Nome" />
-									<h:inputText value="#{tipoTesteBean.tipoTeste.nome}"
-										id="nome" size="45" styleClass="text" />
+									<h:inputText value="#{tipoTesteBean.tipoTeste.nome}" id="nome"
+										size="45" styleClass="text" />
 
 
 									<h:outputLabel value="Descrição" />

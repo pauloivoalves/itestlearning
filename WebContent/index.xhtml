@@ -7,12 +7,15 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>iTest Learning :: O Jogo</title>
-	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<link href="css/style.css" rel="stylesheet" type="text/css"/>
 </h:head>
 <body>
 	<f:view>
 		<h:form>
 			<div id="slider">
+				<div id="conta">
+					<h:commandLink value="Fazer LogOut" action="#{jogoBean.logOut}"/>
+				</div>
 				<div id="templatemo_wrapper">
 					<div id="header">
 						<h1>
