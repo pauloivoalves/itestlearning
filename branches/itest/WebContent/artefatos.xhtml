@@ -14,6 +14,9 @@
 	<f:view>
 		<h:form id="atf">
 			<div id="slider">
+				<div id="conta">
+					<h:commandLink value="Fazer LogOut" action="#{jogoBean.logOut}" />
+				</div>
 				<div id="templatemo_wrapper">
 					<div id="header">
 						<h1>
@@ -55,7 +58,7 @@
 						</h2>
 
 
-						
+
 
 						<div id="fase">
 							<h3>
@@ -77,9 +80,9 @@
 							action="ferramentas" ajax="false">
 							<p:graphicImage value="images/return.png" styleClass="image_left" />
 						</p:commandLink>
-						
+
 						<p:commandLink title="Avançar" style="float: right;"
-							action="#{jogoBean.validarArtefatos}"  ajax="false">
+							action="#{jogoBean.validarArtefatos}" ajax="false">
 							<p:graphicImage value="images/go.png" styleClass="image_right" />
 						</p:commandLink>
 
@@ -126,9 +129,7 @@
 						</p:dialog>
 
 					</div>
-					<div id="footer">
-
-					</div>
+					<div id="footer"></div>
 				</div>
 			</div>
 		</h:form>

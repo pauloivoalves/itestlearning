@@ -13,6 +13,9 @@
 	<f:view>
 		<h:form>
 			<div id="slider">
+				<div id="conta">
+					<h:commandLink value="Fazer LogOut" action="#{jogoBean.logOut}" />
+				</div>
 				<div id="templatemo_wrapper">
 					<div id="header">
 						<h1>
@@ -25,18 +28,18 @@
 					<div id="content">
 						<div id="fase">
 							<fieldset class="fieldset">
-							<legend>Cadastro Ferramenta</legend>
+								<legend>Cadastro Ferramenta</legend>
 								<h:panelGrid columns="2">
 									<h:outputLabel value="Nome" />
-									<h:inputText value="#{ferramentaBean.ferramenta.nome}" id="nome" size="45" styleClass="text" />
+									<h:inputText value="#{ferramentaBean.ferramenta.nome}"
+										id="nome" size="45" styleClass="text" />
 
 
 									<h:outputLabel value="Descrição" />
-									<h:inputTextarea value="#{ferramentaBean.ferramenta.descricao}" id="descricao" rows="5" cols="33" size="45"
-										styleClass="text" />
+									<h:inputTextarea value="#{ferramentaBean.ferramenta.descricao}"
+										id="descricao" rows="5" cols="33" size="45" styleClass="text" />
 								</h:panelGrid>
-								<br />
-								<br />
+								<br /> <br />
 
 								<div id="botoes">
 									<h:commandButton value="Cadastrar"
@@ -44,7 +47,7 @@
 									<h:commandButton value="Cancelar" style="margin-left:20px;"
 										styleClass="button" />
 								</div>
-								
+
 							</fieldset>
 						</div>
 

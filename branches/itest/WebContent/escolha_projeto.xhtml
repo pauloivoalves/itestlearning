@@ -7,61 +7,77 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>iTest Learning :: Escolha Projeto</title>
-	<link href="css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
 </h:head>
 <body>
 	<f:view>
 		<h:form>
 			<div id="slider">
+				<div id="conta">
+					<h:commandLink value="Fazer LogOut" action="#{jogoBean.logOut}" />
+				</div>
 				<div id="templatemo_wrapper">
 					<div id="header">
-						<h1><a href="index.jsf">iTest Learning</a></h1>
+						<h1>
+							<a href="index.jsf">iTest Learning</a>
+						</h1>
 					</div>
-						
+
 					<div id="menu">
 						<ul class="navigation">
-							<li><a href="index.jsf">Home<span
-									class="ui_icon home"></span></a></li>
-							<li><a href="escolha_projeto.jsf" class="selected">O Jogo<span
-									class="ui_icon aboutus"></span></a></li>
+							<li><a href="index.jsf">Home<span class="ui_icon home"></span></a></li>
+							<li><a href="escolha_projeto.jsf" class="selected">O
+									Jogo<span class="ui_icon aboutus"></span>
+							</a></li>
 							<li><a href="ranking.jsf">Ranking<span
 									class="ui_icon services"></span></a></li>
 							<li><a href="aluno_index.jsf">Minha Conta<span
 									class="ui_icon services"></span></a></li>
 						</ul>
 					</div>
-            		
-            		<div id="content">
-            		<p:fieldset legend="Escolha do Projeto" styleClass="indexProjeto"> 
-            			<br /><br/>  			
-            			<h:panelGrid columns="2">
-            			<h:outputLabel value="Nível de Dificuldade: " style="margin-left:30px;"/>
-            			<p:selectOneMenu id="nivel_dificuldade" value="#{jogoBean.nivelDificuldadeEscolhido}" style="width:180px;">
-            				<f:selectItem itemLabel="Selecione..." itemValue=""/>
-            				<f:selectItems value="#{jogoBean.nivelDificuldadeBean.niveisDificuldade}"/>
-            				<p:ajax update="projeto" listener="#{jogoBean.carregaProjetos}"/>
-            			</p:selectOneMenu>
-            			</h:panelGrid>
-            			
-            			<br/><br/>
-            			<h:panelGrid columns="2">
-            			<h:outputLabel value="Projeto: " style="margin-left:175px;"/>
-            			<p:selectOneMenu id="projeto" value="#{jogoBean.projetoEscolhido}" style="width:180px;">
-            				<f:selectItems value="#{jogoBean.projetoBean.projetos}"/>
-            			</p:selectOneMenu>
-            			
-            			</h:panelGrid>
-            			
-            			
-            			<br /><br /><br />
-            			
-            			<p:commandButton value="Iniciar Jogo" action="#{jogoBean.iniciarJogo}" styleClass="buttons" ajax="false"/>
-            		</p:fieldset>
-            		</div>
-            		<div id="footer">
-						<a href="index.jsf">Home</a> | <a href="escolha_projeto.jsf">O Jogo</a> |
-						<a href="ranking.jsf">Ranking</a><br /> <br />
-						
+
+					<div id="content">
+						<p:fieldset legend="Escolha do Projeto" styleClass="indexProjeto">
+							<br />
+							<br />
+							<h:panelGrid columns="2">
+								<h:outputLabel value="Nível de Dificuldade: "
+									style="margin-left:30px;" />
+								<p:selectOneMenu id="nivel_dificuldade"
+									value="#{jogoBean.nivelDificuldadeEscolhido}"
+									style="width:180px;">
+									<f:selectItem itemLabel="Selecione..." itemValue="" />
+									<f:selectItems
+										value="#{jogoBean.nivelDificuldadeBean.niveisDificuldade}" />
+									<p:ajax update="projeto" listener="#{jogoBean.carregaProjetos}" />
+								</p:selectOneMenu>
+							</h:panelGrid>
+
+							<br />
+							<br />
+							<h:panelGrid columns="2">
+								<h:outputLabel value="Projeto: " style="margin-left:175px;" />
+								<p:selectOneMenu id="projeto"
+									value="#{jogoBean.projetoEscolhido}" style="width:180px;">
+									<f:selectItems value="#{jogoBean.projetoBean.projetos}" />
+								</p:selectOneMenu>
+
+							</h:panelGrid>
+
+
+							<br />
+							<br />
+							<br />
+
+							<p:commandButton value="Iniciar Jogo"
+								action="#{jogoBean.iniciarJogo}" styleClass="buttons"
+								ajax="false" />
+						</p:fieldset>
+					</div>
+					<div id="footer">
+						<a href="index.jsf">Home</a> | <a href="escolha_projeto.jsf">O
+							Jogo</a> | <a href="ranking.jsf">Ranking</a><br /> <br />
+
 					</div>
 				</div>
 			</div>

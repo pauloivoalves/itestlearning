@@ -13,6 +13,9 @@
 	<f:view>
 		<h:form>
 			<div id="slider">
+				<div id="conta">
+					<h:commandLink value="Fazer LogOut" action="#{jogoBean.logOut}" />
+				</div>
 				<div id="templatemo_wrapper">
 					<div id="header">
 						<h1>
@@ -35,9 +38,10 @@
 						<h2>Seja bem vindo Administrador:</h2>
 						<div id="fase">
 
-						
+
 							<h:dataTable value="#{AdministradorBean.meus_projetos}"
-								var="elem" styleClass="tabela" headerClass="cabecalho" rowClasses="linha1">
+								var="elem" styleClass="tabela" headerClass="cabecalho"
+								rowClasses="linha1">
 								<h:column>
 									<f:facet name="header">
 										<h:outputText value="Projetos Cadastrados no Sistema" />
@@ -45,7 +49,7 @@
 									<h:outputText value="#{elem.nome}" />
 								</h:column>
 
-								
+
 							</h:dataTable>
 						</div>
 					</div>

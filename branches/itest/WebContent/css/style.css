@@ -10,7 +10,22 @@ body {
 	background-position: top center;	
 }
 
+#conta{
+	float: right;
+	margin: 10px;
+}
 
+#conta a{
+	color: blue;
+	font-family: Calibri, sans serif;
+	font-size: 16px;
+}
+
+#conta a:HOVER{
+	color: green;
+	font-family: Calibri, sans serif;
+	font-size: 16px;
+}
 
 a, a:link, a:visited { color: #9acd32; text-decoration: underline; }
 a:hover { text-decoration: none; }

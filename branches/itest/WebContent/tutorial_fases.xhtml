@@ -13,6 +13,9 @@
 	<f:view>
 		<h:form>
 			<div id="slider">
+				<div id="conta">
+					<h:commandLink value="Fazer LogOut" action="#{jogoBean.logOut}" />
+				</div>
 				<div id="templatemo_wrapper">
 					<div id="header">
 						<h1>
@@ -32,33 +35,47 @@
 									class="ui_icon services"></span></a></li>
 						</ul>
 					</div>
-					
+
 					<div id="content">
-						<h2>
-							Tutorial - Fases:
-						</h2>
+						<h2>Tutorial - Fases:</h2>
 						<div id="fase">
 							<h3>
-								<span style="font-weight: bold;color: green;">O jogo possui 6 fases:</span><br /><br />
-								<span style="color: green; font-weight: bold;">Fase 1 - Itens a testar: </span>nessa fase você deverá escolher os itens do projeto que serão testados.<br /><br />
-								<span style="color: green; font-weight: bold;">Fase 2 - Tipos de teste: </span>aqui serão definidos os tipos de teste a serem executados.<br /><br />
-								<span style="color: green; font-weight: bold;">Fase 3 - Níveis de teste: </span>esta fase permite dizer quais níveis de teste farão parte do projeto.<br /><br />
-								<span style="color: green; font-weight: bold;">Fase 4 - Critérios de aceitação: </span>define os critérios que farão com que o software seja aceito.<br /><br />
-								<span style="color: green; font-weight: bold;">Fase 5 - Ferramentas: </span>nessa fase é possível definir quais ferramentas serão utilizadas durante o processo de testes.<br /><br />
-								<span style="color: green; font-weight: bold;">Fase 6 - Artefatos: </span>finalmente, você escolhe os artefatos que farão parte do processo de testes.<br /><br />
+								<span style="font-weight: bold; color: green;">O jogo
+									possui 6 fases:</span><br />
+								<br /> <span style="color: green; font-weight: bold;">Fase
+									1 - Itens a testar: </span>nessa fase você deverá escolher os itens do
+								projeto que serão testados.<br />
+								<br /> <span style="color: green; font-weight: bold;">Fase
+									2 - Tipos de teste: </span>aqui serão definidos os tipos de teste a
+								serem executados.<br />
+								<br /> <span style="color: green; font-weight: bold;">Fase
+									3 - Níveis de teste: </span>esta fase permite dizer quais níveis de
+								teste farão parte do projeto.<br />
+								<br /> <span style="color: green; font-weight: bold;">Fase
+									4 - Critérios de aceitação: </span>define os critérios que farão com
+								que o software seja aceito.<br />
+								<br /> <span style="color: green; font-weight: bold;">Fase
+									5 - Ferramentas: </span>nessa fase é possível definir quais
+								ferramentas serão utilizadas durante o processo de testes.<br />
+								<br /> <span style="color: green; font-weight: bold;">Fase
+									6 - Artefatos: </span>finalmente, você escolhe os artefatos que farão
+								parte do processo de testes.<br />
+								<br />
 							</h3>
 						</div>
-						<p:commandLink title="Voltar" style="float: left;" action="objetivo" ajax="false">
-							<p:graphicImage value="images/return.png" styleClass="image_left"/>
+						<p:commandLink title="Voltar" style="float: left;"
+							action="objetivo" ajax="false">
+							<p:graphicImage value="images/return.png" styleClass="image_left" />
 						</p:commandLink>
-						<p:commandLink title="Avançar" style="float: right;" action="pontuacao" ajax="false">
-							<p:graphicImage value="images/go.png" styleClass="image_right"/>
+						<p:commandLink title="Avançar" style="float: right;"
+							action="pontuacao" ajax="false">
+							<p:graphicImage value="images/go.png" styleClass="image_right" />
 						</p:commandLink>
 					</div>
 					<div id="footer">
 						<a href="index.jsf">Home</a> | <a href="objetivo.jsf">O Jogo</a> |
 						<a href="ranking.jsf">Ranking</a><br /> <br />
-						
+
 					</div>
 				</div>
 			</div>

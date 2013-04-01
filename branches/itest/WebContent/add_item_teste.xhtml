@@ -13,6 +13,9 @@
 	<f:view>
 		<h:form>
 			<div id="slider">
+				<div id="conta">
+					<h:commandLink value="Fazer LogOut" action="#{jogoBean.logOut}" />
+				</div>
 				<div id="templatemo_wrapper">
 					<div id="header">
 						<h1>
@@ -27,18 +30,19 @@
 							<fieldset class="fieldset">
 								<legend>Cadastro Item Teste</legend>
 								<h:panelGrid columns="2">
-									
+
 									<h:outputLabel value="Descrição" />
-									<h:inputTextarea value="#{itemTesteBean.itemTeste.descricao}" id="descricao" rows="5" cols="33" size="45"
-										styleClass="text" />
+									<h:inputTextarea value="#{itemTesteBean.itemTeste.descricao}"
+										id="descricao" rows="5" cols="33" size="45" styleClass="text" />
 
 									<h:outputLabel value="Resposta" />
-									<h:selectBooleanCheckbox value="#{itemTesteBean.itemTeste.resposta}" id="resposta" size="45"
-										styleClass="text" />
+									<h:selectBooleanCheckbox
+										value="#{itemTesteBean.itemTeste.resposta}" id="resposta"
+										size="45" styleClass="text" />
 
 									<h:outputLabel value="Mensagen" />
-									<h:inputTextarea value="#{itemTesteBean.itemTeste.resposta}" id="mensagem" rows="5" cols="33" size="45"
-										styleClass="text" />
+									<h:inputTextarea value="#{itemTesteBean.itemTeste.resposta}"
+										id="mensagem" rows="5" cols="33" size="45" styleClass="text" />
 
 									<h:outputLabel value="Projeto" />
 									<h:selectOneMenu style="width:280px;" styleClass="text">
@@ -49,8 +53,7 @@
 
 								<br /> <br />
 								<div id="botoes">
-									<h:commandButton value="Cadastrar"
-										styleClass="button" />
+									<h:commandButton value="Cadastrar" styleClass="button" />
 									<h:commandButton value="Cancelar" style="margin-left:20px;"
 										styleClass="button" />
 								</div>

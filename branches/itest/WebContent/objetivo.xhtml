@@ -13,6 +13,9 @@
 	<f:view>
 		<h:form>
 			<div id="slider">
+				<div id="conta">
+					<h:commandLink value="Fazer LogOut" action="#{jogoBean.logOut}" />
+				</div>
 				<div id="templatemo_wrapper">
 					<div id="header">
 						<h1>
@@ -32,32 +35,36 @@
 									class="ui_icon services"></span></a></li>
 						</ul>
 					</div>
-					
+
 					<div id="content">
-						<h2>
-							Objetivo:
-						</h2>
+						<h2>Objetivo:</h2>
 						<div id="fase">
 							<h3>
-								Através deste jogo, você irá aprender como realizar um planejamento de teste de software.
-								A atividade de planejamento permite definir previamente as ações a serem realizadas na execução de uma determinada tarefa.
-								O planejamento dos testes deve fazer parte do planejamento global do software e deve resultar em um plano de teste para avaliar o software.
-								<br /><br /><br />
-								Neste jogo, você deverá escolher um nível de dificuldade e um projeto para o qual realizará o planejamento de testes.
+								Através deste jogo, você irá aprender como realizar um
+								planejamento de teste de software. A atividade de planejamento
+								permite definir previamente as ações a serem realizadas na
+								execução de uma determinada tarefa. O planejamento dos testes
+								deve fazer parte do planejamento global do software e deve
+								resultar em um plano de teste para avaliar o software. <br />
+								<br />
+								<br /> Neste jogo, você deverá escolher um nível de dificuldade
+								e um projeto para o qual realizará o planejamento de testes.
 								Pronto pra jogar? Let's Go!!!
 							</h3>
 						</div>
-						<p:commandLink title="Avançar" style="float: left;" action="index" ajax="false">
-							<p:graphicImage value="images/return.png" styleClass="image_left"/>
+						<p:commandLink title="Avançar" style="float: left;" action="index"
+							ajax="false">
+							<p:graphicImage value="images/return.png" styleClass="image_left" />
 						</p:commandLink>
-						<p:commandLink title="Avançar" style="float: right;" action="fases" ajax="false">
-							<p:graphicImage value="images/go.png" styleClass="image_right"/>
+						<p:commandLink title="Avançar" style="float: right;"
+							action="fases" ajax="false">
+							<p:graphicImage value="images/go.png" styleClass="image_right" />
 						</p:commandLink>
 					</div>
 					<div id="footer">
 						<a href="index.jsf">Home</a> | <a href="objetivo.jsf">O Jogo</a> |
 						<a href="ranking.jsf">Ranking</a><br /> <br />
-					
+
 					</div>
 				</div>
 			</div>
