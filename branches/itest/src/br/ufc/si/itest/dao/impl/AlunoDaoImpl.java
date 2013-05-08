@@ -75,6 +75,8 @@ public class AlunoDaoImpl implements AlunoDao{
 			return (Usuario) criteria.uniqueResult();
 		}catch (Exception e) {
 			// TODO: handle exception
+		}finally{
+			session.close();
 		}
 		return null;
 	}
@@ -90,6 +92,54 @@ public class AlunoDaoImpl implements AlunoDao{
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	@Override
+	public Usuario getUsuarioByEmail(String email) {
+		Session session = HibernateUtil.getSession();
+		try{
+			Criteria criteria = session.createCriteria(Usuario.class);
+			criteria.add(Restrictions.eq("login", email));
+			return (Usuario) criteria.uniqueResult();
+		}catch (Exception e) {
+			// TODO: handle exception
+		}finally{
+			session.close();
+		}
+		return null;
+	}
+
+	@Override
+	public Usuario getUsuarioById(int id) {
+		Session session = HibernateUtil.getSession();
+		try{
+			Criteria criteria = session.createCriteria(Usuario.class);
+			criteria.add(Restrictions.eq("id", id));
+			return (Usuario) criteria.uniqueResult();
+		}catch (Exception e) {
+			// TODO: handle exception
+		}finally{
+			session.close();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Aluno> listAlunosByTurma(int id) {
+		Session session = HibernateUtil.getSession();
+		List<Aluno> alunos = new ArrayList<Aluno>();
+		Query query = session.createQuery("from Aluno where turma_id =:id");
+		query.setInteger("id", id);
+		try{
+			alunos = query.list();
+			return alunos;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	
 	}
 
 }

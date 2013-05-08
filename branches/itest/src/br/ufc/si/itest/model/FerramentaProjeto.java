@@ -71,6 +71,7 @@ public class FerramentaProjeto implements Serializable {
 			return ferramenta;
 		}
 
+		
 		public void setFerramenta(Ferramenta ferramenta) {
 			this.ferramenta = ferramenta;
 		}

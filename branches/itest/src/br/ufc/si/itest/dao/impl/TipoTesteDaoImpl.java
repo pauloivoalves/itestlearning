@@ -110,6 +110,24 @@ public class TipoTesteDaoImpl implements TipoTesteDao {
 		return null;
 	}
 
+	@Override
+	public TipoTeste getTipoTesteById(int id) {
+Session session = HibernateUtil.getSession();
+		
+		try{
+			Criteria c = session.createCriteria(TipoTeste.class);
+			c.add(Restrictions.eq("id", id));
+			return (TipoTeste) c.uniqueResult();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return null;
+	}
+
 	
 	
 }//fim da classe

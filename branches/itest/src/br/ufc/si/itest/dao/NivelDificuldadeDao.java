@@ -22,5 +22,7 @@ public interface NivelDificuldadeDao {
 	public List<NivelDificuldade> list();
 	
 	public NivelDificuldade getNivelDificuldadeByName(String nome_nivel_dificuldade);
+	
+	public NivelDificuldade getNivelDificuldadeById(int id);
 
 }//fim da interface

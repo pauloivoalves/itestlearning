@@ -95,16 +95,33 @@ public class FerramentaDaoImpl implements FerramentaDao {
 
 	@Override
 	public Ferramenta getFerramentaByName(String nome) {
-		Session session = HibernateUtil.getSession();
-		String query = "from Ferramenta where nome = :nome";
-		try {
-			return (Ferramenta) session.createQuery(query).setString("nome", nome)
-					.uniqueResult();
-		} catch (Exception e) {
+		Session sessao = HibernateUtil.getSession();
+		try{
+			Criteria criteria = sessao.createCriteria(Ferramenta.class);
+			criteria.add(Restrictions.eq("nome", nome));
+			return (Ferramenta) criteria.uniqueResult();
+		}catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			session.close();
+		}finally{
+			sessao.close();
 		}
+		
+		return null;
+	}
+
+	@Override
+	public Ferramenta getFerramentaById(int id) {
+		Session sessao = HibernateUtil.getSession();
+		try{
+			Criteria criteria = sessao.createCriteria(Ferramenta.class);
+			criteria.add(Restrictions.eq("id", id));
+			return (Ferramenta) criteria.uniqueResult();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			sessao.close();
+		}
+		
 		return null;
 	}
 

@@ -13,18 +13,59 @@
 	<f:view>
 		<h:form>
 			<div id="slider">
-				<div id="conta">
-					<h:commandLink value="Fazer LogOut" action="#{jogoBean.logOut}" />
-				</div>
+
 				<div id="templatemo_wrapper">
 					<div id="header">
 						<h1>
-							<a href="index.jsf">iTest Learning</a>
+							<a href="admin_index.jsf">iTest Learning</a>
 						</h1>
 					</div>
 
-
-
+					<div id="menuAdmin">
+						<ul id="nav">
+							<li><a href="admin_index.jsf">Home</a></li>
+							<li><a href="#">Projeto</a>
+								<ul>
+									<li><a href="add_projeto.jsf">Novo</a></li>
+									<li><a href="admin_escolher_projeto.jsf">Remover</a></li>
+									<li><h:commandLink value="Add Ferramenta" action="#{AdministradorBean.visualFerramentasPro}" /></li>
+									<li><h:commandLink value="Add Artefato" action="#{AdministradorBean.visualArtefatosPro}" /></li>
+									<li><h:commandLink value="Add Nivel Teste" action="#{AdministradorBean.visualNiveisPro}" /></li>
+									<li><h:commandLink value="Add Tipo Teste" action="#{AdministradorBean.visualTiposPro}" /></li>
+								</ul></li>
+						
+						<li><a href="#">Professores</a>
+								<ul>
+									<li><a href="admin_add_professor.jsf">Adicionar</a></li>
+								<li><h:commandLink value="Visualizar" action="#{ProfessorBean.visualizarProfessores}" /></li>
+								</ul></li>
+						
+						<li><a href="#">Cadastrar</a>
+								<ul>
+									<li><a href="add_ferramenta.jsf">Ferramenta</a></li>
+									<li><a href="add_artefato.jsf">Artefato</a></li>
+									<li><a href="add_criterio_aceitacao.jsf">Critério Aceitação</a></li>
+									<li><a href="add_nivel_teste.jsf">Nível teste</a></li>
+									<li><a href="add_tipo_teste.jsf">Tipo teste</a></li>
+									<li><a href="add_item_teste.jsf">Item teste</a></li>
+								</ul></li>		
+						
+						<li><a href="#">Visualizar</a>
+								<ul>
+									<li><h:commandLink value="Ferramentas" action="#{AdministradorBean.visualizarFerramentas}" /></li>
+									<li><h:commandLink value="Artefatos" action="#{AdministradorBean.visualizarArtefatos}" /></li>
+									<li><h:commandLink value="Critérios Aceitação" action="#{AdministradorBean.visualizarCriteriosAceitacao}" /></li>
+									<li><h:commandLink value="Níveis Teste" action="#{AdministradorBean.visualizarNiveisTeste}" /></li>
+									<li><h:commandLink value="Tipos Teste" action="#{AdministradorBean.visualizarTiposTeste}" /></li>
+									<li><h:commandLink value="Itens Teste" action="#{AdministradorBean.visualizarItensTeste}" /></li>
+								</ul></li>	
+								
+								<li><h:commandLink value="Sair" action="#{jogoBean.logOut}" /></li>	
+												
+							
+						</ul>
+					</div>
+					
 					<div id="content">
 						<div id="fase">
 							<fieldset class="fieldset">
@@ -47,9 +88,9 @@
 										id="mensagem" rows="5" cols="33" size="45" styleClass="text" />
 
 									<h:outputLabel value="Projeto" />
-									<h:selectOneMenu value="#{criterioAceitacaoBean.idProjeto}"
+									<h:selectOneMenu value="#{criterioAceitacaoBean.criterioAceitacao.projeto.id}"
 										style="width:280px;" styleClass="text">
-										<f:selectItems Value="#{criterioAceitacaoBean.listProjetos}" />
+										<f:selectItems value="#{AdministradorBean.projetosCadastrados}"/>
 									</h:selectOneMenu>
 
 								</h:panelGrid>

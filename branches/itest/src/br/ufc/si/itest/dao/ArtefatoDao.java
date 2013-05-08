@@ -24,6 +24,8 @@ public interface ArtefatoDao {
 	
 	public List<ArtefatoProjeto> getArtefatosByProjeto(Integer idProjeto);
 	
+	public Artefato getArtefatoById(int id);
+	
 	public Artefato getArtefatoByName(String nome_artefato);
 
 	

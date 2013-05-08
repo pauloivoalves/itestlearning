@@ -89,6 +89,23 @@ public class ArtefatoDaoImpl implements ArtefatoDao {
 		
 		return null;
 	}//fim do m�todo buscar artefato por nome
+
+	@Override
+	public Artefato getArtefatoById(int id) {
+Session session = HibernateUtil.getSession();
+		
+		try{
+			Criteria criteria = session.createCriteria(Artefato.class);
+			criteria.add(Restrictions.eq("id", id));
+			return (Artefato) criteria.uniqueResult();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+		return null;
+	}
 	
 	
 }//fim da classe

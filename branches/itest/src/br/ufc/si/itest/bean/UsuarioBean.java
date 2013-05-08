@@ -4,9 +4,15 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import br.ufc.si.itest.dao.AdministradorDao;
+import br.ufc.si.itest.dao.AlunoDao;
+import br.ufc.si.itest.dao.ProfessorDao;
 import br.ufc.si.itest.dao.impl.AdiministradorDaoImpl;
+import br.ufc.si.itest.dao.impl.AlunoDaoImpl;
+import br.ufc.si.itest.dao.impl.ProfessorDaoImpl;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
 import br.ufc.si.itest.model.Administrador;
+import br.ufc.si.itest.model.Aluno;
+import br.ufc.si.itest.model.Professor;
 import br.ufc.si.itest.model.Usuario;
 
 public class UsuarioBean {
@@ -26,6 +32,7 @@ public class UsuarioBean {
 		user = usuarioDaoImpl.buscarUsuarioPorEmaileSenha(usuario.getLogin(),
 				usuario.getSenha());
 
+		
 		if (user == null) {
 			return "falhou";
 		}
@@ -44,10 +51,25 @@ public class UsuarioBean {
 				
 				if(admin == null){
 					return "falhou";
-				}
-				
-				else{
+				}else{
+					session.setAttribute("admin", admin);
 					return "sucessoAdmin";
+				}
+			}else if(tipoConta.equalsIgnoreCase("Aluno")){
+				AlunoDao alunodao =  new AlunoDaoImpl();
+				Aluno aluno = new Aluno();
+				//aluno = alunodao.
+			
+			}else if(tipoConta.equalsIgnoreCase("Professor")){
+				ProfessorDao profDao = new ProfessorDaoImpl();
+				Professor prof = new Professor();				
+				prof = profDao.getProfessorById(user.getId());
+				
+				if(prof == null){
+					return "falhou";
+				}else{
+					session.setAttribute("prof", prof);
+					return "sucessoProf";
 				}
 			}
 			
@@ -56,6 +78,7 @@ public class UsuarioBean {
 
 	}
 
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}

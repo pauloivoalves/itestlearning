@@ -18,5 +18,11 @@ public void saveAlunos(Aluno aluno);
 	
 	public Usuario getUsuarioByNome(String nome);
 	
+	public Usuario getUsuarioByEmail(String email);
+	
+	public Usuario getUsuarioById(int id);
+	
 	public List<Jogo> listarMeusJogos(Aluno aluno);
+	
+	public List<Aluno> listAlunosByTurma(int id);
 }

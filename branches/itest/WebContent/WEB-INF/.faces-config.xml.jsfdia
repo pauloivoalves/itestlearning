@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="index::#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="index" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::1" SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::1" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="descricaoProjeto::#descricao_projeto.xhtml"
+    NAME="output" PATH="/descricao_projeto.xhtml"
+    TARGET="rules:#descricao_projeto.xhtml" TITLE="descricaoProjeto" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::2" SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::2" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="artefatos::#artefatos.xhtml" NAME="output"
+    PATH="/artefatos.xhtml" TARGET="rules:#artefatos.xhtml"
+    TITLE="artefatos" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::3" SHAPE="32,353,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::3" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="criterioAceitacao::#criterios_aceitacao.xhtml" NAME="output"
+    PATH="/criterios_aceitacao.xhtml"
+    TARGET="rules:#criterios_aceitacao.xhtml" TITLE="criterioAceitacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::4" SHAPE="32,465,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::4" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="escolhaProjeto::#escolha_projeto.xhtml"
+    NAME="output" PATH="/escolha_projeto.xhtml"
+    TARGET="rules:#escolha_projeto.xhtml" TITLE="escolhaProjeto" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::5" SHAPE="32,577,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::5" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="ferramentas::#ferramentas.xhtml"
+    NAME="output" PATH="/ferramentas.xhtml"
+    TARGET="rules:#ferramentas.xhtml" TITLE="ferramentas" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::6" SHAPE="32,689,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::6" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="itensTeste::#itens_teste.xhtml"
+    NAME="output" PATH="/itens_teste.xhtml"
+    TARGET="rules:#itens_teste.xhtml" TITLE="itensTeste" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::7" SHAPE="32,801,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::7" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="niveisTeste::#niveis_teste.xhtml"
+    NAME="output" PATH="/niveis_teste.xhtml"
+    TARGET="rules:#niveis_teste.xhtml" TITLE="niveisTeste" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::8" SHAPE="32,913,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::8" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="tiposTeste::#tipos_teste.xhtml"
+    NAME="output" PATH="/tipos_teste.xhtml"
+    TARGET="rules:#tipos_teste.xhtml" TITLE="tiposTeste" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::9" SHAPE="32,1025,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::9" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="objetivo::#objetivo.xhtml" NAME="output"
+    PATH="/objetivo.xhtml" TARGET="rules:#objetivo.xhtml"
+    TITLE="objetivo" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::10" SHAPE="32,1137,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::10" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="pontuacao::#tutorial_pontuacao.xhtml"
+    NAME="output" PATH="/tutorial_pontuacao.xhtml"
+    TARGET="rules:#tutorial_pontuacao.xhtml" TITLE="pontuacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::11" SHAPE="32,1249,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::11" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="fases::#tutorial_fases.xhtml" NAME="output"
+    PATH="/tutorial_fases.xhtml" TARGET="rules:#tutorial_fases.xhtml"
+    TITLE="fases" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::12" SHAPE="32,1361,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::12" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="ajuda::#tutorial_ajuda.xhtml" NAME="output"
+    PATH="/tutorial_ajuda.xhtml" TARGET="rules:#tutorial_ajuda.xhtml"
+    TITLE="ajuda" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules::13" SHAPE="32,1473,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::13" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="resultado::#resultado.xhtml" NAME="output"
+    PATH="/resultado.xhtml" TARGET="rules:#resultado.xhtml"
+    TITLE="resultado" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="objetivoFaseProjeto::#objetivo_fase_projeto.xhtml"
+    NAME="output1" PATH="/objetivo_fase_projeto.xhtml"
+    TARGET="rules:#objetivo_fase_projeto.xhtml"
+    TITLE="objetivoFaseProjeto" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="faseProjeto::#fase_projeto.xhtml"
+    NAME="output2" PATH="/fase_projeto.xhtml"
+    TARGET="rules:#fase_projeto.xhtml" TITLE="faseProjeto" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="next::#fase_projeto.xhtml" NAME="output3"
+    PATH="/fase_projeto.xhtml" TARGET="rules:#fase_projeto.xhtml"
+    TITLE="next" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="resultado_fase_projeto::#resultado_fase_projeto.xhtml"
+    NAME="output4" PATH="/resultado_fase_projeto.xhtml"
+    TARGET="rules:#resultado_fase_projeto.xhtml"
+    TITLE="resultado_fase_projeto" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="sucesso::#aluno_index.xhtml" NAME="output5"
+    PATH="/aluno_index.xhtml" TARGET="rules:#aluno_index.xhtml"
+    TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="falhou::#login.xhtml" NAME="output6"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="falhou" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="sucessoAdmin::#admin_index.xhtml"
+    NAME="output7" PATH="/admin_index.xhtml"
+    TARGET="rules:#admin_index.xhtml" TITLE="sucessoAdmin" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="sucessoProf::#prof_index.xhtml"
+    NAME="output8" PATH="/prof_index.xhtml"
+    TARGET="rules:#prof_index.xhtml" TITLE="sucessoProf" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output9"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#aluno_index.xhtml" PATH="/aluno_index.xhtml"
+  SHAPE="304,2193,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#niveis_teste.xhtml"
+  PATH="/niveis_teste.xhtml" SHAPE="240,817,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#objetivo.xhtml" PATH="/objetivo.xhtml"
+  SHAPE="240,1041,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#resultado.xhtml" PATH="/resultado.xhtml"
+  SHAPE="304,1489,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#itens_teste.xhtml" PATH="/itens_teste.xhtml"
+  SHAPE="240,705,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#tutorial_fases.xhtml"
+  PATH="/tutorial_fases.xhtml" SHAPE="240,1265,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#resultado_fase_projeto.xhtml"
+  PATH="/resultado_fase_projeto.xhtml" SHAPE="304,2081,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#objetivo_fase_projeto.xhtml"
+  PATH="/objetivo_fase_projeto.xhtml" SHAPE="304,1857,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#admin_index.xhtml" PATH="/admin_index.xhtml"
+  SHAPE="304,2417,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#ferramentas.xhtml" PATH="/ferramentas.xhtml"
+  SHAPE="240,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#fase_projeto.xhtml"
+  PATH="/fase_projeto.xhtml" SHAPE="304,1969,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#tipos_teste.xhtml" PATH="/tipos_teste.xhtml"
+  SHAPE="240,929,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#artefatos.xhtml" PATH="/artefatos.xhtml"
+  SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#tutorial_ajuda.xhtml"
+  PATH="/tutorial_ajuda.xhtml" SHAPE="240,1377,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
+  SHAPE="304,2305,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#tutorial_pontuacao.xhtml"
+  PATH="/tutorial_pontuacao.xhtml" SHAPE="240,1153,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#descricao_projeto.xhtml"
+  PATH="/descricao_projeto.xhtml" SHAPE="240,145,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#escolha_projeto.xhtml"
+  PATH="/escolha_projeto.xhtml" SHAPE="240,481,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#criterios_aceitacao.xhtml"
+  PATH="/criterios_aceitacao.xhtml" SHAPE="240,369,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#prof_index.xhtml" PATH="/prof_index.xhtml"
+  SHAPE="304,1889,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

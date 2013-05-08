@@ -6,8 +6,11 @@ import java.util.List;
 import javax.faces.model.SelectItem;
 
 import br.ufc.si.itest.dao.ItemTesteDao;
+import br.ufc.si.itest.dao.ProjetoDao;
 import br.ufc.si.itest.dao.impl.ItemTesteDaoImpl;
+import br.ufc.si.itest.dao.impl.ProjetoDaoImpl;
 import br.ufc.si.itest.model.ItemTeste;
+import br.ufc.si.itest.model.Projeto;
 import br.ufc.si.itest.utils.Utils;
 
 public class ItemTesteBean {
@@ -29,6 +32,7 @@ public class ItemTesteBean {
 	/* Construtor */
 	public ItemTesteBean() {
 		itemTeste = new ItemTeste();
+		itemTeste.setProjeto(new Projeto());
 		itemTesteDao = new ItemTesteDaoImpl();
 		itensTeste = new ArrayList<SelectItem>();
 		itensTesteProjeto = new ArrayList<ItemTeste>();
@@ -39,10 +43,7 @@ public class ItemTesteBean {
 		respondido = false;
 	}
 
-	public String criarItemTeste() {
-		itemTesteDao.save(itemTeste);
-		return "criado";
-	}
+	
 
 	/* Métodos Auxiliares */
 	public Integer validaResposta(int nivelDificuldade) {
@@ -83,7 +84,22 @@ public class ItemTesteBean {
 				}
 			}
 		}
-		
+		for (ItemTeste it : respostasCorretas) {
+			if (!respostas.contains(it)) {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+				}
+			}
+		}
+
 		respondido = true;
 		return pontuacao;
 	}
@@ -171,5 +187,12 @@ public class ItemTesteBean {
 	}
 	
 	
-
+	public String criarItemTeste() {
+		ProjetoDao pd = new ProjetoDaoImpl();
+		itemTeste.setProjeto(pd.getProjetoById(itemTeste.getProjeto().getId()));
+		itemTesteDao.save(itemTeste);
+		itemTeste = new ItemTeste();
+		itemTeste.setProjeto(new Projeto());
+		return "add_item_teste.jsf";
+	}
 }

@@ -14,18 +14,14 @@ import br.ufc.si.itest.model.Projeto;
 import br.ufc.si.itest.utils.Utils;
 
 public class CriterioAceitacaoBean {
+
 	/* Model */
 	private CriterioAceitacao criterioAceitacao;
-	private Projeto projeto;
 
 	/* DAOs */
 	private CriterioAceitacaoDao criterioAceitacaoDao;
 
 	/* Propriedades auxiliares */
-	private int idProjeto;
-	private List<SelectItem> listProjetos;
-	private List<Projeto> projetos;
-	private ProjetoDaoImpl projetoDao;
 	private List<SelectItem> criteriosAceitacao;
 	private List<CriterioAceitacao> criteriosAceitacaoProjeto;
 	private List<String> criteriosAceitacaoSelecionados;
@@ -33,13 +29,13 @@ public class CriterioAceitacaoBean {
 	private List<CriterioAceitacao> respostasCorretas;
 	private List<CriterioAceitacao> respostasErradas;
 	private Boolean respondido;
+	
 
 	/* Construtor */
 	public CriterioAceitacaoBean() {
-		projetoDao = new ProjetoDaoImpl();
-		listProjetos = new ArrayList<SelectItem>();
-		projetos = new ArrayList<Projeto>();
 		criterioAceitacao = new CriterioAceitacao();
+		criterioAceitacao.setProjeto(new Projeto());
+		criterioAceitacao.setProjeto(new Projeto());
 		criterioAceitacaoDao = new CriterioAceitacaoDaoImpl();
 		criteriosAceitacao = new ArrayList<SelectItem>();
 		criteriosAceitacaoProjeto = new ArrayList<CriterioAceitacao>();
@@ -48,18 +44,6 @@ public class CriterioAceitacaoBean {
 		respostasCorretas = new ArrayList<CriterioAceitacao>();
 		respostasErradas = new ArrayList<CriterioAceitacao>();
 		respondido = false;
-
-		projetos = projetoDao.list();
-		for (Projeto p : projetos) {
-			listProjetos.add(new SelectItem(p.getId(), p.getNome()));
-		}
-	}
-
-	public String criarCriterioAceitacao() {
-		projeto = projetoDao.getProjetoById(idProjeto);
-		criterioAceitacao.setProjeto(projeto);
-		criterioAceitacaoDao.save(criterioAceitacao);
-		return "criado";
 	}
 
 	/* Métodos Auxiliares */
@@ -89,6 +73,22 @@ public class CriterioAceitacaoBean {
 				}
 
 			} else {
+				if (nivelDificuldade == 1) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+				}
+
+				if (nivelDificuldade == 2) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+				}
+
+				if (nivelDificuldade == 3) {
+					pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+				}
+
+			}
+		}
+		for (CriterioAceitacao ca : respostasCorretas) {
+			if (!respostas.contains(ca)) {
 				if (nivelDificuldade == 1) {
 					pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
 				}
@@ -191,22 +191,16 @@ public class CriterioAceitacaoBean {
 
 	public void setCriterioAceitacao(CriterioAceitacao criterioAceitacao) {
 		this.criterioAceitacao = criterioAceitacao;
-	}
-
-	public int getIdProjeto() {
-		return idProjeto;
-	}
-
-	public void setIdProjeto(int idProjeto) {
-		this.idProjeto = idProjeto;
-	}
-
-	public List<SelectItem> getListProjetos() {
-		return listProjetos;
-	}
-
-	public void setListProjetos(List<SelectItem> listProjetos) {
-		this.listProjetos = listProjetos;
+	}	
+	
+	public String criarCriterioAceitacao(){
+		ProjetoDao pd = new ProjetoDaoImpl();
+		criterioAceitacao.setProjeto(pd.getProjetoById(criterioAceitacao.getProjeto().getId()));
+		criterioAceitacaoDao.save(criterioAceitacao);
+		criterioAceitacao = new CriterioAceitacao();
+		criterioAceitacao.setProjeto(new Projeto());
+		
+		return "add_criterio_aceitacao.jsf";
 	}
 
 }
