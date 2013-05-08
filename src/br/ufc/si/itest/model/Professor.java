@@ -15,15 +15,19 @@ public class Professor extends Usuario{
 
 	
 	@OneToMany(mappedBy="professor")
-	private List<Turma> minhasTurmas;
+	private List<Turma> turmas;
 
-	public List<Turma> getMinhasTurmas() {
-		return minhasTurmas;
+	public List<Turma> getTurmas() {
+		return turmas;
 	}
 
-	public void setMinhasTurmas(List<Turma> minhasTurmas) {
-		this.minhasTurmas = minhasTurmas;
+	public void setTurmas(List<Turma> turmas) {
+		this.turmas = turmas;
 	}
+	
+	
+
+	
 
 	
 	

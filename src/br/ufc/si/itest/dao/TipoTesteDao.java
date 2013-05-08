@@ -24,6 +24,8 @@ public interface TipoTesteDao {
 	
 	public List<TipoTesteProjeto> getItensTesteByProjeto(Integer idProjeto);
 	
+	public TipoTeste getTipoTesteById(int id);
+	
 	public TipoTeste getTipoTesteByNome(String nome);
 
 	public TipoTeste getTipoTesteByName(String nome);

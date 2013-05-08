@@ -94,4 +94,21 @@ public class NivelTesteDaoImpl implements NivelTesteDao {
 		return null;
 	}//fim do método nivel teste
 
+	@Override
+	public NivelTeste getNivelTesteById(int id) {
+Session session = HibernateUtil.getSession();
+		
+		try{
+			Criteria criteria = session.createCriteria(NivelTeste.class);
+			criteria.add(Restrictions.eq("id", id));
+			return (NivelTeste) criteria.uniqueResult();
+		}catch (Exception e) {
+			// TODO: handle exception
+		}finally{
+			session.close();
+		}
+		
+		return null;
+	}
+
 }//fim da classe

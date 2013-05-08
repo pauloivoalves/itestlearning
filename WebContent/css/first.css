@@ -164,7 +164,7 @@ h6 {
 	text-decoration: none;
 }
 
-#menu {
+#menuAdmin {
 	width: 780px;
 	height: 40px;
 	padding: 0 90px;
@@ -175,45 +175,61 @@ h6 {
 	margin-bottom: 10px;
 }
 
-ul.navigation {
-	width: 960px;
-	height: 40px;
+#nav,#nav ul {
+	width: 100em;
 	list-style: none;
-	margin: 0 auto;
-	padding: 0;
-}
-
-ul.navigation li {
-	display: inline;
+	font: bold 12px Verdana, Arial, Helvetica, sans-serif;
 	margin: 0;
 	padding: 0;
 }
 
-ul.navigation a {
+#nav li {
 	float: left;
+}
+
+#nav a {
 	display: block;
-	width: 100px;
-	height: 30px;
-	padding: 10px 0 0 0;
-	margin-right: 1px;
-	color: #3f3228;
-	font-size: 14px;
-	font-weight: bold;
-	text-decoration: none;
+	width: 12em;
+	height: 2.5em;
 	text-align: center;
+	text-decoration: none;
+	color: #3f3228;
+	background: #9acd32;
+	padding-top: 0.5em;
 }
 
-ul.navigation a:hover,ul.navigation a.selected {
-	color: #000;
-	text-shadow: 1px 1px 1px #fed8ae;
-	background: #adff2f;
-	-webkit-border-radius: 10px;
-	box-shadow: 0px 0px 10px #000;
-	-moz-border-radius: 10px;
+#nav a:hover {
+	text-decoration: none;
+	background: #9acd32;
+	color: #00868B;
 }
 
-ul.navigation a:focus {
-	outline: none;
+#nav li ul {
+	position: absolute;
+	left: -660em;
+	width: 0em;
+	margin: 0;
+}
+
+#nav ul ul {
+	margin: -2.5em 10em 0 0.1em;
+}
+
+#nav li:hover ul ul,#nav li.over ul ul {
+	left: -660em;
+}
+
+#nav li:hover ul,#nav li li:hover ul,#nav li.over ul,#nav li li.over ul
+	{
+	left: auto;
+}
+
+#nav li:hover ul li ul {
+	display: none;
+}
+
+#nav li:hover ul li:hover ul {
+	display: block;
 }
 
 #content {
@@ -230,7 +246,7 @@ ul.navigation a:focus {
 #fase {
 	background-color: #006400;
 	font-size: 12pt;
-	width: 740px;
+	width: 790px;
 	height: auto;
 	background: #fff;
 	padding: 12px 20px 10px 20px;
@@ -317,16 +333,21 @@ ul.navigation a:focus {
 }
 
 .cabecalho {
-  color: green;
-  background: white;
-  border-bottom: 1px #CCC solid;
-  padding: 5px;
-  text-align: center;
+	color: green;
+	background: white;
+	border-bottom: 1px #CCC solid;
+	padding: 5px;
+	text-align: center;
 }
 
 .linha1 {
- color: #20b2aa;
-  border-bottom: 1px #CCC solid;
-  padding: 5px;
- }
+	color: #20b2aa;
+	border-bottom: 1px #CCC solid;
+	padding: 5px;
+}
 
+.adm{
+	color: green;
+	font-family: sans-serif;
+	font-size: 14pt;
+}

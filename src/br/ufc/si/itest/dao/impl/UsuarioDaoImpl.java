@@ -104,8 +104,28 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+		session.close();
 		}
-		System.out.println("ai");
 		return null;
 	}
+
+	@Override
+	public Usuario getUsuarioById(int id) {
+
+		Session session = HibernateUtil.getSession();
+
+		try {
+			Criteria criteria = session.createCriteria(Usuario.class);
+			criteria.add(Restrictions.eq("id", id));
+			return (Usuario) criteria.uniqueResult();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+		session.close();
+		}
+		return null;
+	}
+
 }// fim da classe

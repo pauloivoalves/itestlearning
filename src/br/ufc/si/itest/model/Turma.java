@@ -18,6 +18,11 @@ import com.sun.xml.internal.ws.developer.SchemaValidation;
 @Table(name="itest.turma")
 public class Turma implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private int id;

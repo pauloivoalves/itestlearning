@@ -15,5 +15,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Spring 3.1.1"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hibernate4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Plugins"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

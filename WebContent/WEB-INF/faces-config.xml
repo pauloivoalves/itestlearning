@@ -76,6 +76,11 @@
 		<managed-bean-class>br.ufc.si.itest.bean.AdministradorBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>ProfessorBean</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.ProfessorBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 
 
 	<!-- Navigation Rules -->
@@ -196,6 +201,11 @@
 		<navigation-case>
 			<from-outcome>sucessoAdmin</from-outcome>
 			<to-view-id>/admin_index.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>sucessoProf</from-outcome>
+			<to-view-id>/prof_index.xhtml</to-view-id>
 		</navigation-case>
 
 		<navigation-case>

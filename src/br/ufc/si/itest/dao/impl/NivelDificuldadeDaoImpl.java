@@ -78,5 +78,21 @@ public class NivelDificuldadeDaoImpl implements NivelDificuldadeDao {
 		
 	}//fim do método buscar dificuldade pelo nome
 
+	@Override
+	public NivelDificuldade getNivelDificuldadeById(int id) {
+Session session = HibernateUtil.getSession();
+		
+		try{
+			Criteria criteria = session.createCriteria(NivelDificuldade.class);
+			criteria.add(Restrictions.eq("id", id));
+			return (NivelDificuldade) criteria.uniqueResult();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return null;
+	}
+
 
 }

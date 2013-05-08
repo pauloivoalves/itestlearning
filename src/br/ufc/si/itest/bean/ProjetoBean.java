@@ -34,7 +34,7 @@ public class ProjetoBean {
 	/* Construtor */
 	public ProjetoBean() {
 		projeto = new Projeto();
-		
+		projeto.setNivelDificuldade(new NivelDificuldade());
 		projetoDao = new ProjetoDaoImpl();
 		
 		projetos = new ArrayList<SelectItem>();
@@ -44,11 +44,12 @@ public class ProjetoBean {
 		NivelDificuldadeDaoImpl nivelDao = new NivelDificuldadeDaoImpl();
 		NivelDificuldade nivelDificuldade = new NivelDificuldade();
 		
-		nivelDificuldade = nivelDao.getNivelDificuldadeByName(nome_nivel_dificuldade);
+		nivelDificuldade = nivelDao.getNivelDificuldadeById(projeto.getNivelDificuldade().getId());
 		projeto.setNivelDificuldade(nivelDificuldade);
 		projetoDao.save(projeto);
-		
-		return "criado";
+		projeto = new Projeto();
+		projeto.setNivelDificuldade(new NivelDificuldade());
+		return "admin_index.jsf";
 			
 	
 	}
