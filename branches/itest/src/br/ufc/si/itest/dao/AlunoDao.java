@@ -22,6 +22,8 @@ public void saveAlunos(Aluno aluno);
 	
 	public Usuario getUsuarioById(int id);
 	
+	public Usuario getUsuarioTudo(int id);
+	
 	public List<Jogo> listarMeusJogos(Aluno aluno);
 	
 	public List<Aluno> listAlunosByTurma(int id);

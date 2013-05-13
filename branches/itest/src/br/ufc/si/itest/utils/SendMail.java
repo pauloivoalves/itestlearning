@@ -5,8 +5,8 @@
 package br.ufc.si.itest.utils;
 
 /**
- *
- * @author Gleyson
+ * @author Mardson
+ * 
  */
 import java.net.MalformedURLException;
 import javax.mail.*;

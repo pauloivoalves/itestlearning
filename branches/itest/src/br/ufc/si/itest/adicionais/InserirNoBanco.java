@@ -1,8 +1,14 @@
 package br.ufc.si.itest.adicionais;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import br.ufc.si.itest.dao.AlunoDao;
+import br.ufc.si.itest.dao.AlunoTurmaDao;
+import br.ufc.si.itest.dao.TurmaDao;
+import br.ufc.si.itest.dao.impl.AlunoDaoImpl;
+import br.ufc.si.itest.dao.impl.AlunoTurmaDaoImpl;
 import br.ufc.si.itest.dao.impl.ArtefatoDaoImpl;
 import br.ufc.si.itest.dao.impl.ArtefatoProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.CasoDeUsoDaoImpl;
@@ -16,7 +22,11 @@ import br.ufc.si.itest.dao.impl.NivelTesteProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.ProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.TipoTesteDaoImpl;
 import br.ufc.si.itest.dao.impl.TipoTesteProjetoDaoImpl;
+import br.ufc.si.itest.dao.impl.TurmaDaoImpl;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
+import br.ufc.si.itest.model.Aluno;
+import br.ufc.si.itest.model.AlunoTurma;
+import br.ufc.si.itest.model.AlunoTurma.AlunoTurmaPK;
 import br.ufc.si.itest.model.Artefato;
 import br.ufc.si.itest.model.ArtefatoProjeto;
 import br.ufc.si.itest.model.CasoDeUso;
@@ -33,6 +43,7 @@ import br.ufc.si.itest.model.Projeto;
 import br.ufc.si.itest.model.TipoTeste;
 import br.ufc.si.itest.model.TipoTesteProjeto;
 import br.ufc.si.itest.model.TipoTesteProjeto.TipoTesteProjetoPk;
+import br.ufc.si.itest.model.Turma;
 import br.ufc.si.itest.model.Usuario;
 import br.ufc.si.itest.model.ArtefatoProjeto;
 import br.ufc.si.itest.model.ArtefatoProjeto.ArtefatoProjetoPk;
@@ -185,6 +196,22 @@ public class InserirNoBanco {
 		adi.save(artefato);
 
 	}
+	
+	
+	
+	public void inserirTurma(){
+		Scanner sc = new Scanner(System.in);
+		TurmaDao turmaDao = new TurmaDaoImpl();
+		Turma turma = new Turma();
+		
+		System.out.println("digite o nome da turma: ");
+		String nome_turma = sc.nextLine();
+		
+		turma.setNome(nome_turma);
+		turmaDao.save(turma);	
+		
+	}
+	
 
 	public void inserirNivelTeste() {
 		Scanner sc = new Scanner(System.in);
@@ -465,6 +492,35 @@ public class InserirNoBanco {
 
 		fpdi.save(ferramentaProjeto);
 
+	}
+	
+	
+	
+	public void inserirAlunoTurma() {
+		
+		AlunoTurma at = new AlunoTurma();
+		AlunoTurmaPK aluno_turma_pk = new AlunoTurmaPK();
+		Turma turma = new Turma();
+		Aluno aluno = new Aluno();
+		
+		AlunoDao alunoDao = new AlunoDaoImpl();
+		TurmaDao turmaDao = new TurmaDaoImpl();
+		
+		AlunoTurmaDao aluno_turma_dao = new AlunoTurmaDaoImpl();
+		
+		aluno = (Aluno) alunoDao.getUsuarioById(31);
+		turma = turmaDao.getTurmaById(15);
+
+		
+		
+
+		aluno_turma_pk.setAluno(aluno);
+		aluno_turma_pk.setTurma(turma);
+		
+		at.setPk(aluno_turma_pk);
+		
+		
+		aluno_turma_dao.save(at);
 	}
 
 }

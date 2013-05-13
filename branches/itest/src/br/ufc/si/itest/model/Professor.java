@@ -8,6 +8,11 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 
+/**
+ * @author Mardson
+ * 
+ */
+
 @Entity
 @Table(name="itest.professor")
 @PrimaryKeyJoinColumn(name="id_prof")

@@ -3,7 +3,6 @@ package br.ufc.si.itest.bean;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import br.ufc.si.itest.dao.AdministradorDao;
 import br.ufc.si.itest.dao.AlunoDao;
 import br.ufc.si.itest.dao.ProfessorDao;
 import br.ufc.si.itest.dao.impl.AdiministradorDaoImpl;

@@ -74,9 +74,11 @@
 								
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Turma" />
+										<h:outputText value="Jogos" />
 									</f:facet>
-									<h:outputText value="#{a.turma.nome}" />
+									<h:commandLink value="Visualizar" action="#{ProfessorBean.visualizarJogosAluno}">
+									<f:setPropertyActionListener target="#{ProfessorBean.aluno}" value="#{a}"></f:setPropertyActionListener>
+									</h:commandLink>
 								</h:column>
 							</h:dataTable>
 

@@ -7,11 +7,17 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.sun.xml.internal.ws.developer.SchemaValidation;
+/**
+ * @author Mardson
+ * 
+ */
 
 
 @Entity
@@ -29,7 +35,8 @@ public class Turma implements Serializable{
 	
 	private String nome;
 	
-	@OneToMany(mappedBy="turma")
+	@ManyToMany
+	@JoinTable(name="itest.aluno_turma", joinColumns={@JoinColumn(name="id_turma")}, inverseJoinColumns={@JoinColumn(name="id_aluno")})
 	private List<Aluno> alunos;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})

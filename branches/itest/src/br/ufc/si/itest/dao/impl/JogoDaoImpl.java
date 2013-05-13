@@ -89,4 +89,18 @@ public class JogoDaoImpl implements JogoDao {
 		return null;
 	}
 
+	@Override
+	public List<Jogo> getJogoByUsuario(Integer id_usuario) {
+		Session session = HibernateUtil.getSession();
+		String query = "from Jogo where id_usuario = :id ";
+		try {
+			return session.createQuery(query).setInteger("id", id_usuario).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	}
+
 }

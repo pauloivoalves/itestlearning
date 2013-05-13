@@ -142,4 +142,17 @@ public class AlunoDaoImpl implements AlunoDao{
 	
 	}
 
+	@Override
+	public Usuario getUsuarioTudo(int id) {
+		Session session = HibernateUtil.getSession();
+		try{
+			return (Usuario) session.load(Usuario.class, id);
+		}catch (Exception e) {
+			// TODO: handle exception
+		}finally{
+			session.close();
+		}
+		return null;
+	}
+
 }

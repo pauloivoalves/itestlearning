@@ -27,18 +27,20 @@
 								<ul>
 									<li><a href="prof_add_turma.jsf">Nova</a></li>
 									<li><a href="prof_add_alunos_turma.jsf">Add Alunos</a></li>
-									<li><a href="prof_visual_alunos_turma.jsf">Visualizar Alunos</a></li>
+									<li><a href="prof_visual_alunos_turma.jsf">Visualizar
+											Alunos</a></li>
 								</ul></li>
 
 							<li><a href="#">Alunos</a>
 								<ul>
-									<li><h:commandLink value="Visualizar" action="#{ProfessorBean.carregarAlunosCadastados}"/></li>
-									<li><a href="prof_buscar_aluno.jsf">Buscar</a></li> 
+									<li><h:commandLink value="Visualizar"
+											action="#{ProfessorBean.carregarAlunosCadastados}" /></li>
+									<li><a href="prof_buscar_aluno.jsf">Buscar</a></li>
 								</ul></li>
 
 							<li><a href="#">Simulado</a>
 								<ul>
-									<li><a href="add_simulado.jsf">Novo</a></li>
+									<li><a href="add_simulado.jsf">Ferramenta</a></li>
 								</ul></li>
 
 							<li><h:commandLink value="Sair" action="#{jogoBean.logOut}" /></li>
@@ -52,22 +54,42 @@
 						<h:outputLabel value="#{ProfessorBean.professor.nome}"
 							styleClass="adm" />
 						<div id="fase">
-						<h:dataTable value="#{ProfessorBean.turmas}" var="elem" styleClass="tabela" headerClass="cabecalho" rowClasses="linha">
-							<h:column>
-							<f:facet name="header">
-							<h:outputText value="Turmas"/>
-							</f:facet>
-							
-							<h:commandLink value="#{elem.nome}" action="prof_visual_turma.xhtml">
-							<f:setPropertyActionListener target="#{ProfessorBean.turma}" value="#{elem}">
-							</f:setPropertyActionListener>
-							
-							</h:commandLink>
-							
-							</h:column>
-						</h:dataTable>
-						
-						
+							<h:dataTable value="#{ProfessorBean.jogos}" var="j"
+								styleClass="tabela" headerClass="cabecalho" rowClasses="linha">
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Projeto" />
+									</f:facet>
+									<h:outputText value="#{j.pk.projeto.nome}"/>
+								</h:column>
+								
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Nível Dificuldade" />
+									</f:facet>
+									<h:outputText value="#{j.pk.projeto.nivelDificuldade.nome}"/>
+								</h:column>
+								
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Pontuação" />
+									</f:facet>
+									<h:outputText value="#{j.pontuacao}"/>
+								</h:column>
+								
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Data" />
+									</f:facet>
+									<h:outputText value="#{j.data}">
+									<f:convertDateTime type="date" dateStyle="medium"></f:convertDateTime>
+									</h:outputText>
+								</h:column>
+								
+									
+							</h:dataTable>
+
+
 						</div>
 					</div>
 					<div id="footer">
