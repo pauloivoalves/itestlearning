@@ -23,6 +23,8 @@ public interface JogoDao {
 
 	public List<Jogo> getJogoByProjeto(Integer projeto);
 	
+	public List<Jogo> getJogoByUsuario(Integer id_usuario);
+	
 	public List<Jogo> getJogoById(Integer id);
 
 }//fim da interface

@@ -2,10 +2,12 @@ package br.ufc.si.itest.testes;
 
 import java.util.List;
 
+import br.ufc.si.itest.adicionais.InserirNoBanco;
 import br.ufc.si.itest.dao.AlunoDao;
 import br.ufc.si.itest.dao.impl.AlunoDaoImpl;
 import br.ufc.si.itest.model.Aluno;
 import br.ufc.si.itest.model.Jogo;
+import br.ufc.si.itest.model.Usuario;
 
 public class TestaAluno {
 
@@ -39,8 +41,20 @@ public class TestaAluno {
 	}
 	
 	
+	
+	public static void buscarAluno(){
+		AlunoDao alunoDao = new AlunoDaoImpl();
+		Aluno aluno = (Aluno) alunoDao.getUsuarioTudo(31);
+		aluno.getJogos().size();
+	}
+	
 	public static void main(String[] args) {
 		//listarAlunos();
-		listarJogos();
+		//listarJogos();
+		
+		//InserirNoBanco inb = new InserirNoBanco();
+		//inb.inserirAlunoTurma();
+		buscarAluno();
+		
 	}
 }

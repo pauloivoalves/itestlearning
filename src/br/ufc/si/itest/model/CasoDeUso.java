@@ -1,5 +1,10 @@
 package br.ufc.si.itest.model;
 
+/**
+ * @author Mardson
+ * 
+ */
+
 import java.io.Serializable;
 
 import javax.persistence.Column;

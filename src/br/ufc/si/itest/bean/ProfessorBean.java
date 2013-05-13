@@ -8,15 +8,22 @@ import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpSession;
 
 import br.ufc.si.itest.dao.AlunoDao;
+import br.ufc.si.itest.dao.AlunoTurmaDao;
+import br.ufc.si.itest.dao.JogoDao;
 import br.ufc.si.itest.dao.ProfessorDao;
 import br.ufc.si.itest.dao.TurmaDao;
 import br.ufc.si.itest.dao.UsuarioDao;
 import br.ufc.si.itest.dao.impl.AlunoDaoImpl;
+import br.ufc.si.itest.dao.impl.AlunoTurmaDaoImpl;
+import br.ufc.si.itest.dao.impl.JogoDaoImpl;
 import br.ufc.si.itest.dao.impl.ProfessorDaoImpl;
 import br.ufc.si.itest.dao.impl.TurmaDaoImpl;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
 import br.ufc.si.itest.model.Administrador;
 import br.ufc.si.itest.model.Aluno;
+import br.ufc.si.itest.model.AlunoTurma;
+import br.ufc.si.itest.model.AlunoTurma.AlunoTurmaPK;
+import br.ufc.si.itest.model.Jogo;
 import br.ufc.si.itest.model.Professor;
 import br.ufc.si.itest.model.Turma;
 import br.ufc.si.itest.model.Usuario;
@@ -32,6 +39,8 @@ public class ProfessorBean {
 	private List<Aluno> alunos;
 	private Aluno aluno;
 	private List<Integer> ids_alunos;
+	private Jogo jogo;
+	private List<Jogo> jogos;
 
 	public Professor getProfessor() {
 		return professor;
@@ -88,12 +97,29 @@ public class ProfessorBean {
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
 	}
+
 	public List<Integer> getIds_alunos() {
 		return ids_alunos;
 	}
 
 	public void setIds_alunos(List<Integer> ids_alunos) {
 		this.ids_alunos = ids_alunos;
+	}
+	
+	public Jogo getJogo() {
+		return jogo;
+	}
+
+	public void setJogo(Jogo jogo) {
+		this.jogo = jogo;
+	}
+
+	public List<Jogo> getJogos() {
+		return jogos;
+	}
+
+	public void setJogos(List<Jogo> jogos) {
+		this.jogos = jogos;
 	}
 
 	public ProfessorBean() {
@@ -106,7 +132,10 @@ public class ProfessorBean {
 		alunos = new ArrayList<Aluno>();
 		aluno = new Aluno();
 		ids_alunos = new ArrayList<Integer>();
-
+		jogo = new Jogo();
+		jogos = new ArrayList<Jogo>();
+		
+		
 		FacesContext fc = FacesContext.getCurrentInstance();
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(
 				false);
@@ -206,10 +235,9 @@ public class ProfessorBean {
 	}
 
 	public String carregarAlunosCadastados() {
-		
+
 		AlunoDao alunoDao = new AlunoDaoImpl();
 		alunos = alunoDao.listarAlunos();
-
 
 		return "prof_visual_alunos.jsf";
 	}
@@ -220,22 +248,49 @@ public class ProfessorBean {
 		return "prof_add_aluno_turma.jsf";
 	}
 
-	public String buscarAlunosTurma(){
-		AlunoDao alunoDao = new AlunoDaoImpl();
+	public String buscarAlunosTurma() {
+
 		alunos.clear();
-		alunos = alunoDao.listAlunosByTurma(turma.getId());
+
+		AlunoTurmaDao aluno_turma_dao = new AlunoTurmaDaoImpl();
+
+		List<AlunoTurma> alunosTurma = new ArrayList<AlunoTurma>();
+
+		alunosTurma = aluno_turma_dao.getAlunoTurmaByIdTurma(turma.getId());
+
+		for (AlunoTurma at : alunosTurma) {
+			alunos.add(at.getPk().getAluno());
+		}
+
 		return "prof_visual_aluno_turma.jsf";
 	}
-	
+
 	public String AddAlunoTurma() {
 		TurmaDao turmaDao = new TurmaDaoImpl();
 		turma = turmaDao.getTurmaById(turma.getId());
-		AlunoDao alunoDao = new AlunoDaoImpl();
-		aluno.setTurma(turma);
-		alunoDao.updateAlunos(aluno);
 
-		alunos = alunoDao.listarAlunos();
-		
+		AlunoTurma aluno_turma = new AlunoTurma();
+		AlunoTurmaPK pk = new AlunoTurmaPK();
+
+		AlunoTurmaDao aluno_turma_dao = new AlunoTurmaDaoImpl();
+
+		pk.setAluno(aluno);
+		pk.setTurma(turma);
+
+		aluno_turma.setPk(pk);
+
+		aluno_turma_dao.save(aluno_turma);
+
+		List<AlunoTurma> alunosTurma = new ArrayList<AlunoTurma>();
+
+		alunosTurma = aluno_turma_dao.getAlunoTurmaByIdTurma(turma.getId());
+
+		alunos.clear();
+
+		for (AlunoTurma at : alunosTurma) {
+			alunos.add(at.getPk().getAluno());
+		}
+
 		return "prof_visual_alunos.jsf";
 	}
 
@@ -244,14 +299,71 @@ public class ProfessorBean {
 		turma = turmaDao.getTurmaById(turma.getId());
 
 		AlunoDao alunoDao = new AlunoDaoImpl();
-		
-		
-		for (int i=0; i < ids_alunos.size();i++) {
-			aluno = (Aluno) alunoDao.getUsuarioById(Integer.parseInt(""+ids_alunos.get(i)));
-			aluno.setTurma(turma);
-			alunoDao.updateAlunos(aluno);
+
+		AlunoTurma aluno_turma = new AlunoTurma();
+		AlunoTurmaPK pk = new AlunoTurmaPK();
+
+		AlunoTurmaDao aluno_turma_dao = new AlunoTurmaDaoImpl();
+
+		for (int i = 0; i < ids_alunos.size(); i++) {
+
+			aluno = (Aluno) alunoDao.getUsuarioById(Integer.parseInt(""
+					+ ids_alunos.get(i)));
+
+			pk.setAluno(aluno);
+			pk.setTurma(turma);
+			aluno_turma.setPk(pk);
+			aluno_turma_dao.save(aluno_turma);
+
+		}
+
+		alunos.clear();
+
+		List<AlunoTurma> alunosTurma = new ArrayList<AlunoTurma>();
+
+		alunosTurma = aluno_turma_dao.getAlunoTurmaByIdTurma(turma.getId());
+
+		for (AlunoTurma at : alunosTurma) {
+			alunos.add(at.getPk().getAluno());
 		}
 
 		return "prof_visual_alunos.jsf";
+
 	}
+
+	public String removerAlunoTurma() {
+		
+		alunos.clear();
+
+		AlunoTurmaDao aluno_turma_dao = new AlunoTurmaDaoImpl();
+
+		List<AlunoTurma> alunosTurma = new ArrayList<AlunoTurma>();
+
+		AlunoTurmaPK pk = new AlunoTurmaPK();
+		AlunoTurma aluno_turma = new AlunoTurma();
+		
+		pk.setAluno(getAluno());
+		pk.setTurma(getTurma());
+		
+		aluno_turma.setPk(pk);
+		
+		aluno_turma_dao.remove(aluno_turma);
+		
+		alunosTurma = aluno_turma_dao.getAlunoTurmaByIdTurma(turma.getId());
+
+		for (AlunoTurma at : alunosTurma) {
+			alunos.add(at.getPk().getAluno());
+		}
+
+		return "prof_visual_aluno_turma.jsf";
+	}
+	
+	
+	
+	public String visualizarJogosAluno(){
+		JogoDao jogo_dao = new JogoDaoImpl();
+		jogos = jogo_dao.getJogoByUsuario(aluno.getId());
+		return "prof_visual_jogos_aluno.jsf";
+	}
+
 }

@@ -89,10 +89,22 @@
 								
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Turma" />
+										<h:outputText value="Remover" />
 									</f:facet>
-									<h:outputText value="#{a.turma.nome}" />
+									<h:commandLink value="Excluir" action="#{ProfessorBean.removerAlunoTurma}">
+									<f:setPropertyActionListener target="#{ProfessorBean.aluno}" value="#{a}"></f:setPropertyActionListener>
+									</h:commandLink>
 								</h:column>
+								
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Jogos" />
+									</f:facet>
+									<h:commandLink value="Visualizar" action="#{ProfessorBean.visualizarJogosAluno}">
+									<f:setPropertyActionListener target="#{ProfessorBean.aluno}" value="#{a}"></f:setPropertyActionListener>
+									</h:commandLink>
+								</h:column>
+								
 							</h:dataTable>
 						
 						

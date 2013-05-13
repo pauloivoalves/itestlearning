@@ -1,4 +1,8 @@
 package br.ufc.si.itest.model;
+/**
+ * @author Mardson
+ * 
+ */
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
