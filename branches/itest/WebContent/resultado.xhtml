@@ -8,8 +8,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>iTest Learning :: Informe</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
-	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
-
+	<h:outputScript library="primefaces" name="jquery/jquery.js"/>
 
 	<style type="text/css">
 #content_popup {
@@ -76,7 +75,7 @@
 }
 </style>
 
-	<script type="text/javascript">
+	<h:outputScript>
 		function verificar_pontos(){
 			p = #{jogoBean.jogo.pontuacao};
 			if (p>=70){ 
@@ -98,7 +97,7 @@
 			document.getElementById('content_popup').style.display = '';
 			setTimeout('fechar()', 8000);
 		}
-	</script>
+	</h:outputScript>
 
 
 
