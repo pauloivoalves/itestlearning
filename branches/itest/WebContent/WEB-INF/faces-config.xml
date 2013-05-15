@@ -189,7 +189,7 @@
 		</navigation-case>
 
 		<navigation-case>
-			<from-outcome>sucesso</from-outcome>
+			<from-outcome>sucessoAluno</from-outcome>
 			<to-view-id>/aluno_index.xhtml</to-view-id>
 		</navigation-case>
 

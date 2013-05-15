@@ -42,6 +42,7 @@ public class JogoBean {
 	/* Auxiliares */
 	int indice;
 	int id;
+	String nome;
 	
 	/* Classes de modelo */
 	private Jogo jogo;
@@ -121,7 +122,8 @@ public class JogoBean {
 				.getCurrentInstance().getExternalContext().getRequest();
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpSession session = (HttpSession) request.getSession();
-		int id = (Integer) session.getAttribute("ID_USUARIO");
+		 id = (Integer) session.getAttribute("ID_USUARIO");
+		 nome = (String) session.getAttribute("NOME_USUARIO");
 		
 		indice = 0;
 
@@ -374,6 +376,8 @@ public class JogoBean {
 	public String adicionarRanking() {
 		
 			this.ranking = true;
+			usuario.setId(id);
+			usuario.setNome(nome);
 			usuario.setLogin("login");
 			usuario.setSenha("senha");
 			usuarioDao.save(usuario);
@@ -385,6 +389,8 @@ public class JogoBean {
 			jogo.setAluno(aluno);
 			jogoDao.save(jogo);
 			jogos = jogoDao.getJogoByProjeto(projetoRanking);
+			
+		
 
 		return "ranking";
 	}
@@ -415,7 +421,7 @@ public class JogoBean {
 		ferramentaBean = new FerramentaBean();
 
 		ranking = false;
-
+		
 		return "escolhaProjeto";
 	}
 

@@ -16,13 +16,13 @@ public void saveAlunos(Aluno aluno);
 	
 	public List<Aluno> listarAlunos();
 	
-	public Usuario getUsuarioByNome(String nome);
+	public Aluno getAlunoByNome(String nome);
 	
-	public Usuario getUsuarioByEmail(String email);
+	public Aluno getAlunoByEmail(String email);
 	
-	public Usuario getUsuarioById(int id);
+	public Aluno getAlunoById(int id);
 	
-	public Usuario getUsuarioTudo(int id);
+	public Aluno getAlunoTudo(int id);
 	
 	public List<Jogo> listarMeusJogos(Aluno aluno);
 	
