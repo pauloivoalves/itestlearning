@@ -23,7 +23,7 @@ public class TestaAluno {
 	
 	private static void listarJogos(){
 		AlunoDao alunodao = new AlunoDaoImpl();
-		Aluno a = (Aluno) alunodao.getUsuarioByNome("mardson");
+		Aluno a = (Aluno) alunodao.getAlunoByNome("mardson");
 		
 		if(a == null){
 			System.out.println("erro aluno");
@@ -44,7 +44,7 @@ public class TestaAluno {
 	
 	public static void buscarAluno(){
 		AlunoDao alunoDao = new AlunoDaoImpl();
-		Aluno aluno = (Aluno) alunoDao.getUsuarioTudo(31);
+		Aluno aluno = (Aluno) alunoDao.getAlunoTudo(31);
 		aluno.getJogos().size();
 	}
 	

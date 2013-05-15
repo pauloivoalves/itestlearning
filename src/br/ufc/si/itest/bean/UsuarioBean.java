@@ -31,7 +31,6 @@ public class UsuarioBean {
 		user = usuarioDaoImpl.buscarUsuarioPorEmaileSenha(usuario.getLogin(),
 				usuario.getSenha());
 
-		
 		if (user == null) {
 			return "falhou";
 		}
@@ -39,45 +38,53 @@ public class UsuarioBean {
 		else {
 			// grava sessão do usuario.
 			FacesContext fc = FacesContext.getCurrentInstance();
-			HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+			HttpSession session = (HttpSession) fc.getExternalContext()
+					.getSession(false);
 			session.setAttribute("ID_USUARIO", user.getId());
 			session.setAttribute("NOME_USUARIO", user.getNome());
-			
-			if(tipoConta.equalsIgnoreCase("Administrador")){
+
+			if (tipoConta.equalsIgnoreCase("Administrador")) {
 				br.ufc.si.itest.dao.impl.AdiministradorDaoImpl dao = new AdiministradorDaoImpl();
 				Administrador admin = new Administrador();
 				admin = dao.verificaAdmin(user.getId());
-				
-				if(admin == null){
+
+				if (admin == null) {
 					return "falhou";
-				}else{
+				} else {
 					session.setAttribute("admin", admin);
 					return "sucessoAdmin";
 				}
-			}else if(tipoConta.equalsIgnoreCase("Aluno")){
-				AlunoDao alunodao =  new AlunoDaoImpl();
+
+			} else if (tipoConta.equalsIgnoreCase("Aluno")) {
+				AlunoDao alunoDao = new AlunoDaoImpl();
 				Aluno aluno = new Aluno();
-				//aluno = alunodao.
-			
-			}else if(tipoConta.equalsIgnoreCase("Professor")){
-				ProfessorDao profDao = new ProfessorDaoImpl();
-				Professor prof = new Professor();				
-				prof = profDao.getProfessorById(user.getId());
-				
-				if(prof == null){
+				aluno  = alunoDao.getAlunoById(user.getId());
+
+				if (aluno == null) {
 					return "falhou";
-				}else{
+				} else {
+					session.setAttribute("aluno", aluno);
+					return "sucessoAluno";
+				}
+
+			} else if (tipoConta.equalsIgnoreCase("Professor")) {
+				ProfessorDao profDao = new ProfessorDaoImpl();
+				Professor prof = new Professor();
+				prof = profDao.getProfessorById(user.getId());
+
+				if (prof == null) {
+					return "falhou";
+				} else {
 					session.setAttribute("prof", prof);
 					return "sucessoProf";
 				}
 			}
 			
-			return "sucesso";
+			return "";
 		}
 
 	}
 
-	
 	public Usuario getUsuario() {
 		return usuario;
 	}

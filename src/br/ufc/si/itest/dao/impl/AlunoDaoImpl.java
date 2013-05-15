@@ -67,12 +67,12 @@ public class AlunoDaoImpl implements AlunoDao{
 	}
 
 	@Override
-	public Usuario getUsuarioByNome(String nome) {
+	public Aluno getAlunoByNome(String nome) {
 		Session session = HibernateUtil.getSession();
 		try{
-			Criteria criteria = session.createCriteria(Usuario.class);
+			Criteria criteria = session.createCriteria(Aluno.class);
 			criteria.add(Restrictions.eq("nome", nome));
-			return (Usuario) criteria.uniqueResult();
+			return (Aluno) criteria.uniqueResult();
 		}catch (Exception e) {
 			// TODO: handle exception
 		}finally{
@@ -95,12 +95,12 @@ public class AlunoDaoImpl implements AlunoDao{
 	}
 
 	@Override
-	public Usuario getUsuarioByEmail(String email) {
+	public Aluno getAlunoByEmail(String email) {
 		Session session = HibernateUtil.getSession();
 		try{
-			Criteria criteria = session.createCriteria(Usuario.class);
+			Criteria criteria = session.createCriteria(Aluno.class);
 			criteria.add(Restrictions.eq("login", email));
-			return (Usuario) criteria.uniqueResult();
+			return (Aluno) criteria.uniqueResult();
 		}catch (Exception e) {
 			// TODO: handle exception
 		}finally{
@@ -110,12 +110,12 @@ public class AlunoDaoImpl implements AlunoDao{
 	}
 
 	@Override
-	public Usuario getUsuarioById(int id) {
+	public Aluno getAlunoById(int id) {
 		Session session = HibernateUtil.getSession();
 		try{
-			Criteria criteria = session.createCriteria(Usuario.class);
+			Criteria criteria = session.createCriteria(Aluno.class);
 			criteria.add(Restrictions.eq("id", id));
-			return (Usuario) criteria.uniqueResult();
+			return (Aluno) criteria.uniqueResult();
 		}catch (Exception e) {
 			// TODO: handle exception
 		}finally{
@@ -143,10 +143,10 @@ public class AlunoDaoImpl implements AlunoDao{
 	}
 
 	@Override
-	public Usuario getUsuarioTudo(int id) {
+	public Aluno getAlunoTudo(int id) {
 		Session session = HibernateUtil.getSession();
 		try{
-			return (Usuario) session.load(Usuario.class, id);
+			return (Aluno) session.load(Aluno.class, id);
 		}catch (Exception e) {
 			// TODO: handle exception
 		}finally{

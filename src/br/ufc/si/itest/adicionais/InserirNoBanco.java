@@ -508,7 +508,7 @@ public class InserirNoBanco {
 		
 		AlunoTurmaDao aluno_turma_dao = new AlunoTurmaDaoImpl();
 		
-		aluno = (Aluno) alunoDao.getUsuarioById(31);
+		aluno = (Aluno) alunoDao.getAlunoById(31);
 		turma = turmaDao.getTurmaById(15);
 
 		
