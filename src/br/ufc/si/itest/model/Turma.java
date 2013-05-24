@@ -33,6 +33,8 @@ public class Turma implements Serializable{
 	@GeneratedValue
 	private int id;
 	
+	private String codigo;
+	
 	private String nome;
 	
 	@ManyToMany
@@ -74,6 +76,13 @@ public class Turma implements Serializable{
 	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
 	}
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 
 	public Turma() {
 		super();
@@ -85,6 +94,19 @@ public class Turma implements Serializable{
 		this.nome = nome;
 		this.alunos = alunos;
 	}
+
+	public Turma(int id, String codigo, String nome, List<Aluno> alunos,
+			Professor professor) {
+		super();
+		this.id = id;
+		this.codigo = codigo;
+		this.nome = nome;
+		this.alunos = alunos;
+		this.professor = professor;
+	}
+	
+	
+	
 	
 	
 }

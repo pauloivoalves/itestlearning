@@ -4,7 +4,6 @@ import java.util.List;
 
 import br.ufc.si.itest.model.Aluno;
 import br.ufc.si.itest.model.Jogo;
-import br.ufc.si.itest.model.Usuario;
 
 public interface AlunoDao {
 
