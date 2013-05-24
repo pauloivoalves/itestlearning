@@ -1,3 +1,4 @@
+
 package br.ufc.si.itest.bean;
 
 import java.util.ArrayList;
@@ -41,6 +42,19 @@ public class ProfessorBean {
 	private List<Integer> ids_alunos;
 	private Jogo jogo;
 	private List<Jogo> jogos;
+	private boolean contains_alunos;
+	
+	
+	
+	public boolean isContains_alunos() {
+		if(alunos.isEmpty())
+			return false;
+		return true;
+	}
+
+	public void setContains_alunos(boolean contains_alunos) {
+		this.contains_alunos = contains_alunos;
+	}
 
 	public Professor getProfessor() {
 		return professor;
@@ -244,7 +258,7 @@ public class ProfessorBean {
 
 	public String buscarAlunoPorEmail() {
 		AlunoDao alunoDao = new AlunoDaoImpl();
-		aluno = (Aluno) alunoDao.getUsuarioByEmail(aluno.getLogin());
+		aluno = (Aluno) alunoDao.getAlunoByEmail(aluno.getLogin());
 		return "prof_add_aluno_turma.jsf";
 	}
 
@@ -307,7 +321,7 @@ public class ProfessorBean {
 
 		for (int i = 0; i < ids_alunos.size(); i++) {
 
-			aluno = (Aluno) alunoDao.getUsuarioById(Integer.parseInt(""
+			aluno = (Aluno) alunoDao.getAlunoById(Integer.parseInt(""
 					+ ids_alunos.get(i)));
 
 			pk.setAluno(aluno);
