@@ -76,6 +76,7 @@ public class TurmaDaoImpl implements TurmaDao{
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Turma> list() {
 		Session session = HibernateUtil.getSession();

@@ -155,8 +155,14 @@ public class ProfessorBean {
 				false);
 
 		professor = (Professor) session.getAttribute("prof");
+		
+		try {
+			carregarTurmas();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		carregarTurmas();
+		
 
 	}
 
