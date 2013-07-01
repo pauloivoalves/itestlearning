@@ -392,6 +392,8 @@ public class JogoBean {
 
 		if (idTurma != 0) {
 			jogo.setTurma(idTurma);
+		} else {
+			jogo.setTurma(0);
 		}
 
 		jogoDao.save(jogo);
