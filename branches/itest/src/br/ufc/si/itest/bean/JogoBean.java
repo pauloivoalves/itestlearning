@@ -42,8 +42,9 @@ public class JogoBean {
 	/* Auxiliares */
 	int indice;
 	int id;
+	int idTurma;
 	String nome;
-	
+
 	/* Classes de modelo */
 	private Jogo jogo;
 	private Usuario usuario;
@@ -117,14 +118,15 @@ public class JogoBean {
 
 	/* Construtor */
 	public JogoBean() {
-		
+
 		ServletRequest req = (HttpServletRequest) FacesContext
 				.getCurrentInstance().getExternalContext().getRequest();
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpSession session = (HttpSession) request.getSession();
-		 id = (Integer) session.getAttribute("ID_USUARIO");
-		 nome = (String) session.getAttribute("NOME_USUARIO");
-		
+		id = (Integer) session.getAttribute("ID_USUARIO");
+		nome = (String) session.getAttribute("NOME_USUARIO");
+		idTurma = (Integer) session.getAttribute("TURMA");
+
 		indice = 0;
 
 		aluno = new Aluno();
@@ -374,23 +376,26 @@ public class JogoBean {
 	}
 
 	public String adicionarRanking() {
-		
-			this.ranking = true;
-			usuario.setId(id);
-			usuario.setNome(nome);
-			usuario.setLogin("login");
-			usuario.setSenha("senha");
-			usuarioDao.save(usuario);
-			jogo.setPk(new JogoPk());
-			jogo.getPk().setProjeto(projetoBean.getProjeto());
-			jogo.getPk().setUsuario(usuario);
-			Date data = new Date();
-			jogo.setData(data);
-			jogo.setAluno(aluno);
-			jogoDao.save(jogo);
-			jogos = jogoDao.getJogoByProjeto(projetoRanking);
-			
-		
+
+		this.ranking = true;
+		usuario.setId(id);
+		usuario.setNome(nome);
+		usuario.setLogin("login");
+		usuario.setSenha("senha");
+		usuarioDao.save(usuario);
+		jogo.setPk(new JogoPk());
+		jogo.getPk().setProjeto(projetoBean.getProjeto());
+		jogo.getPk().setUsuario(usuario);
+		Date data = new Date();
+		jogo.setData(data);
+		jogo.setAluno(aluno);
+
+		if (idTurma != 0) {
+			jogo.setTurma(idTurma);
+		}
+
+		jogoDao.save(jogo);
+		jogos = jogoDao.getJogoByProjeto(projetoRanking);
 
 		return "ranking";
 	}
@@ -421,7 +426,7 @@ public class JogoBean {
 		ferramentaBean = new FerramentaBean();
 
 		ranking = false;
-		
+
 		return "escolhaProjeto";
 	}
 

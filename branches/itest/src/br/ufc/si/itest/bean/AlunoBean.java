@@ -19,10 +19,12 @@ public class AlunoBean {
 	/* Daos e models */
 	private AlunoDao alunodao;
 	private Aluno aluno;
+	private List<Jogo> jogosAux;
 	private List<Jogo> jogos;
 
 	/* Auxiliares */
 	private String nome;
+	private int idTurma;
 	private String nomeProjeto;
 
 	/* Cosntrutor */
@@ -38,10 +40,25 @@ public class AlunoBean {
 		HttpSession session = (HttpSession) request.getSession();
 		int idUsuarioSession = (Integer) session.getAttribute("ID_USUARIO");
 		nome = (String) session.getAttribute("NOME_USUARIO");
-		
+		idTurma = (Integer) session.getAttribute("TURMA");
 		jogos = new ArrayList<Jogo>();
+		jogosAux = new ArrayList<Jogo>();
 		JogoDaoImpl jogoDaoImpl = new JogoDaoImpl();
-		jogos = jogoDaoImpl.getJogoById(idUsuarioSession);
+
+		if (idTurma == 0) {
+			jogos = jogoDaoImpl.getJogoById(idUsuarioSession);
+
+		} else {
+
+			jogosAux = jogoDaoImpl.getJogoById(idUsuarioSession);
+
+			for (Jogo j : jogosAux) {
+				if (j.getTurma() == idTurma) {
+					jogos.add(j);
+				}
+			}
+
+		}
 	}
 
 	/* Métodos get e set */

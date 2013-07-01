@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -33,8 +34,10 @@ public class Turma implements Serializable{
 	@GeneratedValue
 	private int id;
 	
+	@Column(name = "codigo")
 	private String codigo;
 	
+	@Column(name = "nome")
 	private String nome;
 	
 	@ManyToMany

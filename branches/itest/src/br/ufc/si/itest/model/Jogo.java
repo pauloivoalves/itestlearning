@@ -36,6 +36,8 @@ public class Jogo implements Serializable {
 	@ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 	private Aluno aluno;
 	
+	@Column(name = "id_turma")
+	private Integer turma;
 	
 	public Aluno getAluno() {
 		return aluno;
@@ -67,6 +69,14 @@ public class Jogo implements Serializable {
 
 	public void setPontuacao(Integer pontuacao) {
 		this.pontuacao = pontuacao;
+	}
+
+	public Integer getTurma() {
+		return turma;
+	}
+
+	public void setTurma(Integer turma) {
+		this.turma = turma;
 	}
 
 	public static class JogoPk implements Serializable {
