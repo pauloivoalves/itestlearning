@@ -212,6 +212,11 @@
 			<from-outcome>login</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>ranking_geral</from-outcome>
+			<to-view-id>/ranking_geral.xhtml</to-view-id>
+		</navigation-case>
 
 	</navigation-rule>
 
