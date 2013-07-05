@@ -31,36 +31,65 @@
 					</div>
 
 					<div id="content">
-						<h2>Seja bem vindo <h:outputText value="#{AlunoBean.nome}"/></h2>
+						<h2>
+							Seja bem vindo
+							<h:outputText value="#{AlunoBean.nome}" />
+						</h2>
 						<div id="fase">
 
-							<h:dataTable value="#{AlunoBean.jogos}"
-								var="elem" styleClass="tabela" headerClass="cabecalho" rowClasses="linha1" >
+							<h:dataTable value="#{AlunoBean.jogos}" var="elem"
+								styleClass="tabela" headerClass="cabecalho" rowClasses="linha1">
 								<h:column>
 									<f:facet name="header">
 										<h:outputText value="Data" />
 									</f:facet>
 									<h:outputText value="#{elem.data}">
-										<f:convertDateTime pattern="dd-MM-yyyy"/>
+										<f:convertDateTime pattern="dd-MM-yyyy" />
 									</h:outputText>
 								</h:column>
-								
-								<h:column >
+
+								<h:column>
 									<f:facet name="header">
 										<h:outputText value="Pontuação" />
 									</f:facet>
-									<h:outputText value="#{elem.pontuacao}" style="margin-left:30px" />
+									<h:outputText value="#{elem.pontuacao}"
+										style="margin-left:30px" />
 								</h:column>
 
-								<h:column >
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Projeto" />
+									</f:facet>
+									<h:outputText value="#{elem.pk.projeto.nome}" />
+
+								</h:column>
+
+								<h:column>
 									<f:facet name="header">
 										<h:outputText value="Ranking turma" />
 									</f:facet>
-									<a href=""/>
-								</h:column>
-								
-							</h:dataTable>
+									
+									<h:outputText binding="#{AlunoBean.nomeProjeto}" value="#{elem.pk.projeto.nome}" style="display:none"/>
 							
+									
+									<h:commandLink title="Visualizar"
+										action="#{AlunoBean.rankingGeral}">
+										Visualizar
+									</h:commandLink>
+								</h:column>
+
+							</h:dataTable>
+
+
+							<input id="prjeto" type="hidden" value="" />
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Ranking Geral" />
+								</f:facet>
+								<a href="ranking_geral.jsf" />
+							</h:column>
+
 						</div>
 					</div>
 					<div id="footer">
