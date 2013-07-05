@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import br.ufc.si.itest.dao.AlunoDao;
+import br.ufc.si.itest.dao.JogoDao;
+import br.ufc.si.itest.dao.ProjetoDao;
 import br.ufc.si.itest.dao.impl.AlunoDaoImpl;
 import br.ufc.si.itest.dao.impl.JogoDaoImpl;
+import br.ufc.si.itest.dao.impl.ProjetoDaoImpl;
 import br.ufc.si.itest.model.Aluno;
 import br.ufc.si.itest.model.Jogo;
 import br.ufc.si.itest.utils.SendMail;
@@ -21,7 +25,7 @@ public class AlunoBean {
 	private Aluno aluno;
 	private List<Jogo> jogosAux;
 	private List<Jogo> jogos;
-
+	List<Jogo> jogosGeral;
 	/* Auxiliares */
 	private String nome;
 	private int idTurma;
@@ -95,6 +99,38 @@ public class AlunoBean {
 		this.nome = nome;
 	}
 
+	public List<Jogo> getJogosAux() {
+		return jogosAux;
+	}
+
+	public void setJogosAux(List<Jogo> jogosAux) {
+		this.jogosAux = jogosAux;
+	}
+
+	public List<Jogo> getJogosGeral() {
+		return jogosGeral;
+	}
+
+	public void setJogosGeral(List<Jogo> jogosGeral) {
+		this.jogosGeral = jogosGeral;
+	}
+
+	public int getIdTurma() {
+		return idTurma;
+	}
+
+	public void setIdTurma(int idTurma) {
+		this.idTurma = idTurma;
+	}
+
+	public String getNomeProjeto() {
+		return nomeProjeto;
+	}
+
+	public void setNomeProjeto(String nomeProjeto) {
+		this.nomeProjeto = nomeProjeto;
+	}
+
 	/* funcionalidades */
 	public String cadastrarAluno() {
 		String msg = "Bem vindo ao Itest " + this.aluno.getNome()
@@ -109,6 +145,15 @@ public class AlunoBean {
 			return "/cadastro.xhtml";
 		}
 
+	}
+	
+	public String rankingGeral(){
+		jogosGeral = new ArrayList<Jogo>();
+		JogoDao jogoDao = new JogoDaoImpl();
+		ProjetoDao projetoDao = new ProjetoDaoImpl();
+		jogosGeral = jogoDao.getJogoByProjeto(projetoDao.getProjetoByName(nomeProjeto).getId());
+		
+		return "ranking_geral";
 	}
 
 	public void inicializar() {
