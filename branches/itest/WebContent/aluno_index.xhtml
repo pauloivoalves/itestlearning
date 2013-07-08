@@ -43,7 +43,7 @@
 									<f:facet name="header">
 										<h:outputText value="Data" />
 									</f:facet>
-									<h:outputText value="#{elem.data}">
+									<h:outputText value="#{elem.data}" rendered="true">
 										<f:convertDateTime pattern="dd-MM-yyyy" />
 									</h:outputText>
 								</h:column>
@@ -83,8 +83,10 @@
 									</f:facet>
 
 									<h:commandLink title="Visualizar"
-										action="#{AlunoBean.rankingTurma}" style="text-decoration:none; color:#20B2AA">
+										actionListener="#{AlunoBean.rankingTurma}" style="text-decoration:none; color:#20B2AA">
 										 Visualizar 
+										 <f:attribute name="nomeProjeto"
+											value="#{elem.pk.projeto.nome}" />
 									</h:commandLink>
 									
 								</h:column>

@@ -152,7 +152,6 @@ public class AlunoBean {
 	public void rankingGeral(ActionEvent event) throws IOException{
 		
 		nomeProjeto = (String)event.getComponent().getAttributes().get("nomeProjeto");
-		System.out.println(nomeProjeto);
 		jogosGeral = new ArrayList<Jogo>();
 		JogoDao jogoDao = new JogoDaoImpl();
 		ProjetoDao projetoDao = new ProjetoDaoImpl();
@@ -161,13 +160,13 @@ public class AlunoBean {
 		
 	}
 	
-public String rankingTurma() throws IOException{
-
+public void rankingTurma(ActionEvent event) throws IOException{
+		nomeProjeto = (String)event.getComponent().getAttributes().get("nomeProjeto");
 		jogosGeral = new ArrayList<Jogo>();
 		JogoDao jogoDao = new JogoDaoImpl();
-		jogosGeral = jogoDao.getJogoByTurma(idTurma);
+		ProjetoDao projetoDao = new ProjetoDaoImpl();
+		jogosGeral = jogoDao.getJogoByTurmaProjeto(idTurma, projetoDao.getProjetoByName(nomeProjeto).getId());
 		FacesContext.getCurrentInstance().getExternalContext().redirect("ranking_turma.jsf");
-		return"";
 		
 	}
 	
