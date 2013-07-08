@@ -102,5 +102,19 @@ public class JogoDaoImpl implements JogoDao {
 		}
 		return null;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Jogo> getJogoByTurma(Integer id_turma) {
+		Session session = HibernateUtil.getSession();
+		String query = "from Jogo where id_turma = :id ";
+		try {
+			return session.createQuery(query).setInteger("id", id_turma).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	}
 
 }
