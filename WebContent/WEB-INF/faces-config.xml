@@ -162,6 +162,14 @@
 			<to-view-id>/tutorial_ajuda.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>rankingGeral</from-outcome>
+			<to-view-id>/ranking_geral.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
 	<navigation-rule>
 		<navigation-case>
 			<from-outcome>resultado</from-outcome>
@@ -202,7 +210,7 @@
 			<from-outcome>sucessoAdmin</from-outcome>
 			<to-view-id>/admin_index.xhtml</to-view-id>
 		</navigation-case>
-		
+
 		<navigation-case>
 			<from-outcome>sucessoProf</from-outcome>
 			<to-view-id>/prof_index.xhtml</to-view-id>
@@ -212,11 +220,8 @@
 			<from-outcome>login</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
-		
-		<navigation-case>
-			<from-outcome>ranking_geral</from-outcome>
-			<to-view-id>/ranking_geral.xhtml</to-view-id>
-		</navigation-case>
+
+
 
 	</navigation-rule>
 

@@ -1,9 +1,11 @@
 package br.ufc.si.itest.bean;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
@@ -147,15 +149,29 @@ public class AlunoBean {
 
 	}
 	
-	public String rankingGeral(){
+	public void rankingGeral(ActionEvent event) throws IOException{
+		
+		nomeProjeto = (String)event.getComponent().getAttributes().get("nomeProjeto");
+		System.out.println(nomeProjeto);
 		jogosGeral = new ArrayList<Jogo>();
 		JogoDao jogoDao = new JogoDaoImpl();
 		ProjetoDao projetoDao = new ProjetoDaoImpl();
 		jogosGeral = jogoDao.getJogoByProjeto(projetoDao.getProjetoByName(nomeProjeto).getId());
+		FacesContext.getCurrentInstance().getExternalContext().redirect("ranking_geral.jsf");
 		
-		return "ranking_geral";
 	}
+	
+public String rankingTurma() throws IOException{
 
+		jogosGeral = new ArrayList<Jogo>();
+		JogoDao jogoDao = new JogoDaoImpl();
+		jogosGeral = jogoDao.getJogoByTurma(idTurma);
+		FacesContext.getCurrentInstance().getExternalContext().redirect("ranking_turma.jsf");
+		return"";
+		
+	}
+	
+	
 	public void inicializar() {
 		// jogos = alunodao.
 	}

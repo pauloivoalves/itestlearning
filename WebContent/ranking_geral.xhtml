@@ -12,49 +12,42 @@
 <body>
 	<f:view>
 		<h:form>
+
 			<div id="slider">
 				<div id="templatemo_wrapper">
 					<div id="header">
 						<h1>
-							<a href="prof_index.jsf">iTest Learning</a>
+							<a href="admin_index.jsf">iTest Learning</a>
 						</h1>
 					</div>
 
-					<div id="menuAdmin">
-						<ul id="nav">
-							<li><a href="prof_index.jsf">Home</a></li>
-							<li><a href="#">Turma</a>
-								<ul>
-									<li><a href="prof_add_turma.jsf">Nova</a></li>
-									<li><h:commandLink value="remover" /></li>
-								</ul></li>
-
-							<li><a href="#">Alunos</a>
-								<ul>
-									<li><h:commandLink value="Visualizar" /></li>
-								</ul></li>
-
-							<li><a href="#">Simulado</a>
-								<ul>
-									<li><a href="add_simulado.jsf">Ferramenta</a></li>
-								</ul></li>
-
-							<li><h:commandLink value="Sair" action="#{jogoBean.logOut}" /></li>
-
+					<div id="menu">
+						<ul class="navigation">
+							<li><a href="aluno_index.jsf">Home<span
+									class="ui_icon home"></span></a></li>
+							<li><a href="index.jsf">Jogar<span
+									class="ui_icon aboutus"></span></a></li>
 
 						</ul>
 					</div>
 
-				
-						
-					
-						
-						<h:dataTable value="#{AlunoBean.jogosGeral}" var="a" styleClass="tabela" headerClass="cabecalho" rowClasses="linha" >
+					<div id="content">
+						<h2>
+							Ranking geral:
+						</h2>
+						<div id="fase">
+
+
+							<h:dataTable value="#{AlunoBean.jogosGeral}" var="a"
+								styleClass="tabela" headerClass="cabecalho" rowClasses="linha1">
+								
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Nome" />
+										<h:outputText value="Data" />
 									</f:facet>
-									<h:outputText value="#{a.aluno.nome}" />
+									<h:outputText value="#{a.data}">
+										<f:convertDateTime pattern="dd-MM-yyyy" />
+									</h:outputText>
 								</h:column>
 								
 								<h:column>
@@ -64,15 +57,20 @@
 									<h:outputText value="#{a.pontuacao}" />
 								</h:column>
 								
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Nome" />
+									</f:facet>
+									<h:outputText value="#{a.aluno.nome}" />
+								</h:column>
+
 							</h:dataTable>
-						
-						
-						<br />
-						<br />
-						
+
 						</div>
 					</div>
 					<div id="footer">
+						<a href="index.jsf">Home</a> | <a href="escolha_projeto.jsf">O
+							Jogo</a> | <a href="ranking.jsf">Ranking</a><br /> <br />
 						<h:outputLabel>Projeto desenvolvimento pelo Campus UFC Quixadá
 						
 						<br></br>

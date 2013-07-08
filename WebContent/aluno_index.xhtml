@@ -52,8 +52,7 @@
 									<f:facet name="header">
 										<h:outputText value="Pontuação" />
 									</f:facet>
-									<h:outputText value="#{elem.pontuacao}"
-										style="margin-left:30px" />
+									<h:outputText value="#{elem.pontuacao}" />
 								</h:column>
 
 								<h:column>
@@ -66,16 +65,28 @@
 
 								<h:column>
 									<f:facet name="header">
+										<h:outputText value="Ranking Geral" />
+									</f:facet>
+
+									<h:commandLink title="Visualizar"
+										actionListener="#{AlunoBean.rankingGeral}" style="text-decoration:none; color:#20B2AA">
+										 Visualizar 
+										 <f:attribute name="nomeProjeto"
+											value="#{elem.pk.projeto.nome}" />
+									</h:commandLink>
+									
+								</h:column>
+								
+								<h:column>
+									<f:facet name="header">
 										<h:outputText value="Ranking turma" />
 									</f:facet>
-									
-									<h:outputText binding="#{AlunoBean.nomeProjeto}" value="#{elem.pk.projeto.nome}" style="display:none"/>
-							
-									
+
 									<h:commandLink title="Visualizar"
-										action="#{AlunoBean.rankingGeral}">
-										Visualizar
+										action="#{AlunoBean.rankingTurma}" style="text-decoration:none; color:#20B2AA">
+										 Visualizar 
 									</h:commandLink>
+									
 								</h:column>
 
 							</h:dataTable>
