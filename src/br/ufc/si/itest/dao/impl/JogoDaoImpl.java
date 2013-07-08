@@ -104,11 +104,11 @@ public class JogoDaoImpl implements JogoDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Jogo> getJogoByTurma(Integer id_turma) {
+	public List<Jogo> getJogoByTurmaProjeto(Integer id_turma, Integer id_projeto) {
 		Session session = HibernateUtil.getSession();
-		String query = "from Jogo where id_turma = :id ";
+		String query = "from Jogo where id_turma = :id and id_projeto = :id2";
 		try {
-			return session.createQuery(query).setInteger("id", id_turma).list();
+			return session.createQuery(query).setInteger("id", id_turma).setInteger("id2", id_projeto).list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

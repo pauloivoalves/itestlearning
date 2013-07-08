@@ -27,6 +27,6 @@ public interface JogoDao {
 	
 	public List<Jogo> getJogoById(Integer id);
 	
-	public List<Jogo> getJogoByTurma(Integer id);
+	public List<Jogo> getJogoByTurmaProjeto(Integer id_turma, Integer id_projeto);
 
 }//fim da interface
