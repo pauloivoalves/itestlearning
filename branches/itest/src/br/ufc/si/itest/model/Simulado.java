@@ -1,25 +1,63 @@
 package br.ufc.si.itest.model;
 
+import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="itest.simulado")
+@Table(name = "itest.simulado")
 public class Simulado {
-	
+
 	@Id
 	@GeneratedValue
 	private int id;
-	
+
 	private String nome;
-	
-	private Jogo jogo;
-	
-	@OneToOne
+
+	private Date inicio;
+
+	private Date fim;
+
+	private int pontuacao;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	private Projeto projeto;
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private Turma turma;
+
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	private Professor professor;
+
+	public Professor getProfessor() {
+		return professor;
+	}
+
+	public void setProfessor(Professor professor) {
+		this.professor = professor;
+	}
+
+	public Date getInicio() {
+		return inicio;
+	}
+
+	public void setInicio(Date inicio) {
+		this.inicio = inicio;
+	}
+
+	public Date getFim() {
+		return fim;
+	}
+
+	public void setFim(Date fim) {
+		this.fim = fim;
+	}
 
 	public int getId() {
 		return id;
@@ -37,14 +75,6 @@ public class Simulado {
 		this.nome = nome;
 	}
 
-	public Jogo getJogo() {
-		return jogo;
-	}
-
-	public void setJogo(Jogo jogo) {
-		this.jogo = jogo;
-	}
-
 	public Turma getTurma() {
 		return turma;
 	}
@@ -53,18 +83,31 @@ public class Simulado {
 		this.turma = turma;
 	}
 
-	public Simulado(int id, String nome, Jogo jogo, Turma turma) {
+	public int getPontuacao() {
+		return pontuacao;
+	}
+
+	public void setPontuacao(int pontuacao) {
+		this.pontuacao = pontuacao;
+	}
+
+	public Projeto getProjeto() {
+		return projeto;
+	}
+
+	public void setProjeto(Projeto projeto) {
+		this.projeto = projeto;
+	}
+
+	public Simulado(int id, String nome, Turma turma) {
 		super();
 		this.id = id;
 		this.nome = nome;
-		this.jogo = jogo;
 		this.turma = turma;
 	}
 
 	public Simulado() {
 		super();
 	}
-	
-    
-	
-}//fim da classe simulado
+
+}// fim da classe simulado
