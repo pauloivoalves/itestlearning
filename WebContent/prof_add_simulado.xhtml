@@ -28,33 +28,35 @@
 					<div id="content">
 						<div id="fase">
 							<fieldset class="fieldset">
-								<legend>Cadastro Turma</legend>
+								<legend>Cadastro Simulado</legend>
 								<h:panelGrid columns="2">
-									<h:outputLabel value="Código:" />
-									<h:panelGroup>
-										<h:inputText value="#{ProfessorBean.turma.codigo}" id="codigo"
-											size="45" styleClass="text" required="true"
-											requiredMessage="#{msgn['requerido.codigo']}" />
-										<h:message for="codigo" style="color:red;"></h:message>
-									</h:panelGroup>
 
 
-									<h:outputLabel value="Nome" />
+									<h:outputText value="Nome" />
 									<h:panelGroup>
-										<h:inputText value="#{ProfessorBean.turma.nome}" id="nome"
-											size="45" styleClass="text" required="true"
-											requiredMessage="#{msgn['requerido.nome']}" />
-										<h:message for="nome" style="color:red;"></h:message>
+										<h:inputText value="#{ProfessorBean.simulado.nome}" id="name"
+											required="true" requiredMessage="#{msgn['requerido.nome']}"></h:inputText>
+										<h:message for="name" style="color:red"></h:message>
 									</h:panelGroup>
+
+								
+									<h:outputText value="Selecione um Projeto" />
+									<h:selectOneMenu value="#{ProfessorBean.projeto.id}">
+										<f:selectItems value="#{ProfessorBean.projetosSelecao}" />
+									</h:selectOneMenu>
+
+									<h:outputText value="Selecione uma Turma" />
+									<h:selectOneMenu value="#{ProfessorBean.turma.id}">
+										<f:selectItems value="#{ProfessorBean.turmasSeleção}" />
+									</h:selectOneMenu>
 
 								</h:panelGrid>
 								<br /> <br />
 
 								<div id="botoes">
-									<h:commandButton value="Atualizar" styleClass="button"
-										action="#{ProfessorBean.editarTurma}" />
-									<h:commandButton value="Cancelar" style="margin-left:20px;"
-										styleClass="button" />
+									<h:commandButton value="Cadastrar" styleClass="button" action="#{ProfessorBean.CadastrarSimulado}"/>
+									<h:commandButton value="Cancelar" immediate="true"
+										style="margin-left:20px;" styleClass="button" />
 								</div>
 
 							</fieldset>

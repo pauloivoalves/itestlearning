@@ -15,8 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -30,8 +30,6 @@ import org.hibernate.annotations.FetchMode;
 @Entity
 @Table(name = "itest.projeto")
 public class Projeto implements Serializable {
-
-	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,12 +63,14 @@ public class Projeto implements Serializable {
 	@ManyToMany
 	@JoinTable(name = "itest.artefato_projeto", joinColumns = @JoinColumn(name = "id_projeto"), inverseJoinColumns = @JoinColumn(name = "id_artefato"))
 	private List<Artefato> artefatos;
-	
-	@ManyToOne(cascade={javax.persistence.CascadeType.PERSIST, javax.persistence.CascadeType.MERGE})
-	private Administrador administrador;
-	
 
-	
+	@ManyToOne(cascade = { javax.persistence.CascadeType.PERSIST,
+			javax.persistence.CascadeType.MERGE })
+	private Administrador administrador;
+
+	@OneToOne(mappedBy = "projeto")
+	private Simulado simulado;
+
 	public Administrador getAdmin() {
 		return administrador;
 	}
@@ -149,6 +149,22 @@ public class Projeto implements Serializable {
 
 	public void setArtefatos(List<Artefato> artefatos) {
 		this.artefatos = artefatos;
+	}
+
+	public Administrador getAdministrador() {
+		return administrador;
+	}
+
+	public void setAdministrador(Administrador administrador) {
+		this.administrador = administrador;
+	}
+
+	public Simulado getSimulado() {
+		return simulado;
+	}
+
+	public void setSimulado(Simulado simulado) {
+		this.simulado = simulado;
 	}
 
 	@Override

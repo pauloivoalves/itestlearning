@@ -21,30 +21,7 @@
 						</h1>
 					</div>
 
-					<div id="menuAdmin">
-						<ul id="nav">
-							<li><a href="prof_index.jsf">Home</a></li>
-							<li><a href="#">Turma</a>
-								<ul>
-									<li><a href="add_turma.jsf">Novo</a></li>
-									<li><h:commandLink value="#" /></li>
-								</ul></li>
-
-							<li><a href="#">Alunos</a>
-								<ul>
-									<li><h:commandLink value="Visualizar" /></li>
-								</ul></li>
-
-							<li><a href="#">Simulado</a>
-								<ul>
-									<li><a href="add_simulado.jsf">Ferramenta</a></li>
-								</ul></li>
-
-							<li><h:commandLink value="Sair" action="#{jogoBean.logOut}" /></li>
-
-
-						</ul>
-					</div>
+					<ui:include src="menu_prof.xhtml"/>
 
 
 
@@ -53,15 +30,23 @@
 							<fieldset class="fieldset">
 								<legend>Cadastro Turma</legend>
 								<h:panelGrid columns="2">
-									<h:outputLabel value="Nome" />
+
+									<h:outputLabel value="Código:" />
+									<h:panelGroup>
+										<h:inputText value="#{ProfessorBean.turma.codigo}" id="codigo"
+											size="45" styleClass="text" required="true"
+											requiredMessage="#{msgn['requerido.codigo']}" />
+										<h:message for="codigo" style="color:red;"></h:message>
+									</h:panelGroup>
+
+
+									<h:outputLabel value="Nome:" />
 									<h:panelGroup>
 										<h:inputText value="#{ProfessorBean.turma.nome}" id="nome"
 											size="45" styleClass="text" required="true"
 											requiredMessage="#{msgn['requerido.nome']}" />
 										<h:message for="nome" style="color:red;"></h:message>
 									</h:panelGroup>
-
-									
 
 								</h:panelGrid>
 								<br /> <br />

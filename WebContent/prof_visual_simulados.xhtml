@@ -27,37 +27,50 @@
 						<h:outputLabel value="#{ProfessorBean.professor.nome}"
 							styleClass="adm" />
 						<div id="fase">
+							<h:dataTable value="#{ProfessorBean.simulados}" var="s"
+								styleClass="tabela" headerClass="cabecalho" rowClasses="linha">
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Nome" />
+									</f:facet>
+									<h:outputText value="#{s.nome}" />
+								</h:column>
 
-							<h:panelGrid columns="3" styleClass="tabela">
-								<h:panelGroup styleClass="linha">
-								<h:outputText value="Nome:" style="color:green;"/>
-									<h:outputText value="#{ProfessorBean.aluno.nome}"
-										style="margin-left:5px;"/>
-								<br/>
-								<h:outputText value="E-mail:" style="color:green;"/>
-								<h:outputText value="#{ProfessorBean.aluno.login}"
-										style="margin-left:5px;"/>
-								<br/>
-								<h:outputText value="Senha:" style="color:green;"/>
-								<h:outputText value="#{ProfessorBean.aluno.senha}"
-										style="margin-left:5px;"/>
-								</h:panelGroup>
-							</h:panelGrid>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Data Inicio" />
+									</f:facet>
+									<h:outputText value="#{s.inicio}">
+										<f:convertDateTime type="date" dateStyle="short" />
+									</h:outputText>
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Data Fim" />
+									</f:facet>
+									<h:outputText value="#{s.fim}">
+										<f:convertDateTime type="date" dateStyle="short" />
+									</h:outputText>
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Projeto" />
+									</f:facet>
+									<h:outputText value="#{s.projeto.nome}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Turma" />
+									</f:facet>
+									<h:outputText value="#{s.turma.nome}" />
+								</h:column>
 
 
-						<br />
-						<br />
-						
-						<h:outputText value="Selecione uma Turma: "/>
-						<h:selectOneMenu value="#{ProfessorBean.turma.id}">
-						<f:selectItems value="#{ProfessorBean.turmasSeleção}"></f:selectItems>
-						</h:selectOneMenu>						
-						<br />
-						<br />
-						
-						
-						<h:commandButton value="Cadastrar" action="#{ProfessorBean.AddAlunoTurma}" styleClass="button"/>
-						<h:commandButton value="Cancelar" styleClass="button"/>
+							</h:dataTable>
+
 						</div>
 					</div>
 					<div id="footer">

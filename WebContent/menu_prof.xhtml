@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>iTest Learning :: O Jogo</title>
+	<link href="css/first.css" rel="stylesheet" type="text/css" />
+</h:head>
+<body>
+	<f:view>
+		<h:form>
+			<div id="slider">
+				
+
+					<div id="menuAdmin">
+						<ul id="nav">
+							<li><a href="prof_index.jsf">Home</a></li>
+							<li><a href="#">Turma</a>
+								<ul>
+									<li><a href="prof_add_turma.jsf">Nova</a></li>
+									<li><a href="prof_add_alunos_turma.jsf">Add Alunos</a></li>
+									<li><a href="prof_visual_alunos_turma.jsf">Visualizar Alunos</a></li>
+								</ul></li>
+
+							<li><a href="#">Alunos</a>
+								<ul>
+									<li><h:commandLink value="Visualizar" action="#{ProfessorBean.carregarAlunosCadastados}"/></li>
+									<li><a href="prof_buscar_aluno.jsf">Buscar</a></li> 
+								</ul></li>
+
+							<li><a href="#">Simulado</a>
+								<ul>
+									<li><a href="prof_add_simulado.jsf">Novo</a></li>
+									<li><h:commandLink value="Visualizar" action="#{ProfessorBean.visualizarSimulados}"/></li>
+								</ul></li>
+								<li><a href="sobre.jsf">Sobre</a></li>
+							<li><h:commandLink value="Sair" action="#{jogoBean.logOut}" /></li>
+
+
+						</ul>
+					</div>
+
+					
+				</div>
+			
+		</h:form>
+	</f:view>
+</body>
+</html>

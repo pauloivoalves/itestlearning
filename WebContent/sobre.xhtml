@@ -20,29 +20,15 @@
 						</h1>
 					</div>
 
-					<ui:include src="menu_prof.xhtml"/>
+					<ui:include src="menu_prof.xhtml" />
 
 					<div id="content">
-						<h:outputLabel value="Bem Vindo" styleClass="adm" />
-						<h:outputLabel value="#{ProfessorBean.professor.nome}"
-							styleClass="adm" />
 						<div id="fase">
-
-							<h:panelGrid>
-								<h:panelGroup>
-									<h:outputText value="Digite o E-mail do Aluno:"/><h:inputText value="#{ProfessorBean.aluno.login}"/>
-									<h:commandButton value="Buscar" styleClass="button" action="#{ProfessorBean.buscarAlunoPorEmail}"/>
-								</h:panelGroup>
-							</h:panelGrid>
-
-
-						</div>
-					</div>
-					<div id="footer">
-						<h:outputLabel>Projeto desenvolvimento pelo Campus UFC Quixadá
+							<div id="footer">
+								<h:outputLabel>Projeto desenvolvimento pelo Campus UFC Quixadá
 						
 						<br></br>
-							<br></br>
+									<br></br>
 						Coordenadores:
 						<br></br>
 						Carla Ilane Moreira Bezerra
@@ -52,7 +38,7 @@
 						Ismayle de Santos Souza 
 					
 						<br></br>
-							<br></br>
+									<br></br>
 						Equipe de desenvolvimento do Projeto:
 						<br></br>
 						Virgínia Farias
@@ -64,6 +50,8 @@
 						Mardson da Silva Ferreira
 						</h:outputLabel>
 
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
