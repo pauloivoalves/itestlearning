@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -47,6 +47,17 @@ public class Turma implements Serializable{
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	private Professor professor;
 	
+	@OneToOne(mappedBy="turma")
+	private Simulado simulado;
+	
+	
+	public Simulado getSimulado() {
+		return simulado;
+	}
+
+	public void setSimulado(Simulado simulado) {
+		this.simulado = simulado;
+	}
 
 	public Professor getProfessor() {
 		return professor;

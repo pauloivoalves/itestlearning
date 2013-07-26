@@ -16,25 +16,26 @@ import javax.persistence.Table;
 
 /**
  * @author Virginia
- *
+ * 
  */
 @Entity
-@Table(name="itest.jogo")
+@Table(name = "itest.jogo")
 public class Jogo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@EmbeddedId
 	private JogoPk pk;
-	
-	@Column(name= "pontuacao", nullable = false)
+
+	@Column(name = "pontuacao", nullable = false)
 	private Integer pontuacao;
-	
-	@Column(name="data", nullable= false)
+
+	@Column(name = "data", nullable = false)
 	private Date data;
-	
-	@ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private Aluno aluno;
+
 	
 	@Column(name = "id_turma")
 	private Integer turma;
@@ -80,13 +81,13 @@ public class Jogo implements Serializable {
 	}
 
 	public static class JogoPk implements Serializable {
-		
+
 		private static final long serialVersionUID = 1L;
 
 		@ManyToOne
 		@JoinColumn(name = "id_usuario", nullable = false)
 		private Usuario usuario;
-		
+
 		@ManyToOne
 		@JoinColumn(name = "id_projeto", nullable = false)
 		private Projeto projeto;
@@ -106,7 +107,7 @@ public class Jogo implements Serializable {
 		public void setProjeto(Projeto projeto) {
 			this.projeto = projeto;
 		}
-		
+
 	}
 
 }

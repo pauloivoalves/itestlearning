@@ -20,32 +20,7 @@
 						</h1>
 					</div>
 
-					<div id="menuAdmin">
-						<ul id="nav">
-							<li><a href="prof_index.jsf">Home</a></li>
-							<li><a href="#">Turma</a>
-								<ul>
-									<li><a href="prof_add_turma.jsf">Nova</a></li>
-									<li><a href="prof_add_alunos_turma.jsf">Add Alunos</a></li>
-									<li><a href="prof_visual_alunos_turma.jsf">Visualizar Alunos</a></li>
-								</ul></li>
-
-							<li><a href="#">Alunos</a>
-								<ul>
-									<li><h:commandLink value="Visualizar" action="#{ProfessorBean.carregarAlunosCadastados}"/></li>
-									<li><a href="prof_buscar_aluno.jsf">Buscar</a></li> 
-								</ul></li>
-
-							<li><a href="#">Simulado</a>
-								<ul>
-									<li><a href="add_simulado.jsf">Novo</a></li>
-								</ul></li>
-
-							<li><h:commandLink value="Sair" action="#{jogoBean.logOut}" /></li>
-
-
-						</ul>
-					</div>
+					<ui:include src="menu_prof.xhtml"/>
 
 					<div id="content">
 						<h:outputLabel value="Bem Vindo" styleClass="adm" />
@@ -70,33 +45,7 @@
 						
 						</div>
 					</div>
-					<div id="footer">
-						<h:outputLabel>Projeto desenvolvimento pelo Campus UFC Quixadá
-						
-						<br></br>
-							<br></br>
-						Coordenadores:
-						<br></br>
-						Carla Ilane Moreira Bezerra
-						<br></br>
-						Emanuel Ferreira Coutinho
-						<br></br>
-						Ismayle de Santos Souza 
 					
-						<br></br>
-							<br></br>
-						Equipe de desenvolvimento do Projeto:
-						<br></br>
-						Virgínia Farias
-						<br></br>
-						Felipe de Freitas Jorge
-						<br></br>
-						Paulo Ivo Alves Pordeus
-						<br></br>
-						Mardson da Silva Ferreira
-						</h:outputLabel>
-
-					</div>
 				</div>
 			</div>
 		</h:form>

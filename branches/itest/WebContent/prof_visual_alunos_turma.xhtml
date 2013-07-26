@@ -20,30 +20,7 @@
 						</h1>
 					</div>
 
-					<div id="menuAdmin">
-						<ul id="nav">
-							<li><a href="prof_index.jsf">Home</a></li>
-							<li><a href="#">Turma</a>
-								<ul>
-									<li><a href="prof_add_turma.jsf">Nova</a></li>
-									<li><h:commandLink value="remover" /></li>
-								</ul></li>
-
-							<li><a href="#">Alunos</a>
-								<ul>
-									<li><h:commandLink value="Visualizar" /></li>
-								</ul></li>
-
-							<li><a href="#">Simulado</a>
-								<ul>
-									<li><a href="add_simulado.jsf">Ferramenta</a></li>
-								</ul></li>
-
-							<li><h:commandLink value="Sair" action="#{jogoBean.logOut}" /></li>
-
-
-						</ul>
-					</div>
+					<ui:include src="menu_prof.xhtml"/>
 
 					<div id="content">
 						<h:outputLabel value="Bem Vindo" styleClass="adm" />
@@ -65,6 +42,7 @@
 						<br />
 						<br />
 						
+						<h:commandLink value="GerarPdf" action="#{ProfessorBean.gerarRelatórioTurma}"></h:commandLink>
 						
 						<h:dataTable value="#{ProfessorBean.alunos}" var="a" styleClass="tabela" headerClass="cabecalho" rowClasses="linha" rendered="#{ProfessorBean.contains_alunos != false}">
 								<h:column>
