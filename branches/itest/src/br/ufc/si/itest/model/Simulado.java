@@ -1,6 +1,7 @@
 package br.ufc.si.itest.model;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,6 +16,9 @@ public class Simulado {
 	@Id
 	@GeneratedValue
 	private int id;
+
+	@Column(name = "nome")
+	private String nome;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Projeto projeto;
@@ -55,6 +59,14 @@ public class Simulado {
 
 	public void setProjeto(Projeto projeto) {
 		this.projeto = projeto;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Simulado(int id, String nome, Turma turma) {
