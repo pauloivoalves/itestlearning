@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -65,9 +64,10 @@ public class SimuladoDaoImpl implements SimuladoDao {
 	@Override
 	public List<Simulado> list(int prof_id) {
 		Session session = HibernateUtil.getSession();
-		String sql = "from Simulado where professor_id_prof =:prof_id"; 
+		String sql = "from Simulado where professor_id_prof =:prof_id";
 		try {
-			return session.createQuery(sql).setInteger("prof_id", prof_id).list();
+			return session.createQuery(sql).setInteger("prof_id", prof_id)
+					.list();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -89,6 +89,21 @@ public class SimuladoDaoImpl implements SimuladoDao {
 		} finally {
 			session.close();
 		}
+	}
+
+	public List<Simulado> getSimuladoByTurma(int turma_id) {
+		Session session = HibernateUtil.getSession();
+		String sql = "from Simulado where turma_id =:turma_id";
+		try {
+			return session.createQuery(sql).setInteger("turma_id", turma_id)
+					.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			session.close();
+		}
+
 	}
 
 }

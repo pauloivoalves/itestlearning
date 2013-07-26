@@ -15,9 +15,11 @@ import javax.servlet.http.HttpSession;
 
 import br.ufc.si.itest.dao.JogoDao;
 import br.ufc.si.itest.dao.ProjetoDao;
+import br.ufc.si.itest.dao.SimuladoDao;
 import br.ufc.si.itest.dao.UsuarioDao;
 import br.ufc.si.itest.dao.impl.JogoDaoImpl;
 import br.ufc.si.itest.dao.impl.ProjetoDaoImpl;
+import br.ufc.si.itest.dao.impl.SimuladoDaoImpl;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
 import br.ufc.si.itest.model.Aluno;
 import br.ufc.si.itest.model.ArtefatoProjeto;
@@ -30,6 +32,7 @@ import br.ufc.si.itest.model.Jogo.JogoPk;
 import br.ufc.si.itest.model.NivelDificuldade;
 import br.ufc.si.itest.model.NivelTesteProjeto;
 import br.ufc.si.itest.model.Projeto;
+import br.ufc.si.itest.model.Simulado;
 import br.ufc.si.itest.model.TipoTesteProjeto;
 import br.ufc.si.itest.model.Usuario;
 
@@ -157,9 +160,29 @@ public class JogoBean {
 
 	public void carregaProjetos() {
 		projetoBean.setProjetos(new ArrayList<SelectItem>());
-		List<Projeto> projs = projetoBean.getProjetoDao()
-				.getProjetoByNivelDificuldade(
-						new NivelDificuldade(nivelDificuldadeEscolhido));
+		List<Projeto> projs;
+		if (idTurma == 0) {
+			projs = projetoBean.getProjetoDao().getProjetoByNivelDificuldade(
+					new NivelDificuldade(nivelDificuldadeEscolhido));
+		} else {
+			projs = new ArrayList<Projeto>();
+			SimuladoDao simuladoDao = new SimuladoDaoImpl();
+			List<Simulado> simulados = new ArrayList<Simulado>();
+			simulados = simuladoDao.getSimuladoByTurma(idTurma);
+
+			List<Projeto> projetos = projetoBean.getProjetoDao()
+					.getProjetoByNivelDificuldade(
+							new NivelDificuldade(nivelDificuldadeEscolhido));
+			for (Simulado s : simulados) {
+				for (Projeto p : projetos) {
+					if (s.getProjeto().getId() == p.getId()) {
+						projs.add(p);
+						break;
+					}
+				}
+			}
+		}
+
 		for (Projeto p : projs) {
 			projetoBean.getProjetos().add(
 					new SelectItem(p.getId(), p.getNome()));

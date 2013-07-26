@@ -1,7 +1,5 @@
 package br.ufc.si.itest.model;
 
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,14 +15,6 @@ public class Simulado {
 	@Id
 	@GeneratedValue
 	private int id;
-
-	private String nome;
-
-	private Date inicio;
-
-	private Date fim;
-
-	private int pontuacao;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Projeto projeto;
@@ -43,22 +33,6 @@ public class Simulado {
 		this.professor = professor;
 	}
 
-	public Date getInicio() {
-		return inicio;
-	}
-
-	public void setInicio(Date inicio) {
-		this.inicio = inicio;
-	}
-
-	public Date getFim() {
-		return fim;
-	}
-
-	public void setFim(Date fim) {
-		this.fim = fim;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -67,28 +41,12 @@ public class Simulado {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	public Turma getTurma() {
 		return turma;
 	}
 
 	public void setTurma(Turma turma) {
 		this.turma = turma;
-	}
-
-	public int getPontuacao() {
-		return pontuacao;
-	}
-
-	public void setPontuacao(int pontuacao) {
-		this.pontuacao = pontuacao;
 	}
 
 	public Projeto getProjeto() {
@@ -102,7 +60,6 @@ public class Simulado {
 	public Simulado(int id, String nome, Turma turma) {
 		super();
 		this.id = id;
-		this.nome = nome;
 		this.turma = turma;
 	}
 
