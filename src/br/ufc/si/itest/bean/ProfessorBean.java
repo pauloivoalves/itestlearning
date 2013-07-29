@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -507,8 +508,12 @@ public class ProfessorBean {
 		this.alunos = adao.listAlunosByTurma(turma.getId());
 		
 		try{
+			//pega o contexto da aplicação, caso queria salvar o arquivo em um diretório
+		ServletContext ctx = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+		
+		//pega o contexto da resposta da requisição
 		FacesContext fc = FacesContext.getCurrentInstance();
-		HttpServletResponse response = (HttpServletResponse) fc.getCurrentInstance();
+		HttpServletResponse response = (HttpServletResponse) fc.getCurrentInstance().getExternalContext().getResponse();
 		response.setContentType("application/pdf");
 		
 		Document document = new Document();
