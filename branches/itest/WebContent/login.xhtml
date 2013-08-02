@@ -7,13 +7,22 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Login</title>
-
+	<h:outputScript library="primefaces" name="jquery/jquery.js"/>
 	<link href="css/styleLogin.css" rel="stylesheet" type="text/css" />
-	<script>
-		function mostraSelectTurma() {
-			alert("assasassas");
+	<h:outputScript>
+		function escolheTurma(){
+			var x = $('.select').val();
+			
+			if(x=="Aluno"){
+				$('.labelTurma').show();
+				$('.selTurma').show();
+			}else{
+				$('.labelTurma').hide();
+				$('.selTurma').hide();
+			}
+			
 		}
-	</script>
+	</h:outputScript>
 </h:head>
 <body>
 	<f:view>
@@ -56,17 +65,17 @@
 
 								<h:outputLabel value="#{msgn['tela.conta']}" />
 								<br />
-								<h:selectOneMenu style="width:280px;"
-									value="#{UsuarioBean.tipoConta}" id="tipo_user" onselect="mostraSelectTurma()">
-									<f:selectItem itemValue="Aluno" />
-									<f:selectItem itemValue="Administrador"/>
+								<h:selectOneMenu class="select" style="width:280px;"
+									value="#{UsuarioBean.tipoConta}" id="tipo_user" onchange="escolheTurma();">
+									<f:selectItem itemValue="Administrador" />
+									<f:selectItem itemValue="Aluno"/>
 									<f:selectItem itemValue="Professor" />
 								</h:selectOneMenu>
 								<br />
-								<div id="turma_user">
-									<h:outputLabel value="selecione a turma" />
+								<div class="turma_user">
+									<h:outputLabel class="labelTurma" value="selecione a turma" style="display:none"/>
 									<br />
-									<h:selectOneMenu style="width:280px;"
+									<h:selectOneMenu class="selTurma" style="width:280px; display:none"
 										value="#{UsuarioBean.turma}">
 										<f:selectItem itemLabel="sem turma" itemValue="0" />
 										<f:selectItems value="#{UsuarioBean.turmasLista}" />
