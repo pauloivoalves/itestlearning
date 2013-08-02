@@ -27,34 +27,76 @@
 						<h:outputLabel value="#{ProfessorBean.professor.nome}"
 							styleClass="adm" />
 						<div id="fase">
-							<h:dataTable value="#{ProfessorBean.simulados}" var="s"
-								styleClass="tabela" headerClass="cabecalho" rowClasses="linha">
+							<fieldset>
+								<legend>Simulado</legend>
+								<h:panelGrid columns="2">
+									<h:outputText value="Nome:" />
+
+									<h:outputText value="#{ProfessorBean.simulado.nome}" />
+								</h:panelGrid>
+							</fieldset>
+							<fieldset>
+								<legend>Projeto</legend>
+								<h:panelGrid columns="1">
+
+									<h:panelGroup>
+										<h:outputText value="Nome: " />
+										<h:outputText value="#{ProfessorBean.simulado.projeto.nome}" />
+									</h:panelGroup>
+									<br />
+									<h:outputText value="Descrição:" />
+									<h:outputText
+										value="#{ProfessorBean.simulado.projeto.descricao}" />
+
+									<br />
+									<h:panelGroup>
+										<h:outputText value="Dificuldade: " />
+										<h:outputText
+											value="#{ProfessorBean.simulado.projeto.nivelDificuldade.nome}" />
+									</h:panelGroup>
+
+								</h:panelGrid>
+							</fieldset>
+
+							<fieldset>
+								<legend>Turma</legend>
+								<h:panelGrid columns="1">
+
+									<h:panelGroup>
+										<h:outputText value="Nome: " />
+										<h:outputText value="#{ProfessorBean.simulado.turma.nome}" />
+									</h:panelGroup>
+									<br />
+								</h:panelGrid>
+								
+								<h:dataTable value="#{ProfessorBean.alunos}" var="a"
+								styleClass="tabela" headerClass="cabecalho" rowClasses="linha"
+								rendered="#{ProfessorBean.contains_alunos != false}">
 								<h:column>
 									<f:facet name="header">
 										<h:outputText value="Nome" />
 									</f:facet>
-									<h:commandLink value="#{s.nome}" action="#{ProfessorBean.resultadoSimulado}">
-										<f:setPropertyActionListener
-											target="#{ProfessorBean.simulado}" value="#{s}"></f:setPropertyActionListener>
+									<h:outputText value="#{a.nome}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="E-mail" />
+									</f:facet>
+									<h:outputText value="#{a.login}" />
+								</h:column>
+
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="Jogos" />
+									</f:facet>
+									<h:commandLink value="Visualizar"
+										actionListener="#{ProfessorBean.rankingTurma}">
 									</h:commandLink>
 								</h:column>
 
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Projeto" />
-									</f:facet>
-									<h:outputText value="#{s.projeto.nome}" />
-								</h:column>
-
-								<h:column>
-									<f:facet name="header">
-										<h:outputText value="Turma" />
-									</f:facet>
-									<h:outputText value="#{s.turma.nome}" />
-								</h:column>
-
-
 							</h:dataTable>
+							</fieldset>
 
 						</div>
 					</div>

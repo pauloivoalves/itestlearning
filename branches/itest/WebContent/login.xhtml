@@ -9,6 +9,11 @@
 	<title>Login</title>
 
 	<link href="css/styleLogin.css" rel="stylesheet" type="text/css" />
+	<script>
+		function mostraSelectTurma() {
+			alert("assasassas");
+		}
+	</script>
 </h:head>
 <body>
 	<f:view>
@@ -50,23 +55,23 @@
 								<br />
 
 								<h:outputLabel value="#{msgn['tela.conta']}" />
-								<br/>
+								<br />
 								<h:selectOneMenu style="width:280px;"
-									value="#{UsuarioBean.tipoConta}">
+									value="#{UsuarioBean.tipoConta}" id="tipo_user" onselect="mostraSelectTurma()">
 									<f:selectItem itemValue="Aluno" />
-									<f:selectItem itemValue="Administrador" />
+									<f:selectItem itemValue="Administrador"/>
 									<f:selectItem itemValue="Professor" />
 								</h:selectOneMenu>
-								<br/>
-
-								<h:outputLabel value="selecione a turma" />
-								<br/>
-								<h:selectOneMenu style="width:280px;"
-									value="#{UsuarioBean.turma}">
-									<f:selectItem itemLabel="sem turma" itemValue="0"/>
-									<f:selectItems value="#{UsuarioBean.turmasLista}" />
-								</h:selectOneMenu>
-
+								<br />
+								<div id="turma_user">
+									<h:outputLabel value="selecione a turma" />
+									<br />
+									<h:selectOneMenu style="width:280px;"
+										value="#{UsuarioBean.turma}">
+										<f:selectItem itemLabel="sem turma" itemValue="0" />
+										<f:selectItems value="#{UsuarioBean.turmasLista}" />
+									</h:selectOneMenu>
+								</div>
 								<br />
 								<br />
 								<br />

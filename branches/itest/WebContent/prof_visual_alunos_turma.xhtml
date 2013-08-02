@@ -20,7 +20,7 @@
 						</h1>
 					</div>
 
-					<ui:include src="menu_prof.xhtml"/>
+					<ui:include src="menu_prof.xhtml" />
 
 					<div id="content">
 						<h:outputLabel value="Bem Vindo" styleClass="adm" />
@@ -28,63 +28,73 @@
 							styleClass="adm" />
 						<div id="fase">
 
-							
 
-						
-						
-						<h:outputText value="Selecione uma Turma: "/>
-						<h:selectOneMenu value="#{ProfessorBean.turma.id}">
-						<f:selectItems value="#{ProfessorBean.turmasSeleção}"></f:selectItems>
-						</h:selectOneMenu>						
-						
-						<h:commandButton value="Buscar" action="#{ProfessorBean.buscarAlunosTurma}" styleClass="button"/>
-						
-						<br />
-						<br />
-						
-						<h:commandLink value="GerarPdf" action="#{ProfessorBean.gerarRelatórioTurma}"></h:commandLink>
-						
-						<h:dataTable value="#{ProfessorBean.alunos}" var="a" styleClass="tabela" headerClass="cabecalho" rowClasses="linha" rendered="#{ProfessorBean.contains_alunos != false}">
+							<div id="icon_pdf">
+								<h:commandButton value="GerarPdf" image="/images/pdf.jpeg" styleClass="img_pdf"
+									action="#{ProfessorBean.gerarRelatórioTurma}"></h:commandButton>
+							</div>
+
+
+							<h:outputText value="Selecione uma Turma: " />
+							<h:selectOneMenu value="#{ProfessorBean.turma.id}">
+								<f:selectItems value="#{ProfessorBean.turmasSeleção}"></f:selectItems>
+							</h:selectOneMenu>
+
+
+							<h:commandButton value="Buscar"
+								action="#{ProfessorBean.buscarAlunosTurma}" styleClass="button" />
+
+
+							<br /> <br />
+
+
+
+							<h:dataTable value="#{ProfessorBean.alunos}" var="a"
+								styleClass="tabela" headerClass="cabecalho" rowClasses="linha"
+								rendered="#{ProfessorBean.contains_alunos != false}">
 								<h:column>
 									<f:facet name="header">
 										<h:outputText value="Nome" />
 									</f:facet>
 									<h:outputText value="#{a.nome}" />
 								</h:column>
-								
+
 								<h:column>
 									<f:facet name="header">
 										<h:outputText value="E-mail" />
 									</f:facet>
 									<h:outputText value="#{a.login}" />
 								</h:column>
-								
-								
-								
+
+
+
 								<h:column>
 									<f:facet name="header">
 										<h:outputText value="Remover" />
 									</f:facet>
-									<h:commandLink value="Excluir" action="#{ProfessorBean.removerAlunoTurma}">
-									<f:setPropertyActionListener target="#{ProfessorBean.aluno}" value="#{a}"></f:setPropertyActionListener>
+									<h:commandLink value="Excluir"
+										action="#{ProfessorBean.removerAlunoTurma}">
+										<f:setPropertyActionListener target="#{ProfessorBean.aluno}"
+											value="#{a}"></f:setPropertyActionListener>
 									</h:commandLink>
 								</h:column>
-								
+
 								<h:column>
 									<f:facet name="header">
 										<h:outputText value="Jogos" />
 									</f:facet>
-									<h:commandLink value="Visualizar" action="#{ProfessorBean.visualizarJogosAluno}">
-									<f:setPropertyActionListener target="#{ProfessorBean.aluno}" value="#{a}"></f:setPropertyActionListener>
+									<h:commandLink value="Visualizar"
+										action="#{ProfessorBean.visualizarJogosAluno}">
+										<f:setPropertyActionListener target="#{ProfessorBean.aluno}"
+											value="#{a}"></f:setPropertyActionListener>
 									</h:commandLink>
 								</h:column>
-								
+
 							</h:dataTable>
-						
-						
-						<br />
-						<br />
-						
+
+
+							<br /> <br />
+
 						</div>
 					</div>
 					<div id="footer">

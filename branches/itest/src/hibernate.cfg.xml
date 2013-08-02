@@ -9,7 +9,7 @@
 		<property name="hibernate.connection.password">postgres</property>
 		
 		<property name="show_sql">true</property>
-		<property name="hbm2ddl.auto">update</property>    
+		<!--  <property name="hbm2ddl.auto">update</property>  -->      
 		 
 		 
 		<mapping class="br.ufc.si.itest.model.Artefato"/>
@@ -33,6 +33,7 @@
 		<mapping class="br.ufc.si.itest.model.Professor"/>
 		<mapping class="br.ufc.si.itest.model.Turma"/>
 		<mapping class="br.ufc.si.itest.model.AlunoTurma"/>
+		<mapping class="br.ufc.si.itest.model.Simulado"/>
 				
 	</session-factory>
 </hibernate-configuration>
