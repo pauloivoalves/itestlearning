@@ -42,9 +42,12 @@ public class UsuarioBean {
 		turmaDao = new TurmaDaoImpl();
 		
 		turmas = turmaDao.list();
-		for (Turma t : turmas) {
-			System.out.println(t.getNome());
-			turmasLista.add(new SelectItem(t.getId(), t.getNome()));
+		
+		if(turmas != null){
+			for (Turma t : turmas) {
+				System.out.println(t.getNome());
+				turmasLista.add(new SelectItem(t.getId(), t.getNome()));
+			}
 		}
 
 	}
