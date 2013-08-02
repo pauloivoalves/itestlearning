@@ -352,3 +352,10 @@ h6 {
 	font-family: sans-serif;
 	font-size: 14pt;
 }
+
+#icon_pdf{
+	float: right;
+}
+.img_pdf{
+	width: 50px;
+}

@@ -127,12 +127,11 @@ public class AlunoDaoImpl implements AlunoDao{
 	@Override
 	public List<Aluno> listAlunosByTurma(int id) {
 		Session session = HibernateUtil.getSession();
-		List<Aluno> alunos = new ArrayList<Aluno>();
 		Query query = session.createQuery("from Aluno where turma_id =:id");
 		query.setInteger("id", id);
 		try{
-			alunos = query.list();
-			return alunos;
+			
+			return query.list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

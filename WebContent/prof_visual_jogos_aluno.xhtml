@@ -27,6 +27,12 @@
 						<h:outputLabel value="#{ProfessorBean.professor.nome}"
 							styleClass="adm" />
 						<div id="fase">
+						
+						<div id="icon_pdf">
+								<h:commandButton value="GerarPdf" image="/images/pdf.jpeg" styleClass="img_pdf"
+									action="#{ProfessorBean.RelatórioJogosAluno}"></h:commandButton>
+							</div>
+							
 							<h:dataTable value="#{ProfessorBean.jogos}" var="j"
 								styleClass="tabela" headerClass="cabecalho" rowClasses="linha">
 								
