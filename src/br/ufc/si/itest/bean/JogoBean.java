@@ -431,7 +431,7 @@ public class JogoBean {
 		HttpSession session = (HttpSession) faces.getExternalContext()
 				.getSession(false);
 		session.invalidate();
-		return "login";
+		return "login.xhtml";
 	}
 
 	public String terminarJogo() {

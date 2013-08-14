@@ -42,7 +42,7 @@ public class ArtefatoBean {
 	
 	public String criarArtefato(){
 		artefatoDao.save(artefato);
-		return "criado";	
+		return "admin_index.xhtml";
 	}
 
 	/* Métodos Auxiliares */

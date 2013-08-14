@@ -42,7 +42,7 @@ public class TipoTesteBean {
 
 	public String criarTipoTeste() {
 		tipoTesteDao.save(tipoTeste);
-		return "criado";
+		return "admin_index.xhtml";
 	}
 
 	/* Métodos Auxiliares */
