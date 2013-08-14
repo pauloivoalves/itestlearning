@@ -42,7 +42,7 @@ public class NivelTesteBean {
 	
 	public String criarNivelTeste(){
 		nivelTesteDao.save(nivelTeste);
-		return "criado";
+		return "admin_index.xhtml";
 	}
 
 	/* Métodos Auxiliares */

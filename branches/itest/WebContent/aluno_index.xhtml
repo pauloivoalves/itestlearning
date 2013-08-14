@@ -20,15 +20,7 @@
 						</h1>
 					</div>
 
-					<div id="menuAdmin">
-						<ul class="nav">
-							<li><a href="aluno_index.jsf">Home<span
-									class="ui_icon home"></span></a></li>
-							<li><a href="index.jsf">Jogar<span
-									class="ui_icon aboutus"></span></a></li>
-
-						</ul>
-					</div>
+					<ui:include src="menu_aluno.xhtml"/>
 
 					<div id="content">
 						<h2>
@@ -94,7 +86,7 @@
 							</h:dataTable>
 
 
-							<input id="prjeto" type="hidden" value="" />
+							<input id="projeto" type="hidden" value="" />
 
 							<h:column>
 								<f:facet name="header">
@@ -105,35 +97,7 @@
 
 						</div>
 					</div>
-					<div id="footer">
-						<a href="index.jsf">Home</a> | <a href="escolha_projeto.jsf">O
-							Jogo</a> | <a href="ranking.jsf">Ranking</a><br /> <br />
-						<h:outputLabel>Projeto desenvolvimento pelo Campus UFC Quixadá
-						
-						<br></br>
-							<br></br>
-						Coordenadores:
-						<br></br>
-						Carla Ilane Moreira Bezerra
-						<br></br>
-						Emanuel Ferreira Coutinho
-						<br></br>
-						Ismayle de Santos Souza 
 					
-						<br></br>
-							<br></br>
-						Equipe de desenvolvimento do Projeto:
-						<br></br>
-						Virgínia Farias
-						<br></br>
-						Felipe de Freitas Jorge
-						<br></br>
-						Paulo Ivo Alves Pordeus
-						<br></br>
-						Mardson da Silva Ferreira
-						</h:outputLabel>
-
-					</div>
 				</div>
 			</div>
 		</h:form>

@@ -312,7 +312,7 @@ public class ProfessorBean {
 
 		turma = new Turma();
 		turmas = turmaDao.carregarTurmasProfessor(professor.getId());
-		return "prof_visual_turmas.jsf";
+		return "prof_index.jsf";
 	}
 
 	public void carregarTurmas() {

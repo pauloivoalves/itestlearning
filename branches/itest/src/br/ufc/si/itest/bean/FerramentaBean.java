@@ -3,6 +3,7 @@ package br.ufc.si.itest.bean;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import javax.faces.model.SelectItem;
 
 import br.ufc.si.itest.dao.FerramentaDao;
@@ -43,8 +44,7 @@ public class FerramentaBean {
 	public String criarFerramenta(){
 		ferramentaDao.save(ferramenta);
 		
-		return "criado";
-		
+		return "admin_index.xhtml";
 	}
 
 	/* Métodos Auxiliares */

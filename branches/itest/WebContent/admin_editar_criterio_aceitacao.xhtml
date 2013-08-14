@@ -20,63 +20,7 @@
 						</h1>
 					</div>
 
-					<div id="menuAdmin">
-						<ul id="nav">
-							<li><a href="admin_index.jsf">Home</a></li>
-							<li><a href="#">Projeto</a>
-								<ul>
-									<li><a href="add_projeto.jsf">Novo</a></li>
-									<li><a href="admin_escolher_projeto.jsf">Remover</a></li>
-									<li><h:commandLink value="Add Ferramenta"
-											action="#{AdministradorBean.visualFerramentasPro}" /></li>
-									<li><h:commandLink value="Add Artefato"
-											action="#{AdministradorBean.visualArtefatosPro}" /></li>
-									<li><h:commandLink value="Add Nivel Teste"
-											action="#{AdministradorBean.visualNiveisPro}" /></li>
-									<li><h:commandLink value="Add Tipo Teste"
-											action="#{AdministradorBean.visualTiposPro}" /></li>
-								</ul></li>
-
-							<li><a href="#">Professores</a>
-								<ul>
-									<li><a href="admin_add_professor.jsf">Adicionar</a></li>
-									<li><h:commandLink value="Visualizar"
-											action="#{ProfessorBean.visualizarProfessores}" /></li>
-								</ul></li>
-
-							<li><a href="#">Cadastrar</a>
-								<ul>
-									<li><a href="add_ferramenta.jsf">Ferramenta</a></li>
-									<li><a href="add_artefato.jsf">Artefato</a></li>
-									<li><a href="add_criterio_aceitacao.jsf">Critério
-											Aceitação</a></li>
-									<li><a href="add_nivel_teste.jsf">Nível teste</a></li>
-									<li><a href="add_tipo_teste.jsf">Tipo teste</a></li>
-									<li><a href="add_item_teste.jsf">Item teste</a></li>
-								</ul></li>
-
-							<li><a href="#">Visualizar</a>
-								<ul>
-									<li><h:commandLink value="Ferramentas"
-											action="#{AdministradorBean.visualizarFerramentas}" /></li>
-									<li><h:commandLink value="Artefatos"
-											action="#{AdministradorBean.visualizarArtefatos}" /></li>
-									<li><h:commandLink value="Critérios Aceitação"
-											action="#{AdministradorBean.visualizarCriteriosAceitacao}" /></li>
-									<li><h:commandLink value="Níveis Teste"
-											action="#{AdministradorBean.visualizarNiveisTeste}" /></li>
-									<li><h:commandLink value="Tipos Teste"
-											action="#{AdministradorBean.visualizarTiposTeste}" /></li>
-									<li><h:commandLink value="Itens Teste"
-											action="#{AdministradorBean.visualizarItensTeste}" /></li>
-								</ul></li>
-
-							<li><h:commandLink value="Sair" action="#{jogoBean.logOut}" /></li>
-
-
-						</ul>
-					</div>
-
+					<ui:include src="menu_admin.xhtml"/>
 
 					<div id="content">
 						<div id="fase">
@@ -113,7 +57,7 @@
 									<h:commandButton value="Atualizar"
 										action="#{AdministradorBean.atualizarCriterioAceitação}"
 										styleClass="button" />
-									<h:commandButton value="Cancelar" style="margin-left:20px;"
+									<h:commandButton value="Cancelar" immediate="true" action ="admin_index.jsf" style="margin-left:20px;"
 										styleClass="button" />
 								</div>
 							</fieldset>
@@ -121,33 +65,7 @@
 
 					</div>
 
-					<div id="footer">
-						<h:outputLabel>Projeto desenvolvimento pelo Campus UFC Quixadá
-						
-						<br></br>
-							<br></br>
-						Coordenadores:
-						<br></br>
-						Carla Ilane Moreira Bezerra
-						<br></br>
-						Emanuel Ferreira Coutinho
-						<br></br>
-						Ismayle de Santos Souza 
 					
-						<br></br>
-							<br></br>
-						Equipe de desenvolvimento do Projeto:
-						<br></br>
-						Virgínia Farias
-						<br></br>
-						Felipe de Freitas Jorge
-						<br></br>
-						Paulo Ivo Alves Pordeus
-						<br></br>
-						Mardson da Silva Ferreira
-						</h:outputLabel>
-
-					</div>
 				</div>
 			</div>
 		</h:form>
