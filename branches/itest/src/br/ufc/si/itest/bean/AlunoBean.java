@@ -4,9 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.ViewHandler;
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.faces.model.SelectItem;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -30,7 +31,7 @@ public class AlunoBean {
 	List<Jogo> jogosGeral;
 	/* Auxiliares */
 	private String nome;
-	private int idTurma;
+	private Integer idTurma;
 	private String nomeProjeto;
 
 	/* Cosntrutor */
@@ -39,31 +40,38 @@ public class AlunoBean {
 		alunodao = new AlunoDaoImpl();
 		aluno = new Aluno();
 
-		// recuperar sessão do usuario.
-		ServletRequest req = (HttpServletRequest) FacesContext
-				.getCurrentInstance().getExternalContext().getRequest();
-		HttpServletRequest request = (HttpServletRequest) req;
-		HttpSession session = (HttpSession) request.getSession();
-		int idUsuarioSession = (Integer) session.getAttribute("ID_USUARIO");
-		nome = (String) session.getAttribute("NOME_USUARIO");
-		idTurma = (Integer) session.getAttribute("TURMA");
-		jogos = new ArrayList<Jogo>();
-		jogosAux = new ArrayList<Jogo>();
-		JogoDaoImpl jogoDaoImpl = new JogoDaoImpl();
+		try {
 
-		if (idTurma == 0) {
-			jogos = jogoDaoImpl.getJogoById(idUsuarioSession);
+			// recuperar sessão do usuario.
+			ServletRequest req = (HttpServletRequest) FacesContext
+					.getCurrentInstance().getExternalContext().getRequest();
+			HttpServletRequest request = (HttpServletRequest) req;
+			HttpSession session = (HttpSession) request.getSession();
+			Integer idUsuarioSession = (Integer) session
+					.getAttribute("ID_USUARIO");
+			nome = (String) session.getAttribute("NOME_USUARIO");
+			idTurma = (Integer) session.getAttribute("TURMA");
+			jogos = new ArrayList<Jogo>();
+			jogosAux = new ArrayList<Jogo>();
+			JogoDaoImpl jogoDaoImpl = new JogoDaoImpl();
 
-		} else {
+			if (idTurma == 0) {
+				jogos = jogoDaoImpl.getJogoById(idUsuarioSession);
 
-			jogosAux = jogoDaoImpl.getJogoById(idUsuarioSession);
+			} else {
 
-			for (Jogo j : jogosAux) {
-				if (j.getTurma() == idTurma) {
-					jogos.add(j);
+				jogosAux = jogoDaoImpl.getJogoById(idUsuarioSession);
+
+				for (Jogo j : jogosAux) {
+					if (j.getTurma() == idTurma) {
+						jogos.add(j);
+					}
 				}
+
 			}
 
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -148,29 +156,34 @@ public class AlunoBean {
 		}
 
 	}
-	
-	public void rankingGeral(ActionEvent event) throws IOException{
-		
-		nomeProjeto = (String)event.getComponent().getAttributes().get("nomeProjeto");
+
+	public void rankingGeral(ActionEvent event) throws IOException {
+
+		nomeProjeto = (String) event.getComponent().getAttributes()
+				.get("nomeProjeto");
 		jogosGeral = new ArrayList<Jogo>();
 		JogoDao jogoDao = new JogoDaoImpl();
 		ProjetoDao projetoDao = new ProjetoDaoImpl();
-		jogosGeral = jogoDao.getJogoByProjeto(projetoDao.getProjetoByName(nomeProjeto).getId());
-		FacesContext.getCurrentInstance().getExternalContext().redirect("ranking_geral.jsf");
-		
+		jogosGeral = jogoDao.getJogoByProjeto(projetoDao.getProjetoByName(
+				nomeProjeto).getId());
+		FacesContext.getCurrentInstance().getExternalContext()
+				.redirect("ranking_geral.jsf");
+
 	}
-	
-public void rankingTurma(ActionEvent event) throws IOException{
-		nomeProjeto = (String)event.getComponent().getAttributes().get("nomeProjeto");
+
+	public void rankingTurma(ActionEvent event) throws IOException {
+		nomeProjeto = (String) event.getComponent().getAttributes()
+				.get("nomeProjeto");
 		jogosGeral = new ArrayList<Jogo>();
 		JogoDao jogoDao = new JogoDaoImpl();
 		ProjetoDao projetoDao = new ProjetoDaoImpl();
-		jogosGeral = jogoDao.getJogoByTurmaProjeto(idTurma, projetoDao.getProjetoByName(nomeProjeto).getId());
-		FacesContext.getCurrentInstance().getExternalContext().redirect("ranking_turma.jsf");
-		
+		jogosGeral = jogoDao.getJogoByTurmaProjeto(idTurma, projetoDao
+				.getProjetoByName(nomeProjeto).getId());
+		FacesContext.getCurrentInstance().getExternalContext()
+				.redirect("ranking_turma.jsf");
+
 	}
-	
-	
+
 	public void inicializar() {
 		// jogos = alunodao.
 	}
