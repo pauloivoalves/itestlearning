@@ -32,7 +32,7 @@
 								<h:panelGrid columns="2">
 									<h:outputLabel value="Nome" />
 									<h:panelGroup>
-										<h:inputText value="#{ProfessorBean.professor.nome}" id="nome"
+										<h:inputText value="#{ProfessorBean.nome}" id="nome"
 											size="45" styleClass="text" required="true"
 											requiredMessage="#{msgn['requerido.nome']}" />
 										<h:message for="nome" style="color:red;"></h:message>
@@ -40,7 +40,7 @@
 
 									<h:outputLabel value="E-mail" />
 									<h:panelGroup>
-										<h:inputText value="#{ProfessorBean.professor.login}"
+										<h:inputText value="#{ProfessorBean.login}"
 											id="email" size="45" styleClass="text" required="true"
 											requiredMessage="#{msgn['requerido.email']}" />
 										<h:message for="email" style="color:red;"></h:message>
@@ -48,7 +48,7 @@
 
 									<h:outputLabel value="senha" />
 									<h:panelGroup>
-										<h:inputSecret value="#{ProfessorBean.professor.senha}"
+										<h:inputSecret value="#{ProfessorBean.senha}"
 											id="senha" size="45" styleClass="text" required="true"
 											requiredMessage="#{msgn['requerido.senha']}" />
 										<h:message for="senha" style="color:red;"></h:message>
@@ -65,7 +65,7 @@
 								<br /> <br />
 
 								<div id="botoes">
-									<h:commandButton value="Cadastrar" styleClass="button"
+									<h:commandButton  type="submit" value="Cadastrar" styleClass="button"
 										action="#{ProfessorBean.cadastrarProfessor}" />
 									<h:commandButton value="Cancelar" immediate="true" action ="admin_index.jsf" style="margin-left:20px;"
 										styleClass="button" />
