@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
@@ -40,7 +41,6 @@ import br.ufc.si.itest.model.Turma;
 import br.ufc.si.itest.utils.SendMail;
 
 import com.lowagie.text.Document;
-import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Image;
 import com.lowagie.text.Phrase;
@@ -50,6 +50,9 @@ import com.lowagie.text.pdf.PdfWriter;
 
 public class ProfessorBean {
 
+	private String nome;
+	private String login;
+	private String senha;
 	private Professor professor;
 	private ProfessorDao profDao;
 	private List<Professor> professores;
@@ -122,6 +125,30 @@ public class ProfessorBean {
 
 	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Aluno getAluno() {
@@ -220,12 +247,16 @@ public class ProfessorBean {
 	}
 
 	public String cadastrarProfessor() {
-		String msg = "Bem vindo ao Itest " + this.professor.getNome()
-				+ ", sua senha: " + this.professor.getSenha();
+		Professor p = new Professor();
+		p.setLogin(login);
+		p.setNome(nome);
+		p.setSenha(senha);
+		String msg = "Bem vindo ao Itest " + nome
+				+ ", sua senha: " + senha;
 		try {
-			SendMail.enviarEmail(this.professor.getLogin(),
+			SendMail.enviarEmail(login,
 					"Criação de Conta no Itest", msg);
-			profDao.save(professor);
+			profDao.save(p);
 			return "/admin_add_professor.xhtml";
 		} catch (Exception e) {
 			return "/admin_add_professor.xhtml";
