@@ -8,18 +8,15 @@ import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpSession;
 
 import br.ufc.si.itest.dao.AlunoDao;
-import br.ufc.si.itest.dao.JogoDao;
 import br.ufc.si.itest.dao.ProfessorDao;
 import br.ufc.si.itest.dao.TurmaDao;
 import br.ufc.si.itest.dao.impl.AdiministradorDaoImpl;
 import br.ufc.si.itest.dao.impl.AlunoDaoImpl;
-import br.ufc.si.itest.dao.impl.JogoDaoImpl;
 import br.ufc.si.itest.dao.impl.ProfessorDaoImpl;
 import br.ufc.si.itest.dao.impl.TurmaDaoImpl;
 import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
 import br.ufc.si.itest.model.Administrador;
 import br.ufc.si.itest.model.Aluno;
-import br.ufc.si.itest.model.Jogo;
 import br.ufc.si.itest.model.Professor;
 import br.ufc.si.itest.model.Turma;
 import br.ufc.si.itest.model.Usuario;
@@ -33,21 +30,25 @@ public class UsuarioBean {
 	private TurmaDao turmaDao;
 	private List<Turma> turmas;
 	private List<SelectItem> turmasLista;
-	
 
 	public UsuarioBean() {
 		usuario = new Usuario();
 		turmas = new ArrayList<Turma>();
 		turmasLista = new ArrayList<SelectItem>();
 		turmaDao = new TurmaDaoImpl();
-		
-		turmas = turmaDao.list();
-		
-		if(turmas != null){
-			for (Turma t : turmas) {
-				System.out.println(t.getNome());
-				turmasLista.add(new SelectItem(t.getId(), t.getNome()));
+
+		try {
+			turmas = turmaDao.list();
+
+			if (turmas != null) {
+				for (Turma t : turmas) {
+					System.out.println(t.getNome());
+					turmasLista.add(new SelectItem(t.getId(), t.getNome()));
+				}
 			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 	}

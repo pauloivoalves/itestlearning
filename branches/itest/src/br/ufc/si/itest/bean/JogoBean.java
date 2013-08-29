@@ -128,8 +128,12 @@ public class JogoBean {
 		HttpSession session = (HttpSession) request.getSession();
 		id = (Integer) session.getAttribute("ID_USUARIO");
 		nome = (String) session.getAttribute("NOME_USUARIO");
-		idTurma = (Integer) session.getAttribute("TURMA");
 
+		try {
+			idTurma = (Integer) session.getAttribute("TURMA");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		indice = 0;
 
 		aluno = new Aluno();
