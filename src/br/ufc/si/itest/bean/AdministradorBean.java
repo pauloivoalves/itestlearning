@@ -44,7 +44,6 @@ import br.ufc.si.itest.model.NivelDificuldade;
 import br.ufc.si.itest.model.NivelTeste;
 import br.ufc.si.itest.model.NivelTesteProjeto;
 import br.ufc.si.itest.model.NivelTesteProjeto.NivelTesteProjetoPk;
-import br.ufc.si.itest.model.Professor;
 import br.ufc.si.itest.model.Projeto;
 import br.ufc.si.itest.model.TipoTeste;
 import br.ufc.si.itest.model.TipoTesteProjeto;
@@ -90,11 +89,11 @@ public class AdministradorBean {
 	private List<String> nomesNiveis;
 	private List<String> nomesTipos;
 
-	
 	private ArtefatoProjeto artefatoprojeto;
 	private FerramentaProjeto ferramentaProjeto;
 	private NivelTesteProjeto nivelTesteProjeto;
 	private TipoTesteProjeto tipoTesteProjeto;
+
 	// private Professor professor;
 
 	public ProjetoDao getProjetoDao() {
@@ -377,6 +376,7 @@ public class AdministradorBean {
 	public void setNomesTipos(List<String> nomesTipos) {
 		this.nomesTipos = nomesTipos;
 	}
+
 	public ArtefatoProjeto getArtefatoprojeto() {
 		return artefatoprojeto;
 	}
@@ -455,13 +455,12 @@ public class AdministradorBean {
 		nomesArtefatos = new ArrayList<String>();
 		nomesNiveis = new ArrayList<String>();
 		nomesTipos = new ArrayList<String>();
-		
-		
+
 		artefatoprojeto = new ArtefatoProjeto();
 		ferramentaProjeto = new FerramentaProjeto();
 		nivelTesteProjeto = new NivelTesteProjeto();
 		tipoTesteProjeto = new TipoTesteProjeto();
-		
+
 		inicializar();
 	}
 
@@ -471,18 +470,21 @@ public class AdministradorBean {
 
 	private void limpar() {
 
-		ferramentas.clear();
-		criterios.clear();
-		artefatos.clear();
-		itens_teste.clear();
-		niveis_teste.clear();
-		tipos_teste.clear();
+		try {
+			ferramentas.clear();
+			criterios.clear();
+			artefatos.clear();
+			itens_teste.clear();
+			niveis_teste.clear();
+			tipos_teste.clear();
 
-		artefatos_projeto.clear();
-		ferramenta_projeto.clear();
-		nivel_teste_projeto.clear();
-		tipo_teste_projeto.clear();
-
+			artefatos_projeto.clear();
+			ferramenta_projeto.clear();
+			nivel_teste_projeto.clear();
+			tipo_teste_projeto.clear();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	// métodos relacionados a visualizações
@@ -682,9 +684,9 @@ public class AdministradorBean {
 
 	// métodos relacionados a remoções
 	public String removerFerramenta() {
-		try{
-		ferramentaDao.remove(ferramenta);
-		}catch (Exception e) {
+		try {
+			ferramentaDao.remove(ferramenta);
+		} catch (Exception e) {
 			e.printStackTrace();
 			return "admin_visual_ferramentas.jsf";
 		}
@@ -694,9 +696,9 @@ public class AdministradorBean {
 	}
 
 	public String removerArtefato() {
-		try{
-		artefatoDao.remove(artefato);
-		}catch (Exception e) {
+		try {
+			artefatoDao.remove(artefato);
+		} catch (Exception e) {
 			return "admin_visual_artefatos.jsf";
 		}
 		artefato = new Artefato();
@@ -705,9 +707,9 @@ public class AdministradorBean {
 	}
 
 	public String removerNivelTeste() {
-		try{
-		nivelDao.remove(nivel);
-		}catch (Exception e) {
+		try {
+			nivelDao.remove(nivel);
+		} catch (Exception e) {
 			return "admin_visual_niveis_teste.jsf";
 		}
 		nivel = new NivelTeste();
@@ -716,9 +718,9 @@ public class AdministradorBean {
 	}
 
 	public String removerCriterioAceitação() {
-		try{
-		criterioDao.remove(criterio);
-		}catch (Exception e) {
+		try {
+			criterioDao.remove(criterio);
+		} catch (Exception e) {
 			return "admin_visual_Criterios_acetação.jsf";
 		}
 		criterio = new CriterioAceitacao();
@@ -727,9 +729,9 @@ public class AdministradorBean {
 	}
 
 	public String removerTipoTeste() {
-		try{
-		tipoDao.remove(tipo);
-		}catch (Exception e) {
+		try {
+			tipoDao.remove(tipo);
+		} catch (Exception e) {
 			return "admin_visual_tipos_teste.jsf";
 		}
 		tipo = new TipoTeste();
@@ -738,10 +740,10 @@ public class AdministradorBean {
 	}
 
 	public String removerItensTeste() {
-		try{
-		itemDao.remove(item);
-		}catch (Exception e) {
-			 return "admin_visual_itens_teste.jsf";
+		try {
+			itemDao.remove(item);
+		} catch (Exception e) {
+			return "admin_visual_itens_teste.jsf";
 		}
 		item = new ItemTeste();
 		itens_teste = itemDao.list();
@@ -771,14 +773,12 @@ public class AdministradorBean {
 	public String addFerramentaProjeto() {
 		projeto = projetoDao.getProjetoById(projeto.getId());
 		ferramenta = ferramentaDao.getFerramentaById(ferramenta.getId());
-		
-			FerramentaProjetoPk fpk = new FerramentaProjetoPk();
-			fpk.setFerramenta(ferramenta);
-			fpk.setProjeto(projeto);
-			ferramentaProjeto.setPk(fpk);
-			ferramenta_proj_dao.save(ferramentaProjeto);
 
-		
+		FerramentaProjetoPk fpk = new FerramentaProjetoPk();
+		fpk.setFerramenta(ferramenta);
+		fpk.setProjeto(projeto);
+		ferramentaProjeto.setPk(fpk);
+		ferramenta_proj_dao.save(ferramentaProjeto);
 
 		artefatos.clear();
 
@@ -814,14 +814,13 @@ public class AdministradorBean {
 	public String addArtefatoProjeto() {
 		projeto = projetoDao.getProjetoById(projeto.getId());
 		artefato = artefatoDao.getArtefatoById(artefato.getId());
-		
-			ArtefatoProjetoPk apk = new ArtefatoProjetoPk();
-			apk.setArtefato(artefato);
-			apk.setProjeto(projeto);
-			artefatoprojeto.setPk(apk);
 
-			artefato_proj_dao.save(artefatoprojeto);
-		
+		ArtefatoProjetoPk apk = new ArtefatoProjetoPk();
+		apk.setArtefato(artefato);
+		apk.setProjeto(projeto);
+		artefatoprojeto.setPk(apk);
+
+		artefato_proj_dao.save(artefatoprojeto);
 
 		artefatos.clear();
 
@@ -859,13 +858,12 @@ public class AdministradorBean {
 		projeto = projetoDao.getProjetoById(projeto.getId());
 		nivel = nivelDao.getNivelTesteById(nivel.getId());
 
-			NivelTesteProjetoPk ntpk = new NivelTesteProjetoPk();
-			ntpk.setNivelTeste(nivel);
-			ntpk.setProjeto(projeto);
-			nivelTesteProjeto.setPk(ntpk);
+		NivelTesteProjetoPk ntpk = new NivelTesteProjetoPk();
+		ntpk.setNivelTeste(nivel);
+		ntpk.setProjeto(projeto);
+		nivelTesteProjeto.setPk(ntpk);
 
-			nivel_proj_dao.save(nivelTesteProjeto);
-		
+		nivel_proj_dao.save(nivelTesteProjeto);
 
 		artefatos.clear();
 
@@ -902,13 +900,12 @@ public class AdministradorBean {
 		projeto = projetoDao.getProjetoById(projeto.getId());
 		tipo = tipoDao.getTipoTesteById(tipo.getId());
 
-			TipoTesteProjetoPk ttpk = new TipoTesteProjetoPk();
-			ttpk.setTipoTeste(tipo);
-			ttpk.setProjeto(projeto);
-			tipoTesteProjeto.setPk(ttpk);
+		TipoTesteProjetoPk ttpk = new TipoTesteProjetoPk();
+		ttpk.setTipoTeste(tipo);
+		ttpk.setProjeto(projeto);
+		tipoTesteProjeto.setPk(ttpk);
 
-			tipo_projeto_dao.save(tipoTesteProjeto);
-		
+		tipo_projeto_dao.save(tipoTesteProjeto);
 
 		artefatos.clear();
 
@@ -1024,43 +1021,43 @@ public class AdministradorBean {
 		}
 		return "admin_visual_proj.jsf";
 	}
-	
-	
-	public String removerProjeto(){
+
+	public String removerProjeto() {
 		projeto = projetoDao.getProjetoById(projeto.getId());
-		
+
 		artefatos_projeto = artefatoDao.getArtefatosByProjeto(projeto.getId());
 		for (ArtefatoProjeto ap : artefatos_projeto) {
 			artefato_proj_dao.remove(ap);
 		}
-		
-		ferramenta_projeto = ferramentaDao.getItensTesteByProjeto(projeto.getId());
-		for(FerramentaProjeto fp:ferramenta_projeto){
+
+		ferramenta_projeto = ferramentaDao.getItensTesteByProjeto(projeto
+				.getId());
+		for (FerramentaProjeto fp : ferramenta_projeto) {
 			ferramenta_proj_dao.remove(fp);
 		}
-		
+
 		nivel_teste_projeto = nivelDao.getItensTesteByProjeto(projeto.getId());
 		for (NivelTesteProjeto ntp : nivel_teste_projeto) {
 			nivel_proj_dao.remove(ntp);
 		}
-		
+
 		tipo_teste_projeto = tipoDao.getItensTesteByProjeto(projeto.getId());
 		for (TipoTesteProjeto ttp : tipo_teste_projeto) {
 			tipo_projeto_dao.remove(ttp);
 		}
-		
+
 		criterios = criterioDao.getCriterioAceitacaoByProjeto(projeto.getId());
-		for(CriterioAceitacao ca:criterios){
-		  criterioDao.remove(ca);	
+		for (CriterioAceitacao ca : criterios) {
+			criterioDao.remove(ca);
 		}
-		
+
 		itens_teste = itemDao.getItensTesteByProjeto(projeto.getId());
-		for(ItemTeste it:itens_teste){
-		  itemDao.remove(it);	
+		for (ItemTeste it : itens_teste) {
+			itemDao.remove(it);
 		}
-		
+
 		projetoDao.remove(projeto);
-		
+
 		return "admin_escolher_projeto.jsf";
 	}
 

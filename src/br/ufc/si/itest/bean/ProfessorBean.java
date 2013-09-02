@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.model.SelectItem;
@@ -30,6 +29,7 @@ import br.ufc.si.itest.dao.impl.ProfessorDaoImpl;
 import br.ufc.si.itest.dao.impl.ProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.SimuladoDaoImpl;
 import br.ufc.si.itest.dao.impl.TurmaDaoImpl;
+import br.ufc.si.itest.dao.impl.UsuarioDaoImpl;
 import br.ufc.si.itest.model.Aluno;
 import br.ufc.si.itest.model.AlunoTurma;
 import br.ufc.si.itest.model.AlunoTurma.AlunoTurmaPK;
@@ -38,6 +38,7 @@ import br.ufc.si.itest.model.Professor;
 import br.ufc.si.itest.model.Projeto;
 import br.ufc.si.itest.model.Simulado;
 import br.ufc.si.itest.model.Turma;
+import br.ufc.si.itest.model.Usuario;
 import br.ufc.si.itest.utils.SendMail;
 
 import com.lowagie.text.Document;
@@ -251,11 +252,9 @@ public class ProfessorBean {
 		p.setLogin(login);
 		p.setNome(nome);
 		p.setSenha(senha);
-		String msg = "Bem vindo ao Itest " + nome
-				+ ", sua senha: " + senha;
+		String msg = "Bem vindo ao Itest " + nome + ", sua senha: " + senha;
 		try {
-			SendMail.enviarEmail(login,
-					"Criação de Conta no Itest", msg);
+			SendMail.enviarEmail(login, "Criação de Conta no Itest", msg);
 			profDao.save(p);
 			return "/admin_add_professor.xhtml";
 		} catch (Exception e) {
@@ -265,21 +264,43 @@ public class ProfessorBean {
 	}
 
 	public String visualizarProfessores() {
-		professores = profDao.list();
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+		UsuarioDaoImpl udi = new UsuarioDaoImpl();
+		usuarios = udi.list();
+		for (Usuario u : usuarios) {
+			if (u instanceof Professor) {
+				professores.add((Professor) u);
+			}
+		}
 		return "admin_visual_professores.xhtml";
 	}
 
 	public String atualizarProfessor() {
 		profDao.update(professor);
 		professor = new Professor();
-		professores = profDao.list();
+		professores = new ArrayList<Professor>();
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+		UsuarioDaoImpl udi = new UsuarioDaoImpl();
+		usuarios = udi.list();
+		for (Usuario u : usuarios) {
+			if (u instanceof Professor) {
+				professores.add((Professor) u);
+			}
+		}
 		return "admin_visual_professores.xhtml";
 	}
 
 	public String removerProfessor() {
 		profDao.delete(professor);
 		professor = new Professor();
-		professores = profDao.list();
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+		UsuarioDaoImpl udi = new UsuarioDaoImpl();
+		usuarios = udi.list();
+		for (Usuario u : usuarios) {
+			if (u instanceof Professor) {
+				professores.add((Professor) u);
+			}
+		}
 		return "admin_visual_professores.xhtml";
 	}
 
@@ -772,7 +793,7 @@ public class ProfessorBean {
 			table.setSpacingBefore(5f); /* Coloca um espaço antes da tabela. */
 			table.setWidthPercentage(90);
 			table.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
-			widths = new float[] { 0.05f, 0.50f, 0.20f, 0.50f, 0.20f, 0,50f };
+			widths = new float[] { 0.05f, 0.50f, 0.20f, 0.50f, 0.20f, 0, 50f };
 			table.setWidths(widths);
 			table.getDefaultCell().setGrayFill(0.5f);
 
@@ -791,10 +812,13 @@ public class ProfessorBean {
 				}
 				Jogo j = jogos.get(i);
 				table.addCell(new Phrase("" + (i + 1), fonteConteudo));
-				table.addCell(new Phrase(j.getPk().getUsuario().getNome(), fonteConteudo));
-				table.addCell(new Phrase(j.getPk().getProjeto().getNome(), fonteConteudo));
-				table.addCell(new Phrase(j.getPk().getProjeto().getNivelDificuldade().getNome(), fonteConteudo));
-				table.addCell(new Phrase( "" + j.getPontuacao(), fonteConteudo));
+				table.addCell(new Phrase(j.getPk().getUsuario().getNome(),
+						fonteConteudo));
+				table.addCell(new Phrase(j.getPk().getProjeto().getNome(),
+						fonteConteudo));
+				table.addCell(new Phrase(j.getPk().getProjeto()
+						.getNivelDificuldade().getNome(), fonteConteudo));
+				table.addCell(new Phrase("" + j.getPontuacao(), fonteConteudo));
 				table.addCell(new Phrase("" + j.getData(), fonteConteudo));
 			}
 			document.add(table);
