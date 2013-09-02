@@ -9,12 +9,11 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import br.ufc.si.itest.dao.ProfessorDao;
-import br.ufc.si.itest.model.Aluno;
 import br.ufc.si.itest.model.Professor;
 import br.ufc.si.itest.model.Usuario;
 import br.ufc.si.itest.utils.HibernateUtil;
 
-public class ProfessorDaoImpl implements ProfessorDao{
+public class ProfessorDaoImpl implements ProfessorDao {
 
 	@Override
 	public void save(Professor professor) {
@@ -31,9 +30,9 @@ public class ProfessorDaoImpl implements ProfessorDao{
 		List<Professor> professores = new ArrayList<Professor>();
 		List<Usuario> usuarios = session.createCriteria(Usuario.class).list();
 		try {
-			for(Usuario u: usuarios){
-				if(u instanceof Professor){
-					professores.add((Professor)u);
+			for (Usuario u : usuarios) {
+				if (u instanceof Professor) {
+					professores.add((Professor) u);
 				}
 			}
 			return professores;
@@ -52,7 +51,7 @@ public class ProfessorDaoImpl implements ProfessorDao{
 		session.update(professor);
 		t.commit();
 		session.close();
-		
+
 	}
 
 	@Override
@@ -62,17 +61,17 @@ public class ProfessorDaoImpl implements ProfessorDao{
 		session.delete(professor);
 		t.commit();
 		session.close();
-		
+
 	}
 
 	@Override
 	public Professor getProfessorById(int id) {
 		Session session = HibernateUtil.getSession();
-		try{
+		try {
 			Criteria criteria = session.createCriteria(Usuario.class);
 			criteria.add(Restrictions.eq("id", id));
 			return (Professor) criteria.uniqueResult();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;

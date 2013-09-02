@@ -61,6 +61,7 @@ public class SimuladoDaoImpl implements SimuladoDao {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Simulado> list(int prof_id) {
 		Session session = HibernateUtil.getSession();
@@ -77,6 +78,7 @@ public class SimuladoDaoImpl implements SimuladoDao {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Simulado> listSimulados(Professor professor) {
 		Session session = HibernateUtil.getSession();
@@ -91,6 +93,7 @@ public class SimuladoDaoImpl implements SimuladoDao {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Simulado> getSimuladoByTurma(int turma_id) {
 		Session session = HibernateUtil.getSession();
 		String sql = "from Simulado where turma_id =:turma_id";
