@@ -78,7 +78,7 @@
 	<h:outputScript>
 		function verificar_pontos(){
 			p = #{jogoBean.jogo.pontuacao};
-			if (p>=70){ 
+			if (p>=0){ 
 				//$('#mensagem_popup').html('Parabéns, sua pontuação foi de ' +p+ ' pontos, portanto você pode passar para a próxima fase.');
 				$('#mensagem_popup').html('');
 				$('#popup').addClass('congratulations_popup');
@@ -282,7 +282,7 @@
 						<p:commandLink title="avançar" style="float: left;" ajax="false"
 							action="objetivoFaseProjeto">
 							<p:graphicImage value="images/go.png" styleClass="image_res"
-								rendered="#{jogoBean.jogo.pontuacao >= 70 }" />
+								rendered="#{jogoBean.jogo.pontuacao >= 0 }" />
 						</p:commandLink>
 
 						<p:dialog header="Salvar Pontuação? " id="ranking"

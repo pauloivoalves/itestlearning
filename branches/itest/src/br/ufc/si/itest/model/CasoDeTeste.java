@@ -1,4 +1,5 @@
 package br.ufc.si.itest.model;
+
 /**
  * @author Mardson
  * 
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.Fetch;
@@ -42,6 +44,18 @@ public class CasoDeTeste {
 
 	@Column(name = "resposta")
 	private Boolean resposta;
+
+	@Column(name = "tipo")
+	private String tipo;
+
+	@Column(name = "campos")
+	private String campos;
+
+	@Column(name = "mensagem_sistema")
+	private String mensagemSistema;
+
+	@Column(name = "dados_teste")
+	private String dados;
 
 	public CasoDeUso getCasoDeUso() {
 		return casoDeUso;
@@ -81,6 +95,38 @@ public class CasoDeTeste {
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getCampos() {
+		return campos;
+	}
+
+	public void setCampos(String campos) {
+		this.campos = campos;
+	}
+
+	public String getMensagemSistema() {
+		return mensagemSistema;
+	}
+
+	public void setMensagemSistema(String mensagemSistema) {
+		this.mensagemSistema = mensagemSistema;
+	}
+
+	public String getDados() {
+		return dados;
+	}
+
+	public void setDados(String dados) {
+		this.dados = dados;
 	}
 
 	@Override

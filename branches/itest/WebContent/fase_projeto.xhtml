@@ -8,6 +8,25 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>iTest Learning :: Fase do Projeto</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<h:outputScript library="primefaces" name="jquery/jquery.js"/>
+	
+	<h:outputScript>
+		$(document).ready(function(){
+			$('.proximo').hide();
+		});
+		
+		function avancar(){
+			if($(".alternativas input[checked='checked']").length >= 2){
+				$('.proximo').show();
+				$('.image_left').removeAttr('style');
+				
+			}else{
+				$('.proximo').hide();
+				$('.image_left').attr('style','margin-left:790px');
+			}
+		}
+	</h:outputScript>
+	
 </h:head>
 <body>
 	<f:view>
@@ -23,7 +42,7 @@
 						</h1>
 					</div>
 
-
+					
 
 					<div id="content">
 						<div id="buttonsMenu">
@@ -82,27 +101,26 @@
 							</h3>
 						</div>
 						<div id="desafio">
-							<p:selectManyCheckbox id="alternativas" layout="pageDirection"
+							<p:selectManyCheckbox  id="alternativas" layout="pageDirection"
 								styleClass="alternativas"
 								value="#{jogoBean.casodeTesteBean.casoDeTesteSelecionados}"
 								disabled="#{jogoBean.casodeTesteBean.respondido}"
-								style="color:#228b22;  margin-botton:10px; ">
+								style="color:#228b22;  margin-botton:10px;" onchange="avancar()">
 
-								<f:selectItems var="item"
-									value="#{jogoBean.casodeTesteBean.casosDeTeste}" />
+								<f:selectItems value="#{jogoBean.casodeTesteBean.casosDeTeste}"/>
 
 							</p:selectManyCheckbox>
 						</div>
 
-						<p:commandLink title="Voltar" style="float: left;"
+						<p:commandLink title="Voltar" style="float: left"
 							action="escolhaProjeto" ajax="false">
-							<p:graphicImage value="images/return.png" styleClass="image_left" />
+							<p:graphicImage value="images/return.png" styleClass="image_left" style="margin-left:790px"/>
 						</p:commandLink>
 
 
 
-						<p:commandLink title="Avançar" style="float: right;"
-							action="#{jogoBean.carregarProximoCasoUso}" ajax="false">
+						<p:commandLink styleClass="proximo" title="Avançar" style="float: right;"
+							action="#{jogoBean.carregarExecucao}" ajax="false">
 							<p:graphicImage value="images/go.png" styleClass="image_right" />
 						</p:commandLink>
 

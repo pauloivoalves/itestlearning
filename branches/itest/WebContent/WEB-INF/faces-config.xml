@@ -12,6 +12,11 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
+		<managed-bean-name>execucaoBean</managed-bean-name>
+		<managed-bean-class>br.ufc.si.itest.bean.ExecucaoBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<managed-bean>
 		<managed-bean-name>criterioAceitacaoBean</managed-bean-name>
 		<managed-bean-class>br.ufc.si.itest.bean.CriterioAceitacaoBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
@@ -221,7 +226,10 @@
 			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
 
-
+		<navigation-case>
+			<from-outcome>faseExecucao</from-outcome>
+			<to-view-id>/fase_execucao_ativo.xhtml</to-view-id>
+		</navigation-case>
 
 	</navigation-rule>
 

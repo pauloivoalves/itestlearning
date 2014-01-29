@@ -3,6 +3,7 @@
  */
 package br.ufc.si.itest.bean;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +18,7 @@ import br.ufc.si.itest.dao.JogoDao;
 import br.ufc.si.itest.dao.ProjetoDao;
 import br.ufc.si.itest.dao.SimuladoDao;
 import br.ufc.si.itest.dao.UsuarioDao;
+import br.ufc.si.itest.dao.impl.CasoDeTesteDaoImpl;
 import br.ufc.si.itest.dao.impl.JogoDaoImpl;
 import br.ufc.si.itest.dao.impl.ProjetoDaoImpl;
 import br.ufc.si.itest.dao.impl.SimuladoDaoImpl;
@@ -35,6 +37,7 @@ import br.ufc.si.itest.model.Projeto;
 import br.ufc.si.itest.model.Simulado;
 import br.ufc.si.itest.model.TipoTesteProjeto;
 import br.ufc.si.itest.model.Usuario;
+import br.ufc.si.itest.utils.Utils;
 
 /**
  * @author Virginia
@@ -45,8 +48,21 @@ public class JogoBean {
 	/* Auxiliares */
 	int indice;
 	int id;
+	int indiceCdt;
 	int idTurma;
 	String nome;
+
+	// fase execução
+	private String dados;
+	private String formulario;
+	private List<SelectItem> sel;
+	private List<String> selecionadosExec;
+	private boolean execResposta;
+	private boolean flag = false;
+	private String casoTesteAtual;
+	private boolean resp;
+	private List<CasoDeTeste> casosValidos;
+	private List<CasoDeTeste> casosInvalidos;
 
 	/* Classes de modelo */
 	private Jogo jogo;
@@ -101,6 +117,62 @@ public class JogoBean {
 		this.casoDeUsoBean = casoDeUsoBean;
 	}
 
+	public String getDados() {
+		return dados;
+	}
+
+	public void setDados(String dados) {
+		this.dados = dados;
+	}
+
+	public String getFormulario() {
+		return formulario;
+	}
+
+	public void setFormulario(String formulario) {
+		this.formulario = formulario;
+	}
+
+	public List<CasoDeTeste> getCasosDeTesteSel() {
+		return casosDeTesteSel;
+	}
+
+	public void setCasosDeTesteSel(List<CasoDeTeste> casosDeTesteSel) {
+		this.casosDeTesteSel = casosDeTesteSel;
+	}
+
+	public List<SelectItem> getSel() {
+		return sel;
+	}
+
+	public void setSel(List<SelectItem> sel) {
+		this.sel = sel;
+	}
+
+	public List<String> getSelecionadosExec() {
+		return selecionadosExec;
+	}
+
+	public void setSelecionadosExec(List<String> selecionadosExec) {
+		this.selecionadosExec = selecionadosExec;
+	}
+
+	public boolean getExecResposta() {
+		return execResposta;
+	}
+
+	public void setExecResposta(boolean execResposta) {
+		this.execResposta = execResposta;
+	}
+
+	public String getCasoTesteAtual() {
+		return casoTesteAtual;
+	}
+
+	public void setCasoTesteAtual(String casoTesteAtual) {
+		this.casoTesteAtual = casoTesteAtual;
+	}
+
 	private CasoDeUsoBean casoDeUsoBean;
 	private ProjetoBean projetoBean;
 	private NivelDificuldadeBean nivelDificuldadeBean;
@@ -118,6 +190,7 @@ public class JogoBean {
 	private Boolean ranking;
 	private List<Jogo> jogos;
 	private List<SelectItem> projetos;
+	private List<CasoDeTeste> casosDeTesteSel;
 
 	/* Construtor */
 	public JogoBean() {
@@ -135,13 +208,15 @@ public class JogoBean {
 			e.printStackTrace();
 		}
 		indice = 0;
-
+		indiceCdt = 0;
+		casosDeTesteSel = new ArrayList<CasoDeTeste>();
 		aluno = new Aluno();
 		aluno.setId(id);
 		usuario = new Usuario();
 		jogo = new Jogo();
 		jogo.setPontuacao(0);
-
+		sel = new ArrayList<SelectItem>();
+		selecionadosExec = new ArrayList<String>();
 		casodeTesteBean = new CasoDeTesteBean();
 		casoDeUsoBean = new CasoDeUsoBean();
 		projetoBean = new ProjetoBean();
@@ -152,7 +227,8 @@ public class JogoBean {
 		criterioAceitacaoBean = new CriterioAceitacaoBean();
 		artefatoBean = new ArtefatoBean();
 		ferramentaBean = new FerramentaBean();
-
+		casosValidos = new ArrayList<CasoDeTeste>();
+		casosInvalidos = new ArrayList<CasoDeTeste>();
 		ranking = false;
 		jogoDao = new JogoDaoImpl();
 		usuarioDao = new UsuarioDaoImpl();
@@ -231,10 +307,139 @@ public class JogoBean {
 		return "descricaoProjeto";
 	}
 
-	public String carregarProximoCasoUso() {
-		validarCasoDeTeste();
+	public String carregarExecucao() throws IOException {
+		List<CasoDeTeste> casosDeTeste = new ArrayList<CasoDeTeste>();
+		CasoDeTesteDaoImpl cdti = new CasoDeTesteDaoImpl();
+		casosDeTeste = cdti.getCasoDeTesteByIdCasoDeUso(casoDeUsoBean
+				.getCasoDeUso().getId());
+		carregaFeedback(casosDeTeste);
+		for (String c : casodeTesteBean.getCasoDeTesteSelecionados()) {
+			System.out.println(c);
+			for (CasoDeTeste caso : casosDeTeste) {
+				if (caso.getId() == Integer.parseInt(c)) {
+					casosDeTesteSel.add(caso);
+				}
+			}
+		}
+
+		carregarFaseExecucao();
+
+		return "";
+	}
+
+	public void carregaFeedback(List<CasoDeTeste> casos) {
+		for (CasoDeTeste c : casos) {
+			if (c.getResposta() == true) {
+				casosValidos.add(c);
+			} else {
+				casosInvalidos.add(c);
+			}
+		}
+	}
+
+	public String carregarFaseExecucao() throws IOException {
+
+		if (flag == true) {
+			if (resp == execResposta) {
+				jogo.setPontuacao(jogo.getPontuacao()
+						+ validaRespostaCorreta(projetoBean.getProjeto()
+								.getNivelDificuldade().getId()));
+			} else {
+				jogo.setPontuacao(jogo.getPontuacao()
+						+ validaRespostaIncorreta(projetoBean.getProjeto()
+								.getNivelDificuldade().getId()));
+			}
+		}
+
+		if (indiceCdt < casosDeTesteSel.size()) {
+			casoTesteAtual = casosDeTesteSel.get(indiceCdt).getDescricao();
+			formaCadastro(casosDeTesteSel.get(indiceCdt));
+			resp = casosDeTesteSel.get(indiceCdt).getResposta();
+			indiceCdt++;
+			flag = true;
+			FacesContext.getCurrentInstance().getExternalContext()
+					.redirect("fase_execucao_ativo.xhtml");
+		} else {
+			carregarProximoCasoUso();
+		}
+
+		return "";
+	}
+
+	public Integer validaRespostaCorreta(int nivelDificuldade) {
+		Integer pontuacao = 0;
+
+		if (nivelDificuldade == 1) {
+			pontuacao = pontuacao + Utils.PONTO_POSITIVO;
+		}
+
+		if (nivelDificuldade == 2) {
+			pontuacao = pontuacao + Utils.PONTO_POSITIVO_MEDIO;
+		}
+
+		if (nivelDificuldade == 3) {
+			pontuacao = pontuacao + Utils.PONTO_POSITIVO_MEDIO;
+		}
+		return pontuacao;
+	}
+
+	public Integer validaRespostaIncorreta(int nivelDificuldade) {
+		Integer pontuacao = 0;
+		if (nivelDificuldade == 1) {
+			pontuacao = pontuacao + Utils.PONTO_NEGATIVO;
+		}
+
+		if (nivelDificuldade == 2) {
+			pontuacao = pontuacao + Utils.PONTO_NEGATIVO_MEDIO;
+		}
+
+		if (nivelDificuldade == 3) {
+			pontuacao = pontuacao + Utils.PONTO_NEGATIVO_DIFICIL;
+		}
+
+		return pontuacao;
+	}
+
+	public void montaOpcoes() {
+		sel = new ArrayList<SelectItem>();
+		sel.add(new SelectItem(true, "caso de teste válido"));
+		sel.add(new SelectItem(false, "caso de teste inválido"));
+	}
+
+	public void formaCadastro(CasoDeTeste caso) {
+		montaOpcoes();
+		dados = caso.getDados();
+		String tipo = caso.getTipo();
+		String[] campos = caso.getCampos().split(",");
+		formulario = "<input id='tipo"
+				+ "' value='"
+				+ tipo
+				+ "' type='hidden"
+				+ "'/>"
+				+ "<input id='dados"
+				+ "' value='"
+				+ dados
+				+ "' type='hidden"
+				+ "'/>"
+				+ "<h3 class='exec"
+				+ "'>Execute o sistema</h3><input id='msgm' type='hidden' value='"
+				+ caso.getMensagemSistema() + "'>";
+		for (int i = 0; i < campos.length; i++) {
+			formulario += "<label class='exec" + "'for=" + campos[i] + ">"
+					+ campos[i] + ": </label for=" + campos[i]
+					+ "><input class='campo exec" + "'" + "id='camp" + i
+					+ "'></br></br>";
+		}
+		formulario += "<input class='exec" + "'type='" + "button" + "' value='"
+				+ "executar" + "'onclick='cadastro()'";
+
+	}
+
+	public void carregarProximoCasoUso() throws IOException {
+		// validarCasoDeTeste();
 		++indice;
 		if (indice < casoDeUsoBean.getCasoDeUsoProjeto().size()) {
+			System.out.println("1");
 			casoDeUsoBean.setCasoDeUso(casoDeUsoBean.getCasoDeUsoProjeto().get(
 					indice));
 			casodeTesteBean.setCasoDeTesteSelecionados(new ArrayList<String>());
@@ -244,12 +449,14 @@ public class JogoBean {
 			carregarCasoDeTeste();
 			casodeTesteBean.setRespondido(false);
 
-			return "next";
+			FacesContext.getCurrentInstance().getExternalContext()
+					.redirect("fase_projeto.xhtml");
 
+		} else {
+			// aqui redirecione pra página final
+			FacesContext.getCurrentInstance().getExternalContext()
+					.redirect("resultado_fase_projeto.xhtml");
 		}
-
-		return "resultado_fase_projeto";// aqui redirecione pra página final
-
 	}
 
 	public void carregarCasoDeUso() {
@@ -597,6 +804,22 @@ public class JogoBean {
 
 	public void setProjetos(List<SelectItem> projetos) {
 		this.projetos = projetos;
+	}
+
+	public List<CasoDeTeste> getCasosValidos() {
+		return casosValidos;
+	}
+
+	public void setCasosValidos(List<CasoDeTeste> casosValidos) {
+		this.casosValidos = casosValidos;
+	}
+
+	public List<CasoDeTeste> getCasosInvalidos() {
+		return casosInvalidos;
+	}
+
+	public void setCasosInvalidos(List<CasoDeTeste> casosInvalidos) {
+		this.casosInvalidos = casosInvalidos;
 	}
 
 }
