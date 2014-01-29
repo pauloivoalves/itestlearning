@@ -23,8 +23,6 @@
 						</h1>
 					</div>
 
-
-
 					<div id="content">
 						<div id="buttonsMenu">
 							<p:commandLink title="Escopo do Projeto"
@@ -48,23 +46,10 @@
 								Pontuação:
 								<h:outputText value="#{jogoBean.jogo.pontuacao}" />
 							</h2>
-							<h3>Seus casos de teste</h3>
-							<p:dataTable var="caso"
-								value="#{jogoBean.casodeTesteBean.respostas}">
-								<p:column>
-									<f:facet name="header">
-										Casos Marcados
-									</f:facet>
-									<h:outputText value="#{caso.descricao}" />
-								</p:column>
-							</p:dataTable>
-
-
-							<br /> <br /> <br />
 
 							<h3>Casos de Teste Válidos</h3>
 							<p:dataTable var="caso"
-								value="#{jogoBean.casodeTesteBean.respostasCorretas}">
+								value="#{jogoBean.casosValidos}">
 								<p:column>
 									<f:facet name="header">
 										Casos Corretos
@@ -73,6 +58,18 @@
 								</p:column>
 							</p:dataTable>
 
+							<br /> <br /> <br />
+
+							<h3>Casos de teste inválidos</h3>
+							<p:dataTable var="caso"
+								value="#{jogoBean.casosInvalidos}">
+								<p:column>
+									<f:facet name="header">
+										Casos Errados
+									</f:facet>
+									<h:outputText value="#{caso.descricao}" /> - Justificativa - <h:outputText value="#{caso.mensagem}" />
+								</p:column>
+							</p:dataTable>
 
 							<br /> <br />
 						</div>

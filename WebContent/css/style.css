@@ -10,6 +10,39 @@ body {
 	background-position: top center;	
 }
 
+.alternativasExec{
+	font-family: "Calibri";
+	font-size: 20px;
+	color: #006400;
+	font-weight: bolder;
+}
+
+.alternativasExec label{
+	margin-top: 0.5px!important;
+	margin-left: -40px;
+}
+
+.exec{
+	z-index: 1;
+	position: relative;
+}
+
+.campo{
+	float: right;
+	margin-right: 60px;	
+}
+
+#componentes{
+	text-align: center;
+}
+
+#sistema
+{
+	height: auto;
+    margin-left: 630px;
+    width: 368px;
+}
+
 .ui-dialog .ui-dialog-content{
 	text-align: center;
 }
