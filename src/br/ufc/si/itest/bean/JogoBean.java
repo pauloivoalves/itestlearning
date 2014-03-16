@@ -610,28 +610,56 @@ public class JogoBean {
 	}
 
 	public String adicionarRanking() {
+		try {
+			List<Jogo> jogosAux = jogoDao.getJogoByUsárioProjeto(id,
+					projetoBean.getProjeto().getId());
 
-		this.ranking = true;
-		usuario.setId(id);
-		usuario.setNome(nome);
-		usuario.setLogin("login");
-		usuario.setSenha("senha");
-		usuarioDao.save(usuario);
-		jogo.setPk(new JogoPk());
-		jogo.getPk().setProjeto(projetoBean.getProjeto());
-		jogo.getPk().setUsuario(usuario);
-		Date data = new Date();
-		jogo.setData(data);
-		jogo.setAluno(aluno);
+			System.out.println(jogosAux.size());
 
-		if (idTurma != 0) {
-			jogo.setTurma(idTurma);
-		} else {
-			jogo.setTurma(0);
+			this.ranking = true;
+			usuario.setId(id);
+			usuario.setNome(nome);
+			usuario.setLogin("login");
+			usuario.setSenha("senha");
+
+			// usuarioDao.save(usuario);
+			jogo.setPk(new JogoPk());
+			jogo.getPk().setProjeto(projetoBean.getProjeto());
+			jogo.getPk().setUsuario(usuario);
+			Date data = new Date();
+			jogo.setData(data);
+			jogo.setAluno(aluno);
+
+			if (idTurma != 0) {
+				jogo.setTurma(idTurma);
+			} else {
+				jogo.setTurma(0);
+			}
+
+			if (jogosAux.size() > 0) {
+				jogoDao.update(jogo);
+			} else {
+				jogoDao.save(jogo);
+			}
+			jogos = jogoDao.getJogoByProjeto(projetoRanking);
+		} catch (NullPointerException e) {
+			e.printStackTrace();
 		}
 
-		jogoDao.save(jogo);
-		jogos = jogoDao.getJogoByProjeto(projetoRanking);
+		jogo = new Jogo();
+		jogo.setPontuacao(0);
+		indice = 0;
+
+		casodeTesteBean = new CasoDeTesteBean();
+		casoDeUsoBean = new CasoDeUsoBean();
+		projetoBean = new ProjetoBean();
+		nivelDificuldadeBean = new NivelDificuldadeBean();
+		itemTesteBean = new ItemTesteBean();
+		tipoTesteBean = new TipoTesteBean();
+		nivelTesteBean = new NivelTesteBean();
+		criterioAceitacaoBean = new CriterioAceitacaoBean();
+		artefatoBean = new ArtefatoBean();
+		ferramentaBean = new FerramentaBean();
 
 		return "ranking";
 	}

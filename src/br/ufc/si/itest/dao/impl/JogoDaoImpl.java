@@ -14,7 +14,7 @@ import br.ufc.si.itest.utils.HibernateUtil;
 
 /**
  * @author Virginia
- *
+ * 
  */
 
 public class JogoDaoImpl implements JogoDao {
@@ -25,7 +25,7 @@ public class JogoDaoImpl implements JogoDao {
 		session.save(jogo);
 		t.commit();
 		session.close();
-		
+
 	}
 
 	public void remove(Jogo jogo) {
@@ -34,7 +34,7 @@ public class JogoDaoImpl implements JogoDao {
 		session.delete(jogo);
 		t.commit();
 		session.close();
-		
+
 	}
 
 	public void update(Jogo jogo) {
@@ -43,7 +43,7 @@ public class JogoDaoImpl implements JogoDao {
 		session.update(jogo);
 		t.commit();
 		session.close();
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -65,7 +65,8 @@ public class JogoDaoImpl implements JogoDao {
 		Session session = HibernateUtil.getSession();
 		String query = "from Jogo where  pk.projeto = :projeto order by pontuacao desc";
 		try {
-			return session.createQuery(query).setInteger("projeto", projeto).list();
+			return session.createQuery(query).setInteger("projeto", projeto)
+					.list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -73,7 +74,7 @@ public class JogoDaoImpl implements JogoDao {
 		}
 		return null;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Jogo> getJogoById(Integer id) {
@@ -94,7 +95,8 @@ public class JogoDaoImpl implements JogoDao {
 		Session session = HibernateUtil.getSession();
 		String query = "from Jogo where id_usuario = :id ";
 		try {
-			return session.createQuery(query).setInteger("id", id_usuario).list();
+			return session.createQuery(query).setInteger("id", id_usuario)
+					.list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -102,13 +104,31 @@ public class JogoDaoImpl implements JogoDao {
 		}
 		return null;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Jogo> getJogoByTurmaProjeto(Integer id_turma, Integer id_projeto) {
 		Session session = HibernateUtil.getSession();
 		String query = "from Jogo where id_turma = :id and id_projeto = :id2";
 		try {
-			return session.createQuery(query).setInteger("id", id_turma).setInteger("id2", id_projeto).list();
+			return session.createQuery(query).setInteger("id", id_turma)
+					.setInteger("id2", id_projeto).list();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Jogo> getJogoByUsárioProjeto(Integer id_usuario,
+			Integer id_projeto) {
+		Session session = HibernateUtil.getSession();
+		String query = "from Jogo where id_usuario = :id and id_projeto = :id2";
+		try {
+			return session.createQuery(query).setInteger("id", id_usuario)
+					.setInteger("id2", id_projeto).list();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

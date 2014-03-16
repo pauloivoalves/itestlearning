@@ -92,7 +92,6 @@ public class UsuarioBean {
 				if (aluno == null) {
 					return "falhou";
 				} else {
-
 					List<Turma> turmas = aluno.getTurmas();
 
 					if (turma == 0) {

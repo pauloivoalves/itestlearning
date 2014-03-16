@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.application.ViewHandler;
-import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.ServletRequest;
@@ -37,6 +35,12 @@ public class AlunoBean {
 	/* Cosntrutor */
 
 	public AlunoBean() {
+		lista();
+	}
+
+	/* Métodos get e set */
+
+	public void lista() {
 		alunodao = new AlunoDaoImpl();
 		aluno = new Aluno();
 
@@ -75,7 +79,10 @@ public class AlunoBean {
 		}
 	}
 
-	/* Métodos get e set */
+	public String atualizaLista() {
+		lista();
+		return "listaAtualizadaJogos";
+	}
 
 	public AlunoDao getAlunodao() {
 		return alunodao;

@@ -78,7 +78,7 @@
 	<h:outputScript>
 		function verificar_pontos(){
 			p = #{jogoBean.jogo.pontuacao};
-			if (p>=0){ 
+			if (p>=70){ 
 				//$('#mensagem_popup').html('Parabéns, sua pontuação foi de ' +p+ ' pontos, portanto você pode passar para a próxima fase.');
 				$('#mensagem_popup').html('');
 				$('#popup').addClass('congratulations_popup');
