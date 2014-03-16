@@ -230,6 +230,11 @@
 			<from-outcome>faseExecucao</from-outcome>
 			<to-view-id>/fase_execucao_ativo.xhtml</to-view-id>
 		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>listaAtualizadaJogos</from-outcome>
+			<to-view-id>/aluno_index.xhtml</to-view-id>
+		</navigation-case>
 
 	</navigation-rule>
 

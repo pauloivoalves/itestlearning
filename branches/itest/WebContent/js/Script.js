@@ -40,13 +40,13 @@ function cadastro(){
 			setTimeout(function(){
 			$('.exec').removeAttr("style","z-index:-1");
 			$('#componentes').removeAttr("style","background-image:url(images/loading.gif)");
-			alert($('#msgm').val());
+			alert("Resposta do Sistema: " + $('#msgm').val());
 			},1000);
 		
 		}
 	
 	}else{
-		alert("preencha os dados de forma correta");
+		alert("ALERTA DO JOGO: preencha os campos com valores da forma como foi passado em dados inclusive letras mai\u00FAsculas e min\u00FAsculas");
 	}
 	
 }

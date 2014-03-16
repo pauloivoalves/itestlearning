@@ -10,6 +10,16 @@
 	<h:outputScript library="primefaces" name="jquery/jquery.js"/>
 	<link href="css/styleLogin.css" rel="stylesheet" type="text/css" />
 	<h:outputScript>
+	
+	$(document).ready(function(){
+		var x = $('.select').val();
+			
+			if(x=="Aluno"){
+				$('.labelTurma').show();
+				$('.selTurma').show();
+		}	
+	});
+	
 		function escolheTurma(){
 			var x = $('.select').val();
 			
@@ -67,9 +77,10 @@
 								<br />
 								<h:selectOneMenu class="select" style="width:280px;"
 									value="#{UsuarioBean.tipoConta}" id="tipo_user" onchange="escolheTurma();">
-									<f:selectItem itemValue="Administrador" />
+									<f:selectItem itemValue="Selecione..."> </f:selectItem>
+									<!-- <f:selectItem itemValue="Administrador" /> -->
 									<f:selectItem itemValue="Aluno"/>
-									<f:selectItem itemValue="Professor" />
+								<!-- <f:selectItem itemValue="Professor" /> -->	
 								</h:selectOneMenu>
 								<br />
 								<div class="turma_user">
